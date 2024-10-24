@@ -24,6 +24,7 @@ body {
     margin-top: 0;
     font-size: 16px;
     font-weight: 400;
+    font-family: "Space Mono", Monaco, monospace;
 }
 
 .sidebar ul {
@@ -51,6 +52,7 @@ body {
 
 .sidebar a.active {
     text-decoration: none;
+    color: #FF2F00;
 }
 
 .content {
@@ -83,7 +85,8 @@ body {
 .project h2 {
     margin-top: 0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
+    font-family: "Space Grotesk", "Space Mono", Monaco, monospace;
 }
 
 .project p {
@@ -203,10 +206,6 @@ html {
     border-radius: 5px;
 }
 
-.play-link:hover {
-    background-color: #0056b3; /* Darker shade for hover effect */
-}
-
 .date, .notes {
     margin: 0;
     padding: 0;
@@ -231,4 +230,8 @@ a:hover {
 /* If you need to override this for specific links, you can do so like this: */
 .some-specific-link {
     text-decoration: none;
+}
+
+video {
+    border-radius: 3px;
 }
