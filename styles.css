@@ -85,8 +85,8 @@ body {
 .project h2 {
     margin-top: 0;
     font-size: 16px;
-    font-weight: 600;
-    font-family: "Space Grotesk", "Space Mono", Monaco, monospace;
+    font-weight: 400;
+    font-family: "Space Mono", Monaco, monospace;
 }
 
 .project p {
