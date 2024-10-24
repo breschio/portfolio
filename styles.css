@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: #f8f8f8;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.sidebar h1 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 40px;
+    max-width: 800px;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* For Webkit browsers like Chrome, Safari */
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.project {
+    margin-bottom: 80px;
+    padding-top: 60px;
+}
+
+.project h2 {
+    margin-top: 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.project p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.media-placeholder {
+    width: 100%;
+    height: 500px;
+    background-color: #f0f0f0;
+    margin-top: 30px;
+}
