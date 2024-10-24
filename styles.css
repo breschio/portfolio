@@ -1,5 +1,6 @@
 body {
     font-family: "Space Mono",Monaco, monospace;
+    text-transform: lowercase;
     background-color: #ffffff;
     margin: 0;
     padding: 0;
