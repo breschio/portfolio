@@ -48,6 +48,10 @@ body {
     width: 20px;
 }
 
+.sidebar a.active {
+    text-decoration: underline;
+}
+
 .content {
     margin-left: 250px;
     padding: 40px;
@@ -56,6 +60,8 @@ body {
     overflow-y: auto;
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 /* For Webkit browsers like Chrome, Safari */
@@ -66,6 +72,11 @@ body {
 .project {
     margin-bottom: 80px;
     padding-top: 60px;
+    scroll-snap-align: start;
+    height: 100vh; /* Make each project take up the full viewport height */
+    overflow-y: auto; /* Allow scrolling within each project if content overflows */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 .project h2 {
@@ -85,4 +96,9 @@ body {
     height: 500px;
     background-color: #f0f0f0;
     margin-top: 30px;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth; /* This ensures smooth scrolling between snaps */
 }

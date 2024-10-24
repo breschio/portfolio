@@ -1,84 +1,75 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const sidebarLinks = document.querySelectorAll('.sidebar a');
+document.addEventListener('DOMContentLoaded', () => {
+    const content = document.querySelector('.content');
     const sections = document.querySelectorAll('.project');
+    const navItems = document.querySelectorAll('.sidebar a');
 
-    // Function to set active link
-    function setActiveLink(clickedLink) {
-        sidebarLinks.forEach(link => link.classList.remove('active'));
-        clickedLink.classList.add('active');
-    }
-
-    // Function to handle smooth scrolling
-    function smoothScroll(targetId) {
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            const headerOffset = 60; // Adjust this value based on any fixed header height
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    // Add click event listeners to sidebar links
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    // Snap to section when nav item is clicked
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            setActiveLink(this);
-            smoothScroll(targetId);
+            const targetId = item.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+            
+            // Remove active class from all nav items
+            navItems.forEach(navItem => navItem.classList.remove('active'));
+            // Add active class to clicked nav item
+            item.classList.add('active');
         });
     });
 
-    // Update active link on scroll
-    function updateActiveOnScroll() {
-        const scrollPosition = window.scrollY;
+    // Highlight nav item based on scroll position
+    const observerOptions = {
+        root: content,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
 
-        sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop - 100; // Adjust this value as needed
-            const sectionBottom = sectionTop + section.offsetHeight;
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                setActiveLink(sidebarLinks[index]);
-            }
-        });
-    }
-
-    // Throttle function to limit how often updateActiveOnScroll runs
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        }
-    }
-
-    // Add scroll event listener with throttling
-    window.addEventListener('scroll', throttle(updateActiveOnScroll, 100));
-
-    // Set initial active link based on scroll position
-    updateActiveOnScroll();
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navItems.forEach(item => {
+                    if (item.getAttribute('href') === `#${id}`) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
                 });
             }
         });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Add a scroll event listener for immediate snapping
+    let isScrolling;
+    content.addEventListener('scroll', () => {
+        clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+            const scrollPosition = content.scrollTop;
+            const windowHeight = window.innerHeight;
+            const snapTo = Math.round(scrollPosition / windowHeight) * windowHeight;
+            content.scrollTo({
+                top: snapTo,
+                behavior: 'auto'
+            });
+        }, 50); // Reduced timeout for faster response
     });
+
+    // Prevent default scroll behavior for a more abrupt stop
+    content.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY;
+        const currentScroll = content.scrollTop;
+        const windowHeight = window.innerHeight;
+        const targetScroll = delta > 0 
+            ? Math.ceil(currentScroll / windowHeight) * windowHeight 
+            : Math.floor(currentScroll / windowHeight) * windowHeight;
+        
+        content.scrollTo({
+            top: targetScroll,
+            behavior: 'auto'
+        });
+    }, { passive: false });
 });
