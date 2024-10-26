@@ -233,5 +233,56 @@ a:hover {
 }
 
 video {
-    border-radius: 3px;
+    border-radius: 2px;
+}
+
+iframe {
+    border-radius: 2px !important;
+}
+
+
+.mobile-project-container {
+    display: flex;
+    align-items: center; /* This centers the children vertically */
+    gap: 20px;
+}
+
+.mobile-media {
+    flex: 0 0 auto;
+}
+
+.mobile-project-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-project-info h2 {
+    margin-top: 0;
+}
+
+.mobile-project-info .date,
+.mobile-project-info .notes,
+.mobile-project-info .description {
+    margin-bottom: 20px;
+}
+
+.mobile-project-info .link-container {
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .mobile-project-container {
+        flex-direction: column;
+    }
+
+    .mobile-media video {
+        width: 100%;
+        height: auto;
+    }
+
+    .mobile-project-info {
+        align-items: center;
+        text-align: center;
+    }
 }
