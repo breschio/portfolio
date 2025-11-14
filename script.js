@@ -42,36 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => observer.observe(section));
 
-    // Add a scroll event listener for immediate snapping
-    let isScrolling;
-    content.addEventListener('scroll', () => {
-        clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => {
-            const scrollPosition = content.scrollTop;
-            const windowHeight = window.innerHeight;
-            const snapTo = Math.round(scrollPosition / windowHeight) * windowHeight;
-            content.scrollTo({
-                top: snapTo,
-                behavior: 'auto'
-            });
-        }, 50); // Reduced timeout for faster response
-    });
-
-    // Prevent default scroll behavior for a more abrupt stop
-    content.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const delta = e.deltaY;
-        const currentScroll = content.scrollTop;
-        const windowHeight = window.innerHeight;
-        const targetScroll = delta > 0 
-            ? Math.ceil(currentScroll / windowHeight) * windowHeight 
-            : Math.floor(currentScroll / windowHeight) * windowHeight;
-        
-        content.scrollTo({
-            top: targetScroll,
-            behavior: 'auto'
-        });
-    }, { passive: false });
+    // Let CSS scroll-snap handle the snapping behavior naturally
 
     const carousels = document.querySelectorAll('.carousel-container');
     
