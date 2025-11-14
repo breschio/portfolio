@@ -1,0 +1,92 @@
+[
+  {
+    "id": "4e184ff3-d6c1-4635-a967-177eba0a3956",
+    "title": "p: 2024",
+    "comment": "2025",
+    "selector": "div.project-info > div.left-column:nth-child(1) > p.date:nth-child(2)",
+    "boundingRect": {
+      "x": 290,
+      "y": 523,
+      "w": 300,
+      "h": 19
+    },
+    "screenshotPath": "./screenshots/moat-1763038796902-yq02n9n77.png",
+    "status": "done",
+    "timestamp": 1763038796916
+  },
+  {
+    "id": "7834e862-d39e-4a71-be59-b811849dda16",
+    "title": "p: Figma, Cursor, HTML, CSS, Java",
+    "comment": "cursor, markdown, javascript, css",
+    "selector": "div.project-info > div.left-column:nth-child(1) > p.notes:nth-child(3)",
+    "boundingRect": {
+      "x": 290,
+      "y": 627,
+      "w": 300,
+      "h": 19
+    },
+    "screenshotPath": "./screenshots/moat-1763038887997-p8fylwc7o.png",
+    "status": "done",
+    "timestamp": 1763038888011
+  },
+  {
+    "id": "dcaf2990-bec1-4c51-9b7d-55972f1cc1aa",
+    "title": "Link: Github",
+    "comment": "link to: https://github.com/breschio/drawbridge",
+    "selector": "div.left-column:nth-child(1) > div.link-container > a.project-link:nth-child(2)",
+    "boundingRect": {
+      "x": 339,
+      "y": 667,
+      "w": 44,
+      "h": 18
+    },
+    "screenshotPath": "./screenshots/moat-1763038903892-paa2d2lmh.png",
+    "status": "done",
+    "timestamp": 1763038903907
+  },
+  {
+    "id": "5778baed-1992-4731-b45c-5abbd2c94af3",
+    "title": "Link: Play",
+    "comment": "remove",
+    "selector": "div.left-column:nth-child(1) > div.link-container > a.project-link:nth-child(1)",
+    "boundingRect": {
+      "x": 290,
+      "y": 667,
+      "w": 29,
+      "h": 18
+    },
+    "screenshotPath": "./screenshots/moat-1763040127994-q24raf52q.png",
+    "status": "done",
+    "timestamp": 1763040128007
+  },
+  {
+    "id": "fa635638-8b21-4ba0-a40c-36a5e918eb68",
+    "title": "p: Design editor for AI driven de",
+    "comment": "chrome plugin I built for ai driven design and development. allows you to make \"figma comments\" in the browser for processing by claude code or cursor",
+    "selector": "div.project-info > div.right-column:nth-child(2) > p.description",
+    "boundingRect": {
+      "x": 610,
+      "y": 566,
+      "w": 480,
+      "h": 77
+    },
+    "screenshotPath": "./screenshots/moat-1763040222997-9zbdqcv3n.png",
+    "status": "done",
+    "timestamp": 1763040223011
+  },
+  {
+    "id": "d5b929a4-856e-4485-8dfb-638c7526cb35",
+    "title": "video: Your browser does not support ",
+    "comment": "make a grey placeholder for now",
+    "selector": "#drawbridge > video",
+    "boundingRect": {
+      "x": 290,
+      "y": 40,
+      "w": 800,
+      "h": 500
+    },
+    "screenshotPath": "./screenshots/moat-1763040320869-jdga3awk6.png",
+    "status": "done",
+    "timestamp": 1763040320897
+  }
+]
