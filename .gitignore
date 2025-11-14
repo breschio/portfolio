@@ -1,0 +1,14 @@
+# Drawbridge and Claude AI files
+.moat/
+.claude/
+
+# Workspace files
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
