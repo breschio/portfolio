@@ -15,7 +15,7 @@
         <nav class="sidebar">
             <h1>bresch i/o</h1>
             <ul>
-                <li><a href="#personio">Personio</a></li>
+                <li><a href="#personio" style="display: none;">Personio</a></li>
                 <li><a href="#drawbridge">Drawbridge</a></li>
                 <li><a href="#pizza-cat">Pizza Cat</a></li>
                 <li><a href="#meta-avatars-store">Meta</a></li>
@@ -25,11 +25,14 @@
             <div class="about-me">
                 <img src="./assets/terrence-breschi-profile.png" alt="Terrence Anthony Breschi" class="avatar">
                 <p>A collection of work by Terrence Breschi. </p>
-                <a href="#contact" class="contact-link">Contact</a>
+                <div class="link-container">
+                    <a href="https://www.linkedin.com/in/tbreschi/" target="_blank" class="contact-link">linkedin</a>
+                    <a href="https://terrencebreschi.substack.com/archive" target="_blank" class="contact-link">substack</a>
+                </div>
             </div>
         </nav>
         <main class="content">
-            <section id="personio" class="project">
+            <section id="personio" class="project" style="display: none;">
                 <img src="./assets/personio-input.gif" width="100%" height="auto" alt="Personio">
                 <div class="project-info">
                     <div class="left-column">
@@ -55,6 +58,7 @@
                         <p class="notes">cursor, markdown, javascript, css</p>
                         <div class="link-container">
                             <a href="https://github.com/breschio/drawbridge" target="_blank" class="project-link">Github</a>
+                            <a href="https://youtu.be/1cB2iqz_vnM?si=1I2AoHWhmphbp36q" target="_blank" class="project-link">youtube</a>
                         </div>
                     </div>
                     <div class="right-column">
@@ -64,10 +68,9 @@
             </section>
             
             <section id="pizza-cat" class="project">
-                <video width="100%" height="auto" autoplay loop muted playsinline>
-                    <source src="./assets/pizza-cat-demo-3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/8lnwXHsIThc?si=M-DVYUiHHJS4oRB1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
                 <div class="project-info">
                     <div class="left-column">
                         <h2>Pizza Cat</h2>
@@ -148,7 +151,7 @@
 
             
 
-            <section id="contact" class="project">
+            <section id="contact" class="project" style="display: none;">
                 <h2>Contact</h2>
                 <p>Feel free to reach out to me at t@bresch.io</p>
                 <div class="media-placeholder"></div>

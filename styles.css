@@ -96,6 +96,7 @@ body {
     max-height: 70vh;
     margin: 0 auto;
     min-height: 0;
+    border-radius: 2px;
 }
 
 .video-wrapper {
@@ -124,7 +125,7 @@ body {
 .project h2 {
     margin-top: 0;
     font-size: 16px;
-    font-weight: 400;
+    font-weight:500;
     font-family: "Space Mono", Monaco, monospace;
 }
 
@@ -213,6 +214,8 @@ html {
     font-size: 12px;
     color: #007bff;
     text-decoration: none;
+    position: relative;
+    z-index: 1001;
 }
 
 .contact-link:hover {
@@ -263,6 +266,8 @@ html {
 .link-container {
     display: flex;
     gap: 20px; /* Adjust this value to control space between links */
+    position: relative;
+    z-index: 1001;
 }
 
 .project-link {

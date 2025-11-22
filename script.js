@@ -6,15 +6,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Snap to section when nav item is clicked
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = item.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+            const href = item.getAttribute('href');
             
-            // Remove active class from all nav items
-            navItems.forEach(navItem => navItem.classList.remove('active'));
-            // Add active class to clicked nav item
-            item.classList.add('active');
+            // Skip external links (they should navigate normally)
+            if (href && (href.startsWith('http') || href.startsWith('//'))) {
+                return; // Let the browser handle external links
+            }
+            
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            // Only scroll if the target section exists
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+                
+                // Remove active class from all nav items
+                navItems.forEach(navItem => navItem.classList.remove('active'));
+                // Add active class to clicked nav item
+                item.classList.add('active');
+            }
         });
     });
 
