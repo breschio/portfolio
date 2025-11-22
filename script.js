@@ -108,6 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let bounds = updateBoundaries();
 
+        // Create placeholder and tooltip elements
+        const placeholder = document.createElement('div');
+        placeholder.classList.add('avatar-placeholder');
+        sidebar.appendChild(placeholder);
+
+        const tooltip = document.createElement('div');
+        tooltip.classList.add('avatar-tooltip');
+        tooltip.innerText = 'Thanks!';
+        sidebar.appendChild(tooltip);
+
         // Move avatar to sidebar direct child to simplify positioning relative to sidebar
         if (avatar.parentElement !== sidebar) {
             sidebar.appendChild(avatar);
@@ -182,6 +192,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (avatarY < bounds.minY) avatarY = bounds.minY;
             if (avatarY > bounds.maxY) avatarY = bounds.maxY;
 
+            // Check distance to home position
+            const distToHome = Math.sqrt(
+                Math.pow(avatarX - bounds.minX, 2) + 
+                Math.pow(avatarY - bounds.maxY, 2)
+            );
+
+            // Show placeholder if close to home
+            if (distToHome < 50 && distToHome > 5) { // Don't show if already basically there
+                placeholder.style.left = `${bounds.minX}px`;
+                placeholder.style.top = `${bounds.maxY}px`;
+                placeholder.style.opacity = '1';
+            } else {
+                placeholder.style.opacity = '0';
+            }
+
             updateAvatarPosition();
         }
 
@@ -189,6 +214,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isDragging) return;
             isDragging = false;
             avatar.style.cursor = 'grab';
+            
+            // Hide placeholder
+            placeholder.style.opacity = '0';
+
+            // Check if we should snap to home
+            const distToHome = Math.sqrt(
+                Math.pow(avatarX - bounds.minX, 2) + 
+                Math.pow(avatarY - bounds.maxY, 2)
+            );
+
+            if (distToHome < 50) {
+                // Snap to home
+                avatarX = bounds.minX;
+                avatarY = bounds.maxY;
+                velocityX = 0;
+                velocityY = 0;
+                updateAvatarPosition();
+
+                // Show tooltip
+                tooltip.style.left = `${bounds.minX + 5}px`; // Slightly offset to center
+                tooltip.style.top = `${bounds.maxY - 30}px`; // Above the avatar
+                tooltip.style.opacity = '1';
+
+                // Hide tooltip after 2 seconds
+                setTimeout(() => {
+                    tooltip.style.opacity = '0';
+                }, 2000);
+                
+                return; // Skip physics
+            }
 
             isPhysicsActive = true;
             animatePhysics();
@@ -230,7 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 velocityY = -Math.abs(velocityY) * bounce;
                 
                 // Apply ground friction when rolling on the floor
-                velocityX *= 0.95; 
+                // Reduced friction to help it roll further even at lower speeds
+                velocityX *= 0.99; 
             }
 
             updateAvatarPosition();
@@ -288,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
             avatarX = bounds.maxX + 100; // Start off-screen right
             avatarY = bounds.maxY; // Start on the floor
             
-            velocityX = -15; // Strong leftward velocity
+            velocityX = -8; // Slower leftward velocity (was -15)
             velocityY = 0;  // Rolling, not falling initially
 
             updateAvatarPosition();

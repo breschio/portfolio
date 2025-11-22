@@ -18,6 +18,7 @@ body {
     background-color: #f8f8f8;
     padding: 40px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .sidebar h1 {
@@ -156,6 +157,48 @@ html {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.avatar-placeholder {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px dashed #ccc;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 999;
+}
+
+.avatar-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1001;
+    white-space: nowrap;
+}
+
+.avatar-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
 }
 
 .about-me p {
