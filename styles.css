@@ -82,7 +82,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
+    gap: 32px;
 }
 
 .project > img,
@@ -124,7 +124,7 @@ body {
 
 .project h2 {
     margin-top: 0;
-    font-size: 16px;
+    font-size: 14px;
     font-weight:500;
     font-family: "Space Mono", Monaco, monospace;
 }
@@ -267,7 +267,7 @@ html {
     display: flex;
     gap: 20px; /* Adjust this value to control space between links */
     position: relative;
-    z-index: 1001;
+    z-index: 1;
 }
 
 .project-link {
@@ -355,21 +355,339 @@ iframe {
 }
 
 .mobile-project-info .link-container {
-    margin-top: auto;
+    display: none;
+}
+
+.mobile-project-info .notes {
+    display: none;
+}
+
+/* Hide links and notes for Facebook Ads Design System */
+#facebook-ads-design-system .project-info .left-column .link-container {
+    display: none;
+}
+
+#facebook-ads-design-system .project-info .left-column .notes {
+    display: none;
+}
+
+/* Hide notes for Drawbridge and Pizza Cat */
+#drawbridge .project-info .left-column .notes {
+    display: none;
+}
+
+#pizza-cat .project-info .left-column .notes {
+    display: none;
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1002;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 24px;
+    line-height: 1;
+    color: #666;
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #666;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger icon: 3 horizontal lines when not active */
+.hamburger-menu:not(.active) span {
+    display: block;
+    transform: none;
+    opacity: 1;
+}
+
+.hamburger-menu:not(.active)::after {
+    content: "";
+    display: none;
+}
+
+/* X icon: hide spans and show simple X when active */
+.hamburger-menu.active span {
+    display: none;
+}
+
+.hamburger-menu.active::after {
+    content: "×";
+    display: block;
+    font-size: 32px;
+    line-height: 1;
+    color: #666;
+    font-weight: 300;
 }
 
 @media (max-width: 768px) {
+    /* Hamburger Menu */
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Sidebar - Fixed Overlay */
+    .sidebar {
+        width: 100%;
+        max-width: 300px;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        z-index: 1001;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar.open {
+        left: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    /* Position h1 next to hamburger menu - visible on home page */
+    .sidebar h1 {
+        position: fixed;
+        top: 42.5px;
+        left: 75px;
+        margin: 0;
+        z-index: 1003;
+        pointer-events: none;
+        transform: translateY(-50%);
+        line-height: 1;
+    }
+    
+    /* Hide h1 when sidebar is open */
+    .sidebar.open h1 {
+        display: none;
+    }
+
+    /* Content - Remove margin-left */
+    .content {
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
+    }
+
+    /* Typography & Sizing */
+    body {
+        font-size: 14px;
+    }
+
+    .sidebar a {
+        font-size: 14px;
+    }
+
+    .project p {
+        font-size: 14px;
+    }
+
+    .project h2 {
+        font-size: 18px;
+    }
+
+    /* Project Media Width */
+    .project > img,
+    .project > video,
+    .project > .media-placeholder,
+    .project > .video-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .project .project-info {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Reorder project info for mobile: name, description, year/technology, links */
+    .project-info .left-column {
+        order: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project-info .left-column h2 {
+        order: 1;
+        margin-bottom: 16px;
+    }
+
+    .project-info .right-column {
+        order: 2;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 16px;
+        padding-top: 0;
+    }
+
+    .project-info .right-column .description {
+        margin: 0;
+    }
+
+    /* Year and technology on same line - use flex row wrapper */
+    .project-info .left-column {
+        position: relative;
+    }
+    
+    .project-info .left-column .date {
+        order: 3;
+        display: inline-block;
+        margin-bottom: 16px;
+        margin-right: 4px;
+        font-size: 11px;
+        vertical-align: baseline;
+    }
+
+    .project-info .left-column .notes {
+        order: 3;
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 16px;
+        margin-left: 0;
+        font-size: 11px;
+        vertical-align: baseline;
+    }
+    
+    /* Force year and notes to appear on same line */
+    .project-info .left-column .date,
+    .project-info .left-column .notes {
+        white-space: normal;
+    }
+
+    /* Hide notes for Facebook Ads Design System, Drawbridge, and Pizza Cat on mobile */
+    #facebook-ads-design-system .project-info .left-column .notes {
+        display: none;
+    }
+
+    #drawbridge .project-info .left-column .notes {
+        display: none;
+    }
+
+    #pizza-cat .project-info .left-column .notes {
+        display: none;
+    }
+
+    .project-info .left-column .link-container {
+        order: 4;
+        display: block;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .project-info .left-column .link-container::before {
+        content: none;
+    }
+
+    /* Avatar Positioning */
+    .about-me {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin-top: auto;
+        padding-bottom: 40px;
+    }
+
+    .avatar {
+        position: static !important;
+        transform: none !important;
+    }
+
+    /* Hide Bouncy Placeholder Elements */
+    .avatar-placeholder {
+        display: none;
+    }
+
+    .avatar-tooltip {
+        display: none;
+    }
+
+    /* Mobile Project Container */
     .mobile-project-container {
         flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .mobile-media {
+        width: 100%;
     }
 
     .mobile-media video {
         width: 100%;
         height: auto;
+        max-height: 500px;
+        object-fit: contain;
     }
 
     .mobile-project-info {
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    /* Reorder mobile project info: name, year/technology, links, description (matches regular projects) */
+    .mobile-project-info h2 {
+        order: 1;
+        margin-bottom: 16px;
+    }
+
+    /* Year and technology on same line */
+    .mobile-project-info .date {
+        order: 2;
+        display: inline-block;
+        margin-bottom: 16px;
+        margin-right: 4px;
+        font-size: 11px;
+        vertical-align: baseline;
+    }
+
+    .mobile-project-info .notes {
+        order: 2;
+        display: none;
+        margin-bottom: 16px;
+        margin-left: 0;
+        font-size: 11px;
+        vertical-align: baseline;
+    }
+
+    .mobile-project-info .link-container {
+        order: 3;
+        display: none;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    .mobile-project-info .description {
+        order: 4;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .mobile-project-info .link-container::before {
+        content: none;
     }
 }
