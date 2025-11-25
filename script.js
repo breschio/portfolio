@@ -2,6 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelector('.content');
     const sections = document.querySelectorAll('.project');
     const navItems = document.querySelectorAll('.sidebar a');
+    const sidebar = document.querySelector('.sidebar');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+
+    // Mobile Menu Toggle
+    if (hamburgerMenu && sidebar) {
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            hamburgerMenu.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                const isClickInsideSidebar = sidebar.contains(e.target);
+                const isClickOnHamburger = hamburgerMenu.contains(e.target);
+                
+                if (!isClickInsideSidebar && !isClickOnHamburger && sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                    hamburgerMenu.classList.remove('active');
+                }
+            }
+        });
+    }
 
     // Snap to section when nav item is clicked
     navItems.forEach(item => {
@@ -25,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 navItems.forEach(navItem => navItem.classList.remove('active'));
                 // Add active class to clicked nav item
                 item.classList.add('active');
+
+                // Close sidebar on mobile when nav link is clicked
+                if (window.innerWidth <= 768 && sidebar && hamburgerMenu) {
+                    sidebar.classList.remove('open');
+                    hamburgerMenu.classList.remove('active');
+                }
             }
         });
     });
@@ -73,13 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
     });
 
-    // Bouncy ball avatar
+    // Bouncy ball avatar - only on desktop
     const avatar = document.querySelector('.avatar');
-    const sidebar = document.querySelector('.sidebar');
     const menuList = document.querySelector('.sidebar ul');
     const aboutText = document.querySelector('.about-me p');
 
-    if (avatar && sidebar && menuList && aboutText) {
+    if (avatar && sidebar && menuList && aboutText && window.innerWidth > 768) {
         let isDragging = false;
         let isPhysicsActive = false;
         let avatarX, avatarY;
@@ -334,6 +362,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Handle window resize to update boundaries
         window.addEventListener('resize', () => {
+            // If resizing to mobile, disable physics
+            if (window.innerWidth <= 768) {
+                if (animationFrame) cancelAnimationFrame(animationFrame);
+                isPhysicsActive = false;
+                isDragging = false;
+                return;
+            }
+            
             bounds = updateBoundaries();
             // Ensure avatar stays within new bounds
             if (avatarX < bounds.minX) avatarX = bounds.minX;
