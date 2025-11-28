@@ -248,6 +248,7 @@ html {
 
 .description {
     margin: 0; /* Removes default paragraph margin */
+    text-transform: none; /* Allow sentence case for descriptions */
 }
 
 /* Adjust other styles as needed */
