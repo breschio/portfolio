@@ -1,10 +1,155 @@
+:root {
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8f8f8;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --accent-color: #FF2F00;
+    --link-color: #007bff;
+    --placeholder-bg: #f0f0f0;
+    --border-color: #ccc;
+    --tooltip-bg: #333;
+    --tooltip-text: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --sidebar-bg: #1a1a1a;
+        --text-primary: #e0e0e0;
+        --text-secondary: #a0a0a0;
+        --accent-color: #FF4500;
+        --link-color: #6ea8fe;
+        --placeholder-bg: #2a2a2a;
+        --border-color: #444;
+        --tooltip-bg: #e0e0e0;
+        --tooltip-text: #121212;
+    }
+}
+
+/* Force Light Theme */
+body.light-theme {
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8f8f8;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --accent-color: #FF2F00;
+    --link-color: #007bff;
+    --placeholder-bg: #f0f0f0;
+    --border-color: #ccc;
+    --tooltip-bg: #333;
+    --tooltip-text: #fff;
+}
+
+/* Force Dark Theme */
+body.dark-theme {
+    --bg-color: #121212;
+    --sidebar-bg: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-color: #FF4500;
+    --link-color: #6ea8fe;
+    --placeholder-bg: #2a2a2a;
+    --border-color: #444;
+    --tooltip-bg: #e0e0e0;
+    --tooltip-text: #121212;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    margin-top: 0; /* Removed space from list */
+    overflow: hidden; /* Ensure animations don't spill */
+    width: 20px;
+    height: 20px;
+}
+
+.theme-toggle:hover {
+    color: var(--accent-color);
+}
+
+/* Hide icons by default */
+.theme-toggle .sun-icon,
+.theme-toggle .moon-icon {
+    display: none;
+}
+
+/* SVG Animation Styles */
+.sun-icon, .moon-icon {
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes sunRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(90deg); }
+}
+
+@keyframes sunRaysPulse {
+    0% { opacity: 0.6; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0.6; transform: scale(0.8); }
+}
+
+@keyframes moonTilt {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Apply Animations */
+.sun-icon .sun-rays {
+    transform-origin: center;
+    animation: sunRaysPulse 3s infinite ease-in-out;
+}
+
+.sun-icon {
+    animation: sunRotate 10s infinite linear;
+}
+
+.moon-icon {
+    animation: moonTilt 6s infinite ease-in-out;
+    transform-origin: center;
+}
+
+/* Logic to show correct icon */
+body.light-theme .theme-toggle .moon-icon {
+    display: block;
+}
+
+body.dark-theme .theme-toggle .sun-icon {
+    display: block;
+}
+
+/* Default behavior (System Preference) */
+@media (prefers-color-scheme: light) {
+    body:not(.dark-theme) .theme-toggle .moon-icon {
+        display: block;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme) .theme-toggle .sun-icon {
+        display: block;
+    }
+}
+
+
 body {
     font-family: "Space Mono",Monaco, monospace;
     text-transform: lowercase;
-    background-color: #ffffff;
+    background-color: var(--bg-color);
     margin: 0;
     padding: 0;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .container {
@@ -15,7 +160,7 @@ body {
     width: 250px;
     height: 100vh;
     position: fixed;
-    background-color: #f8f8f8;
+    background-color: var(--sidebar-bg);
     padding: 40px;
     box-sizing: border-box;
     overflow: hidden;
@@ -40,7 +185,7 @@ body {
 
 .sidebar a {
     text-decoration: underline;
-    color: #333;
+    color: var(--text-primary);
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -53,7 +198,7 @@ body {
 
 .sidebar a.active {
     text-decoration: none;
-    color: #FF2F00;
+    color: var(--accent-color);
 }
 
 .content {
@@ -132,13 +277,13 @@ body {
 .project p {
     font-size: 12px;
     line-height: 1.6;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .media-placeholder {
     width: 100%;
     height: 500px;
-    background-color: #f0f0f0;
+    background-color: var(--placeholder-bg);
     margin-top: 30px;
 }
 
@@ -168,8 +313,8 @@ html {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px dashed #ccc;
-    background-color: #f0f0f0;
+    border: 2px dashed var(--border-color);
+    background-color: var(--placeholder-bg);
     box-sizing: border-box;
     pointer-events: none;
     opacity: 0;
@@ -179,8 +324,8 @@ html {
 
 .avatar-tooltip {
     position: absolute;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 10px;
@@ -199,7 +344,7 @@ html {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #333 transparent transparent transparent;
+    border-color: var(--tooltip-bg) transparent transparent transparent;
 }
 
 .about-me p {
@@ -212,7 +357,7 @@ html {
 .contact-link {
     display: inline-block;
     font-size: 12px;
-    color: #007bff;
+    color: var(--link-color);
     text-decoration: none;
     position: relative;
     z-index: 1001;
@@ -266,6 +411,7 @@ html {
 
 .link-container {
     display: flex;
+    align-items: center;
     gap: 20px; /* Adjust this value to control space between links */
     position: relative;
     z-index: 1;
@@ -273,7 +419,7 @@ html {
 
 .project-link {
     text-decoration: underline;
-    color: #333; /* Adjust this color to match your sidebar links */
+    color: var(--text-primary); /* Adjust this color to match your sidebar links */
     font-size: 12px; /* Adjust size as needed */
     margin-top: 20px;
 }
@@ -285,7 +431,7 @@ html {
 .play-link {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #007bff; /* Example color, adjust as needed */
+    background-color: var(--link-color); /* Example color, adjust as needed */
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -304,7 +450,7 @@ html {
 /* This will target all anchor tags */
 a {
     text-decoration: underline;
-    color: #333; /* Adjust this color as needed */
+    color: var(--text-primary); /* Adjust this color as needed */
 }
 
 /* If you want to remove the underline on hover, you can add this */
@@ -391,51 +537,45 @@ iframe {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 10px;
-    flex-direction: column;
-    gap: 5px;
-    font-size: 24px;
-    line-height: 1;
-    color: #666;
+    padding: 0; /* Removed padding to rely on flex centering */
+    color: var(--text-secondary);
     width: 45px;
     height: 45px;
     align-items: center;
     justify-content: center;
 }
 
-.hamburger-menu span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: #666;
-    transition: all 0.3s ease;
+.hamburger-menu svg {
+    width: 24px;
+    height: 24px;
+}
+
+.hamburger-menu line {
     transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
 }
 
-/* Hamburger icon: 3 horizontal lines when not active */
-.hamburger-menu:not(.active) span {
-    display: block;
-    transform: none;
-    opacity: 1;
+/* Default State (Burger) */
+/* All lines are defined at y=12 in HTML to ensure perfect rotation center */
+.hamburger-menu .line-top {
+    transform: translateY(-6px);
 }
 
-.hamburger-menu:not(.active)::after {
-    content: "";
-    display: none;
+.hamburger-menu .line-bottom {
+    transform: translateY(6px);
 }
 
-/* X icon: hide spans and show simple X when active */
-.hamburger-menu.active span {
-    display: none;
+/* Active State (X icon) */
+.hamburger-menu.active .line-top {
+    transform: rotate(45deg);
 }
 
-.hamburger-menu.active::after {
-    content: "×";
-    display: block;
-    font-size: 32px;
-    line-height: 1;
-    color: #666;
-    font-weight: 300;
+.hamburger-menu.active .line-middle {
+    opacity: 0;
+}
+
+.hamburger-menu.active .line-bottom {
+    transform: rotate(-45deg);
 }
 
 @media (max-width: 768px) {
