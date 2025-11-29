@@ -4,13 +4,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.sidebar a');
     const sidebar = document.querySelector('.sidebar');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Theme Toggle Logic
+    // 1. Initialize based on localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+    }
+
+    // 2. Handle Toggle Click
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            // Check if manual override is active
+            const isDarkOverride = body.classList.contains('dark-theme');
+            const isLightOverride = body.classList.contains('light-theme');
+            
+            if (isDarkOverride) {
+                // Switch to Light
+                body.classList.replace('dark-theme', 'light-theme');
+                localStorage.setItem('theme', 'light-theme');
+            } else if (isLightOverride) {
+                // Switch to Dark
+                body.classList.replace('light-theme', 'dark-theme');
+                localStorage.setItem('theme', 'dark-theme');
+            } else {
+                // No override currently (System Mode)
+                // Determine current system state
+                const isSystemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (isSystemDark) {
+                    // System is Dark, User wants Light
+                    body.classList.add('light-theme');
+                    localStorage.setItem('theme', 'light-theme');
+                } else {
+                    // System is Light, User wants Dark
+                    body.classList.add('dark-theme');
+                    localStorage.setItem('theme', 'dark-theme');
+                }
+            }
+            
+            // Optional: Play animation on toggle (Handled by CSS animations now)
+        });
+    }
 
     // Mobile Menu Toggle
     if (hamburgerMenu && sidebar) {
-        hamburgerMenu.addEventListener('click', () => {
+        // Toggle menu state
+        const toggleMenu = () => {
             sidebar.classList.toggle('open');
             hamburgerMenu.classList.toggle('active');
-        });
+        };
+
+        hamburgerMenu.addEventListener('click', toggleMenu);
 
         // Close sidebar when clicking outside
         document.addEventListener('click', (e) => {
