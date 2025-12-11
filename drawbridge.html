@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawbridge Case Study | bresch i/o</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Light theme (default) - matches main site */
+        :root {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Dark theme via media query */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --text-secondary: #a0a0a0;
+                --text-muted: #777;
+                --border: #444;
+                --accent: #FF4500;
+                --link-color: #6ea8fe;
+                --card-bg: #1a1a1a;
+                --code-bg: #2a2a2a;
+            }
+        }
+
+        /* Force Light Theme */
+        body.light-theme {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Force Dark Theme */
+        body.dark-theme {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --border: #444;
+            --accent: #FF4500;
+            --link-color: #6ea8fe;
+            --card-bg: #1a1a1a;
+            --code-bg: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            opacity: 0;
+            animation: slideInFromRight 0.4s ease-out forwards;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body.navigating-back {
+            animation: slideOutToRight 0.3s ease-in forwards;
+        }
+
+        @keyframes slideOutToRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+        }
+
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            z-index: 100;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .meta-item .label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-item .value {
+            color: var(--text);
+        }
+
+        .hero-media {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-media img,
+        .hero-media video {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .content li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .content strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .content em {
+            font-style: italic;
+        }
+
+        .content a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content code {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9em;
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+        }
+
+        .callout {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .callout.highlight {
+            border-left: 3px solid var(--accent);
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        .callout p strong {
+            font-size: 1.25rem;
+        }
+
+        .image-full {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .image-full img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .image-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .video-full {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .video-full .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .video-full .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-full video {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .video-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .stat-card .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before-after .panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .before-after .panel-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .before-after .panel p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .links-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .link-button:hover {
+            border-color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                position: static;
+                display: block;
+                padding: 1.5rem 2rem 0;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .image-grid,
+            .before-after,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back</a>
+
+    <header class="hero">
+        <h1>Drawbridge</h1>
+        <p class="subtitle">Visual annotations for AI-assisted coding — a Chrome extension that makes UI iteration 10x faster.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <div class="label">Role</div>
+                <div class="value">Designer + Builder</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Timeline</div>
+                <div class="value">Jun–Dec 2025</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Stack</div>
+                <div class="value">Chrome Extension, JS</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Status</div>
+                <div class="value">Open Source</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-media">
+        <img src="./assets/drawbridge.gif" alt="Drawbridge in action">
+    </div>
+
+    <div class="content">
+        <h2>Problem</h2>
+        <p>While vibe coding, iterating on UI was painfully slow. Describing visual changes to Cursor took 2-3 minutes per tweak — identifying the element, explaining what to change, waiting for the response, checking the result.</p>
+
+        <p>Annotated screenshots improved LLM accuracy dramatically, but added their own overhead: screenshotting, marking up in Preview with pink boxes, pasting into Cursor, and watching the Downloads folder fill up with <code>UI_screenshot_v47.png</code>.</p>
+
+        <p>Even with annotated screenshots — the best method available — it still took 2-3 turns to fix things the LLM wasn't getting. The screenshots provided visual context, but the LLM was still guessing which element was being referenced.</p>
+    </div>
+
+    <div class="video-full">
+        <video autoplay loop muted playsinline>
+            <source src="https://github.com/breschio/drawbridge-media/raw/main/Fast%20website%20edits%20with%20Drawbridge.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="content">
+        <h2>Key Insight</h2>
+        <p>The LLM needed <strong>structural</strong> context (DOM selectors), not just <strong>visual</strong> context (screenshots). A screenshot shows you a button; the DOM tells you it's <code>div.hero-section > button.cta-primary</code>.</p>
+
+        <p>And the workflow itself needed rethinking. Instead of one-at-a-time round trips (tweak → describe → wait → check → repeat), the process should support batching: review a page, queue multiple edits, process them together.</p>
+
+        <h2>Inspiration</h2>
+        <p>The workflow model was inspired by <a href="https://github.com/snarktank/ai-dev-tasks" target="_blank">AI Dev Tasks</a> (6.8k GitHub stars), a methodology for structuring AI-assisted development. The core idea: instead of throwing one big prompt at the AI, break work into discrete tasks with clear checkpoints.</p>
+
+        <p>I applied the same mental model to UI iteration:</p>
+        <ul>
+            <li><strong>Annotations = micro-tasks</strong> — each one is a discrete, verifiable unit of work</li>
+            <li><strong>The moat = task queue</strong> — a structured list with status tracking</li>
+            <li><strong>bridge command = step-by-step execution</strong> — with approval modes</li>
+            <li><strong>Status lifecycle</strong> (to do → doing → done) — mirrors task completion patterns</li>
+        </ul>
+
+        <p>This thinking unlocked my understanding of how to "program" the AI — not with code, but with structured tasks and verification checkpoints.</p>
+
+        <h2>Solution</h2>
+        <p>Drawbridge is a Chrome extension that connects your browser to your local development project. It lets you:</p>
+
+        <ol>
+            <li><strong>Select DOM elements</strong> directly in the browser (or draw freeform rectangles for non-element annotations)</li>
+            <li><strong>Leave comments</strong> describing the change you want</li>
+            <li><strong>Queue them into a "moat"</strong> that syncs to your local project as markdown + JSON</li>
+            <li><strong>Run <code>bridge</code> in Cursor</strong> (or <code>/bridge</code> in Claude Code) to process the entire queue</li>
+        </ol>
+
+        <p>Each annotation captures three things: the visual (screenshot), the structural (DOM selector path), and the intent (free-form comment). This gives the LLM everything it needs to act precisely.</p>
+
+        <p>Three processing modes let you tune the approval friction: <strong>step</strong> (one at a time), <strong>batch</strong> (grouped), and <strong>yolo</strong> (autonomous).</p>
+
+        <h2>Technical Decisions</h2>
+
+        <h3>Screenshot Capture</h3>
+        <p>Initially used html2canvas to capture screenshots, but it wasn't performant on complex sites (React/Next.js) and couldn't handle lab colors. Pivoted to Chrome's native <code>captureVisibleTab</code> API via a background service worker.</p>
+        <p>The native approach is faster, more reliable, and simpler — it captures what's actually rendered rather than trying to reconstruct the page.</p>
+
+        <h3>Freeform Rectangles</h3>
+        <p>Added a rectangle drawing tool (v1.0.5) for annotations that don't map cleanly to a single DOM element — like "make this whole section a carousel." Press <strong>R</strong> to enter rectangle mode, drag to select, then leave a comment.</p>
+
+        <h3>Dependency Detection</h3>
+        <p>If you annotate the same element twice (e.g., "make this button green" then "add padding to the green button"), Drawbridge detects the dependency and processes them in order.</p>
+
+        <h2>Results</h2>
+
+        <div class="callout highlight">
+            <p><strong>10x faster iteration.</strong> What used to take 2-3 minutes per change now takes 2-3 minutes for 10 changes.</p>
+        </div>
+
+        <p>Beyond raw speed, it's also less cognitively taxing — no more context-switching between browser and editor to describe what you're looking at.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">406</div>
+                <div class="label">GitHub Stars</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">115</div>
+                <div class="label">Unique Cloners</div>
+            </div>
+        </div>
+
+        <ul>
+            <li>Adopted by former manager</li>
+            <li>5 releases over ~6 months</li>
+            <li>Chrome Web Store launch imminent</li>
+        </ul>
+
+        </div>
+
+    <div class="video-full">
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/1cB2iqz_vnM" title="Drawbridge Demo - AI Labs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="content">
+        <p>Featured in a 10-minute <a href="https://www.youtube.com/watch?v=1cB2iqz_vnM" target="_blank">AI LABS tutorial</a> (17K views, 561 likes) on a 107K-subscriber channel, where Drawbridge is highlighted as an underrated but powerful open-source UI automation tool.</p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="number">17K</div>
+                <div class="label">Views</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">561</div>
+                <div class="label">Likes</div>
+            </div>
+        </div>
+
+        <h2>What I Learned</h2>
+        <p><strong>"Go deeper."</strong> When screenshots weren't enough, I realized the LLM needed structural context to stop guessing which element I meant. The insight was that visual annotation was necessary but not sufficient — you need both the image <em>and</em> the selector.</p>
+
+        <p><strong>Build for yourself first.</strong> I knew the problem intimately because I lived it. The tool worked before anyone else used it, which made it easy to validate with real usage.</p>
+
+        <p><strong>Open source until proven valuable.</strong> Starting open source let me gather signal (stars, clones, organic coverage) before deciding on monetization. The 406 stars and YouTube pickup are validation that others have the same problem.</p>
+
+        <div class="links-section">
+            <h2>Links</h2>
+            <div class="links-grid">
+                <a href="https://github.com/breschio/drawbridge" target="_blank" class="link-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://youtu.be/1cB2iqz_vnM" target="_blank" class="link-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    YouTube
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="index.html">← Back</a>
+    </footer>
+
+    <script>
+        // Sync theme from localStorage (matches main site behavior)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+
+        // Handle back navigation with directional animation
+        document.querySelectorAll('a[href="index.html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.add('navigating-back');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
