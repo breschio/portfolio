@@ -7,6 +7,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
+    // Restore scroll position if returning from case study
+    const returnSection = sessionStorage.getItem('returnSection');
+    if (returnSection) {
+        const targetSection = document.getElementById(returnSection);
+        if (targetSection) {
+            // Scroll to section immediately (before any animations)
+            setTimeout(() => {
+                targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+                // Update active nav item
+                navItems.forEach(item => {
+                    if (item.getAttribute('href') === `#${returnSection}`) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }, 0);
+        }
+        // Clear the return section after using it
+        sessionStorage.removeItem('returnSection');
+    }
+
+    // Save current section when clicking case study links
+    const caseStudyLinks = document.querySelectorAll('.case-study-link');
+    caseStudyLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const sectionId = link.getAttribute('data-section');
+            if (sectionId) {
+                sessionStorage.setItem('returnSection', sectionId);
+            }
+        });
+    });
+
     // Theme Toggle Logic
     // 1. Initialize based on localStorage
     const savedTheme = localStorage.getItem('theme');
@@ -162,6 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let rotation = 0;
         let offsetX, offsetY;
         let animationFrame;
+        let hasUserPlaced = false; // Track if user has interacted with avatar
+        let isRestored = false; // Track if we've restored from sessionStorage
 
         const gravity = 0.5;
         const bounce = 0.7;
@@ -194,6 +229,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let bounds = updateBoundaries();
 
+        // Save/Load functions for sessionStorage (defined early so they can be used immediately)
+        function saveAvatarPosition() {
+            try {
+                const positionData = {
+                    x: avatarX,
+                    y: avatarY,
+                    rotation: rotation,
+                    placed: true
+                };
+                sessionStorage.setItem('avatarPosition', JSON.stringify(positionData));
+            } catch (e) {
+                // Silently fail if sessionStorage is not available
+                console.warn('Could not save avatar position:', e);
+            }
+        }
+        
+        function loadAvatarPosition() {
+            try {
+                const saved = sessionStorage.getItem('avatarPosition');
+                if (saved) {
+                    const positionData = JSON.parse(saved);
+                    if (positionData.placed && positionData.x !== undefined && positionData.y !== undefined) {
+                        return positionData;
+                    }
+                }
+            } catch (e) {
+                // Silently fail if sessionStorage is not available or data is invalid
+                console.warn('Could not load avatar position:', e);
+            }
+            return null;
+        }
+
         // Create placeholder and tooltip elements
         const placeholder = document.createElement('div');
         placeholder.classList.add('avatar-placeholder');
@@ -212,6 +279,37 @@ document.addEventListener('DOMContentLoaded', () => {
         // Make avatar absolute positioned
         avatar.style.position = 'absolute';
         avatar.style.zIndex = '1000'; // Ensure it's on top
+        
+        // Detect if page was reloaded (vs navigated to) and clear saved position
+        // This ensures the roll-in animation plays on hard reload
+        const navEntry = performance.getEntriesByType('navigation')[0];
+        if (navEntry && navEntry.type === 'reload') {
+            // Page was reloaded - clear the saved avatar position
+            sessionStorage.removeItem('avatarPosition');
+        }
+        
+        // Check for saved position immediately to prevent visual jump
+        const savedPosition = loadAvatarPosition();
+        if (savedPosition) {
+            // Restore position immediately (before setTimeout) to prevent visible drop
+            hasUserPlaced = true;
+            isRestored = true; // Mark that we're restoring
+            // Use saved position as initial values - will be refined in setTimeout with proper bounds
+            avatarX = savedPosition.x;
+            avatarY = savedPosition.y;
+            rotation = savedPosition.rotation || 0;
+            // Apply position immediately to prevent visual jump
+            avatar.style.left = `${avatarX}px`;
+            avatar.style.top = `${avatarY}px`;
+            avatar.style.transform = `rotate(${rotation}deg)`;
+            avatar.style.opacity = '1'; // Ensure avatar is visible when restoring
+        } else {
+            // No saved position - initialize off-screen for roll-in animation
+            // Position will be set properly in setTimeout, but hide it for now to prevent flash
+            avatar.style.left = '-200px'; // Off-screen left
+            avatar.style.top = '0px';
+            avatar.style.opacity = '0'; // Hide until animation starts
+        }
 
         function updateAvatarPosition() {
             avatar.style.left = `${avatarX}px`;
@@ -221,9 +319,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Circumference = PI * diameter (40) ≈ 125.6
             // Rotation = (distance / circumference) * 360
             if (!isDragging) {
-                // Calculate rotation relative to the starting position (minX)
+                // If we've restored from sessionStorage and user hasn't interacted yet, preserve saved rotation
+                // Otherwise, calculate rotation relative to the starting position (minX)
                 // This ensures that when it's at the default left position, rotation is 0
-                rotation = ((avatarX - bounds.minX) / 125.6) * 360;
+                if (!isRestored) {
+                    rotation = ((avatarX - bounds.minX) / 125.6) * 360;
+                }
                 avatar.style.transform = `rotate(${rotation}deg)`;
             } else {
                 avatar.style.transform = 'rotate(0deg)';
@@ -235,6 +336,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isDragging = true;
             isPhysicsActive = false;
             if (animationFrame) cancelAnimationFrame(animationFrame);
+            
+            // Mark that user has interacted with avatar
+            hasUserPlaced = true;
+            isRestored = false; // Clear restored flag once user starts interacting
 
             avatar.style.cursor = 'grabbing';
 
@@ -317,6 +422,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 velocityX = 0;
                 velocityY = 0;
                 updateAvatarPosition();
+                
+                // Save position to sessionStorage
+                if (hasUserPlaced) {
+                    saveAvatarPosition();
+                }
 
                 // Show tooltip
                 tooltip.style.left = `${bounds.minX + 5}px`; // Slightly offset to center
@@ -394,6 +504,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 updateAvatarPosition();
+                
+                // Save position to sessionStorage if user has placed the avatar
+                if (hasUserPlaced) {
+                    saveAvatarPosition();
+                }
             } else if (isStopped && !isOnFloor) {
                  // If stopped in mid-air (unlikely with gravity), let gravity continue
                  animationFrame = requestAnimationFrame(animatePhysics);
@@ -424,9 +539,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (avatarY < bounds.minY) avatarY = bounds.minY;
             if (avatarY > bounds.maxY) avatarY = bounds.maxY;
             updateAvatarPosition();
+            
+            // Save position after resize if user has placed it
+            if (hasUserPlaced) {
+                saveAvatarPosition();
+            }
         });
 
-        // Initial Animation: Roll in from RIGHT
+        // Save position when navigating away from the page
+        window.addEventListener('beforeunload', () => {
+            if (hasUserPlaced) {
+                saveAvatarPosition();
+            }
+        });
+
+        // Save position when page visibility changes (user switches tabs or navigates)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && hasUserPlaced) {
+                saveAvatarPosition();
+            }
+        });
+
+        // Initial Animation: Roll in from RIGHT or restore from sessionStorage
         // Start off-screen right (sidebar width)
         // Y position should be on the "floor" (bounds.maxY)
         
@@ -435,16 +569,57 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             bounds = updateBoundaries();
             
-            avatarX = bounds.maxX + 100; // Start off-screen right
-            avatarY = bounds.maxY; // Start on the floor
-            
-            velocityX = -8; // Slower leftward velocity (was -15)
-            velocityY = 0;  // Rolling, not falling initially
+            if (savedPosition) {
+                // Refine saved position with proper bounds checking
+                // Only adjust if position is actually out of bounds
+                let needsUpdate = false;
+                if (avatarX < bounds.minX) {
+                    avatarX = bounds.minX;
+                    needsUpdate = true;
+                }
+                if (avatarX > bounds.maxX) {
+                    avatarX = bounds.maxX;
+                    needsUpdate = true;
+                }
+                if (avatarY < bounds.minY) {
+                    avatarY = bounds.minY;
+                    needsUpdate = true;
+                }
+                if (avatarY > bounds.maxY) {
+                    avatarY = bounds.maxY;
+                    needsUpdate = true;
+                }
+                
+                velocityX = 0;
+                velocityY = 0;
+                
+                // Only update position if bounds adjustment was needed
+                if (needsUpdate) {
+                    avatar.style.left = `${avatarX}px`;
+                    avatar.style.top = `${avatarY}px`;
+                    // Keep the saved rotation when adjusting for bounds
+                    avatar.style.transform = `rotate(${rotation}deg)`;
+                }
+                
+                // Clear restored flag after initial restore is complete
+                // This allows normal rotation calculation to resume if needed
+                isRestored = false;
+                // Don't start physics animation - avatar stays in place
+            } else {
+                // No saved position - run initial animation
+                avatarX = bounds.maxX + 100; // Start off-screen right
+                avatarY = bounds.maxY; // Start on the floor
+                
+                velocityX = -8; // Slower leftward velocity (was -15)
+                velocityY = 0;  // Rolling, not falling initially
 
-            updateAvatarPosition();
-            
-            isPhysicsActive = true;
-            animatePhysics();
+                // Show avatar and start animation
+                avatar.style.opacity = '1';
+                updateAvatarPosition();
+                
+                isPhysicsActive = true;
+                animatePhysics();
+            }
         }, 100);
     }
 });
