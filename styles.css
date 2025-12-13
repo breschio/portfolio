@@ -485,10 +485,21 @@ iframe {
     width: 80%;
     max-width: 80%;
     margin: 0 auto;
+    height: 100%;
 }
 
 .mobile-media {
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    max-height: 70vh;
+}
+
+.mobile-media video {
+    width: auto;
+    height: 100%;
+    max-height: 70vh;
+    object-fit: contain;
 }
 
 .mobile-project-info {
@@ -776,37 +787,48 @@ iframe {
         flex-direction: column;
         width: 100%;
         max-width: 100%;
+        height: 100%;
+        justify-content: flex-start;
+        padding-top: 80px;
     }
 
     .mobile-media {
         width: 100%;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
     }
 
     .mobile-media video {
-        width: 100%;
-        height: auto;
-        max-height: 500px;
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        max-height: calc(100vh - 80px - 250px);
         object-fit: contain;
     }
 
     .mobile-project-info {
         align-items: flex-start;
         text-align: left;
-        margin-top: 0;
+        margin-top: 16px;
         padding-top: 0;
+        flex-shrink: 0;
     }
 
     /* Reorder mobile project info: name, year/technology, links, description (matches regular projects) */
     .mobile-project-info h2 {
         order: 1;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
+        margin-top: 0;
     }
 
     /* Year and technology on same line */
     .mobile-project-info .date {
         order: 2;
         display: inline-block;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
         margin-right: 4px;
         font-size: 11px;
         vertical-align: baseline;
@@ -815,7 +837,7 @@ iframe {
     .mobile-project-info .notes {
         order: 2;
         display: none;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
         margin-left: 0;
         font-size: 11px;
         vertical-align: baseline;
@@ -825,13 +847,15 @@ iframe {
         order: 3;
         display: none;
         margin-top: 0;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
     }
 
     .mobile-project-info .description {
         order: 4;
         margin-top: 0;
         margin-bottom: 0;
+        font-size: 12px;
+        line-height: 1.4;
     }
 
     .mobile-project-info .link-container::before {
