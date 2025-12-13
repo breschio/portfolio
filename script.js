@@ -7,23 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
+    // Show content once layout is ready
+    requestAnimationFrame(() => {
+        body.classList.add('loaded');
+    });
+
     // Restore scroll position if returning from case study
     const returnSection = sessionStorage.getItem('returnSection');
     if (returnSection) {
         const targetSection = document.getElementById(returnSection);
         if (targetSection) {
-            // Scroll to section immediately (before any animations)
-            setTimeout(() => {
-                targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
-                // Update active nav item
-                navItems.forEach(item => {
-                    if (item.getAttribute('href') === `#${returnSection}`) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
-                    }
-                });
-            }, 0);
+            // Scroll to section immediately
+            targetSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+            // Update active nav item
+            navItems.forEach(item => {
+                if (item.getAttribute('href') === `#${returnSection}`) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
         }
         // Clear the return section after using it
         sessionStorage.removeItem('returnSection');
