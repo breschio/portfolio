@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personio Case Studies | bresch i/o</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Light theme (default) - matches main site */
+        :root {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Dark theme via media query */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --text-secondary: #a0a0a0;
+                --text-muted: #777;
+                --border: #444;
+                --accent: #FF4500;
+                --link-color: #6ea8fe;
+                --card-bg: #1a1a1a;
+                --code-bg: #2a2a2a;
+            }
+        }
+
+        /* Force Light Theme */
+        body.light-theme {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Force Dark Theme */
+        body.dark-theme {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --border: #444;
+            --accent: #FF4500;
+            --link-color: #6ea8fe;
+            --card-bg: #1a1a1a;
+            --code-bg: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            opacity: 0;
+            animation: slideInFromRight 0.4s ease-out forwards;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body.navigating-back {
+            animation: slideOutToRight 0.3s ease-in forwards;
+        }
+
+        @keyframes slideOutToRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+        }
+
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            z-index: 100;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .header {
+            margin-bottom: 4rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .case-studies-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .case-study-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.2s;
+        }
+
+        .case-study-item:last-child {
+            border-bottom: none;
+        }
+
+        .case-study-item:hover {
+            opacity: 0.7;
+        }
+
+        .case-study-content {
+            flex: 1;
+        }
+
+        .case-study-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .case-study-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .case-study-arrow {
+            margin-left: 1.5rem;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .case-study-item:hover .case-study-arrow {
+            transform: translateX(4px);
+            color: var(--text);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+        }
+
+        /* Hide Drawbridge extension UI */
+        [id*="drawbridge"],
+        [class*="drawbridge"],
+        [data-drawbridge],
+        iframe[src*="drawbridge"] {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                position: static;
+                display: block;
+                padding: 1.5rem 2rem 0;
+            }
+
+            .container {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .header h1 {
+                font-size: 2.25rem;
+            }
+
+            .case-study-item {
+                padding: 1.25rem 0;
+            }
+
+            .case-study-title {
+                font-size: 1.1rem;
+            }
+
+            .case-study-description {
+                font-size: 0.95rem;
+            }
+
+            .case-study-arrow {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link return-home-link">← Back</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>Personio Case Studies</h1>
+            <p class="subtitle">A collection of design and engineering work from my time at Personio.</p>
+        </div>
+
+        <div class="case-studies-list">
+            <a href="agentic-assistant.html" class="case-study-item">
+                <div class="case-study-content">
+                    <div class="case-study-title">Agentic Assistant</div>
+                    <div class="case-study-description">An overview of work I lead to drive the strategy, design, and architecture of the Personio Assistant.</div>
+                </div>
+                <div class="case-study-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+            </a>
+
+            <a href="assistant-improvements.html" class="case-study-item">
+                <div class="case-study-content">
+                    <div class="case-study-title">Assistant Improvements</div>
+                    <div class="case-study-description">An overview of work I did to modernize the Personio Assistant.</div>
+                </div>
+                <div class="case-study-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Sync theme from localStorage (matches main site behavior)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+
+        // Hide Drawbridge extension UI
+        function hideDrawbridgeUI() {
+            // Hide elements by ID, class, or data attribute
+            const selectors = [
+                '[id*="drawbridge" i]',
+                '[class*="drawbridge" i]',
+                '[data-drawbridge]',
+                'iframe[src*="drawbridge" i]'
+            ];
+            
+            selectors.forEach(selector => {
+                try {
+                    document.querySelectorAll(selector).forEach(el => {
+                        el.style.display = 'none';
+                        el.style.visibility = 'hidden';
+                    });
+                } catch (e) {
+                    // Ignore invalid selectors
+                }
+            });
+
+            // Hide fixed bottom bars that contain "Drawbridge" text
+            document.querySelectorAll('div[style*="position: fixed"], div[style*="position:fixed"]').forEach(el => {
+                if (el.textContent && el.textContent.toLowerCase().includes('drawbridge')) {
+                    el.style.display = 'none';
+                    el.style.visibility = 'hidden';
+                }
+            });
+        }
+
+        // Run immediately and also watch for dynamically injected elements
+        hideDrawbridgeUI();
+        
+        // Use MutationObserver to catch elements injected after page load
+        const observer = new MutationObserver(() => {
+            hideDrawbridgeUI();
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        // Handle back navigation with directional animation
+        document.querySelectorAll('a[href="index.html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Save return section so index.html can scroll to Personio section
+                sessionStorage.setItem('returnSection', 'personio');
+                document.body.classList.add('navigating-back');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Improvements | bresch i/o</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Light theme (default) - matches main site */
+        :root {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Dark theme via media query */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --text-secondary: #a0a0a0;
+                --text-muted: #777;
+                --border: #444;
+                --accent: #FF4500;
+                --link-color: #6ea8fe;
+                --card-bg: #1a1a1a;
+                --code-bg: #2a2a2a;
+            }
+        }
+
+        /* Force Light Theme */
+        body.light-theme {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Force Dark Theme */
+        body.dark-theme {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --border: #444;
+            --accent: #FF4500;
+            --link-color: #6ea8fe;
+            --card-bg: #1a1a1a;
+            --code-bg: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            opacity: 0;
+            animation: slideInFromRight 0.4s ease-out forwards;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body.navigating-back {
+            animation: slideOutToRight 0.3s ease-in forwards;
+        }
+
+        @keyframes slideOutToRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+        }
+
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            z-index: 100;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .meta-item .label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-item .value {
+            color: var(--text);
+        }
+
+        .hero-media {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-media img,
+        .hero-media video {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .content li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .content strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .content em {
+            font-style: italic;
+        }
+
+        .content a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content code {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9em;
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+        }
+
+        .callout {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .callout.highlight {
+            border-left: 3px solid var(--accent);
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        .callout p strong {
+            font-size: 1.25rem;
+        }
+
+        .image-full {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .image-full img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .image-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .placeholder-box {
+            width: 100%;
+            min-height: 300px;
+            background: var(--card-bg);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .placeholder-box::before {
+            content: attr(data-size);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            white-space: nowrap;
+            background: var(--bg);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .placeholder-box.image-placeholder {
+            aspect-ratio: 16 / 9;
+            min-height: 400px;
+        }
+
+        .placeholder-box.video-placeholder {
+            aspect-ratio: 16 / 9;
+            min-height: 400px;
+        }
+
+        .hero-media .placeholder-box {
+            aspect-ratio: 16 / 9;
+            min-height: 500px;
+        }
+
+        .hero-media .placeholder-box::before {
+            font-size: 0.8rem;
+        }
+
+        .video-full {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .video-full .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .video-full .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-full video {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .video-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .stat-card .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before-after .panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .before-after .panel-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .before-after .panel p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .links-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .link-button:hover {
+            border-color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                position: static;
+                display: block;
+                padding: 1.5rem 2rem 0;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .image-grid,
+            .before-after,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="personio-case-studies.html" class="back-link return-home-link">← Back</a>
+
+    <header class="hero">
+        <h1>Personio Assistant: UX Improvements</h1>
+        <p class="subtitle">An overview of work I did to modernize the Personio Assistant.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <div class="label">Role</div>
+                <div class="value">Principal Product Designer</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Timeline</div>
+                <div class="value">October - December 2025</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Team</div>
+                <div class="value">PM, Front-end Engineer, 7 Backend/ML Engineers</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-media">
+        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Hero Image"></div>
+    </div>
+
+    <div class="content">
+        <h2>The Problem</h2>
+        <p>Personio's AI Assistant was failing its users. With a CSAT score of just 19%, the issues were visible at every level of the organization. The CEO and COO were sending the team screenshots of wrong answers. Internal employees using the assistant in our dogfooding channel were highlighting usability problems daily.</p>
+
+        <p>The problems broke down into two categories:</p>
+
+        <p><strong>Technical Architecture</strong>: The assistant lacked a cohesive design. Tool calling was slow. It didn't use modern methods for gaining context, leading to answers that missed information visible right on the page.</p>
+
+        <p><strong>User Experience</strong>: The interface itself was broken in fundamental ways. Users couldn't read their full questions. Responses were hard to follow. There were no error states. No way to stop a bad response. No guidance for new users. And when the assistant did provide an answer, there was no way to act on it.</p>
+
+        <p>The stakes were high. AI was positioned as a competitive differentiator and deal-winner. We needed to demonstrate rapid improvement.</p>
+
+        <h3>Research Approach</h3>
+        <p>I started paying close attention to how people were actually using the assistant:</p>
+
+        <ul>
+            <li><strong>Internal dogfooding channel</strong>: Our HR team and other departments were vocal about what wasn't working</li>
+            <li><strong>Product Manager feedback</strong>: Patterns from customer complaints and support tickets</li>
+            <li><strong>Direct observation</strong>: Watching internal users struggle with basic tasks</li>
+        </ul>
+
+        <p>The issues were clear. I just needed to fix them.</p>
+
+        <h3>My Approach to Solving This</h3>
+        <p>Rather than wait for design approval cycles, I learned to code. I learned how to pull down the production site, iterate locally, and view changes on a code-injected version. I started committing production code directly with the help of our front-end engineer — becoming the first designer at the company to do so.</p>
+
+        <p>My first production commit went live on October 6, 2025.</p>
+    </div>
+
+    <div class="hero-media">
+        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Hero Image"></div>
+    </div>
+
+    <div class="content">
+        <h2>The User Journey: Six Critical Improvements</h2>
+        <p>I organized my improvements around the user's journey through the assistant — from first impression to taking action on answers.</p>
+
+        <h3>1. First Impression: Welcome Mat</h3>
+        <p><strong>The Problem</strong></p>
+
+        <p>When users opened the assistant, they saw static default prompts that were irrelevant to most of our customer base. This was especially problematic because we had recently expanded the assistant from "Admins only" to all "Employees" at customer companies.</p>
+
+        <p>An admin might ask "How do I configure payroll settings?" while an employee wants to know "When is my next paycheck?" The generic prompts served neither audience well.</p>
+
+        <p>New users had no sense of what the assistant could actually do for them.</p>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I designed a "welcome mat" experience that introduced simple, relevant prompts new users could try. These prompts were designed to:</p>
+
+        <ul>
+            <li>Demonstrate the assistant's capabilities through example</li>
+            <li>Be immediately useful for common questions</li>
+            <li>Reduce the cognitive load of starting from a blank input</li>
+        </ul>
+
+        <p><strong>Future Direction</strong>: We're working on a more dynamic pattern that will surface contextually relevant prompts based on the user's role and current page location.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: Before - Static default prompts]</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: After - Welcome mat with starter prompts]</p>
+        </div>
+
+        <h3>2. Asking a Question: Flexible Input</h3>
+        <p><strong>The Problem</strong></p>
+
+        <p>The input box truncated user messages, making it impossible to read your full question before sending. Users would type multi-line queries only to discover they couldn't review what they'd written. This was especially frustrating for complex questions that required detail and context.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: Before - Truncated input box showing the problem]</p>
+        </div>
+
+        <p>The truncation created a terrible user experience:</p>
+        <ul>
+            <li>Users couldn't proofread before sending</li>
+            <li>Long questions felt visually overwhelming when cut off</li>
+            <li>It signaled that the assistant wasn't designed for thoughtful, detailed queries</li>
+        </ul>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I built a flexible input field that accommodates 4 lines of text before truncating. This gives users enough space to compose and review their questions while still maintaining a reasonable visual footprint.</p>
+
+        <p>The input grows dynamically as users type, creating a responsive feel that adapts to their needs.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: After - Flexible input showing 4 lines of visible text]</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
+            <p class="caption">[VIDEO: Demo of input growing dynamically as user types]</p>
+        </div>
+
+        <h3>3. Getting a Response: Reading & Understanding Answers</h3>
+
+        <h4>Problem 3A: Bottom-to-Top Response Flow</h4>
+        <p><strong>The Problem</strong></p>
+
+        <p>Responses appeared bottom-to-top, with new content streaming in from below. This violated users' natural reading pattern and made responses difficult to follow. Users had to constantly scroll up to read what the assistant was saying, fighting against the flow of new content.</p>
+
+        <p>For longer responses, this became completely unmanageable.</p>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
+            <p class="caption">[VIDEO: Before - Bottom-to-top response streaming, showing the reading difficulty]</p>
+        </div>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I reversed the direction so responses flow top-to-bottom, matching natural reading behavior. As new content streams in, users can simply read downward.</p>
+
+        <p>For longer responses, I added a "scroll to bottom" button that appears when users scroll up. This lets users jump back to see the latest content without manually scrolling.</p>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
+            <p class="caption">[VIDEO: After - Top-to-bottom flow with scroll-to-bottom button demo]</p>
+        </div>
+
+        <h4>Problem 3B: No Source Citations</h4>
+        <p><strong>The Problem</strong></p>
+
+        <p>The assistant would provide answers without any way to verify where the information came from. Users had no way to:</p>
+        <ul>
+            <li>Trust the accuracy of responses</li>
+            <li>Dig deeper into source material</li>
+            <li>Understand if the assistant was pulling from internal documentation, external sources, or generating answers</li>
+        </ul>
+
+        <p>This lack of transparency eroded confidence in the assistant's answers.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: Before - Response without any source citations]</p>
+        </div>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I implemented a robust citation method that surfaces sources directly in the response. Now when the assistant references specific information, users can see where it came from and access the original source if needed.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: After - Response with clear source citations]</p>
+        </div>
+
+        <h3>4. Controlling the Experience: Stop Button</h3>
+        <p><strong>The Problem</strong></p>
+
+        <p>Once you started a query, there was no way to stop it. If the assistant started going down the wrong path, or if users realized they'd asked the wrong question, they had to wait for the entire response to complete.</p>
+
+        <p>This lack of control was frustrating and wasteful — both of users' time and of system resources.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: Before - Response streaming with no way to stop it]</p>
+        </div>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I designed a stop button that appears during streaming responses. Users can now interrupt the assistant at any point, giving them agency over the interaction.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: After - Stop button visible during response]</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
+            <p class="caption">[VIDEO: Demo of stopping a response mid-stream]</p>
+        </div>
+
+        <h3>5. Taking Action: Navigation to Relevant Actions</h3>
+        <p><strong>The Problem</strong></p>
+
+        <p>The assistant could answer questions about how to do things, but users still had to manually navigate to the right place in the product to actually take action.</p>
+
+        <p>For example, if someone asked "How do I request time off?" the assistant might explain the process — but the user would then have to close the assistant, remember the steps, and hunt for the right button in the UI.</p>
+
+        <p>This created unnecessary friction between getting an answer and acting on it.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: Before - Response about taking an action, with no way to actually do it]</p>
+        </div>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I built a button that appears when the assistant detects actionable intent. When users ask about tasks they can perform, the assistant now surfaces a direct navigation link that takes them exactly where they need to go.</p>
+
+        <p>This closes the loop between information and action.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: After - Response with "Take action" button]</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
+            <p class="caption">[VIDEO: Demo of clicking action button and being navigated to the relevant screen]</p>
+        </div>
+
+        <h3>6. When Things Break: Better Error States</h3>
+        <p><strong>The Problem</strong></p>
+
+        <p>Error states were poorly designed and communicated. When something went wrong:</p>
+        <ul>
+            <li>Users saw generic, unhelpful error messages</li>
+            <li>There was no timestamp to help with debugging</li>
+            <li>No way to share error details with support</li>
+            <li>The assistant felt like a black box when it failed</li>
+        </ul>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: Before - Poor error state with vague message]</p>
+        </div>
+
+        <p><strong>The Solution</strong></p>
+
+        <p>I built comprehensive error handling with three key improvements:</p>
+
+        <ol>
+            <li><strong>Descriptive error messages</strong>: Clear explanations of what went wrong</li>
+            <li><strong>Timestamps</strong>: Every error includes a timestamp for debugging and support escalation</li>
+            <li><strong>Copy functionality</strong>: Users can copy the full error message (including timestamp) to share with support</li>
+        </ol>
+
+        <p>This transforms errors from dead-ends into actionable moments where users have clear next steps.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
+            <p class="caption">[SCREENSHOT: After - Improved error state with description, timestamp, and copy button]</p>
+        </div>
+
+        <h2>Implementation & Impact</h2>
+
+        <h3>How I Worked</h3>
+        <p>I became the first designer at Personio to commit code directly to production. Rather than creating mockups and handing off to engineering, I:</p>
+
+        <ol>
+            <li>Learned how to pull down the production site and iterate locally</li>
+            <li>Built changes using AI coding tools to accelerate development</li>
+            <li>Collaborated closely with our front-end engineer to review and ship</li>
+            <li>Made my first production commit on October 6, 2025</li>
+        </ol>
+
+        <p>This approach gave me two advantages:</p>
+        <ul>
+            <li><strong>Speed</strong>: I could test and iterate without waiting for development cycles</li>
+            <li><strong>Clarity</strong>: I could validate my hypotheses immediately rather than debating them in abstract</li>
+        </ul>
+
+        <h3>Results & Feedback</h3>
+        <p><em>[GAP: Need specific metrics or feedback]</em></p>
+        <ul>
+            <li>Did CSAT improve after these changes?</li>
+            <li>Any quantitative usage metrics showing impact?</li>
+            <li>User feedback from internal or external users?</li>
+            <li>Stakeholder reactions from PM or engineering team?</li>
+        </ul>
+
+        <h2>What I Learned</h2>
+        <p><strong>Design and engineering don't have to be separate phases.</strong> By learning to code, I could collapse the gap between idea and implementation. This isn't about replacing engineers — it's about moving faster on UI problems where I can contribute directly while freeing engineering to focus on complex backend challenges.</p>
+
+        <p><strong>Incremental improvements have limits.</strong> These UX fixes made the assistant more usable, but they couldn't solve the deeper architectural problems. The assistant still gave wrong answers. It still lacked context. These changes improved the wrapper, not the engine.</p>
+
+        <p>That realization led to the next phase: rebuilding the assistant's architecture from first principles.</p>
+
+        <p><strong>User research doesn't always require formal studies.</strong> The internal dogfooding channel and direct feedback from our PM gave me everything I needed to prioritize the most impactful problems. Sometimes the best research is just paying attention to what users are already telling you.</p>
+
+        <h2>Technical Details</h2>
+        <p><strong>Tech Stack:</strong></p>
+        <ul>
+            <li>Frontend codebase (production site)</li>
+            <li>Local development environment</li>
+            <li>Code injection tools for testing</li>
+            <li>Collaboration with front-end engineer for review and deployment</li>
+        </ul>
+
+        <p><strong>Development Approach:</strong></p>
+        <ul>
+            <li>AI-assisted coding (used LLM tools to accelerate development)</li>
+            <li>Iterative local testing before production deployment</li>
+            <li>Direct production commits (first designer at company to do this)</li>
+        </ul>
+
+        <h2>Next Steps</h2>
+        <p>While these improvements made the assistant more usable, the fundamental architecture problems remained. Users still received wrong answers. The system still lacked page context. Performance was still slow.</p>
+
+        <p>These tactical wins demonstrated what was possible when design and engineering collapsed into the same workflow. But solving the root problems would require a different approach — one that questioned the assistant's architecture from the ground up.</p>
+
+        <p><strong>→ See Case Study 2: <a href="agentic-assistant.html">Personio Assistant - Architecture Redesign (Chrome Extension Prototype)</a></strong></p>
+    </div>
+
+    <footer>
+        <a href="personio-case-studies.html">← Back</a>
+    </footer>
+
+    <script>
+        // Sync theme from localStorage (matches main site behavior)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+
+        // Handle back navigation with directional animation
+        document.querySelectorAll('a[href="personio-case-studies.html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.add('navigating-back');
+                setTimeout(() => {
+                    window.location.href = 'personio-case-studies.html';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
+
