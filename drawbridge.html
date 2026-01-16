@@ -129,6 +129,31 @@
             color: var(--text);
         }
 
+        .present-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+            align-self: center;
+        }
+
+        .present-button:hover {
+            border-color: var(--text-muted);
+            background: var(--border);
+        }
+
+        .present-button svg {
+            flex-shrink: 0;
+        }
+
         .hero {
             padding: 8rem 2rem 4rem;
             max-width: 900px;
@@ -150,11 +175,12 @@
 
         .meta-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(3, 1fr) auto;
             gap: 1.5rem;
             margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border);
+            align-items: start;
         }
 
         .meta-item {
@@ -460,6 +486,7 @@
                 padding: 1.5rem 2rem 0;
             }
 
+
             .hero {
                 padding: 3rem 1.5rem 2rem;
             }
@@ -501,13 +528,13 @@
                 <div class="value">Jun–Dec 2025</div>
             </div>
             <div class="meta-item">
-                <div class="label">Stack</div>
-                <div class="value">Chrome Extension, JS</div>
-            </div>
-            <div class="meta-item">
                 <div class="label">Github</div>
                 <div class="value"><a href="https://github.com/breschio/drawbridge" target="_blank">Drawbridge</a></div>
             </div>
+            <a href="drawbridge-deck.html" class="present-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Present
+            </a>
         </div>
     </header>
 

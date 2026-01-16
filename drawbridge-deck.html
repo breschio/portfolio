@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawbridge | Slide Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #e0e0e0;
+            --accent: #FF2F00;
+            --card-bg: #f5f5f5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a0a;
+                --text: #f0f0f0;
+                --text-secondary: #a0a0a0;
+                --text-muted: #666;
+                --border: #333;
+                --accent: #FF4500;
+                --card-bg: #1a1a1a;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Deck container */
+        .deck {
+            display: flex;
+            height: 100vh;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Individual slides */
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 6rem;
+            position: relative;
+        }
+
+        /* Slide content wrapper */
+        .slide-content {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        .slide h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .slide p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .slide p.large {
+            font-size: 1.75rem;
+        }
+
+        .slide .mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        .slide code {
+            font-family: 'Space Mono', monospace;
+            background: var(--card-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Meta info */
+        .meta {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .meta-item .label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-item .value {
+            color: var(--text);
+        }
+
+        .meta-item a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .meta-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Split layout */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .split-content {
+            max-width: 500px;
+        }
+
+        .split-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .split-media img,
+        .split-media video {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        /* Full media slide */
+        .slide.media-full {
+            padding: 3rem;
+        }
+
+        .slide.media-full .slide-content {
+            max-width: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide.media-full img,
+        .slide.media-full video {
+            flex: 1;
+            width: 100%;
+            max-height: calc(100vh - 10rem);
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .slide.media-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Metrics grid */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .metric {
+            text-align: left;
+        }
+
+        .metric .number {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric .label {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* List styling */
+        .slide ul, .slide ol {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .slide li {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .slide ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .slide ol {
+            counter-reset: item;
+        }
+
+        .slide ol li {
+            counter-increment: item;
+        }
+
+        .slide ol li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Quote slide */
+        .slide.quote {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .slide.quote .slide-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slide.quote blockquote {
+            font-size: 2.25rem;
+            font-weight: 500;
+            max-width: 900px;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide.quote .attribution {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Highlight text */
+        .highlight {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Links section */
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .link-button:hover {
+            border-color: var(--text-muted);
+        }
+
+        .link-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Progress indicator */
+        .progress {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .progress-dot.active {
+            background: var(--text);
+            transform: scale(1.25);
+        }
+
+        .progress-dot:hover {
+            background: var(--text-muted);
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            z-index: 100;
+        }
+
+        /* Navigation hint */
+        .nav-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            z-index: 100;
+        }
+
+        /* Back link */
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            z-index: 100;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+        /* Slide animations */
+        .slide-content > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .slide-content > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.active .slide-content > *:nth-child(1) { transition-delay: 0.1s; }
+        .slide.active .slide-content > *:nth-child(2) { transition-delay: 0.2s; }
+        .slide.active .slide-content > *:nth-child(3) { transition-delay: 0.3s; }
+        .slide.active .slide-content > *:nth-child(4) { transition-delay: 0.4s; }
+        .slide.active .slide-content > *:nth-child(5) { transition-delay: 0.5s; }
+
+        /* Split layout animation */
+        .split > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slide.active .split > *:nth-child(1) { 
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s; 
+        }
+        .slide.active .split > *:nth-child(2) { 
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s; 
+        }
+
+        /* Video wrapper */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 3rem;
+            }
+
+            .slide h1 {
+                font-size: 3rem;
+            }
+
+            .slide h2 {
+                font-size: 2.25rem;
+            }
+
+            .slide p {
+                font-size: 1.25rem;
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .metric .number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Portfolio</a>
+
+    <div class="deck" id="deck">
+        <!-- Slide 1: Title -->
+        <section class="slide active" data-slide="0">
+            <div class="slide-content">
+                <h1>Drawbridge</h1>
+                <p class="large">Visual annotations for AI-assisted coding — making UI iteration 10x faster.</p>
+                <div class="meta">
+                    <div class="meta-item">
+                        <div class="label">Role</div>
+                        <div class="value">Designer, Engineer</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Timeline</div>
+                        <div class="value">Jun–Dec 2025</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Stack</div>
+                        <div class="value">Chrome Extension, JS</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Github</div>
+                        <div class="value"><a href="https://github.com/breschio/drawbridge" target="_blank">breschio/drawbridge</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2: Demo -->
+        <section class="slide" data-slide="1">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>How it works</h2>
+                        <p>Select elements, leave comments, run <code>bridge</code> in your editor. The AI handles the rest.</p>
+                    </div>
+                    <div class="split-media">
+                        <img src="./assets/drawbridge.gif" alt="Drawbridge in action">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Problem -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <h3>The Problem</h3>
+                <h2>2-3 minutes per UI tweak</h2>
+                <p>Describing visual changes to AI took forever. Identify the element, explain what to change, wait for response, check result, repeat.</p>
+                <p style="margin-top: 1.5rem;">Annotated screenshots helped, but added their own overhead. And the AI was still guessing which element you meant.</p>
+            </div>
+        </section>
+
+        <!-- Slide 4: Insight -->
+        <section class="slide quote" data-slide="3">
+            <div class="slide-content">
+                <blockquote>"The AI needed <span class="highlight">structural</span> context, not just <span class="highlight">visual</span> context."</blockquote>
+                <p class="attribution">A screenshot shows you a button. The DOM tells you it's<br><code>div.hero-section > button.cta-primary</code></p>
+            </div>
+        </section>
+
+        <!-- Slide 5: Solution -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+                <h3>The Solution</h3>
+                <h2>Annotate → Queue → Execute</h2>
+                <ol>
+                    <li><span class="highlight">Select DOM elements</span> directly in the browser</li>
+                    <li><span class="highlight">Leave comments</span> describing the change</li>
+                    <li><span class="highlight">Queue into a "moat"</span> that syncs to your project</li>
+                    <li><span class="highlight">Run <code>bridge</code></span> to process the entire queue</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Slide 6: Video Demo -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>In Action</h3>
+                        <h2>Full workflow demo</h2>
+                        <p>From annotation to executed changes in under a minute.</p>
+                    </div>
+                    <div class="split-media">
+                        <video controls playsinline style="max-height: 60vh;">
+                            <source src="https://github.com/breschio/drawbridge-media/raw/main/Fast%20website%20edits%20with%20Drawbridge.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Technical -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+                <h3>Technical Decisions</h3>
+                <h2>Key implementation details</h2>
+                <ul>
+                    <li><span class="highlight">Native screenshot API</span> — Chrome's <code>captureVisibleTab</code> over html2canvas</li>
+                    <li><span class="highlight">Freeform rectangles</span> — For annotations that don't map to a single element</li>
+                    <li><span class="highlight">Dependency detection</span> — Same-element annotations process in order</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 8: Results -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content">
+                <h3>Results</h3>
+                <h2>10x faster iteration</h2>
+                <p>What took 2-3 minutes per change now takes 2-3 minutes for 10 changes.</p>
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="number">406</div>
+                        <div class="label">GitHub stars</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">115</div>
+                        <div class="label">Unique cloners</div>
+                    </div>
+                    <div class="metric">
+                        <div class="number">5</div>
+                        <div class="label">Releases shipped</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Featured -->
+        <section class="slide" data-slide="8">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Featured</h3>
+                        <h2>AI LABS tutorial</h2>
+                        <p>10-minute deep dive on a 107K-subscriber channel.</p>
+                        <div class="metrics" style="margin-top: 2rem; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                            <div class="metric">
+                                <div class="number" style="font-size: 2.5rem;">17K</div>
+                                <div class="label">Views</div>
+                            </div>
+                            <div class="metric">
+                                <div class="number" style="font-size: 2.5rem;">561</div>
+                                <div class="label">Likes</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="split-media">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/1cB2iqz_vnM" title="Drawbridge Demo - AI Labs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Learnings -->
+        <section class="slide" data-slide="9">
+            <div class="slide-content">
+                <h3>What I Learned</h3>
+                <h2>Key takeaways</h2>
+                <ul>
+                    <li><span class="highlight">"Go deeper."</span> Visual annotation wasn't enough — you need the image and the selector.</li>
+                    <li><span class="highlight">Build for yourself first.</span> I knew the problem because I lived it daily.</li>
+                    <li><span class="highlight">Open source until proven valuable.</span> Stars and organic coverage validate the problem exists.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 11: Close -->
+        <section class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2>Thanks for viewing</h2>
+                <p>Check out the project or watch the full demo.</p>
+                <div class="links">
+                    <a href="https://github.com/breschio/drawbridge" target="_blank" class="link-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://youtu.be/1cB2iqz_vnM" target="_blank" class="link-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        YouTube
+                    </a>
+                    <a href="drawbridge.html" class="link-button">
+                        Full Case Study →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Progress dots -->
+    <div class="progress" id="progress"></div>
+
+    <!-- Slide counter -->
+    <div class="slide-counter" id="counter">1 / 11</div>
+
+    <!-- Navigation hint -->
+    <div class="nav-hint">← → or swipe</div>
+
+    <script>
+        const deck = document.getElementById('deck');
+        const slides = document.querySelectorAll('.slide');
+        const progress = document.getElementById('progress');
+        const counter = document.getElementById('counter');
+        const totalSlides = slides.length;
+        let currentSlide = 0;
+
+        // Create progress dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i));
+            progress.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.progress-dot');
+
+        function updateSlide() {
+            deck.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentSlide);
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+            
+            counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        function goToSlide(index) {
+            currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+            updateSlide();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                goToSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                goToSlide(totalSlides - 1);
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+
+        // Click navigation (left/right halves of screen)
+        document.addEventListener('click', (e) => {
+            // Ignore clicks on interactive elements
+            if (e.target.closest('a, button, video, iframe, .progress-dot')) return;
+            
+            const x = e.clientX;
+            const width = window.innerWidth;
+            
+            if (x > width * 0.7) {
+                nextSlide();
+            } else if (x < width * 0.3) {
+                prevSlide();
+            }
+        });
+
+        // Sync theme from localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+    </script>
+</body>
+</html>
