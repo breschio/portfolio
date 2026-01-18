@@ -26,8 +26,20 @@
             --card-bg: #f5f5f5;
         }
 
+        /* Dark theme via class (manual override) */
+        body.dark-theme {
+            --bg: #0a0a0a;
+            --text: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666;
+            --border: #333;
+            --accent: #FF4500;
+            --card-bg: #1a1a1a;
+        }
+
+        /* System preference fallback when no manual override */
         @media (prefers-color-scheme: dark) {
-            :root {
+            body:not(.light-theme):not(.dark-theme) {
                 --bg: #0a0a0a;
                 --text: #f0f0f0;
                 --text-secondary: #a0a0a0;
@@ -387,20 +399,35 @@
             z-index: 100;
         }
 
-        /* Back link */
-        .back-link {
+        /* Breadcrumb */
+        .breadcrumb {
             position: fixed;
             top: 2rem;
             left: 2rem;
             font-family: 'Space Mono', monospace;
             font-size: 0.875rem;
             color: var(--text-muted);
-            text-decoration: none;
             z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
             transition: color 0.2s;
         }
 
-        .back-link:hover {
+        .breadcrumb a:hover {
+            color: var(--text);
+        }
+
+        .breadcrumb-separator {
+            color: var(--border);
+        }
+
+        .breadcrumb-current {
             color: var(--text);
         }
 
@@ -493,7 +520,13 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-link">← Portfolio</a>
+    <nav class="breadcrumb">
+        <a href="index.html">Portfolio</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="drawbridge.html">Case study</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Presentation</span>
+    </nav>
 
     <div class="deck" id="deck">
         <!-- Slide 1: Title -->
