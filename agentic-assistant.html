@@ -552,8 +552,8 @@
     <a href="personio-case-studies.html" class="back-link return-home-link">← Back</a>
 
     <header class="hero">
-        <h1>Personio Assistant: Architecture Redesign</h1>
-        <p class="subtitle">An overview of work I lead to drive the strategy, design, and architecture of the Personio Assistant.</p>
+        <h1>Personio Agent Experience (PAX)</h1>
+        <p class="subtitle">In two afternoons, I built a Chrome extension prototype that demonstrated capabilities our production AI assistant couldn't match—and last week, it successfully completed a task end-to-end that the production assistant still can't do.</p>
 
         <div class="meta-grid">
             <div class="meta-item">
@@ -576,324 +576,278 @@
     </header>
 
     <div class="hero-media">
-        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Hero Image"></div>
+        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - PAX sidepanel interface"></div>
     </div>
 
     <div class="content">
         <h2>The Problem</h2>
-        <p>After months of tactical UX improvements to Personio's AI Assistant, the fundamental issues remained:</p>
+        <p>Personio's AI Assistant had a 19% CSAT score. The CEO and COO were sending screenshots of wrong answers directly to the team. After a layoff that eliminated 80% of the US workforce, the AI team was explicitly spared because "AI is a priority." The pressure to deliver was existential.</p>
 
-        <p><strong>Technical Failures:</strong></p>
-        <ul>
-            <li>CSAT still at 19%</li>
-            <li>Wrong answers, incorrect dates, irrelevant content</li>
-            <li>No page context awareness</li>
-            <li>Slow, unreliable tool calling</li>
-            <li>Complex, poorly documented architecture using Claude through Bedrock + ML models + Knowledge bases</li>
-        </ul>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - CEO/COO Slack messages showing frustration"></div>
+            <p class="caption">CEO/COO Slack messages showing frustration with assistant reliability</p>
+        </div>
 
-        <p><strong>Organizational Pressure:</strong></p>
-        <ul>
-            <li>CEO and COO openly complaining about reliability in Slack</li>
-            <li>Team had been spared during massive layoffs (80% of US workforce eliminated) specifically because "AI is a priority"</li>
-            <li>Dramatic staff reduction meant fewer resources to tackle harder problems</li>
-            <li>AI positioned as competitive differentiator, but failing to deliver</li>
-        </ul>
+        <p>The assistant's failures were architectural:</p>
 
-        <p><strong>Personal Frustration:</strong></p>
-        <ul>
-            <li>I couldn't grasp the structure of our existing system</li>
-            <li>No definitive design document showing how everything worked</li>
-            <li>Tried to replace the existing AI backend in production — failed due to infrastructure complexity</li>
-        </ul>
+        <p><strong>No page context.</strong> Users would ask questions about content visible right in front of them, and the assistant couldn't answer. It literally couldn't see the page.</p>
 
-        <p><strong>The Core Realization:</strong></p>
-        <p>The incremental UX fixes I'd shipped were improving symptoms, not causes. The assistant's architecture was fundamentally flawed. We needed a different approach entirely.</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Production assistant failing on page content question"></div>
+            <p class="caption">Production assistant failing on page content question — answer visible on screen but assistant can't see it</p>
+        </div>
 
-        <h2>The Decision to Rebuild</h2>
-        <p>Rather than continue fighting the existing system's complexity, I decided to build a new assistant from scratch. But I needed to do it in a way that:</p>
+        <p><strong>No agentic capabilities.</strong> The assistant could answer questions (poorly), but couldn't take actions. Competitors were shipping agents that could actually do things.</p>
 
-        <ol>
-            <li><strong>Didn't require the full team</strong>: Resources were limited after layoffs</li>
-            <li><strong>Didn't disrupt production</strong>: The existing assistant had to keep running</li>
-            <li><strong>Could demonstrate value quickly</strong>: Leadership needed proof of concept, not promises</li>
-            <li><strong>Used modern AI techniques</strong>: Claude's Agent SDK, latest models, better context handling</li>
-        </ol>
+        <p><strong>Complex, undocumented backend.</strong> The system used Claude through Bedrock, ML models for routing, and Bedrock Knowledge bases. No one could explain how it all worked together.</p>
 
-        <p><strong>The Chrome Extension Strategy:</strong></p>
+        <p>I had spent months making tactical UX improvements—flexible input fields, better error states, source citations. They helped the wrapper, but the engine was still broken.</p>
 
-        <p>Instead of building within the Personio app, I would build a Chrome extension. This gave me:</p>
+        <h2>The Failed Approach</h2>
+        <p>My first instinct was to fix the backend.</p>
+
+        <p>I spent a week and a half trying to replace the existing system with OpenAI's AgentKit. The theory: swap in a better orchestration layer, use AgentKit's visual UI for task management, create a model other teams could adopt.</p>
+
+        <p>I got it partially working. I replaced the backend call. But I hit a wall.</p>
+
+        <p>The assistant was architecturally isolated from the app. It couldn't see page content. It couldn't access internal APIs (security restrictions). I confirmed this with our front-end engineer—the assistant wasn't incorporated into the web app in a way that would let it observe anything.</p>
+
+        <p><strong>The realization:</strong> The problem wasn't the brain. It was the eyes. Swapping in a smarter model wouldn't help if the model couldn't see anything.</p>
+
+        <p>I stepped away from the work. I didn't have a solution yet.</p>
+
+        <h2>The Insight</h2>
+        <p>For the next few weeks, I worked on Drawbridge, my open-source tool for bridging visual feedback to AI coding assistants.</p>
+
+        <p>Drawbridge had its own problems:</p>
 
         <ul>
-            <li><strong>Sidepanel API</strong>: A persistent panel that doesn't obstruct the page</li>
-            <li><strong>Native Chrome capabilities</strong>: Access to <code>activeTab</code> and browser manipulation</li>
-            <li><strong>Rapid prototyping</strong>: No need to navigate internal UI complexity</li>
-            <li><strong>Distribution flexibility</strong>: Could be "AI Labs" beta product for customers and internal teams</li>
+            <li><strong>UI obstruction.</strong> My annotation panels kept covering the content I was trying to work with—the same problem Personio's floating assistant had.</li>
+            <li><strong>Code injection fragility.</strong> Injecting code into pages was brittle. Styles conflicted. Elements interfered with each other. The code became verbose trying to avoid conflicts.</li>
         </ul>
 
-        <p>If successful, this would become a sandbox for other teams to prototype AI interactions without the AI team as a bottleneck.</p>
+        <p>While researching solutions, I discovered Chrome's Sidepanel API.</p>
+
+        <p>The sidepanel lives <em>next to</em> the page, not over it. It uses native browser capabilities. It can access the active tab. And critically—it's completely isolated from the page's codebase.</p>
+
+        <p>The connection clicked: What if I built the Personio assistant as a Chrome extension instead of fighting to embed it in the app?</p>
+
+        <p>A Chrome extension could:</p>
+        <ul>
+            <li>See page content through the activeTab permission</li>
+            <li>Sit alongside the UI without obstruction</li>
+            <li>Bypass the undocumented backend entirely</li>
+            <li>Let me test AI capabilities in isolation</li>
+        </ul>
+
+        <p>I biased toward action and started building.</p>
+
+        <h2>The Two-Afternoon Build</h2>
+        <p>I built PAX on December 16-17, 2024. About four hours each day.</p>
+
+        <p><strong>Day 1:</strong> Chrome extension scaffolding—sidepanel, service worker, content scripts. Basic page context capture. Claude API connection.</p>
+
+        <p><strong>Day 2:</strong> Structured context system, navigation map, initial agentic workflows.</p>
+
+        <p>I used Cursor with Claude Opus 4.5 for architecture decisions and Sonnet 4.5 for front-end implementation.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - PAX architecture diagram"></div>
+            <p class="caption">PAX architecture — sidepanel, service worker, content scripts, Claude API</p>
+        </div>
 
         <h2>What I Built</h2>
 
-        <h3>Architecture</h3>
-        <p><strong>Chrome Extension Structure:</strong></p>
-        <ul>
-            <li><strong>Sidepanel</strong>: Persistent chat interface using Chrome's Sidepanel API</li>
-            <li><strong>Service Worker</strong>: Manages background processes and communication</li>
-            <li><strong>Injected Scripts</strong>: Read and manipulate page content</li>
-            <li><strong>Navigation Map</strong>: Custom-built structure to help the agent understand Personio's information architecture</li>
-        </ul>
-
-        <p><strong>Context System:</strong></p>
-
-        <p>The key architectural difference from our production assistant: <strong>page context awareness</strong>.</p>
-
-        <p><strong>What gets captured (text-based, up to 5,000 characters):</strong></p>
-        <ul>
-            <li>Page title</li>
-            <li>Meta description</li>
-            <li>Headings (H1, H2, H3)</li>
-            <li>Main content</li>
-            <li>Selected text</li>
-            <li>Modal content</li>
-        </ul>
-
-        <p><strong>When context is captured:</strong></p>
-        <ul>
-            <li>Initial fetch when sidepanel opens</li>
-            <li>On tab switch</li>
-            <li>On page load / URL change</li>
-            <li>Before each message sent (refreshes to get latest selected text)</li>
-        </ul>
-
-        <p><strong>How context is sent to Claude:</strong></p>
-        <ul>
-            <li>Included with every query</li>
-            <li>Embedded in system prompt as <code>&lt;page_context&gt;</code> block (not user message)</li>
-            <li>Agent can refresh context via <code>read_page_content</code> tool after taking actions</li>
-        </ul>
+        <h3>Sidepanel Interface</h3>
+        <p>PAX uses Chrome's Sidepanel API. The chat interface sits alongside the page instead of floating over it. Users can see their content while talking to the assistant.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[DIAGRAM: Chrome extension architecture showing sidepanel → service worker → injected scripts → page context]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - PAX sidepanel interface"></div>
+            <p class="caption">PAX sidepanel interface — assistant alongside page content, nothing obstructed</p>
         </div>
 
-        <h3>Capabilities</h3>
+        <h3>Page Context Awareness</h3>
+        <p>PAX captures structured page context: title, meta description, headings, main content, selected text, modal content (up to 5,000 characters). This context is embedded in the system prompt and refreshed before each message.</p>
 
-        <h4>1. Page Context Awareness</h4>
-        <p>The production assistant couldn't see what was on the page. This meant users would ask questions about content visible right in front of them, and the assistant would fail.</p>
-
-        <p>My prototype can answer questions about the current page because it has access to structured text content.</p>
-
-        <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Production assistant giving wrong answer about page content]</p>
-        </div>
-
-        <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Prototype correctly answering question about visible page content]</p>
-        </div>
-
-        <h4>2. UI Navigation</h4>
-        <p>The assistant can navigate Personio's interface using the navigation map I built. When a user asks to go somewhere, the agent can find and click the appropriate navigation elements.</p>
-
-        <p><strong>Example:</strong></p>
-        <ul>
-            <li>User: "Show me my payslips"</li>
-            <li>Agent: Navigates to correct page</li>
-        </ul>
+        <p>When users ask about something visible on the page, PAX can actually answer—because it can see what they're looking at.</p>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Agent navigating the UI on its own]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Side-by-side comparison"></div>
+            <p class="caption">Side-by-side comparison — same question asked to production assistant (fails) vs. PAX (succeeds)</p>
         </div>
 
-        <h4>3. Action Execution (Semi-Agentic)</h4>
-        <p>The most impressive capability: the assistant can execute workflows on behalf of users.</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Context capture diagram"></div>
+            <p class="caption">Context capture and refresh flow — what gets captured, when, how it's sent to Claude</p>
+        </div>
 
-        <p><strong>"Request Time Off" workflow:</strong></p>
+        <h3>Autonomous Navigation</h3>
+        <p>PAX can navigate Personio's interface. I built a custom navigation map (JSON structure defining routes and UI elements) that tells the agent where things are and how to reach them.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Navigation map structure"></div>
+            <p class="caption">Navigation map structure — JSON defining routes and UI elements</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - PAX navigating UI"></div>
+            <p class="caption">PAX navigating the UI autonomously — user asks to go somewhere, PAX finds and clicks the right elements</p>
+        </div>
+
+        <h3>Semi-Agentic Workflows</h3>
+        <p>PAX can execute multi-step tasks. The "Request time off" workflow:</p>
 
         <ol>
-            <li>User: "I need to request time off next Monday"</li>
-            <li>Agent recognizes intent</li>
-            <li>Navigates to "Team and Calendar" page</li>
-            <li>Clicks "Request time off" button</li>
-            <li>Modal opens</li>
-            <li>Selects type of time off</li>
-            <li>Selects the dates</li>
-            <li>[Currently stops here — doesn't submit yet]</li>
+            <li>User asks to request time off</li>
+            <li>PAX navigates to Team and Calendar</li>
+            <li>Clicks "Request time off"</li>
+            <li>Selects time-off type</li>
+            <li>Selects dates</li>
+            <li>Completes submission</li>
         </ol>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Full "Request time off" workflow demo]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Request time off workflow"></div>
+            <p class="caption">Full "Request time off" workflow — from user request through successful submission</p>
         </div>
 
-        <h4>4. Context Drawer (Dynamic Prompts)</h4>
-        <p>Inspired by Perplexity's Comet Browser, I designed a context drawer that sits above the input field.</p>
+        <h3>Context Drawer</h3>
+        <p>A drawer above the input shows the current page context and available actions. Two types:</p>
 
-        <p><strong>What it shows:</strong></p>
         <ul>
-            <li>Title of current page</li>
-            <li>When expanded: List of prompts available from current view</li>
-            <li>Updates as user navigates the app</li>
+            <li><strong>Instant Actions:</strong> One tap, agent executes. No additional input needed.</li>
+            <li><strong>Prompt Starters:</strong> Templates the user completes before sending.</li>
         </ul>
-
-        <p><strong>The Vision (Federated AI Model):</strong></p>
-
-        <p>This drawer becomes the "control pad" for any surface in Personio. Product teams can:</p>
-        <ul>
-            <li>Define what the AI can do in their domain</li>
-            <li>Build simple prompts that work well on their surface</li>
-            <li>Create deterministic workflows, agents, or skills</li>
-        </ul>
-
-        <p>This distributes AI capability development across teams, removing the AI team as a bottleneck.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Context drawer collapsed showing page title]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Context drawer collapsed"></div>
+            <p class="caption">Context drawer collapsed — showing current page title</p>
         </div>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Context drawer expanded showing dynamic prompts]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Context drawer expanded"></div>
+            <p class="caption">Context drawer expanded — showing available instant actions and prompt starters</p>
         </div>
 
-        <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Context drawer updating as user navigates between pages]</p>
-        </div>
+        <p>This drawer is the foundation for a federated model where product teams can define what PAX does on their surfaces—distributing AI capability development across the organization.</p>
 
         <h2>The Demo</h2>
-        <p>After building the initial prototype in two afternoons (Dec 16-17), I recorded a video showing its capabilities. My Product Manager was so impressed that I was invited to demo it during a quarterly planning and vision session.</p>
+        <p>My PM had seen an early video and encouraged me to demo at a quarterly planning session.</p>
 
-        <p><strong>Audience:</strong></p>
-        <ul>
-            <li>Senior Product Manager</li>
-            <li>Product Design Manager</li>
-            <li>Director of Engineering</li>
-            <li>Staff Engineers</li>
-            <li>Product Manager</li>
-        </ul>
+        <p><strong>The audience:</strong> Director of Product Management, Product Design Manager, Director of Engineering, Staff Engineers, Product Managers—essentially the leadership and senior ICs for my product area.</p>
 
         <p><strong>What I showed:</strong></p>
 
         <ol>
-            <li><strong>Questions the production assistant can't handle</strong>: Demonstrated queries about page content that failed in production but worked in my prototype</li>
-            <li><strong>Autonomous navigation</strong>: Showed the agent navigating the UI on its own while updating the context drawer</li>
-            <li><strong>Semi-agentic workflows</strong>: Demoed the "Request time off" capability</li>
+            <li>A question the production assistant fails—PAX answers correctly because it can see the page</li>
+            <li>PAX navigating the UI autonomously</li>
+            <li>The "Request time off" workflow, with PAX taking action on the UI</li>
         </ol>
 
-        <p><strong>The Reaction:</strong></p>
+        <p><strong>The reaction:</strong></p>
 
-        <p>They were immediately blown away.</p>
         <ul>
             <li>"Best demo they've seen"</li>
-            <li>Called me "The best vibe-coder"</li>
-            <li>Product Manager's directive: <strong>"Ship it"</strong></li>
+            <li>"More impressive than what the team has done with thousands of hours"</li>
+            <li>PM's response: "Ship it"</li>
         </ul>
 
-        <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Recording of the quarterly planning demo]</p>
-        </div>
+        <p>A fellow designer Slacked me afterward: "This is a no-brainer. What's stopping us from building this now?"</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Slack reactions / feedback after the demo]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Slack reactions after demo"></div>
+            <p class="caption">Slack reactions after demo — "ship it" and "no-brainer" messages</p>
         </div>
 
-        <h2>Current State & Challenges</h2>
+        <h2>What "Ship It" Actually Meant</h2>
+        <p>The demo generated enthusiasm, not a green light.</p>
 
-        <h3>Where It Stands (January 2026)</h3>
-        <p>The prototype validated the approach, but hasn't shipped yet.</p>
+        <p>The Director of Product Management was new enough that she wasn't going to push for dramatic changes. My PM was supportive but didn't control resourcing. "Ship it" was a show of support, not an allocation of budget.</p>
 
-        <p><strong>Current status:</strong></p>
+        <p><strong>What I did next:</strong></p>
+
+        <p>I translated enthusiasm into concrete steps:</p>
+
         <ul>
-            <li>Building with a front-end engineer</li>
-            <li>No set timeline</li>
-            <li>Many competing priorities</li>
-            <li>Still functioning as proof-of-concept and development sandbox</li>
+            <li>Wrote budget proposals to get PAX off my personal API key</li>
+            <li>Created an official repo in our company GitHub</li>
+            <li>Got the work in front of the CPO, who has now brought the CTO into the document</li>
         </ul>
 
-        <h3>Technical Challenges (Work in Progress)</h3>
+        <p>I'm waiting on feedback this week. Best case: budget approval, a dedicated spot on the roadmap, and CTO interest in the approach.</p>
 
-        <p><strong>1. Modal Interactions</strong></p>
+        <h2>Proof It Works</h2>
+        <p>Last week, at a leadership offsite, I was quietly working on PAX during a meeting.</p>
 
-        <p>The agent struggles when executing multiple actions within modals. When it reads page context again after opening a modal, it gets confused about state.</p>
+        <p>I asked it to request a day off. It navigated to the right page, opened the modal, selected the time-off type, chose the dates, and submitted the request.</p>
 
-        <p><strong>Current approach:</strong></p>
-        <ul>
-            <li>Adjusting the architecture to help context persist better across modal interactions</li>
-            <li>Refining how the agent tracks its position in multi-step workflows</li>
-        </ul>
+        <p>It worked. End-to-end.</p>
 
-        <p><strong>2. Navigation Map Coverage</strong></p>
+        <p>I let out a "yes" that was maybe not as quiet as I intended. Then I shared screenshots with my PM, Engineering Director, and Design Manager.</p>
 
-        <p>The agent can only navigate to areas covered in the navigation map I built. Expanding coverage requires manually mapping more of Personio's information architecture.</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Request time off completion"></div>
+            <p class="caption">"Request time off" completion — the successful submission from the leadership offsite</p>
+        </div>
 
-        <p><strong>3. Workflow Completion</strong></p>
-
-        <p>Currently, agentic workflows stop short of full completion (e.g., "Request time off" doesn't submit the form). This is intentional — I want users to review before submission — but it means the agent can't fully automate end-to-end processes yet.</p>
+        <p>This is the proof point: PAX doesn't just demo well. It actually completes tasks the production assistant can't attempt.</p>
 
         <h2>What I Learned</h2>
-        <p><strong>Complexity is often artificial.</strong> I spent months trying to understand and work within our existing architecture. Two afternoons building from scratch proved that the problem wasn't intrinsically hard — it was that our system had accumulated unnecessary complexity. Sometimes the right move is to start over.</p>
+        <p><strong>The problem was structural, not technical.</strong> I wasted a week and a half trying to improve the brain before realizing the assistant had no eyes. Once I reframed the problem, the solution came quickly.</p>
 
-        <p><strong>Page context is the unlock.</strong> The single biggest difference between my prototype and production wasn't model quality or tool design — it was giving the AI access to what the user was actually looking at. Context awareness transformed the assistant from guessing to knowing.</p>
+        <p><strong>Side projects create leverage.</strong> The insight that led to PAX came from building Drawbridge. Working on personal tools taught me techniques I could apply at work.</p>
 
-        <p><strong>Prototypes outperform promises.</strong> I could have written strategy documents or created mockups. Instead, I built a working system. That demo in the quarterly planning session — showing real capabilities, not hypothetical ones — changed the conversation entirely. "Ship it" isn't a response you get to a slide deck.</p>
+        <p><strong>Building real beats building fake.</strong> The existing vision work used scripted prototypes on a fake stack. I built something functional in two afternoons. That's what changed the conversation.</p>
 
-        <p><strong>The federated model matters more than the prototype.</strong> The context drawer isn't just a UI element — it's a framework for distributing AI development. If other teams can define what the assistant does in their domain, we're not just building a better assistant; we're building a platform for the entire company to become agentic.</p>
+        <p><strong>Enthusiasm isn't allocation.</strong> "Ship it" felt like a win, but the real work is translating excitement into budget, roadmap spots, and organizational buy-in. I'm still doing that work.</p>
 
-        <p><strong>I can build systems, not just interfaces.</strong> Learning to code didn't just make me faster at UI work. It gave me the ability to architect and implement entire systems. That fundamentally changes my role and the problems I can solve.</p>
+        <p><strong>Bias toward action compounds.</strong> I could have waited for permission, written proposals, requested engineering support. Instead I built it myself. That prototype is now in front of the CTO.</p>
+
+        <h2>What's Next</h2>
+        <p><strong>Immediate challenges I'm solving:</strong></p>
+
+        <ul>
+            <li>Modal interactions (agent gets confused about state after opening modals)</li>
+            <li>Expanding navigation map coverage</li>
+            <li>Context persistence across multi-step actions</li>
+        </ul>
+
+        <p><strong>What I'm pushing for:</strong></p>
+
+        <ol>
+            <li><strong>Evaluation framework</strong> — A way to measure the assistant vs. the agent so we can make data-driven decisions about the approach</li>
+            <li><strong>API access</strong> — Connecting PAX to internal APIs (like Analytics) so the agent can answer questions and build charts without navigating the UI</li>
+        </ol>
+
+        <p><strong>The bigger vision:</strong></p>
+
+        <p>PAX becomes an "AI Labs" beta—opt-in for customers who want to try the new approach. Product teams contribute surface-specific prompts and workflows. The assistant becomes a platform, not a bottleneck.</p>
+
+        <p>That's the direction. First I need to get it resourced.</p>
 
         <h2>Technical Details</h2>
-        <p><strong>Tech Stack:</strong></p>
+        <p><strong>Stack:</strong></p>
         <ul>
             <li>Chrome Extension (Manifest V3)</li>
             <li>Chrome Sidepanel API</li>
-            <li>Service Worker for background processes</li>
-            <li>Content scripts for DOM manipulation and reading</li>
-            <li>Claude Agent SDK (reference architecture)</li>
-            <li>Custom navigation map (JSON structure defining Personio's IA)</li>
+            <li>Service Worker + Content Scripts</li>
+            <li>Claude API (Opus 4.5, Sonnet 4.5)</li>
+            <li>Custom navigation map (JSON)</li>
         </ul>
 
-        <p><strong>Key Technical Decisions:</strong></p>
+        <p><strong>Context Capture:</strong></p>
         <ul>
-            <li>Text-based context only (no screenshots) for performance and token efficiency</li>
-            <li>Context embedded in system prompt, not user messages</li>
-            <li>Tool-based context refresh after agent actions</li>
-            <li>Navigation map as structured data rather than letting agent discover routes</li>
+            <li>Page title, meta description, headings, main content, selected text, modal content</li>
+            <li>Up to 5,000 characters</li>
+            <li>Refreshed on: sidepanel open, tab switch, page load, before each message</li>
+            <li>Tool call available for screenshots when UI changes</li>
         </ul>
 
-        <p><strong>Development Approach:</strong></p>
+        <p><strong>Development:</strong></p>
         <ul>
-            <li>Initial build: 2 afternoons (Dec 16-17, 2024)</li>
-            <li>Ongoing refinement: Continuing with front-end engineer</li>
-            <li>AI-assisted coding throughout</li>
-            <li>Rapid iteration based on testing</li>
+            <li>Cursor IDE</li>
+            <li>~8 hours total build time (two afternoons)</li>
         </ul>
-
-        <h2>Next Steps</h2>
-        <p><strong>Immediate (WIP):</strong></p>
-        <ul>
-            <li>Solve modal interaction challenges</li>
-            <li>Complete "Request time off" workflow through submission</li>
-            <li>Expand navigation map coverage</li>
-            <li>Improve context persistence across multi-step actions</li>
-        </ul>
-
-        <p><strong>Future Vision:</strong></p>
-        <ul>
-            <li>Launch as "AI Labs" beta for opt-in customers</li>
-            <li>Enable other product teams to build their own surface-specific prompts and workflows</li>
-            <li>Use as testing ground for new AI capabilities before integrating into production</li>
-            <li>Eventually: Merge successful patterns back into main product architecture</li>
-        </ul>
-
-        <p>The prototype proved the concept. Now the question is: how do we scale it?</p>
     </div>
 
     <footer>
