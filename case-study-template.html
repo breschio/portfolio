@@ -78,6 +78,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            min-height: 100vh;
+            background: var(--bg);
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: var(--bg);
@@ -86,6 +91,7 @@
             font-size: 17px;
             opacity: 0;
             animation: slideInFromRight 0.4s ease-out forwards;
+            min-height: 100vh;
         }
 
         @keyframes slideInFromRight {

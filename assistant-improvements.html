@@ -77,6 +77,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            min-height: 100vh;
+            background: var(--bg);
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background: var(--bg);
@@ -85,6 +90,7 @@
             font-size: 17px;
             opacity: 0;
             animation: slideInFromRight 0.4s ease-out forwards;
+            min-height: 100vh;
         }
 
         @keyframes slideInFromRight {
@@ -547,7 +553,7 @@
 
     <header class="hero">
         <h1>Personio Assistant: UX Improvements</h1>
-        <p class="subtitle">An overview of work I did to modernize the Personio Assistant.</p>
+        <p class="subtitle">Personio's AI Assistant had a 19% CSAT score. I shipped six UX improvements directly to production—becoming the first designer at the company to commit code—fixing fundamental usability issues from input to error handling. These tactical wins bought time and revealed a deeper truth: when building with AI, it's not how it looks—it's how it works.</p>
 
         <div class="meta-grid">
             <div class="meta-item">
@@ -556,7 +562,7 @@
             </div>
             <div class="meta-item">
                 <div class="label">Timeline</div>
-                <div class="value">October - December 2025</div>
+                <div class="value">October - December 2024</div>
             </div>
             <div class="meta-item">
                 <div class="label">Team</div>
@@ -566,308 +572,255 @@
     </header>
 
     <div class="hero-media">
-        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Hero Image"></div>
+        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Original Figma designs showing the intended vision"></div>
     </div>
 
     <div class="content">
-        <h2>The Problem</h2>
-        <p>Personio's AI Assistant was failing its users. With a CSAT score of just 19%, the issues were visible at every level of the organization. The CEO and COO were sending the team screenshots of wrong answers. Internal employees using the assistant in our dogfooding channel were highlighting usability problems daily.</p>
+        <h2>Problem</h2>
+        <p>I inherited beautiful Figma files from an esteemed designer. Elegant, minimalist, futuristic. Production told a different story.</p>
 
-        <p>The problems broke down into two categories:</p>
+        <p>The gaps between design intent and production reality:</p>
 
-        <p><strong>Technical Architecture</strong>: The assistant lacked a cohesive design. Tool calling was slow. It didn't use modern methods for gaining context, leading to answers that missed information visible right on the page.</p>
+        <p><strong>Gradient backgrounds never shipped.</strong> The shader implementation was complex and hurt performance. The assistant launched with flat colors instead.</p>
 
-        <p><strong>User Experience</strong>: The interface itself was broken in fundamental ways. Users couldn't read their full questions. Responses were hard to follow. There were no error states. No way to stop a bad response. No guidance for new users. And when the assistant did provide an answer, there was no way to act on it.</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Figma gradient design vs. production flat background"></div>
+        </div>
 
-        <p>The stakes were high. AI was positioned as a competitive differentiator and deal-winner. We needed to demonstrate rapid improvement.</p>
+        <p><strong>Single-line input box.</strong> Couldn't accept longer prompts. When users typed multi-line questions, text disappeared behind the field—impossible to review before sending.</p>
 
-        <h3>Research Approach</h3>
-        <p>I started paying close attention to how people were actually using the assistant:</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Production input box truncating a multi-line question"></div>
+        </div>
 
-        <ul>
-            <li><strong>Internal dogfooding channel</strong>: Our HR team and other departments were vocal about what wasn't working</li>
-            <li><strong>Product Manager feedback</strong>: Patterns from customer complaints and support tickets</li>
-            <li><strong>Direct observation</strong>: Watching internal users struggle with basic tasks</li>
-        </ul>
+        <p><strong>Static suggested prompts.</strong> Designed for admins, but we were about to launch to all employees. "How do I configure payroll settings?" doesn't help someone asking "When is my next paycheck?"</p>
 
-        <p>The issues were clear. I just needed to fix them.</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Static admin-focused prompts in production"></div>
+        </div>
 
-        <h3>My Approach to Solving This</h3>
-        <p>Rather than wait for design approval cycles, I learned to code. I learned how to pull down the production site, iterate locally, and view changes on a code-injected version. I started committing production code directly with the help of our front-end engineer — becoming the first designer at the company to do so.</p>
+        <p><strong>Floating window obstructing the UI.</strong> The assistant covered key elements of the page—especially troubling when it suggested actions hidden beneath itself.</p>
 
-        <p>My first production commit went live on October 6, 2025.</p>
-    </div>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Assistant floating over and blocking page content"></div>
+        </div>
 
-    <div class="hero-media">
-        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Hero Image"></div>
-    </div>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Early exploration of embedded sidebar approach"></div>
+            <p class="caption">Early mockup exploration of embedded sidebar approach</p>
+        </div>
 
-    <div class="content">
-        <h2>The User Journey: Six Critical Improvements</h2>
-        <p>I organized my improvements around the user's journey through the assistant — from first impression to taking action on answers.</p>
+        <p><strong>Responses streamed bottom-to-top.</strong> Users had to scroll against the flow of new content to read answers.</p>
+
+        <p><strong>No stop button.</strong> Once a query started, users waited for completion even when the response was clearly wrong.</p>
+
+        <p><strong>No source citations.</strong> No way to verify where information came from.</p>
+
+        <p><strong>No error handling.</strong> Generic messages, no timestamps, no way to share details with support.</p>
+
+        <p>Meanwhile, CSAT sat at 19%. CEO and COO sent screenshots of wrong answers to the team. The dogfooding channel lit up daily.</p>
+
+        <p>The assistant looked like a product problem. It was actually a dozen gaps between design intent and production reality.</p>
+
+        <h2>Hypothesis</h2>
+        <p><strong>It's not how it looks—it's how it works.</strong></p>
+
+        <p>Beautiful mocks had been compromised on the way to production, and no one was closing the loop. My initial hypothesis: a designer who can ship code doesn't have to wait for that loop to close.</p>
+
+        <p>But a deeper realization emerged through the work: when building with AI, UX fixes are meaningless if the AI isn't accurate. Innovative features don't matter if the model doesn't know when to use them. A designer working on AI products can't just design interfaces—they need to understand how the AI actually works.</p>
+
+        <p>This case study documents my shift toward that realization. The UX improvements were necessary, but they revealed their own limits.</p>
+
+        <h2>Process</h2>
+        
+        <p><strong>Phase 1: Following the roadmap</strong></p>
+        <p>Initially I trusted my PM to guide priorities. We tackled new features that addressed some desired complexity—but I kept noticing things that weren't on the roadmap.</p>
+
+        <p><strong>Phase 2: Seeing the gaps</strong></p>
+        <p>I started cataloging what production actually looked like versus the Figma files. Background styles. Input behavior. Prompt relevance. The list grew.</p>
+
+        <p><strong>Phase 3: Figma → Prototype → Production</strong></p>
+        <p>I began fixing simple things in Figma, then translating them to our internal prototyping tools to test interactions. This got me closer to the code, but still dependent on handoffs.</p>
+
+        <p><strong>Phase 4: The push to commit</strong></p>
+        <p>My manager dangled a carrot: "You could be the first designer at Personio to commit code."</p>
+
+        <p>I bit. My first fix: the background color of instructions sent to the assistant.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - First production commit — October 6, 2024"></div>
+            <p class="caption">First production commit — October 6, 2024</p>
+        </div>
+
+        <p><strong>Phase 5: Learning the pipeline</strong></p>
+        <p>My front-end engineer walked me through the PR process—how to address common pipeline failures, how to structure commits for review. He helped me land my first production fix.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Slack exchange or PR review with FE engineer"></div>
+            <p class="caption">Slack exchange or PR review with FE engineer</p>
+        </div>
+
+        <p>From there, I kept going. I made 3-4 production commits between October and December 2024.</p>
+
+        <h2>Solution</h2>
+        <p>Six improvements, organized by the user journey through the assistant:</p>
 
         <h3>1. First Impression: Welcome Mat</h3>
-        <p><strong>The Problem</strong></p>
-
-        <p>When users opened the assistant, they saw static default prompts that were irrelevant to most of our customer base. This was especially problematic because we had recently expanded the assistant from "Admins only" to all "Employees" at customer companies.</p>
-
-        <p>An admin might ask "How do I configure payroll settings?" while an employee wants to know "When is my next paycheck?" The generic prompts served neither audience well.</p>
-
-        <p>New users had no sense of what the assistant could actually do for them.</p>
-
-        <p><strong>The Solution</strong></p>
-
-        <p>I designed a "welcome mat" experience that introduced simple, relevant prompts new users could try. These prompts were designed to:</p>
-
-        <ul>
-            <li>Demonstrate the assistant's capabilities through example</li>
-            <li>Be immediately useful for common questions</li>
-            <li>Reduce the cognitive load of starting from a blank input</li>
-        </ul>
-
-        <p><strong>Future Direction</strong>: We're working on a more dynamic pattern that will surface contextually relevant prompts based on the user's role and current page location.</p>
+        <p>Static admin prompts replaced with starter prompts relevant to employees. Designed to demonstrate capabilities through example and reduce cognitive load for new users.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Before - Static default prompts]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Before: Static admin-focused prompts"></div>
+            <p class="caption">Before: Static admin-focused prompts</p>
         </div>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: After - Welcome mat with starter prompts]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - After: Welcome mat with employee-relevant starter prompts"></div>
+            <p class="caption">After: Welcome mat with employee-relevant starter prompts</p>
         </div>
 
-        <h3>2. Asking a Question: Flexible Input</h3>
-        <p><strong>The Problem</strong></p>
-
-        <p>The input box truncated user messages, making it impossible to read your full question before sending. Users would type multi-line queries only to discover they couldn't review what they'd written. This was especially frustrating for complex questions that required detail and context.</p>
+        <h3>2. Asking Questions: Flexible Input</h3>
+        <p>Single-line input replaced with a flexible field that accommodates 4 lines before truncating. Grows dynamically as users type.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Before - Truncated input box showing the problem]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Before: Single-line input truncating question"></div>
+            <p class="caption">Before: Single-line input truncating question</p>
         </div>
 
-        <p>The truncation created a terrible user experience:</p>
-        <ul>
-            <li>Users couldn't proofread before sending</li>
-            <li>Long questions felt visually overwhelming when cut off</li>
-            <li>It signaled that the assistant wasn't designed for thoughtful, detailed queries</li>
-        </ul>
-
-        <p><strong>The Solution</strong></p>
-
-        <p>I built a flexible input field that accommodates 4 lines of text before truncating. This gives users enough space to compose and review their questions while still maintaining a reasonable visual footprint.</p>
-
-        <p>The input grows dynamically as users type, creating a responsive feel that adapts to their needs.</p>
-
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: After - Flexible input showing 4 lines of visible text]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - After: Flexible input showing 4 lines visible"></div>
+            <p class="caption">After: Flexible input showing 4 lines visible</p>
         </div>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Demo of input growing dynamically as user types]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Input field growing dynamically"></div>
+            <p class="caption">Input field growing dynamically as user types</p>
         </div>
 
-        <h3>3. Getting a Response: Reading & Understanding Answers</h3>
-
-        <h4>Problem 3A: Bottom-to-Top Response Flow</h4>
-        <p><strong>The Problem</strong></p>
-
-        <p>Responses appeared bottom-to-top, with new content streaming in from below. This violated users' natural reading pattern and made responses difficult to follow. Users had to constantly scroll up to read what the assistant was saying, fighting against the flow of new content.</p>
-
-        <p>For longer responses, this became completely unmanageable.</p>
+        <h3>3. Reading Responses: Flow Direction + Citations</h3>
+        <p>Reversed response streaming from bottom-to-top to top-to-bottom. Added scroll-to-bottom button for longer responses. Implemented source citations so users can verify information.</p>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Before - Bottom-to-top response streaming, showing the reading difficulty]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Bottom-to-top streaming"></div>
+            <p class="caption">Before: Bottom-to-top streaming, difficult to follow</p>
         </div>
-
-        <p><strong>The Solution</strong></p>
-
-        <p>I reversed the direction so responses flow top-to-bottom, matching natural reading behavior. As new content streams in, users can simply read downward.</p>
-
-        <p>For longer responses, I added a "scroll to bottom" button that appears when users scroll up. This lets users jump back to see the latest content without manually scrolling.</p>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: After - Top-to-bottom flow with scroll-to-bottom button demo]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Top-to-bottom flow"></div>
+            <p class="caption">After: Top-to-bottom flow with scroll-to-bottom button</p>
         </div>
 
-        <h4>Problem 3B: No Source Citations</h4>
-        <p><strong>The Problem</strong></p>
-
-        <p>The assistant would provide answers without any way to verify where the information came from. Users had no way to:</p>
-        <ul>
-            <li>Trust the accuracy of responses</li>
-            <li>Dig deeper into source material</li>
-            <li>Understand if the assistant was pulling from internal documentation, external sources, or generating answers</li>
-        </ul>
-
-        <p>This lack of transparency eroded confidence in the assistant's answers.</p>
-
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Before - Response without any source citations]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response without citations"></div>
+            <p class="caption">Before: Response without citations</p>
         </div>
 
-        <p><strong>The Solution</strong></p>
-
-        <p>I implemented a robust citation method that surfaces sources directly in the response. Now when the assistant references specific information, users can see where it came from and access the original source if needed.</p>
-
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: After - Response with clear source citations]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response with source citations"></div>
+            <p class="caption">After: Response with source citations</p>
         </div>
 
         <h3>4. Controlling the Experience: Stop Button</h3>
-        <p><strong>The Problem</strong></p>
-
-        <p>Once you started a query, there was no way to stop it. If the assistant started going down the wrong path, or if users realized they'd asked the wrong question, they had to wait for the entire response to complete.</p>
-
-        <p>This lack of control was frustrating and wasteful — both of users' time and of system resources.</p>
+        <p>Added stop button during streaming responses. Users can interrupt at any point instead of waiting for completion.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Before - Response streaming with no way to stop it]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response streaming with no stop option"></div>
+            <p class="caption">Before: Response streaming with no stop option</p>
         </div>
 
-        <p><strong>The Solution</strong></p>
-
-        <p>I designed a stop button that appears during streaming responses. Users can now interrupt the assistant at any point, giving them agency over the interaction.</p>
-
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: After - Stop button visible during response]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Stop button visible during response"></div>
+            <p class="caption">After: Stop button visible during response</p>
         </div>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Demo of stopping a response mid-stream]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Stopping a response mid-stream"></div>
+            <p class="caption">Stopping a response mid-stream</p>
         </div>
 
-        <h3>5. Taking Action: Navigation to Relevant Actions</h3>
-        <p><strong>The Problem</strong></p>
-
-        <p>The assistant could answer questions about how to do things, but users still had to manually navigate to the right place in the product to actually take action.</p>
-
-        <p>For example, if someone asked "How do I request time off?" the assistant might explain the process — but the user would then have to close the assistant, remember the steps, and hunt for the right button in the UI.</p>
-
-        <p>This created unnecessary friction between getting an answer and acting on it.</p>
+        <h3>5. Taking Action: Navigation Button</h3>
+        <p>Added button that appears when the assistant detects actionable intent. Takes users directly to the relevant screen instead of leaving them to navigate manually.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Before - Response about taking an action, with no way to actually do it]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Answer about taking action, no way to act"></div>
+            <p class="caption">Before: Answer about taking action, no way to act</p>
         </div>
 
-        <p><strong>The Solution</strong></p>
-
-        <p>I built a button that appears when the assistant detects actionable intent. When users ask about tasks they can perform, the assistant now surfaces a direct navigation link that takes them exactly where they need to go.</p>
-
-        <p>This closes the loop between information and action.</p>
-
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: After - Response with "Take action" button]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response with Take action button"></div>
+            <p class="caption">After: Response with "Take action" button</p>
         </div>
 
         <div class="video-full">
-            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9)"></div>
-            <p class="caption">[VIDEO: Demo of clicking action button and being navigated to the relevant screen]</p>
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Clicking action button and navigating"></div>
+            <p class="caption">Clicking action button and navigating to relevant screen</p>
         </div>
 
-        <h3>6. When Things Break: Better Error States</h3>
-        <p><strong>The Problem</strong></p>
-
-        <p>Error states were poorly designed and communicated. When something went wrong:</p>
-        <ul>
-            <li>Users saw generic, unhelpful error messages</li>
-            <li>There was no timestamp to help with debugging</li>
-            <li>No way to share error details with support</li>
-            <li>The assistant felt like a black box when it failed</li>
-        </ul>
+        <h3>6. Error Handling: Timestamps + Copy Function</h3>
+        <p>Replaced generic error messages with descriptive explanations, timestamps for debugging, and copy functionality for support escalation.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: Before - Poor error state with vague message]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Generic error message"></div>
+            <p class="caption">Before: Generic error message</p>
         </div>
-
-        <p><strong>The Solution</strong></p>
-
-        <p>I built comprehensive error handling with three key improvements:</p>
-
-        <ol>
-            <li><strong>Descriptive error messages</strong>: Clear explanations of what went wrong</li>
-            <li><strong>Timestamps</strong>: Every error includes a timestamp for debugging and support escalation</li>
-            <li><strong>Copy functionality</strong>: Users can copy the full error message (including timestamp) to share with support</li>
-        </ol>
-
-        <p>This transforms errors from dead-ends into actionable moments where users have clear next steps.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9)"></div>
-            <p class="caption">[SCREENSHOT: After - Improved error state with description, timestamp, and copy button]</p>
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Descriptive error with timestamp and copy button"></div>
+            <p class="caption">After: Descriptive error with timestamp and copy button</p>
         </div>
 
-        <h2>Implementation & Impact</h2>
+        <h3>Unresolved: Floating Window</h3>
+        <p>The assistant's floating position—obstructing the UI it was meant to help with—required more than a UX fix. I explored embedded sidebar approaches in mockups.</p>
 
-        <h3>How I Worked</h3>
-        <p>I became the first designer at Personio to commit code directly to production. Rather than creating mockups and handing off to engineering, I:</p>
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Embedded sidebar exploration"></div>
+            <p class="caption">Embedded sidebar exploration — assistant alongside content instead of over it</p>
+        </div>
 
-        <ol>
-            <li>Learned how to pull down the production site and iterate locally</li>
-            <li>Built changes using AI coding tools to accelerate development</li>
-            <li>Collaborated closely with our front-end engineer to review and ship</li>
-            <li>Made my first production commit on October 6, 2025</li>
-        </ol>
+        <p>This problem eventually inspired Case Study 2, where I rebuilt the assistant as a Chrome extension using the Sidepanel API—positioning the agent next to the page instead of on top of it.</p>
 
-        <p>This approach gave me two advantages:</p>
+        <h2>Results</h2>
+        <p><strong>CSAT improved from 19% to 22%</strong>—a 16% relative increase, though still low in absolute terms. These were UX fixes, not accuracy improvements; the number reflects that the underlying model quality remained the bottleneck.</p>
+
+        <p>C-suite feedback continued, but the dynamic shifted. They kept sharing screenshots because they knew the team was listening and acting, not because issues were being ignored.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - PM feedback on the work"></div>
+            <p class="caption">PM feedback on the work</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Engineering lead feedback"></div>
+            <p class="caption">Engineering lead feedback</p>
+        </div>
+
+        <p>The bigger impact was organizational. I gave a talk to the entire design organization—delivered while sitting next to the VP of Design, who congratulated me afterward along with designers in the room.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Slack reactions after design org talk"></div>
+            <p class="caption">Slack reactions after design org talk</p>
+        </div>
+
+        <p>What happened next:</p>
         <ul>
-            <li><strong>Speed</strong>: I could test and iterate without waiting for development cycles</li>
-            <li><strong>Clarity</strong>: I could validate my hypotheses immediately rather than debating them in abstract</li>
+            <li>5-10 designers have since shipped their own production fixes</li>
+            <li>1-2 designers contributed improvements to the tutorial resources I created</li>
+            <li>Documentation and video tutorials now exist for any designer who wants to follow the same path</li>
         </ul>
 
-        <h3>Results & Feedback</h3>
-        <p><em>[GAP: Need specific metrics or feedback]</em></p>
-        <ul>
-            <li>Did CSAT improve after these changes?</li>
-            <li>Any quantitative usage metrics showing impact?</li>
-            <li>User feedback from internal or external users?</li>
-            <li>Stakeholder reactions from PM or engineering team?</li>
-        </ul>
+        <p>I made 3-4 production commits between October and December 2024. But the real result is that I'm no longer the only designer at Personio who commits code.</p>
 
         <h2>What I Learned</h2>
-        <p><strong>Design and engineering don't have to be separate phases.</strong> By learning to code, I could collapse the gap between idea and implementation. This isn't about replacing engineers — it's about moving faster on UI problems where I can contribute directly while freeing engineering to focus on complex backend challenges.</p>
+        <p><strong>It's not how it looks—it's how it works.</strong></p>
 
-        <p><strong>Incremental improvements have limits.</strong> These UX fixes made the assistant more usable, but they couldn't solve the deeper architectural problems. The assistant still gave wrong answers. It still lacked context. These changes improved the wrapper, not the engine.</p>
+        <p>I started this work thinking I could fix a failing assistant with better UX. I shipped six improvements. CSAT moved from 19% to 22%. Designers across the organization started committing code.</p>
 
-        <p>That realization led to the next phase: rebuilding the assistant's architecture from first principles.</p>
+        <p>But the assistant still gave wrong answers. It still couldn't see the page. The UX layer was no longer the bottleneck—the model's accuracy and context awareness were.</p>
 
-        <p><strong>User research doesn't always require formal studies.</strong> The internal dogfooding channel and direct feedback from our PM gave me everything I needed to prioritize the most impactful problems. Sometimes the best research is just paying attention to what users are already telling you.</p>
+        <p>That's the shift: when building with AI, designers can't stop at the interface. We need to understand how the model works, what context it has, when it fails, and why. Otherwise we're polishing a broken engine.</p>
 
-        <h2>Technical Details</h2>
-        <p><strong>Tech Stack:</strong></p>
-        <ul>
-            <li>Frontend codebase (production site)</li>
-            <li>Local development environment</li>
-            <li>Code injection tools for testing</li>
-            <li>Collaboration with front-end engineer for review and deployment</li>
-        </ul>
+        <p>These UX wins bought time. They proved I could ship. But they also taught me where the real problems lived—which led directly to rebuilding the assistant's architecture from first principles.</p>
 
-        <p><strong>Development Approach:</strong></p>
-        <ul>
-            <li>AI-assisted coding (used LLM tools to accelerate development)</li>
-            <li>Iterative local testing before production deployment</li>
-            <li>Direct production commits (first designer at company to do this)</li>
-        </ul>
-
-        <h2>Next Steps</h2>
-        <p>While these improvements made the assistant more usable, the fundamental architecture problems remained. Users still received wrong answers. The system still lacked page context. Performance was still slow.</p>
-
-        <p>These tactical wins demonstrated what was possible when design and engineering collapsed into the same workflow. But solving the root problems would require a different approach — one that questioned the assistant's architecture from the ground up.</p>
-
-        <p><strong>→ See Case Study 2: <a href="agentic-assistant.html">Personio Assistant - Architecture Redesign (Chrome Extension Prototype)</a></strong></p>
+        <p><strong>→ See Case Study 2: <a href="agentic-assistant.html">Personio Agent Experience (PAX)</a></strong></p>
     </div>
 
     <footer>
