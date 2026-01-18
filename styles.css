@@ -303,6 +303,27 @@ html {
     left: 40px;
     right: 40px;
     text-align: left;
+    z-index: 1001;
+    pointer-events: auto;
+}
+
+.about-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1002;
+    pointer-events: auto;
+}
+
+.about-link {
+    text-decoration: underline;
+    color: var(--text-primary);
+    font-size: 12px;
+    position: relative;
+    z-index: 1002;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .avatar {
@@ -766,6 +787,10 @@ iframe {
         right: auto;
         margin-top: auto;
         padding-bottom: 40px;
+    }
+
+    .about-link {
+        font-size: 14px;
     }
 
     .avatar {

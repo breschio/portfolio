@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about / bresch.io</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            box-sizing: border-box;
+        }
+
+        .about-content {
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .about-content h1 {
+            font-size: 14px;
+            font-weight: 400;
+            font-family: "Space Mono", Monaco, monospace;
+            margin-bottom: 60px;
+            color: var(--text-secondary);
+        }
+
+        .about-content h1 a {
+            color: var(--text-secondary);
+            text-decoration: underline;
+        }
+
+        .about-content h1 a:hover {
+            color: var(--accent-color);
+        }
+
+        .greeting {
+            font-size: 24px;
+            font-weight: 400;
+            font-family: "Space Mono", Monaco, monospace;
+            margin-bottom: 8px;
+            text-transform: none;
+        }
+
+        .intro {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 48px;
+            text-transform: none;
+            color: var(--text-primary);
+        }
+
+        .about-content p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            text-transform: none;
+            color: var(--text-secondary);
+        }
+
+        .about-content p:last-of-type {
+            margin-bottom: 48px;
+        }
+
+        .highlight {
+            color: var(--text-primary);
+        }
+
+        .location {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-links {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .about-links a {
+            font-size: 12px;
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .about-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .about-page {
+                padding: 60px 24px;
+                align-items: flex-start;
+            }
+
+            .about-content h1 {
+                margin-bottom: 48px;
+            }
+
+            .greeting {
+                font-size: 20px;
+            }
+
+            .intro {
+                font-size: 16px;
+                margin-bottom: 36px;
+            }
+
+            .about-content p {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="about-page">
+        <article class="about-content">
+            <h1><a href="index.html">← bresch.io</a></h1>
+            
+            <p class="greeting">Hey there, I'm Terrence.</p>
+            <p class="intro">I'm the Principal Product Designer for AI at Personio. I lead strategy, build prototypes, ship code, and teach others.</p>
+
+            <p>It's an exciting time to be creative. The gaps between understanding problems, designing solutions, building products, and communicating value are rapidly shrinking.</p>
+
+            <p>I'd call myself an <span class="highlight">optimistic accelerationist</span>—I'm genuinely excited about integrating AI into each step of my process. I learn, plan, and prototype with AI. I build my own tools and ship production code with AI. I'm even maintaining open source software these days.</p>
+
+            <p>At Personio, I'm building AI that's evolving the HR landscape. At Meta, I led design on products used by millions of people. At Classy I launched a platform that raised billions for nonprofits. Along the way I've worked with incredible people who taught me how to think and act intentionally.</p>
+
+            <p>What motivates me is <span class="highlight">clarity of thought and action</span>. Recognizing a problem, building a solution, and sharing it with others.</p>
+
+            <p><span class="highlight">I move fast and learn things.</span></p>
+
+            <p>What I'm looking for right now are AI-first projects with AI-native teams—people who are excited about the technology and committed to doing it safely.</p>
+
+            <p>If that sounds like you, or someone you know, I'd love to talk.</p>
+
+            <div class="location">
+                New York.
+                <div class="about-links">
+                    <a href="https://www.linkedin.com/in/tbreschi/" target="_blank">linkedin</a>
+                    <a href="https://terrencebreschi.substack.com/archive" target="_blank">substack</a>
+                </div>
+            </div>
+        </article>
+    </main>
+    <script>
+        // Apply saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+            }
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

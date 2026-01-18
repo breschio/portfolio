@@ -538,8 +538,11 @@
         </div>
     </header>
 
-    <div class="hero-media">
-        <img src="./assets/drawbridge.gif" alt="Drawbridge in action">
+    <div class="video-full">
+        <video controls playsinline>
+            <source src="https://github.com/breschio/drawbridge-media/raw/main/Fast%20website%20edits%20with%20Drawbridge.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 
     <div class="content">
@@ -549,13 +552,6 @@
         <p>Annotated screenshots improved LLM accuracy dramatically, but added their own overhead: screenshotting, marking up in Preview with pink boxes, pasting into Cursor, and watching the Downloads folder fill up with <code>UI_screenshot_v47.png</code>.</p>
 
         <p>Even with annotated screenshots — the best method available — it still took 2-3 turns to fix things the LLM wasn't getting. The screenshots provided visual context, but the LLM was still guessing which element was being referenced.</p>
-    </div>
-
-    <div class="video-full">
-        <video controls playsinline>
-            <source src="https://github.com/breschio/drawbridge-media/raw/main/Fast%20website%20edits%20with%20Drawbridge.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
     </div>
 
     <div class="content">
@@ -578,6 +574,13 @@
         <p>This thinking unlocked my understanding of how to "program" the AI — not with code, but with structured tasks and verification checkpoints.</p>
 
         <h2>Solution</h2>
+    </div>
+
+    <div class="hero-media">
+        <img src="./assets/drawbridge.gif" alt="Drawbridge in action">
+    </div>
+
+    <div class="content">
         <p>Drawbridge is a Chrome extension that connects your browser to your local development project. It lets you:</p>
 
         <ol>
