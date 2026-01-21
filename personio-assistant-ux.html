@@ -188,8 +188,7 @@
         .hero-media img,
         .hero-media video {
             width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            border-radius: 32px;
         }
 
         .content {
@@ -289,15 +288,41 @@
         }
 
         .image-full {
+            position: relative;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
             max-width: 1100px;
-            margin: 3rem auto;
+            margin: 4rem 0;
             padding: 0 2rem;
+            box-sizing: border-box;
         }
 
         .image-full img {
             width: 100%;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            border-radius: 32px;
+        }
+
+        .image-full video {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .image-content {
+            margin: 4rem 0;
+        }
+
+        .image-content img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .image-content .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
         }
 
         .image-full .caption {
@@ -467,6 +492,77 @@
             font-size: 0.95rem;
         }
 
+        /* Before/After Image Slider */
+        .image-compare {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 32px;
+            cursor: ew-resize;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .image-compare img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
+
+        .image-compare .compare-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-compare .compare-before img {
+            display: block;
+            height: 100%;
+            width: auto;
+            max-width: none;
+        }
+
+        .image-compare .compare-handle {
+            position: absolute;
+            top: 0;
+            left: 80%;
+            width: 2px;
+            height: 100%;
+            background: var(--text);
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .image-compare .compare-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: var(--bg);
+            border: 2px solid var(--text);
+            border-radius: 50%;
+        }
+
+        .image-compare .compare-handle::after {
+            content: '◀ ▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            color: var(--text);
+            letter-spacing: 2px;
+            white-space: nowrap;
+            z-index: 11;
+        }
+
         .links-section {
             margin-top: 4rem;
             padding-top: 2rem;
@@ -572,7 +668,7 @@
     </header>
 
     <div class="hero-media">
-        <div class="placeholder-box image-placeholder" data-size="Suggested: 2200×1238px (16:9) - Original Figma designs showing the intended vision"></div>
+        <img src="assets/portfolio-media/personio/personio-assistant-1.png" alt="Personio Assistant in production showing the panel interface with inbox highlights and suggested prompts">
     </div>
 
     <div class="content">
@@ -581,55 +677,68 @@
 
         <p>The gaps between design intent and production reality:</p>
 
+        <div class="image-full">
+            <img src="assets/portfolio-media/personio/personio-assistant-2-flat-colors.png" alt="Design intent vs production reality - gradient background comparison">
+        </div>
+
         <p><strong>Gradient backgrounds never shipped.</strong> The shader implementation was complex and hurt performance. The assistant launched with flat colors instead.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Figma gradient design vs. production flat background"></div>
+            <img src="assets/portfolio-media/personio/personio-assistant-3-rigid-inbox.png" alt="Comparison of Figma gradient design versus production flat background">
         </div>
 
         <p><strong>Single-line input box.</strong> Couldn't accept longer prompts. When users typed multi-line questions, text disappeared behind the field—impossible to review before sending.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Production input box truncating a multi-line question"></div>
+            <img src="assets/portfolio-media/personio/personio-assistant-4-static-prompts.png" alt="Production input box truncating a multi-line question">
         </div>
 
-        <p><strong>Static suggested prompts.</strong> Designed for admins, but we were about to launch to all employees. "How do I configure payroll settings?" doesn't help someone asking "When is my next paycheck?"</p>
+        <p><strong>Static suggested prompts.</strong> Originally designed for admins—but we were about to launch to all employees. "How can I enforce two-factor authentication for my users?" doesn't help someone trying to understand when they'll get their next paycheck.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Static admin-focused prompts in production"></div>
+            <div class="image-compare" id="compare-slider">
+                <img src="assets/portfolio-media/personio/personio-assistant-5-covers-ui-b.png" alt="UI without assistant overlay">
+                <div class="compare-before">
+                    <img src="assets/portfolio-media/personio/personio-assistant-5-covers-ui-a.png" alt="Assistant floating over and blocking page content">
+                </div>
+                <div class="compare-handle"></div>
+            </div>
         </div>
 
         <p><strong>Floating window obstructing the UI.</strong> The assistant covered key elements of the page—especially troubling when it suggested actions hidden beneath itself.</p>
-
-        <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Assistant floating over and blocking page content"></div>
-        </div>
-
-        <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Early exploration of embedded sidebar approach"></div>
-            <p class="caption">Early mockup exploration of embedded sidebar approach</p>
-        </div>
 
         <p><strong>Responses streamed bottom-to-top.</strong> Users had to scroll against the flow of new content to read answers.</p>
 
         <p><strong>No stop button.</strong> Once a query started, users waited for completion even when the response was clearly wrong.</p>
 
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-stop-button-jonas.jpeg" alt="Slack message from Jonas asking about stop button functionality">
+        </div>
+
         <p><strong>No source citations.</strong> No way to verify where information came from.</p>
 
         <p><strong>No error handling.</strong> Generic messages, no timestamps, no way to share details with support.</p>
 
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-time-stamp-hanna.jpeg" alt="Slack message from Hanna requesting timestamp functionality">
+        </div>
+
         <p>Meanwhile, CSAT sat at 19%. CEO and COO sent screenshots of wrong answers to the team. The dogfooding channel lit up daily.</p>
+
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-wrong-answers-hanno.jpeg" alt="Slack message from Hanno about assistant hallucinating and giving wrong answers">
+        </div>
 
         <p>The assistant looked like a product problem. It was actually a dozen gaps between design intent and production reality.</p>
 
         <h2>Hypothesis</h2>
         <p><strong>It's not how it looks—it's how it works.</strong></p>
 
-        <p>Beautiful mocks had been compromised on the way to production, and no one was closing the loop. My initial hypothesis: a designer who can ship code doesn't have to wait for that loop to close.</p>
+        <p>Beautiful mocks had been compromised on the way to production, and no one was closing the loop. I realized that many of these fixes were designs that didn't land with engineers.</p>
 
-        <p>But a deeper realization emerged through the work: when building with AI, UX fixes are meaningless if the AI isn't accurate. Innovative features don't matter if the model doesn't know when to use them. A designer working on AI products can't just design interfaces—they need to understand how the AI actually works.</p>
+        <p>Then it occured to me that I should learn how to fix these problems myself. A designer with access to AI can't just design interfaces—they need to understand how to fix bugs, and ship code.</p>
 
-        <p>This case study documents my shift toward that realization. The UX improvements were necessary, but they revealed their own limits.</p>
+        <p>This case study documents my shift toward the practice of designing, building, and shipping.</p>
 
         <h2>Process</h2>
         
@@ -647,20 +756,15 @@
 
         <p>I bit. My first fix: the background color of instructions sent to the assistant.</p>
 
-        <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - First production commit — October 6, 2024"></div>
-            <p class="caption">First production commit — October 6, 2024</p>
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-first-commit.jpeg" alt="First production commit merge request">
+            <p class="caption">First production commit — July 10, 2025</p>
         </div>
 
         <p><strong>Phase 5: Learning the pipeline</strong></p>
         <p>My front-end engineer walked me through the PR process—how to address common pipeline failures, how to structure commits for review. He helped me land my first production fix.</p>
 
-        <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Slack exchange or PR review with FE engineer"></div>
-            <p class="caption">Slack exchange or PR review with FE engineer</p>
-        </div>
-
-        <p>From there, I kept going. I made 3-4 production commits between October and December 2024.</p>
+        <p>From there, I kept going. I made 3-4 production commits between July and October 2025.</p>
 
         <h2>Solution</h2>
         <p>Six improvements, organized by the user journey through the assistant:</p>
@@ -669,13 +773,18 @@
         <p>Static admin prompts replaced with starter prompts relevant to employees. Designed to demonstrate capabilities through example and reduce cognitive load for new users.</p>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Before: Static admin-focused prompts"></div>
-            <p class="caption">Before: Static admin-focused prompts</p>
+            <img src="assets/portfolio-media/personio/personio-assistant-8-welcome-mat-exploration.png" alt="Exploring the evolution of dynamic prompts">
+            <p class="caption">Exploring the evolution of dynamic prompts</p>
         </div>
 
         <div class="image-full">
-            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - After: Welcome mat with employee-relevant starter prompts"></div>
-            <p class="caption">After: Welcome mat with employee-relevant starter prompts</p>
+            <img src="assets/portfolio-media/personio/personio-assistant-1.png" alt="Introduced simple prompts to help educate humans">
+            <p class="caption">Introduced simple prompts to help educate humans</p>
+        </div>
+
+        <div class="image-full">
+            <video src="assets/portfolio-media/personio/personio-assistant-welcome-mat-1.mp4" autoplay loop muted playsinline></video>
+            <p class="caption">Refined the animation sequence to introduce content</p>
         </div>
 
         <h3>2. Asking Questions: Flexible Input</h3>
@@ -842,6 +951,59 @@
                 setTimeout(() => {
                     window.location.href = 'personio-case-studies.html';
                 }, 300);
+            });
+        });
+
+        // Image comparison slider
+        document.querySelectorAll('.image-compare').forEach(container => {
+            const beforeEl = container.querySelector('.compare-before');
+            const beforeImg = beforeEl.querySelector('img');
+            const handle = container.querySelector('.compare-handle');
+            let isDragging = false;
+
+            // Set before image width to match container
+            const setImageWidth = () => {
+                beforeImg.style.width = container.offsetWidth + 'px';
+            };
+            setImageWidth();
+            window.addEventListener('resize', setImageWidth);
+
+            const updatePosition = (x) => {
+                const rect = container.getBoundingClientRect();
+                let pos = (x - rect.left) / rect.width;
+                pos = Math.max(0, Math.min(1, pos));
+                const percent = pos * 100;
+                beforeEl.style.width = percent + '%';
+                handle.style.left = percent + '%';
+            };
+
+            const onMove = (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                updatePosition(x);
+            };
+
+            const onEnd = () => {
+                isDragging = false;
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('touchend', onEnd);
+            };
+
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                updatePosition(e.clientX);
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('mouseup', onEnd);
+            });
+
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                updatePosition(e.touches[0].clientX);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('touchend', onEnd);
             });
         });
     </script>
