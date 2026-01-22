@@ -171,13 +171,13 @@
         /* Split layout */
         .split {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 400px 1fr;
             gap: 4rem;
             align-items: center;
         }
 
         .split-content {
-            max-width: 500px;
+            max-width: 400px;
         }
 
         .split-media {
@@ -188,10 +188,11 @@
 
         .split-media img,
         .split-media video {
-            max-width: 100%;
-            max-height: 70vh;
+            width: 100%;
+            max-height: 85vh;
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            object-fit: contain;
         }
 
         /* Full media slide */
@@ -553,8 +554,27 @@
             </div>
         </section>
 
-        <!-- Slide 2: Demo -->
+        <!-- Slide 2: Problem -->
         <section class="slide" data-slide="1">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>The Problem</h3>
+                        <h2>2-3 minutes per UI tweak</h2>
+                        <p>Describing visual changes to AI took forever. Identify the element, explain what to change, wait for response, check result, repeat.</p>
+                        <p style="margin-top: 1.5rem;">Annotated screenshots helped, but added their own overhead. And the AI was still guessing which element you meant.</p>
+                    </div>
+                    <div class="split-media">
+                        <video autoplay loop muted playsinline>
+                            <source src="./assets/portfolio-media/drawbridge/drawbridge-problem.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Demo -->
+        <section class="slide" data-slide="2">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
@@ -562,32 +582,14 @@
                         <p>Select elements, leave comments, run <code>bridge</code> in your editor. The AI handles the rest.</p>
                     </div>
                     <div class="split-media">
-                        <img src="./assets/drawbridge.gif" alt="Drawbridge in action">
+                        <img src="./assets/portfolio-media/drawbridge/drawbridge-comment-2.gif" alt="Drawbridge in action">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 3: Problem -->
-        <section class="slide" data-slide="2">
-            <div class="slide-content">
-                <h3>The Problem</h3>
-                <h2>2-3 minutes per UI tweak</h2>
-                <p>Describing visual changes to AI took forever. Identify the element, explain what to change, wait for response, check result, repeat.</p>
-                <p style="margin-top: 1.5rem;">Annotated screenshots helped, but added their own overhead. And the AI was still guessing which element you meant.</p>
-            </div>
-        </section>
-
-        <!-- Slide 4: Insight -->
-        <section class="slide quote" data-slide="3">
-            <div class="slide-content">
-                <blockquote>"The AI needed <span class="highlight">structural</span> context, not just <span class="highlight">visual</span> context."</blockquote>
-                <p class="attribution">A screenshot shows you a button. The DOM tells you it's<br><code>div.hero-section > button.cta-primary</code></p>
-            </div>
-        </section>
-
-        <!-- Slide 5: Solution -->
-        <section class="slide" data-slide="4">
+        <!-- Slide 4: Solution -->
+        <section class="slide" data-slide="3">
             <div class="slide-content">
                 <h3>The Solution</h3>
                 <h2>Annotate → Queue → Execute</h2>
@@ -600,34 +602,48 @@
             </div>
         </section>
 
-        <!-- Slide 6: Video Demo -->
-        <section class="slide" data-slide="5">
+        <!-- Slide 5: Live Demo -->
+        <section class="slide" data-slide="4">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
-                        <h3>In Action</h3>
-                        <h2>Full workflow demo</h2>
-                        <p>From annotation to executed changes in under a minute.</p>
+                        <h2>Run "bridge" in Cursor or Claude</h2>
+                        <p>A structured workflow reads a rich JSON prompt and screenshots stored in a .gitignore file</p>
                     </div>
                     <div class="split-media">
-                        <video controls playsinline style="max-height: 60vh;">
-                            <source src="https://github.com/breschio/drawbridge-media/raw/main/Fast%20website%20edits%20with%20Drawbridge.mp4" type="video/mp4">
-                        </video>
+                        <img src="./assets/portfolio-media/drawbridge/drawbridge-cursor.gif" alt="Running bridge command in Cursor">
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Insight -->
+        <section class="slide quote" data-slide="5">
+            <div class="slide-content">
+                <blockquote>"The AI needed <span class="highlight">structural</span> context, not just <span class="highlight">visual</span> context."</blockquote>
+                <p class="attribution">A screenshot shows you a button. The DOM tells you it's<br><code>div.hero-section > button.cta-primary</code></p>
             </div>
         </section>
 
         <!-- Slide 7: Technical -->
         <section class="slide" data-slide="6">
             <div class="slide-content">
-                <h3>Technical Decisions</h3>
-                <h2>Key implementation details</h2>
-                <ul>
-                    <li><span class="highlight">Native screenshot API</span> — Chrome's <code>captureVisibleTab</code> over html2canvas</li>
-                    <li><span class="highlight">Freeform rectangles</span> — For annotations that don't map to a single element</li>
-                    <li><span class="highlight">Dependency detection</span> — Same-element annotations process in order</li>
-                </ul>
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Technical Decisions</h3>
+                        <h2>Key features</h2>
+                        <ul>
+                            <li><span class="highlight">Native screenshot API</span> — Chrome's <code>captureVisibleTab</code> over html2canvas</li>
+                            <li><span class="highlight">Freeform rectangles</span> — For annotations that don't map to a single element</li>
+                            <li><span class="highlight">Dependency detection</span> — Same-element annotations process in order</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <video autoplay loop muted playsinline>
+                            <source src="./assets/portfolio-media/drawbridge/drawbridge-rectangle.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -639,12 +655,12 @@
                 <p>What took 2-3 minutes per change now takes 2-3 minutes for 10 changes.</p>
                 <div class="metrics">
                     <div class="metric">
-                        <div class="number">406</div>
+                        <div class="number">573</div>
                         <div class="label">GitHub stars</div>
                     </div>
                     <div class="metric">
-                        <div class="number">115</div>
-                        <div class="label">Unique cloners</div>
+                        <div class="number">38</div>
+                        <div class="label">Forks</div>
                     </div>
                     <div class="metric">
                         <div class="number">5</div>
@@ -682,8 +698,28 @@
             </div>
         </section>
 
-        <!-- Slide 10: Learnings -->
+        <!-- Slide 10: GitHub Traction -->
         <section class="slide" data-slide="9">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Community Response</h3>
+                        <h2>Strong organic traction</h2>
+                        <p>Within weeks of the video, my repo began gaining traction.</p>
+                        <ul style="margin-top: 1.5rem;">
+                            <li>Contributors fixing bugs and adding features</li>
+                            <li>I have learned how to maintain open source software</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <img src="./assets/portfolio-media/drawbridge/drawbridge-github.png" alt="Drawbridge GitHub activity">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: Learnings -->
+        <section class="slide" data-slide="10">
             <div class="slide-content">
                 <h3>What I Learned</h3>
                 <h2>Key takeaways</h2>
@@ -701,7 +737,7 @@
     <div class="progress" id="progress"></div>
 
     <!-- Slide counter -->
-    <div class="slide-counter" id="counter">1 / 10</div>
+    <div class="slide-counter" id="counter">1 / 11</div>
 
     <!-- Navigation hint -->
     <div class="nav-hint">← → or swipe</div>
