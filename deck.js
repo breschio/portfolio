@@ -238,21 +238,21 @@
     });
 
     // ===========================================
-    // CLICK NAVIGATION (left/right halves of screen)
+    // CLICK NAVIGATION (disabled)
     // ===========================================
-    document.addEventListener('click', (e) => {
-        // Ignore clicks on interactive elements
-        if (e.target.closest('a, button, video, iframe, .progress-dot')) return;
-
-        const x = e.clientX;
-        const width = window.innerWidth;
-
-        if (x > width * 0.7) {
-            nextSlide();
-        } else if (x < width * 0.3) {
-            prevSlide();
-        }
-    });
+    // document.addEventListener('click', (e) => {
+    //     // Ignore clicks on interactive elements
+    //     if (e.target.closest('a, button, video, iframe, .progress-dot')) return;
+    //
+    //     const x = e.clientX;
+    //     const width = window.innerWidth;
+    //
+    //     if (x > width * 0.7) {
+    //         nextSlide();
+    //     } else if (x < width * 0.3) {
+    //         prevSlide();
+    //     }
+    // });
 
     // ===========================================
     // THEME TOGGLE
