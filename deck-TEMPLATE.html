@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Deck Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="deck.css">
+</head>
+<body>
+    <div class="deck" id="deck">
+        <!-- ============================================
+             OPENING & CLOSING SLIDES
+             ============================================ -->
+
+        <!-- TITLE SLIDE
+             Use for: Opening slides, case study intros, section dividers
+             Structure: H1 title, subtitle, meta info (role, timeline, team)
+        -->
+        <section class="slide" data-slide="title">
+            <div class="slide-content">
+                <h1>Project Title</h1>
+                <p class="large">A brief description of the project and its significance. Keep it to 1-2 sentences that set up the narrative.</p>
+                <div class="meta">
+                    <div class="meta-item">
+                        <div class="label">Role</div>
+                        <div class="value">Your Role Title</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Timeline</div>
+                        <div class="value">Month – Month Year</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Team</div>
+                        <div class="value">Team or Company</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTENT + MEDIA SLIDES
+             ============================================ -->
+
+        <!-- SPLIT SLIDE
+             Use for: Feature explanations, solutions, any content with visual support
+             Structure: Text on left (label, headline, bullets), media on right
+        -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Section Label</h3>
+                        <h2>Main Headline</h2>
+                        <ul>
+                            <li><span class="highlight">Key point</span> — Supporting detail that explains this point</li>
+                            <li><span class="highlight">Another point</span> — Additional context or explanation</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Screenshot or visual"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPLIT SQUARE SLIDE
+             Use for: Square media (1:1 aspect ratio)
+             Structure: Equal columns, media centered
+        -->
+        <section class="slide" data-slide="split-square">
+            <div class="slide-content">
+                <div class="split split-square">
+                    <div class="split-content">
+                        <h3>Section Label</h3>
+                        <h2>Main Headline</h2>
+                        <ul>
+                            <li><span class="highlight">Key point</span> — Supporting detail</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Square image (1:1)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPLIT STRIP SLIDE
+             Use for: Horizontal strip media (Slack messages, wide screenshots)
+             Structure: Stacked layout with strip image below content
+        -->
+        <section class="slide" data-slide="split-strip">
+            <div class="slide-content">
+                <div class="split split-strip">
+                    <div class="split-content">
+                        <h3>Section Label</h3>
+                        <h2>Main Headline</h2>
+                        <p>Supporting context for the strip media below.</p>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Strip image (wide horizontal)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPLIT EDGE-BLEED SLIDE
+             Use for: Hero moments, dramatic visuals, hooks, problem statements
+             Structure: Text on left, full-bleed image extending to screen edge
+        -->
+        <section class="slide split-edge-bleed" data-slide="split-edge-bleed">
+            <div class="slide-content">
+                <div class="split-text">
+                    <div class="top">
+                        <h3>Section Label</h3>
+                        <h2>A dramatic headline that captures attention and sets up the story.</h2>
+                    </div>
+                    <div class="bottom">
+                        <p>Supporting context that adds nuance or sets up what comes next.</p>
+                    </div>
+                </div>
+                <div class="split-image">
+                    <div class="placeholder" data-label="Hero image"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA CENTERED SLIDE
+             Use for: Hero images at natural aspect ratio, process shots
+             Structure: Optional header, centered media, optional caption
+             Variants: .media-square (1:1), .media-wide (16:9)
+        -->
+        <section class="slide media-centered" data-slide="media-centered">
+            <div class="slide-content">
+                <div class="media-header">
+                    <h3>Section Label</h3>
+                    <h2>Media Headline</h2>
+                </div>
+                <div class="media-wrapper">
+                    <div class="placeholder" data-label="Image at natural aspect ratio"></div>
+                </div>
+                <p class="media-caption">Optional caption describing the media</p>
+            </div>
+        </section>
+
+        <!-- FULL-BLEED CAPTION SLIDE
+             Use for: Final reveals, demo screenshots, interface showcases
+             Structure: Full-width media, caption bar at bottom
+        -->
+        <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
+            <div class="slide-content">
+                <div class="media-area">
+                    <div class="placeholder" data-label="Full interface screenshot"></div>
+                </div>
+                <div class="caption-bar">Brief description of what's being shown</div>
+            </div>
+        </section>
+
+        <!-- IMAGE CALLOUT SLIDE
+             Use for: UI annotations, feature highlights, technical explanations
+             Structure: Central image with positioned callout labels
+        -->
+        <section class="slide image-callout" data-slide="image-callout">
+            <div class="slide-content">
+                <div class="callout-container">
+                    <div class="callout callout-left" style="top: 20%;">
+                        <span class="callout-label">Feature 1</span>
+                        <span class="callout-line"></span>
+                    </div>
+                    <div class="callout callout-right" style="top: 50%;">
+                        <span class="callout-line"></span>
+                        <span class="callout-label">Feature 2</span>
+                    </div>
+                    <div class="callout callout-left" style="bottom: 25%;">
+                        <span class="callout-label">Feature 3</span>
+                        <span class="callout-line"></span>
+                    </div>
+                    <div class="callout-image placeholder" data-label="UI screenshot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             COMPARISON & LIST SLIDES
+             ============================================ -->
+
+        <!-- COMPARISON SLIDE
+             Use for: Before/after, A/B comparisons, design vs production
+             Structure: Headline, two side-by-side images with labels
+        -->
+        <section class="slide" data-slide="comparison">
+            <div class="slide-content">
+                <h3>Section Label</h3>
+                <h2>Comparison headline</h2>
+                <div class="comparison">
+                    <div class="comparison-side">
+                        <div class="label">Before</div>
+                        <div class="placeholder" data-label="Before state"></div>
+                    </div>
+                    <div class="comparison-side">
+                        <div class="label">After</div>
+                        <div class="placeholder" data-label="After state"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMPLE LIST SLIDE
+             Use for: Numbered key points, findings, recommendations
+             Structure: Title on left, numbered items with descriptions on right
+        -->
+        <section class="slide" data-slide="simple-list">
+            <div class="slide-content">
+                <div class="simple-list">
+                    <div class="simple-list-left">
+                        <h3>Section Label</h3>
+                        <div class="simple-list-title">List title or count</div>
+                    </div>
+                    <div class="simple-list-items">
+                        <div class="simple-list-item">
+                            <span class="number">1</span>
+                            <div class="simple-list-item-content">
+                                <h4>First point</h4>
+                                <p>Brief description that provides context for this point.</p>
+                            </div>
+                        </div>
+                        <div class="simple-list-item">
+                            <span class="number">2</span>
+                            <div class="simple-list-item-content">
+                                <h4>Second point</h4>
+                                <p>Brief description that provides context for this point.</p>
+                            </div>
+                        </div>
+                        <div class="simple-list-item">
+                            <span class="number">3</span>
+                            <div class="simple-list-item-content">
+                                <h4>Third point</h4>
+                                <p>Brief description that provides context for this point.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             QUOTE & TESTIMONIAL SLIDES
+             ============================================ -->
+
+        <!-- QUOTE SLIDE
+             Use for: Key insights, thesis statements, memorable takeaways
+             Structure: Large centered blockquote, attribution below
+        -->
+        <section class="slide quote" data-slide="quote">
+            <div class="slide-content">
+                <blockquote>"A key insight or thesis statement with <span class="highlight">emphasized words</span> for impact."</blockquote>
+                <p class="attribution">Additional context or source attribution.<br>Can span multiple lines if needed.</p>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL SLIDE
+             Use for: Single endorsement, stakeholder quote, user feedback
+             Structure: Avatar, quote, name and title
+        -->
+        <section class="slide testimonial" data-slide="testimonial">
+            <div class="slide-content">
+                <div class="testimonial-avatar placeholder" data-label=""></div>
+                <blockquote>"A quote from a specific person that adds credibility and human perspective to your narrative."</blockquote>
+                <div class="testimonial-attribution">Full Name · Title, Company</div>
+            </div>
+        </section>
+
+        <!-- MULTI-TESTIMONIAL SLIDE
+             Use for: Multiple endorsements, team perspectives, broad validation
+             Structure: Three testimonials in a row
+        -->
+        <section class="slide multi-testimonial" data-slide="multi-testimonial">
+            <div class="slide-content">
+                <div class="testimonials-grid">
+                    <div class="testimonial-item">
+                        <div class="avatar"></div>
+                        <p class="quote">"First person's perspective on the work."</p>
+                        <div class="attribution">Name · Title</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="avatar"></div>
+                        <p class="quote">"Second person's perspective on the work."</p>
+                        <div class="attribution">Name · Title</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="avatar"></div>
+                        <p class="quote">"Third person's perspective on the work."</p>
+                        <div class="attribution">Name · Title</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             PROCESS & DATA SLIDES
+             ============================================ -->
+
+        <!-- TIMELINE SLIDE
+             Use for: Project phases, process flows, methodology steps
+             Structure: Headline, horizontal timeline with phases
+        -->
+        <section class="slide" data-slide="timeline">
+            <div class="slide-content">
+                <h3>Section Label</h3>
+                <h2>Process or journey headline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="phase">Phase 1</div>
+                        <div class="title">Discovery</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Phase 2</div>
+                        <div class="title">Research</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Phase 3</div>
+                        <div class="title">Design</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Phase 4</div>
+                        <div class="title">Build</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="phase">Phase 5</div>
+                        <div class="title">Launch</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BIG METRIC SLIDE
+             Use for: Impact numbers, KPIs, results, ROI statements
+             Structure: Large stat, description, optional link
+        -->
+        <section class="slide big-metric" data-slide="big-metric">
+            <div class="slide-content">
+                <div class="stat">47%</div>
+                <div class="stat-description">Description of what this metric means and why it matters. Include context for interpretation.</div>
+                <div class="stat-link"><a href="#">View source or more details →</a></div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SPECIAL PURPOSE SLIDES
+             ============================================ -->
+
+        <!-- PRINCIPLES SLIDE
+             Use for: Design principles, values, guidelines, decision frameworks
+             Structure: Title, three cards with labels and statements
+        -->
+        <section class="slide principles" data-slide="principles">
+            <div class="slide-content">
+                <h2>Principles</h2>
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <div class="principle-label">Principle 1</div>
+                        <div class="principle-text">A clear statement of what you believe.</div>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-label">Principle 2</div>
+                        <div class="principle-text">How this guides your decisions.</div>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-label">Principle 3</div>
+                        <div class="principle-text">What you aim to achieve.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHT SLIDE
+             Use for: Key announcements, important links, single takeaways
+             Structure: Bold title left, description right
+        -->
+        <section class="slide highlight" data-slide="highlight">
+            <div class="slide-content">
+                <h2>Highlight</h2>
+                <p class="highlight-text">Use this slide to call attention to a single important thing. Keep it short and sweet—link to relevant resources if needed.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="#">Presentation</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#">Company</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Project</span>
+    </nav>
+
+    <!-- Progress dots -->
+    <div class="progress" id="progress"></div>
+
+    <!-- Slide counter -->
+    <div class="slide-counter" id="counter">1 / 17</div>
+
+    <!-- Navigation hint -->
+    <div class="nav-hint">← → or swipe</div>
+
+    <!-- Theme toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
+            <circle cx="12" cy="12" r="4" class="sun-core"/>
+            <g class="sun-rays">
+                <path d="M12 3v1"/>
+                <path d="M12 20v1"/>
+                <path d="M3 12h1"/>
+                <path d="M20 12h1"/>
+                <path d="m18.364 5.636-.707.707"/>
+                <path d="m6.343 17.657-.707.707"/>
+                <path d="m5.636 5.636.707.707"/>
+                <path d="m17.657 17.657.707.707"/>
+            </g>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+    </button>
+
+    <script src="deck.js"></script>
+</body>
+</html>
