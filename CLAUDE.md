@@ -29,6 +29,7 @@ This repo has a modular slide deck system. When creating new slide decks:
 
 | Type | Class | Best For |
 |------|-------|----------|
+| Presentation Cover | `.presentation-cover` | Multi-deck landing pages |
 | Title | (default) | Opening slides |
 | Split | `.split` | Feature + visual |
 | Split Square | `.split.split-square` | 1:1 media |
@@ -64,5 +65,8 @@ Choose based on your image dimensions:
 
 ### Existing Decks
 
-- `personio-assistant-ux-deck.html` - Personio case study presentation
+- `baseten-presentation.html` - Portfolio cover page (entry point)
+- `personio-assistant-ux-deck.html` - Personio Assistant case study
+- `drawbridge-deck.html` - Drawbridge case study
+- `personio-agent-deck.html` - Personio Agent case study
 - `slide-templates-preview.html` - Visual reference of all templates

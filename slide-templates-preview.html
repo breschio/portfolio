@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Templates Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666;
+            --border: #2a2a2a;
+            --accent: #FF4500;
+            --surface: #151515;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 32px;
+            line-height: 1.5;
+        }
+
+        .preview-header {
+            max-width: 1400px;
+            margin: 0 auto 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .preview-header h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .preview-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .preview-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .preview-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .preview-thumbnail {
+            aspect-ratio: 16 / 10;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-info {
+            padding: 16px;
+        }
+
+        .preview-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .preview-info p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .preview-info code {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            background: var(--bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: var(--text-secondary);
+        }
+
+        .preview-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .copy-prompt {
+            font-size: 11px;
+            padding: 4px 10px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .copy-prompt:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .copy-prompt.copied {
+            background: #22c55e;
+            border-color: #22c55e;
+            color: white;
+        }
+
+        /* Mini slide representations */
+        .mini-slide {
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            border-radius: 4px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            font-size: 10px;
+            overflow: hidden;
+        }
+
+        .mini-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .mini-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .mini-subtitle {
+            font-size: 9px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .mini-meta {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+            font-size: 8px;
+            color: var(--text-muted);
+        }
+
+        .mini-placeholder {
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+            flex: 1;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 8px;
+        }
+
+        .mini-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .mini-split-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mini-list-item {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 4px;
+            font-size: 8px;
+            color: var(--text-secondary);
+        }
+
+        .mini-number {
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            flex-shrink: 0;
+        }
+
+        .mini-quote {
+            font-size: 12px;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+        }
+
+        .mini-stat {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .mini-stat-desc {
+            font-size: 9px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .mini-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .mini-comparison-side {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mini-comparison-label {
+            font-size: 8px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .mini-timeline {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .mini-timeline-item {
+            flex: 1;
+            padding-top: 8px;
+            border-top: 2px solid var(--border);
+            position: relative;
+        }
+
+        .mini-timeline-item::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .mini-timeline-phase {
+            font-size: 7px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .mini-timeline-title {
+            font-size: 9px;
+            color: var(--text);
+        }
+
+        .mini-principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            flex: 1;
+        }
+
+        .mini-principle-card {
+            background: var(--surface);
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mini-principle-label {
+            font-size: 7px;
+            color: var(--text-muted);
+        }
+
+        .mini-principle-text {
+            font-size: 8px;
+            font-weight: 500;
+        }
+
+        .mini-testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .mini-testimonial-avatar {
+            width: 20px;
+            height: 20px;
+            background: var(--surface);
+            border-radius: 50%;
+            margin: 0 auto 4px;
+        }
+
+        .mini-testimonial-quote {
+            font-size: 8px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .mini-testimonial-name {
+            font-size: 7px;
+            color: var(--text-muted);
+        }
+
+        .mini-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .mini-deck-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+            max-width: 140px;
+            margin: 0 auto;
+        }
+
+        .mini-deck-link {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 8px;
+        }
+
+        .mini-deck-number {
+            color: var(--text-muted);
+        }
+
+        .mini-edge-bleed {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+
+        .mini-edge-text {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mini-edge-image {
+            background: var(--surface);
+        }
+
+        .mini-callout-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+        .mini-callout-image {
+            width: 60px;
+            height: 80px;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+        }
+
+        .mini-callout {
+            position: absolute;
+            font-size: 7px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-callout-left {
+            right: 55%;
+            top: 20%;
+        }
+
+        .mini-callout-right {
+            left: 55%;
+            top: 60%;
+        }
+
+        .mini-callout-line {
+            width: 16px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .mini-full-bleed {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .mini-full-bleed-media {
+            flex: 1;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: 4px 4px 0 0;
+        }
+
+        .mini-full-bleed-caption {
+            padding: 8px;
+            background: var(--surface);
+            font-size: 8px;
+            color: var(--text-secondary);
+            border-radius: 0 0 4px 4px;
+        }
+
+        .mini-media-centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .mini-media-wrapper {
+            margin: 8px 0;
+        }
+
+        .mini-media-caption {
+            font-size: 8px;
+            color: var(--text-muted);
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sun-icon { display: block; }
+        .moon-icon { display: none; }
+
+        body.light-theme {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #555;
+            --text-muted: #888;
+            --border: #e0e0e0;
+            --surface: #f7f7f7;
+        }
+
+        body.light-theme .sun-icon { display: none; }
+        body.light-theme .moon-icon { display: block; }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <header class="preview-header">
+        <h1>Slide Templates</h1>
+        <p>Visual reference for all available slide layouts. Click any template to view it in presentation mode.</p>
+    </header>
+
+    <div class="preview-grid">
+
+        <!-- Presentation Cover -->
+        <a href="baseten-presentation.html" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="text-align: center; justify-content: center;">
+                    <div class="mini-label">Design Portfolio</div>
+                    <div class="mini-title">Your Name</div>
+                    <div class="mini-subtitle">Your tagline goes here.</div>
+                    <div class="mini-deck-nav">
+                        <div class="mini-deck-link">
+                            <span><span class="mini-deck-number">01</span> First Deck</span>
+                            <span>→</span>
+                        </div>
+                        <div class="mini-deck-link">
+                            <span><span class="mini-deck-number">02</span> Second Deck</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Presentation Cover</h3>
+                <p>Multi-deck landing pages. <code>.presentation-cover</code></p>
+                <button class="copy-prompt" data-class=".presentation-cover">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Title -->
+        <a href="deck-TEMPLATE.html?slide=0" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-title">Project Title</div>
+                    <div class="mini-subtitle">A brief description of the project and its significance.</div>
+                    <div class="mini-meta">
+                        <div><strong>Role</strong><br>Designer</div>
+                        <div><strong>Timeline</strong><br>Q1 2024</div>
+                        <div><strong>Team</strong><br>Product</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Title</h3>
+                <p>Opening slides, case study intros. <code>default</code></p>
+                <button class="copy-prompt" data-class="default (no class needed)">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Split -->
+        <a href="deck-TEMPLATE.html?slide=1" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-split">
+                        <div class="mini-split-content">
+                            <div class="mini-label">Section</div>
+                            <div class="mini-title">Headline</div>
+                            <div class="mini-list-item">• Key point one</div>
+                            <div class="mini-list-item">• Key point two</div>
+                        </div>
+                        <div class="mini-placeholder">Image</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Split</h3>
+                <p>Feature explanations with visuals. <code>.split</code></p>
+                <button class="copy-prompt" data-class=".split">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Split Square -->
+        <a href="deck-TEMPLATE.html?slide=2" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-split">
+                        <div class="mini-split-content">
+                            <div class="mini-label">Section</div>
+                            <div class="mini-title">Headline</div>
+                            <div class="mini-list-item">• Key point</div>
+                        </div>
+                        <div class="mini-placeholder" style="aspect-ratio: 1;">1:1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Split Square</h3>
+                <p>Square media (1:1 aspect ratio). <code>.split.split-square</code></p>
+                <button class="copy-prompt" data-class=".split.split-square">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Split Strip -->
+        <a href="deck-TEMPLATE.html?slide=3" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-label">Section</div>
+                    <div class="mini-title">Headline</div>
+                    <div class="mini-subtitle">Context for the strip media below.</div>
+                    <div class="mini-placeholder" style="height: 40px; flex: none;">Strip Image</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Split Strip</h3>
+                <p>9:16 portrait media on right. <code>.split.split-strip</code></p>
+                <button class="copy-prompt" data-class=".split.split-strip">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Split Edge-Bleed -->
+        <a href="deck-TEMPLATE.html?slide=4" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="padding: 0;">
+                    <div class="mini-edge-bleed">
+                        <div class="mini-edge-text">
+                            <div>
+                                <div class="mini-label">Section</div>
+                                <div class="mini-title">Dramatic headline</div>
+                            </div>
+                            <div class="mini-subtitle">Supporting context.</div>
+                        </div>
+                        <div class="mini-edge-image"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Split Edge-Bleed</h3>
+                <p>Hero moments, dramatic visuals. <code>.split-edge-bleed</code></p>
+                <button class="copy-prompt" data-class=".split-edge-bleed">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Media Centered -->
+        <a href="deck-TEMPLATE.html?slide=5" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide mini-media-centered">
+                    <div class="mini-label">Section</div>
+                    <div class="mini-title">Media Headline</div>
+                    <div class="mini-media-wrapper">
+                        <div class="mini-placeholder" style="width: 120px; height: 70px;">Hero Image</div>
+                    </div>
+                    <div class="mini-media-caption">Caption text</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Media Centered</h3>
+                <p>Hero images at natural aspect ratio. <code>.media-centered</code></p>
+                <button class="copy-prompt" data-class=".media-centered">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Comparison -->
+        <a href="deck-TEMPLATE.html?slide=8" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-label">Section</div>
+                    <div class="mini-title">Comparison</div>
+                    <div class="mini-comparison">
+                        <div class="mini-comparison-side">
+                            <div class="mini-comparison-label">Before</div>
+                            <div class="mini-placeholder">A</div>
+                        </div>
+                        <div class="mini-comparison-side">
+                            <div class="mini-comparison-label">After</div>
+                            <div class="mini-placeholder">B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Comparison</h3>
+                <p>Before/after, A/B comparisons. <code>.comparison</code></p>
+                <button class="copy-prompt" data-class=".comparison">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Simple List -->
+        <a href="deck-TEMPLATE.html?slide=9" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-split">
+                        <div>
+                            <div class="mini-label">Section</div>
+                            <div class="mini-title">List Title</div>
+                        </div>
+                        <div>
+                            <div class="mini-list-item"><span class="mini-number">1</span> First point</div>
+                            <div class="mini-list-item"><span class="mini-number">2</span> Second point</div>
+                            <div class="mini-list-item"><span class="mini-number">3</span> Third point</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Simple List</h3>
+                <p>Numbered points with descriptions. <code>.simple-list</code></p>
+                <button class="copy-prompt" data-class=".simple-list">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Quote -->
+        <a href="deck-TEMPLATE.html?slide=10" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="justify-content: center;">
+                    <div class="mini-quote">"A key insight with emphasized words for impact."</div>
+                    <div style="text-align: center; font-size: 8px; color: var(--text-muted);">— Attribution</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Quote</h3>
+                <p>Key insights, thesis statements. <code>.quote</code></p>
+                <button class="copy-prompt" data-class=".quote">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Testimonial -->
+        <a href="deck-TEMPLATE.html?slide=11" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="justify-content: center; align-items: center; text-align: center;">
+                    <div class="mini-testimonial-avatar" style="width: 32px; height: 32px; margin-bottom: 8px;"></div>
+                    <div class="mini-quote" style="padding: 8px;">"A quote from a specific person."</div>
+                    <div style="font-size: 8px; color: var(--text-muted);">Full Name · Title</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Testimonial</h3>
+                <p>Single person endorsement. <code>.testimonial</code></p>
+                <button class="copy-prompt" data-class=".testimonial">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Multi-Testimonial -->
+        <a href="deck-TEMPLATE.html?slide=12" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="justify-content: center;">
+                    <div class="mini-testimonials">
+                        <div>
+                            <div class="mini-testimonial-avatar"></div>
+                            <div class="mini-testimonial-quote">"Quote 1"</div>
+                            <div class="mini-testimonial-name">Name</div>
+                        </div>
+                        <div>
+                            <div class="mini-testimonial-avatar"></div>
+                            <div class="mini-testimonial-quote">"Quote 2"</div>
+                            <div class="mini-testimonial-name">Name</div>
+                        </div>
+                        <div>
+                            <div class="mini-testimonial-avatar"></div>
+                            <div class="mini-testimonial-quote">"Quote 3"</div>
+                            <div class="mini-testimonial-name">Name</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Multi-Testimonial</h3>
+                <p>Multiple endorsements. <code>.multi-testimonial</code></p>
+                <button class="copy-prompt" data-class=".multi-testimonial">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Timeline -->
+        <a href="deck-TEMPLATE.html?slide=13" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-label">Process</div>
+                    <div class="mini-title">Timeline</div>
+                    <div class="mini-timeline">
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 1</div>
+                            <div class="mini-timeline-title">Discovery</div>
+                        </div>
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 2</div>
+                            <div class="mini-timeline-title">Research</div>
+                        </div>
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 3</div>
+                            <div class="mini-timeline-title">Design</div>
+                        </div>
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 4</div>
+                            <div class="mini-timeline-title">Build</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Timeline</h3>
+                <p>Process flows, project phases. <code>.timeline</code></p>
+                <button class="copy-prompt" data-class=".timeline">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Big Metric -->
+        <a href="deck-TEMPLATE.html?slide=14" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="justify-content: center; text-align: center;">
+                    <div class="mini-stat">47%</div>
+                    <div class="mini-stat-desc">Description of what this metric means and why it matters.</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Big Metric</h3>
+                <p>Impact numbers, KPIs. <code>.big-metric</code></p>
+                <button class="copy-prompt" data-class=".big-metric">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Full-Bleed Caption -->
+        <a href="deck-TEMPLATE.html?slide=6" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="padding: 0;">
+                    <div class="mini-full-bleed">
+                        <div class="mini-full-bleed-media"></div>
+                        <div class="mini-full-bleed-caption">Brief description of what's shown</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Full-Bleed Caption</h3>
+                <p>Showcase screenshots, demos. <code>.full-bleed-caption</code></p>
+                <button class="copy-prompt" data-class=".full-bleed-caption">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Image Callout -->
+        <a href="deck-TEMPLATE.html?slide=7" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-callout-container">
+                        <div class="mini-callout mini-callout-left">
+                            Feature 1 <span class="mini-callout-line"></span>
+                        </div>
+                        <div class="mini-callout-image"></div>
+                        <div class="mini-callout mini-callout-right">
+                            <span class="mini-callout-line"></span> Feature 2
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Image Callout</h3>
+                <p>UI annotation, feature highlights. <code>.image-callout</code></p>
+                <button class="copy-prompt" data-class=".image-callout">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Principles -->
+        <a href="deck-TEMPLATE.html?slide=15" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide">
+                    <div class="mini-title" style="margin-bottom: 8px;">Principles</div>
+                    <div class="mini-principles">
+                        <div class="mini-principle-card">
+                            <div class="mini-principle-label">Principle 1</div>
+                            <div class="mini-principle-text">What you believe.</div>
+                        </div>
+                        <div class="mini-principle-card">
+                            <div class="mini-principle-label">Principle 2</div>
+                            <div class="mini-principle-text">How it guides.</div>
+                        </div>
+                        <div class="mini-principle-card">
+                            <div class="mini-principle-label">Principle 3</div>
+                            <div class="mini-principle-text">What you achieve.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Principles</h3>
+                <p>Values, guidelines, rules. <code>.principles</code></p>
+                <button class="copy-prompt" data-class=".principles">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Highlight -->
+        <a href="deck-TEMPLATE.html?slide=16" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="justify-content: center;">
+                    <div class="mini-highlight">
+                        <div class="mini-title">Highlight Title</div>
+                        <div class="mini-subtitle">Use this to call attention to a single important thing.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Highlight</h3>
+                <p>Single important point. <code>.highlight</code></p>
+                <button class="copy-prompt" data-class=".highlight">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- Title Secondary -->
+        <a href="deck-TEMPLATE.html?slide=17" class="preview-card">
+            <div class="preview-thumbnail">
+                <div class="mini-slide" style="justify-content: center; align-items: center; text-align: center;">
+                    <div class="mini-title">Section Title</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>Title Secondary</h3>
+                <p>Centered title only, section breaks. <code>.title-secondary</code></p>
+                <button class="copy-prompt" data-class=".title-secondary">Copy prompt</button>
+            </div>
+        </a>
+
+    </div>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+        });
+
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-theme');
+        }
+
+        // Copy prompt on button click
+        document.querySelectorAll('.copy-prompt').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const slideClass = btn.dataset.class;
+                const prompt = `use this ${slideClass}`;
+
+                try {
+                    await navigator.clipboard.writeText(prompt);
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = 'Copy prompt';
+                        btn.classList.remove('copied');
+                    }, 1500);
+                } catch (err) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = prompt;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = 'Copy prompt';
+                        btn.classList.remove('copied');
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

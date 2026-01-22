@@ -167,7 +167,7 @@
         .case-study-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 1.5rem;
             padding: 1.5rem 0;
             border-bottom: 1px solid var(--border);
             text-decoration: none;
@@ -183,8 +183,18 @@
             opacity: 0.7;
         }
 
+        .case-study-thumbnail {
+            flex-shrink: 0;
+            width: 200px;
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: var(--card-bg);
+        }
+
         .case-study-content {
             flex: 1;
+            min-width: 0;
         }
 
         .case-study-title {
@@ -248,6 +258,13 @@
 
             .case-study-item {
                 padding: 1.25rem 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .case-study-thumbnail {
+                width: 100%;
+                height: 180px;
             }
 
             .case-study-title {
@@ -259,7 +276,7 @@
             }
 
             .case-study-arrow {
-                margin-left: 1rem;
+                display: none;
             }
         }
     </style>
@@ -275,6 +292,7 @@
 
         <div class="case-studies-list">
             <a href="personio-agent-experience.html" class="case-study-item">
+                <img src="assets/portfolio-media/personio/personio-assistant-0.png" alt="Personio Agent Experience" class="case-study-thumbnail">
                 <div class="case-study-content">
                     <div class="case-study-title">Personio Agent Experience</div>
                     <div class="case-study-description">An overview of work I lead to drive the strategy, design, and architecture of the Personio Assistant.</div>
@@ -288,6 +306,7 @@
             </a>
 
             <a href="personio-assistant-ux.html" class="case-study-item">
+                <img src="assets/portfolio-media/personio/personio-assistant-1.png" alt="Personio Assistant Improvements" class="case-study-thumbnail">
                 <div class="case-study-content">
                     <div class="case-study-title">Personio Assistant Improvements</div>
                     <div class="case-study-description">An overview of work I did to modernize the Personio Assistant.</div>

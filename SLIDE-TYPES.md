@@ -8,6 +8,7 @@ This document describes all available slide types in the deck template. Use this
 
 | Slide Type | Best For | Class Name |
 |------------|----------|------------|
+| Presentation Cover | Multi-deck landing pages | `.presentation-cover` |
 | Title | Opening slides, case study intros | (default) |
 | Split | Feature explanations with visuals | `.split` |
 | Split Square | Square media (1:1) alongside text | `.split.split-square` |
@@ -29,6 +30,96 @@ This document describes all available slide types in the deck template. Use this
 ---
 
 ## Slide Types by Category
+
+### Presentation Cover
+
+#### Presentation Cover Page
+**Purpose:** Landing page for multi-deck presentations or portfolio collections.
+
+**Best for:**
+- Portfolio landing pages
+- Multi-case-study presentations
+- Interview presentation entry points
+
+**Structure:**
+- Eyebrow text (category label)
+- Large title (your name or presentation title)
+- Subtitle (tagline or description)
+- Navigation links to individual decks
+- Footer with social links
+
+**When to use:** Create as a standalone HTML file to serve as the entry point for a collection of decks.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Title</title>
+    <link rel="stylesheet" href="deck.css">
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+    </button>
+
+    <div class="presentation-cover">
+        <div class="cover-content">
+            <p class="cover-eyebrow">Design Portfolio</p>
+            <h1 class="cover-title">Your Name</h1>
+            <p class="cover-subtitle">Your tagline or description.</p>
+
+            <nav class="deck-nav">
+                <a href="deck-1.html" class="deck-link">
+                    <div class="deck-link-content">
+                        <span class="deck-number">01</span>
+                        <span class="deck-title">First Deck Title</span>
+                    </div>
+                    <span class="deck-arrow">→</span>
+                </a>
+                <a href="deck-2.html" class="deck-link">
+                    <div class="deck-link-content">
+                        <span class="deck-number">02</span>
+                        <span class="deck-title">Second Deck Title</span>
+                    </div>
+                    <span class="deck-arrow">→</span>
+                </a>
+            </nav>
+        </div>
+
+        <footer class="cover-footer">
+            <a href="#">LinkedIn</a>
+            <a href="#">Substack</a>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle (inline for standalone pages)
+        const themeToggle = document.getElementById('theme-toggle');
+        function toggleTheme() {
+            const isDark = document.body.classList.contains('dark-theme') ||
+                (!document.body.classList.contains('light-theme') &&
+                 window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.body.classList.remove('light-theme', 'dark-theme');
+            document.body.classList.add(isDark ? 'light-theme' : 'dark-theme');
+            localStorage.setItem('theme', isDark ? 'light-theme' : 'dark-theme');
+        }
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) document.body.classList.add(savedTheme);
+    </script>
+</body>
+</html>
+```
+
+---
 
 ### Opening & Closing
 

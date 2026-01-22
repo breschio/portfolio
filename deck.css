@@ -253,26 +253,31 @@ body {
     max-height: 60vh;
 }
 
-/* Split with strip media (Slack messages, wide horizontal) */
+/* Split with strip media (9:16 portrait, right column) */
 .split.split-strip {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
 }
 
 .split.split-strip .split-content {
-    max-width: 700px;
+    max-width: 100%;
+    order: 1;
 }
 
 .split.split-strip .split-media {
-    justify-content: flex-start;
+    order: 2;
+    justify-content: center;
+    align-items: center;
 }
 
-.split.split-strip .split-media img {
+.split.split-strip .split-media img,
+.split.split-strip .split-media .placeholder {
     width: auto;
     max-width: 100%;
-    max-height: 200px;
+    aspect-ratio: 9 / 16;
+    max-height: 70vh;
     border-radius: var(--space-2);
-    border: 1px solid var(--border);
+    object-fit: cover;
 }
 
 /* ===========================================
@@ -603,13 +608,14 @@ body {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-1);
+    margin-bottom: var(--space-2);
+    font-size: var(--type-caption);
 }
 
 .meta-item .value {
     color: var(--text);
     font-family: 'Space Grotesk', sans-serif;
-    font-size: var(--type-caption);
+    font-size: var(--type-body);
 }
 
 .meta-item a {
@@ -977,6 +983,26 @@ body {
     font-size: var(--type-body);
     color: var(--text-secondary);
     max-width: 480px;
+}
+
+/* ===========================================
+   LAYOUT: Title Secondary (centered title only)
+   =========================================== */
+.slide.title-secondary {
+    justify-content: center;
+    text-align: center;
+}
+
+.slide.title-secondary .slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+}
+
+.slide.title-secondary h2 {
+    font-size: calc(var(--type-display) * 0.65);
+    margin-bottom: 0;
 }
 
 /* ===========================================
@@ -1562,5 +1588,505 @@ body.dark-theme .theme-toggle .sun-icon {
     .slide.highlight .slide-content {
         grid-template-columns: 1fr;
         gap: var(--space-6);
+    }
+}
+
+/* ===========================================
+   LAYOUT: Presentation Cover Page
+   A landing page for multi-deck presentations
+   =========================================== */
+.presentation-cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-16);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.cover-content {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.cover-eyebrow {
+    font-size: var(--type-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: var(--space-4);
+}
+
+.cover-title {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.02em;
+}
+
+.cover-subtitle {
+    font-size: var(--type-body);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-16);
+    line-height: var(--type-body-leading);
+}
+
+.cover-for {
+    font-size: var(--type-caption);
+    color: var(--text-muted);
+    margin: var(--space-4) auto var(--space-8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.cover-for .company-logo {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Baseten logo styling */
+.baseten-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgb(25, 231, 110);
+    margin-bottom: var(--space-8);
+}
+
+.baseten-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.baseten-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0;
+}
+
+/* Cover page avatar */
+.cover-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: var(--space-6);
+    object-fit: cover;
+}
+
+/* Reduce spacing between subtitle and "DESIGN PRESENTATION FOR" */
+.cover-subtitle {
+    margin-bottom: var(--space-4);
+}
+
+.cover-for {
+    margin-bottom: var(--space-4);
+}
+
+.deck-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.deck-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-6) var(--space-8);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s ease;
+}
+
+.deck-link:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+}
+
+.deck-link-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.deck-number {
+    font-size: var(--type-caption);
+    font-weight: 600;
+    color: var(--text-muted);
+    width: 24px;
+}
+
+.deck-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.deck-arrow {
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+}
+
+.deck-link:hover .deck-arrow {
+    transform: translateX(4px);
+    color: var(--accent);
+}
+
+.cover-footer {
+    position: fixed;
+    bottom: var(--space-8);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-8);
+    font-size: var(--type-caption);
+    color: var(--text-muted);
+}
+
+.cover-footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.cover-footer a:hover {
+    color: var(--accent);
+}
+
+/* Footer theme toggle */
+.footer-theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.footer-theme-toggle:hover {
+    color: var(--accent);
+}
+
+.footer-theme-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.footer-theme-toggle .icon-moon { display: block; }
+.footer-theme-toggle .icon-sun { display: none; }
+
+body.dark-theme .footer-theme-toggle .icon-moon { display: none; }
+body.dark-theme .footer-theme-toggle .icon-sun { display: block; }
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme):not(.dark-theme) .footer-theme-toggle .icon-moon { display: none; }
+    body:not(.light-theme):not(.dark-theme) .footer-theme-toggle .icon-sun { display: block; }
+}
+
+/* ===========================================
+   MINIMAL COVER VARIANT
+   Design-forward, dramatic whitespace
+   =========================================== */
+.presentation-cover.minimal {
+    justify-content: space-between;
+    padding: var(--space-12) var(--space-16);
+}
+
+.presentation-cover.minimal .cover-content {
+    text-align: left;
+    width: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+}
+
+.presentation-cover.minimal .cover-header {
+    position: absolute;
+    top: var(--space-12);
+    left: var(--space-16);
+    right: var(--space-16);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.presentation-cover.minimal .cover-for-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-caption);
+    color: var(--text-muted);
+    text-transform: lowercase;
+}
+
+.presentation-cover.minimal .cover-for-inline .baseten-icon {
+    width: 16px;
+    height: 16px;
+    color: rgb(25, 231, 110);
+}
+
+.presentation-cover.minimal .cover-for-inline .baseten-text {
+    font-size: var(--type-caption);
+    font-weight: 600;
+    color: rgb(25, 231, 110);
+}
+
+.presentation-cover.minimal .cover-title {
+    font-size: clamp(72px, 15vw, 180px);
+    font-weight: 500;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.deck-nav-minimal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-12);
+}
+
+.deck-nav-minimal a {
+    font-size: var(--type-caption);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.deck-nav-minimal a:hover {
+    color: var(--text);
+}
+
+.deck-nav-minimal a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.2s ease;
+}
+
+.deck-nav-minimal a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .presentation-cover.minimal {
+        padding: var(--space-8);
+    }
+
+    .presentation-cover.minimal .cover-header {
+        top: var(--space-8);
+        left: var(--space-8);
+        right: var(--space-8);
+    }
+
+    .presentation-cover.minimal .cover-title {
+        font-size: clamp(48px, 12vw, 120px);
+    }
+}
+
+/* Cover page theme toggle */
+.presentation-cover #theme-toggle {
+    position: fixed;
+    top: var(--space-6);
+    right: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.presentation-cover #theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.presentation-cover #theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Cover page theme icon visibility */
+.presentation-cover .icon-moon { display: block; }
+.presentation-cover .icon-sun { display: none; }
+
+body.dark-theme .presentation-cover .icon-moon { display: none; }
+body.dark-theme .presentation-cover .icon-sun { display: block; }
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme):not(.dark-theme) .presentation-cover .icon-moon { display: none; }
+    body:not(.light-theme):not(.dark-theme) .presentation-cover .icon-sun { display: block; }
+}
+
+@media (max-width: 768px) {
+    .presentation-cover {
+        padding: var(--space-8);
+    }
+
+    .deck-link {
+        padding: var(--space-4) var(--space-6);
+    }
+
+    .cover-footer {
+        gap: var(--space-6);
+    }
+}
+
+/* ===========================================
+   ULTRA-MINIMAL COVER VARIANT
+   Dramatic centered design with maximum whitespace
+   =========================================== */
+.presentation-cover.ultra-minimal {
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-8);
+    position: relative;
+}
+
+.presentation-cover.ultra-minimal .cover-content {
+    text-align: center;
+    width: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.presentation-cover.ultra-minimal .cover-title {
+    font-size: clamp(80px, 18vw, 220px);
+    font-weight: 400;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    margin: 0;
+}
+
+.presentation-cover.ultra-minimal .cover-for-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: var(--space-8);
+}
+
+.presentation-cover.ultra-minimal .cover-for-inline .baseten-icon {
+    width: 14px;
+    height: 14px;
+    color: rgb(25, 231, 110);
+}
+
+.presentation-cover.ultra-minimal .cover-for-inline .baseten-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgb(25, 231, 110);
+    letter-spacing: 0.15em;
+}
+
+.presentation-cover.ultra-minimal .cover-branding {
+    position: fixed;
+    top: var(--space-8);
+    left: var(--space-8);
+}
+
+.presentation-cover.ultra-minimal .branding-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+}
+
+.presentation-cover.ultra-minimal .branding-link:hover {
+    color: var(--text);
+}
+
+.presentation-cover.ultra-minimal .deck-nav-ultra {
+    display: flex;
+    gap: var(--space-8);
+    margin-top: var(--space-12);
+}
+
+.presentation-cover.ultra-minimal .deck-nav-ultra a {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.2s ease;
+}
+
+.presentation-cover.ultra-minimal .deck-nav-ultra a:hover {
+    color: var(--text);
+}
+
+.presentation-cover.ultra-minimal .cover-footer {
+    position: fixed;
+    bottom: var(--space-8);
+    right: var(--space-8);
+    left: auto;
+    display: flex;
+    gap: var(--space-6);
+}
+
+.presentation-cover.ultra-minimal #theme-toggle {
+    position: fixed;
+    top: auto;
+    bottom: var(--space-8);
+    left: var(--space-8);
+    right: auto;
+    background: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .presentation-cover.ultra-minimal .cover-title {
+        font-size: clamp(48px, 14vw, 100px);
+    }
+
+    .presentation-cover.ultra-minimal .deck-nav-ultra {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .presentation-cover.ultra-minimal .cover-footer {
+        display: none;
     }
 }

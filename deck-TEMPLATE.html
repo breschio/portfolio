@@ -18,6 +18,36 @@
     <link rel="stylesheet" href="deck.css">
 </head>
 <body>
+    <!-- ============================================
+         PRESENTATION COVER PAGE (standalone file)
+         Use for: Multi-deck presentations, portfolio landing pages
+         Structure: Title, subtitle, navigation to individual decks
+         Note: This is a standalone page, not part of the deck scroll
+
+         Example usage in a separate file:
+
+         <div class="presentation-cover">
+             <div class="cover-content">
+                 <p class="cover-eyebrow">Design Portfolio</p>
+                 <h1 class="cover-title">Your Name</h1>
+                 <p class="cover-subtitle">Your tagline or description.</p>
+                 <nav class="deck-nav">
+                     <a href="deck-1.html" class="deck-link">
+                         <div class="deck-link-content">
+                             <span class="deck-number">01</span>
+                             <span class="deck-title">First Deck</span>
+                         </div>
+                         <span class="deck-arrow">→</span>
+                     </a>
+                 </nav>
+             </div>
+             <footer class="cover-footer">
+                 <a href="#">Link 1</a>
+                 <a href="#">Link 2</a>
+             </footer>
+         </div>
+         ============================================ -->
+
     <div class="deck" id="deck">
         <!-- ============================================
              OPENING & CLOSING SLIDES
@@ -393,6 +423,16 @@
                 <p class="highlight-text">Use this slide to call attention to a single important thing. Keep it short and sweet—link to relevant resources if needed.</p>
             </div>
         </section>
+
+        <!-- TITLE SECONDARY SLIDE
+             Use for: Section breaks, chapter dividers, transition moments
+             Structure: Centered title only, no description
+        -->
+        <section class="slide title-secondary" data-slide="title-secondary">
+            <div class="slide-content">
+                <h2>Section Title</h2>
+            </div>
+        </section>
     </div>
 
     <!-- Breadcrumb -->
@@ -408,7 +448,7 @@
     <div class="progress" id="progress"></div>
 
     <!-- Slide counter -->
-    <div class="slide-counter" id="counter">1 / 17</div>
+    <div class="slide-counter" id="counter">1 / 18</div>
 
     <!-- Navigation hint -->
     <div class="nav-hint">← → or swipe</div>

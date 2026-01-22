@@ -154,13 +154,31 @@
         }
     }
 
-    // Initialize first slide with animation
+    // ===========================================
+    // URL PARAMETER HANDLING
+    // ===========================================
+    function getInitialSlide() {
+        const params = new URLSearchParams(window.location.search);
+        const slideParam = params.get('slide');
+        if (slideParam !== null) {
+            const index = parseInt(slideParam, 10);
+            if (!isNaN(index) && index >= 0 && index < totalSlides) {
+                return index;
+            }
+        }
+        return 0;
+    }
+
+    // Initialize slide from URL or default to first
     document.addEventListener('DOMContentLoaded', () => {
+        const initialSlide = getInitialSlide();
+        currentSlide = initialSlide;
+
         // Add active class after brief delay to trigger animation
         setTimeout(() => {
-            if (slides[0]) {
-                slides[0].classList.add('active');
-                triggerCountUpForSlide(slides[0]);
+            if (slides[currentSlide]) {
+                updateSlide();
+                triggerCountUpForSlide(slides[currentSlide]);
             }
         }, 100);
     });
