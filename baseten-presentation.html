@@ -7,43 +7,60 @@
     <link rel="stylesheet" href="deck.css">
 </head>
 <body>
-    <div class="presentation-cover ultra-minimal">
-        <header class="cover-branding">
-            <a href="index.html" class="branding-link">bresch.io</a>
-        </header>
-
+    <div class="presentation-cover left-aligned stacked">
         <div class="cover-content">
-            <h1 class="cover-title">Terrence<br>Breschi</h1>
-
-            <div class="cover-for-inline">
-                <span>for</span>
+            <div class="cover-for-inline large">
+                <span>Portfolio review for</span>
                 <svg class="baseten-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2.316 4.8h14.682v4.8H7.31a.302.302 0 00-.308.3v4.2c0 .171.14.3.308.3h9.688v4.8h-4.686a.302.302 0 00-.308.3v4.2c0 .171.141.3.308.3h4.378a.297.297 0 00.308-.3v-4.5h4.694a.302.302 0 00.308-.3v-4.2c0-.171-.14-.3-.308-.3h-4.694V9.6h4.694A.302.302 0 0022 9.3V5.1c0-.171-.14-.3-.308-.3h-4.694V.3c0-.171-.14-.3-.308-.3H2.316A.31.31 0 002 .3v4.2c0 .171.14.3.316.3z"></path></svg>
                 <span class="baseten-text">Baseten</span>
             </div>
-
-            <nav class="deck-nav-ultra">
-                <a href="#introduction">Intro</a>
-                <a href="personio-assistant-ux-deck.html">Assistant</a>
-                <a href="drawbridge-deck.html">Drawbridge</a>
-                <a href="personio-agent-deck.html">Agent</a>
-            </nav>
+            <h1 class="cover-title">Terrence<br>Breschi</h1>
+            <div class="cover-simple-list stacked-list">
+                <a href="intro-deck.html" class="cover-list-item">
+                    <span class="number">1</span>
+                    <div class="cover-list-content">
+                        <h4>Intro</h4>
+                        <p>Background and what I'm looking for</p>
+                    </div>
+                </a>
+                <a href="personio-assistant-deck.html" class="cover-list-item">
+                    <span class="number">2</span>
+                    <div class="cover-list-content">
+                        <h4>Assistant</h4>
+                        <p>Elevating the UX at Personio</p>
+                    </div>
+                </a>
+                <a href="drawbridge-deck.html" class="cover-list-item">
+                    <span class="number">3</span>
+                    <div class="cover-list-content">
+                        <h4>Drawbridge</h4>
+                        <p>Visual task annotation for AI coding agents</p>
+                    </div>
+                </a>
+                <a href="personio-agent-deck.html" class="cover-list-item">
+                    <span class="number">4</span>
+                    <div class="cover-list-content">
+                        <h4>Agent</h4>
+                        <p>Designing proactive AI experiences</p>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <button id="theme-toggle" class="footer-theme-toggle" aria-label="Toggle theme">
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="5"/>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            </svg>
-        </button>
-
-        <footer class="cover-footer">
+        <footer class="cover-footer-right">
             <a href="https://www.linkedin.com/in/tbreschi/">Li</a>
             <a href="https://terrencebreschi.substack.com/">Sb</a>
             <a href="https://github.com/tbreschi">Gh</a>
             <a href="index.html">Web</a>
+            <button id="theme-toggle" class="footer-theme-toggle" aria-label="Toggle theme">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+            </button>
         </footer>
     </div>
 
@@ -76,6 +93,13 @@
         if (savedTheme) {
             document.body.classList.add(savedTheme);
         }
+
+        // Keyboard navigation - right arrow advances to intro deck
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                window.location.href = 'intro-deck.html';
+            }
+        });
     </script>
 </body>
 </html>

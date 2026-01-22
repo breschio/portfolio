@@ -192,6 +192,12 @@
         if (currentSlide < totalSlides - 1) {
             currentSlide++;
             updateSlide();
+        } else {
+            // At last slide - check for next deck
+            const nextDeck = document.body.dataset.nextDeck || deck?.dataset.nextDeck;
+            if (nextDeck) {
+                window.location.href = nextDeck;
+            }
         }
     }
 
