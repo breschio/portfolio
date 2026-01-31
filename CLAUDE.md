@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a design portfolio site built as a modular slide deck presentation system. The main entry point is `decks/cover-deck.html` which links to individual case study decks.
+This is a design portfolio site built as a modular slide deck presentation system. The main entry point is `decks/v1/cover-deck.html` which links to individual case study decks.
 
 ## Development
 
