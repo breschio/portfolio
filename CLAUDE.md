@@ -18,11 +18,12 @@ npx serve
 ## Slide Deck Architecture
 
 ### Core Files (DO NOT MODIFY unless adding new features)
-- `deck.css` - Single source of truth for all deck styles
-- `deck.js` - Navigation, animations, count-up effects, theme toggle
+- `decks/templates/deck.css` - Single source of truth for all deck styles
+- `decks/templates/deck.js` - Navigation, animations, count-up effects, theme toggle
 
 ### Reference Files
 - `deck-TEMPLATE.html` - Master template with all slide type examples
+- `decks/templates/slide-templates-preview.html` - Visual preview of all slide types
 - `SLIDE-TYPES.md` - Full documentation with code snippets
 
 ### Creating New Decks
