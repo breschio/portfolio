@@ -2208,22 +2208,25 @@ body.dark-theme .presentation-cover .icon-sun { display: block; }
 .presentation-cover.left-aligned .cover-for-inline.large .baseten-icon {
     width: 26px;
     height: 26px;
+    color: #BFFF00;
 }
 
 .presentation-cover.left-aligned .cover-for-inline.large .baseten-text {
     font-size: 21px;
+    font-weight: 600;
+    color: #BFFF00;
 }
 
 .presentation-cover.left-aligned .cover-for-inline .baseten-icon {
     width: 14px;
     height: 14px;
-    color: var(--text);
+    color: #BFFF00;
 }
 
 .presentation-cover.left-aligned .cover-for-inline .baseten-text {
     font-size: 12px;
     font-weight: 600;
-    color: var(--text);
+    color: #BFFF00;
 }
 
 .presentation-cover.left-aligned .deck-nav-left {
