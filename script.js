@@ -520,10 +520,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Event listeners
-        avatar.addEventListener('mousedown', startDragging);
-        window.addEventListener('mousemove', drag); // Use window to catch drags outside element
-        window.addEventListener('mouseup', stopDragging);
+        // Drag listeners disabled — avatar stays fixed after roll-in
+        // avatar.addEventListener('mousedown', startDragging);
+        // window.addEventListener('mousemove', drag);
+        // window.addEventListener('mouseup', stopDragging);
         
         // Handle window resize to update boundaries
         window.addEventListener('resize', () => {

@@ -330,7 +330,8 @@ html {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    cursor: grab;
+    object-fit: cover;
+    cursor: default;
     user-select: none;
     -webkit-user-drag: none;
 }

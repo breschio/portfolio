@@ -51,6 +51,44 @@
             font-size: 16px;
         }
 
+        .preview-prompt {
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .preview-prompt code {
+            background: var(--surface);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            color: var(--accent);
+        }
+
+        .preview-section-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .preview-section-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .preview-section-links a {
+            font-size: 14px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .preview-section-links a:hover {
+            text-decoration: underline;
+        }
+
         .preview-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -76,6 +114,7 @@
         }
 
         .preview-thumbnail {
+            position: relative;
             aspect-ratio: 16 / 10;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
@@ -83,6 +122,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .preview-number {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1;
         }
 
         .preview-info {
@@ -535,15 +591,22 @@
     </button>
 
     <header class="preview-header">
+        <p class="preview-prompt"><code>use this .presentation-cover</code> for the cover page.</p>
         <h1>Slide Templates</h1>
         <p>Visual reference for all available slide layouts. Click any template to view it in presentation mode.</p>
+        <nav class="preview-section-links">
+            <span class="preview-section-label">Sections:</span>
+            <a href="../v4/design-case-studies-deck.html?slide=2">01 — From Chatbot to Agent</a>
+            <a href="../v4/design-case-studies-deck.html?slide=23">02 — Drawbridge</a>
+        </nav>
     </header>
 
     <div class="preview-grid">
 
-        <!-- Presentation Cover -->
+        <!-- 1. Presentation Cover -->
         <a href="../v1/cover-deck.html" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">1</span>
                 <div class="mini-slide" style="text-align: center; justify-content: center;">
                     <div class="mini-label">Design Portfolio</div>
                     <div class="mini-title">Your Name</div>
@@ -561,15 +624,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Presentation Cover</h3>
+                <h3>1. Presentation Cover</h3>
                 <p>Multi-deck landing pages. <code>.presentation-cover</code></p>
                 <button class="copy-prompt" data-class=".presentation-cover">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Title -->
+        <!-- 2. Title -->
         <a href="deck-TEMPLATE.html?slide=0" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">2</span>
                 <div class="mini-slide">
                     <div class="mini-title">Project Title</div>
                     <div class="mini-subtitle">A brief description of the project and its significance.</div>
@@ -581,15 +645,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Title</h3>
+                <h3>2. Title</h3>
                 <p>Opening slides, case study intros. <code>default</code></p>
                 <button class="copy-prompt" data-class="default (no class needed)">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Split -->
+        <!-- 3. Split -->
         <a href="deck-TEMPLATE.html?slide=1" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">3</span>
                 <div class="mini-slide">
                     <div class="mini-split">
                         <div class="mini-split-content">
@@ -603,15 +668,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Split</h3>
+                <h3>3. Split</h3>
                 <p>Feature explanations with visuals. <code>.split</code></p>
                 <button class="copy-prompt" data-class=".split">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Split Square -->
+        <!-- 4. Split Square -->
         <a href="deck-TEMPLATE.html?slide=2" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">4</span>
                 <div class="mini-slide">
                     <div class="mini-split">
                         <div class="mini-split-content">
@@ -624,15 +690,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Split Square</h3>
+                <h3>4. Split Square</h3>
                 <p>Square media (1:1 aspect ratio). <code>.split.split-square</code></p>
                 <button class="copy-prompt" data-class=".split.split-square">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Split Strip -->
+        <!-- 5. Split Strip -->
         <a href="deck-TEMPLATE.html?slide=3" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">5</span>
                 <div class="mini-slide">
                     <div class="mini-label">Section</div>
                     <div class="mini-title">Headline</div>
@@ -641,15 +708,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Split Strip</h3>
+                <h3>5. Split Strip</h3>
                 <p>9:16 portrait media on right. <code>.split.split-strip</code></p>
                 <button class="copy-prompt" data-class=".split.split-strip">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Split Edge-Bleed -->
+        <!-- 6. Split Edge-Bleed -->
         <a href="deck-TEMPLATE.html?slide=4" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">6</span>
                 <div class="mini-slide" style="padding: 0;">
                     <div class="mini-edge-bleed">
                         <div class="mini-edge-text">
@@ -664,15 +732,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Split Edge-Bleed</h3>
+                <h3>6. Split Edge-Bleed</h3>
                 <p>Hero moments, dramatic visuals. <code>.split-edge-bleed</code></p>
                 <button class="copy-prompt" data-class=".split-edge-bleed">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Media Centered -->
+        <!-- 7. Media Centered -->
         <a href="deck-TEMPLATE.html?slide=5" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">7</span>
                 <div class="mini-slide mini-media-centered">
                     <div class="mini-label">Section</div>
                     <div class="mini-title">Media Headline</div>
@@ -683,15 +752,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Media Centered</h3>
+                <h3>7. Media Centered</h3>
                 <p>Hero images at natural aspect ratio. <code>.media-centered</code></p>
                 <button class="copy-prompt" data-class=".media-centered">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Comparison -->
+        <!-- 8. Comparison -->
         <a href="deck-TEMPLATE.html?slide=8" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">8</span>
                 <div class="mini-slide">
                     <div class="mini-label">Section</div>
                     <div class="mini-title">Comparison</div>
@@ -708,15 +778,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Comparison</h3>
+                <h3>8. Comparison</h3>
                 <p>Before/after, A/B comparisons. <code>.comparison</code></p>
                 <button class="copy-prompt" data-class=".comparison">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Simple List -->
+        <!-- 9. Simple List -->
         <a href="deck-TEMPLATE.html?slide=9" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">9</span>
                 <div class="mini-slide">
                     <div class="mini-split">
                         <div>
@@ -732,30 +803,32 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Simple List</h3>
+                <h3>9. Simple List</h3>
                 <p>Numbered points with descriptions. <code>.simple-list</code></p>
                 <button class="copy-prompt" data-class=".simple-list">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Quote -->
+        <!-- 10. Quote -->
         <a href="deck-TEMPLATE.html?slide=10" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">10</span>
                 <div class="mini-slide" style="justify-content: center;">
                     <div class="mini-quote">"A key insight with emphasized words for impact."</div>
                     <div style="text-align: center; font-size: 8px; color: var(--text-muted);">— Attribution</div>
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Quote</h3>
+                <h3>10. Quote</h3>
                 <p>Key insights, thesis statements. <code>.quote</code></p>
                 <button class="copy-prompt" data-class=".quote">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Testimonial -->
+        <!-- 11. Testimonial -->
         <a href="deck-TEMPLATE.html?slide=11" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">11</span>
                 <div class="mini-slide" style="justify-content: center; align-items: center; text-align: center;">
                     <div class="mini-testimonial-avatar" style="width: 32px; height: 32px; margin-bottom: 8px;"></div>
                     <div class="mini-quote" style="padding: 8px;">"A quote from a specific person."</div>
@@ -763,15 +836,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Testimonial</h3>
+                <h3>11. Testimonial</h3>
                 <p>Single person endorsement. <code>.testimonial</code></p>
                 <button class="copy-prompt" data-class=".testimonial">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Multi-Testimonial -->
+        <!-- 12. Multi-Testimonial -->
         <a href="deck-TEMPLATE.html?slide=12" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">12</span>
                 <div class="mini-slide" style="justify-content: center;">
                     <div class="mini-testimonials">
                         <div>
@@ -793,15 +867,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Multi-Testimonial</h3>
+                <h3>12. Multi-Testimonial</h3>
                 <p>Multiple endorsements. <code>.multi-testimonial</code></p>
                 <button class="copy-prompt" data-class=".multi-testimonial">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Timeline -->
+        <!-- 13. Timeline -->
         <a href="deck-TEMPLATE.html?slide=13" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">13</span>
                 <div class="mini-slide">
                     <div class="mini-label">Process</div>
                     <div class="mini-title">Timeline</div>
@@ -826,30 +901,32 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Timeline</h3>
+                <h3>13. Timeline</h3>
                 <p>Process flows, project phases. <code>.timeline</code></p>
                 <button class="copy-prompt" data-class=".timeline">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Big Metric -->
+        <!-- 14. Big Metric -->
         <a href="deck-TEMPLATE.html?slide=14" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">14</span>
                 <div class="mini-slide" style="justify-content: center; text-align: center;">
                     <div class="mini-stat">47%</div>
                     <div class="mini-stat-desc">Description of what this metric means and why it matters.</div>
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Big Metric</h3>
+                <h3>14. Big Metric</h3>
                 <p>Impact numbers, KPIs. <code>.big-metric</code></p>
                 <button class="copy-prompt" data-class=".big-metric">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Full-Bleed Caption -->
+        <!-- 15. Full-Bleed Caption -->
         <a href="deck-TEMPLATE.html?slide=6" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">15</span>
                 <div class="mini-slide" style="padding: 0;">
                     <div class="mini-full-bleed">
                         <div class="mini-full-bleed-media"></div>
@@ -858,15 +935,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Full-Bleed Caption</h3>
+                <h3>15. Full-Bleed Caption</h3>
                 <p>Showcase screenshots, demos. <code>.full-bleed-caption</code></p>
                 <button class="copy-prompt" data-class=".full-bleed-caption">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Image Callout -->
+        <!-- 16. Image Callout -->
         <a href="deck-TEMPLATE.html?slide=7" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">16</span>
                 <div class="mini-slide">
                     <div class="mini-callout-container">
                         <div class="mini-callout mini-callout-left">
@@ -880,15 +958,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Image Callout</h3>
+                <h3>16. Image Callout</h3>
                 <p>UI annotation, feature highlights. <code>.image-callout</code></p>
                 <button class="copy-prompt" data-class=".image-callout">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Principles -->
+        <!-- 17. Principles -->
         <a href="deck-TEMPLATE.html?slide=15" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">17</span>
                 <div class="mini-slide">
                     <div class="mini-title" style="margin-bottom: 8px;">Principles</div>
                     <div class="mini-principles">
@@ -908,15 +987,16 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Principles</h3>
+                <h3>17. Principles</h3>
                 <p>Values, guidelines, rules. <code>.principles</code></p>
                 <button class="copy-prompt" data-class=".principles">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Highlight -->
+        <!-- 18. Highlight -->
         <a href="deck-TEMPLATE.html?slide=16" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">18</span>
                 <div class="mini-slide" style="justify-content: center;">
                     <div class="mini-highlight">
                         <div class="mini-title">Highlight Title</div>
@@ -925,21 +1005,22 @@
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Highlight</h3>
+                <h3>18. Highlight</h3>
                 <p>Single important point. <code>.highlight</code></p>
                 <button class="copy-prompt" data-class=".highlight">Copy prompt</button>
             </div>
         </a>
 
-        <!-- Title Secondary -->
+        <!-- 19. Title Secondary -->
         <a href="deck-TEMPLATE.html?slide=17" class="preview-card">
             <div class="preview-thumbnail">
+                <span class="preview-number">19</span>
                 <div class="mini-slide" style="justify-content: center; align-items: center; text-align: center;">
                     <div class="mini-title">Section Title</div>
                 </div>
             </div>
             <div class="preview-info">
-                <h3>Title Secondary</h3>
+                <h3>19. Title Secondary</h3>
                 <p>Centered title only, section breaks. <code>.title-secondary</code></p>
                 <button class="copy-prompt" data-class=".title-secondary">Copy prompt</button>
             </div>
