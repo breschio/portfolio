@@ -7,7 +7,7 @@
     'use strict';
 
     const deck = document.getElementById('deck');
-    const slides = document.querySelectorAll('.slide');
+    const slides = deck ? deck.querySelectorAll('.slide') : [];
     const progress = document.getElementById('progress');
     const counter = document.getElementById('counter');
     const totalSlides = slides.length;
@@ -117,7 +117,7 @@
     // ===========================================
     // PROGRESS DOTS
     // ===========================================
-    if (progress) {
+    if (progress && deck) {
         slides.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.className = 'progress-dot' + (i === 0 ? ' active' : '');
@@ -132,6 +132,7 @@
     // SLIDE NAVIGATION
     // ===========================================
     function updateSlide() {
+        if (!deck) return;
         deck.style.transform = `translateX(-${currentSlide * 100}vw)`;
 
         slides.forEach((slide, i) => {
@@ -169,8 +170,9 @@
         return 0;
     }
 
-    // Initialize slide from URL or default to first
+    // Initialize slide from URL or default to first (skip when no deck, e.g. preview page)
     document.addEventListener('DOMContentLoaded', () => {
+        if (!deck) return;
         const initialSlide = getInitialSlide();
         currentSlide = initialSlide;
 
