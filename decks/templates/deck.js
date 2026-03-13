@@ -129,6 +129,52 @@
     const dots = document.querySelectorAll('.progress-dot');
 
     // ===========================================
+    // DYNAMIC BREADCRUMB FROM TITLE SLIDES
+    // ===========================================
+    const breadcrumbEl = document.querySelector('.breadcrumb');
+    const sections = [];
+
+    if (deck) {
+        slides.forEach((slide, i) => {
+            const type = slide.dataset.slide;
+            if (type === 'title' || type === 'title-secondary') {
+                const heading = slide.querySelector('h1') || slide.querySelector('h2');
+                if (heading) {
+                    sections.push({ index: i, label: heading.textContent.trim() });
+                }
+            }
+        });
+    }
+
+    function getSectionForSlide(slideIndex) {
+        let current = sections[0] || null;
+        for (const section of sections) {
+            if (section.index <= slideIndex) {
+                current = section;
+            } else {
+                break;
+            }
+        }
+        return current;
+    }
+
+    function updateBreadcrumb() {
+        if (!breadcrumbEl || sections.length < 1) return;
+
+        const root = sections[0];
+        const current = getSectionForSlide(currentSlide);
+
+        let html = `<span class="breadcrumb-root">${root.label}</span>`;
+
+        if (current && current.index !== root.index) {
+            html += `<span class="breadcrumb-separator">/</span>`;
+            html += `<span class="breadcrumb-current">${current.label}</span>`;
+        }
+
+        breadcrumbEl.innerHTML = html;
+    }
+
+    // ===========================================
     // SLIDE NAVIGATION
     // ===========================================
     function updateSlide() {
@@ -140,7 +186,6 @@
             const isNowActive = i === currentSlide;
             slide.classList.toggle('active', isNowActive);
 
-            // Trigger count-up when slide becomes active
             if (!wasActive && isNowActive) {
                 triggerCountUpForSlide(slide);
             }
@@ -153,6 +198,8 @@
         if (counter) {
             counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
         }
+
+        updateBreadcrumb();
     }
 
     // ===========================================

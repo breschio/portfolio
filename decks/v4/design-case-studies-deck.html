@@ -13,282 +13,557 @@
 <body>
     <div class="deck" id="deck">
 
-        <!-- Slide 1 — Title (outline: presentation-cover content as title slide) -->
+        <!-- Slide 1 — title (Cover) -->
         <section class="slide" data-slide="title">
             <div class="slide-content">
                 <h1>Terrence Breschi</h1>
-                <p class="large">Product designer building and shipping with AI.</p>
+                <p class="large">I'm a product designer building and shipping with AI.</p>
                 <div class="meta">
                     <div class="meta-item">
-                        <div class="label">Portfoio Review</div>
-                        <div class="value">2026</div>
+                        <div class="value">Prepared for Ramp</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 2 — Intro Full-Bleed -->
-        <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
+        <!-- Slide 2 — split (Who I am) -->
+        <section class="slide" data-slide="split">
             <div class="slide-content">
-                <div class="media-area">
-                    <div class="placeholder" data-label="Sizzle reel. Pizza catnip mode, drawbridge, dotgrid, assistant welcome mat, @mentions"></div>
+                <div class="split">
+                    <div class="split-content">
+                        <h2>I move fast, learn things, and ship code.</h2>
+                        <p class="large">Working with AI has amplified my curiosity, and enabled me to do more than ever before.</p>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Sizzle reel. Pizza catnip mode, team photos, drawbridge, dotgrid, assistant welcome mat, @mentions"></div>
+                    </div>
                 </div>
-                <div class="caption-bar">I think, plan, design, orchestrate, code, test, and ship.</div>
             </div>
         </section>
 
-        <!-- Slide 3 — Section: 01 From Chatbot to Agent -->
+        <!-- Slide 3 — title (Personio Assistant: Cover) -->
+        <section class="slide" data-slide="title">
+            <div class="slide-content">
+                <h1>Personio Assistant</h1>
+                <p class="large">How I helped evolve the AI Assistant from a broken UX to a full-blown agentic strategy</p>
+                <div class="meta">
+                    <div class="meta-item">
+                        <div class="label">Project</div>
+                        <div class="value">Personio AI Team</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Role</div>
+                        <div class="value">Product Designer</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Timeline</div>
+                        <div class="value">May 2025–Current</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4 — split (Personio Assistant: What it is) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>"The Intelligent HR Platform"</h2>
+                        <p class="large">We aim to leverage AI to help our customers gain efficiencies and lower costs.</p>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Personio assistant video from website"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5 — split content-left (Our Customers) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Overextended HR professionals</h2>
+                        <p class="large">HR admins, managers and employees at German tech companies. These folks had high expectations — and real pain.</p>
+                        <ul>
+                            <li>Drowning in questions from employees</li>
+                            <li>Managing employee job changes</li>
+                            <li>Juggling roles between admin and strategy</li>
+                            <li>Excited yet skeptical appetites for AI</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Stock image of a Personio persona (unhappy but professional, AI-gen)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6 — split (Our Solution) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>The Assistant</h2>
+                        <p class="large">An AI assistant built to provide insights while deflecting common questions</p>
+                        <ol>
+                            <li>Deflect support tickets from employees</li>
+                            <li>Understand your company data</li>
+                            <li>Produce insights and visualizations</li>
+                            <li>Empower you to become a strategic partner</li>
+                        </ol>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Image of the first version of the assistant (cropped to focus on input)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7 — split (We have some problems) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>CSAT was at 16%</h2>
+                        <p class="large">We have some fundamental issues surfaced in dogfooding</p>
+                        <ol>
+                            <li>Issues with data accuracy impact trust</li>
+                            <li>Issues with UX impact usability and look and feel</li>
+                            <li>These projects were not on the roadmap</li>
+                        </ol>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Images of complaints from dogfooding"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8 — full-bleed-caption (Problems I identified) -->
+        <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
+            <div class="slide-content">
+                <div class="media-area">
+                    <div class="placeholder" data-label="Screenshot of Figma file with Assistant. Callout problems"></div>
+                </div>
+                <div class="caption-bar">Original Figma Files</div>
+            </div>
+        </section>
+
+        <!-- Slide 9 — split content-left (How I fix problems) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>How I fix problems</h2>
+                        <p class="large">I like to prototype on production</p>
+                        <ul>
+                            <li>Move fast with smaller scope</li>
+                            <li>Build functionality iteratively</li>
+                            <li>Test the UX and share</li>
+                            <li>Identify issues I wouldn't catch otherwise</li>
+                            <li>Then refine with Design Systems</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video of me prototyping"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10 — title-secondary (Projects) -->
         <section class="slide title-secondary" data-slide="title-secondary">
             <div class="slide-content">
-                <h2>01 — From Chatbot to Agent</h2>
-                <p class="large">Personio. Evolving an AI assistant from broken UX to agentic strategy</p>
+                <h2>Projects</h2>
             </div>
         </section>
 
-        <!-- Slide 4 — Full-Bleed: The Problem -->
-        <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
+        <!-- Slide 11 — split content-left (Welcome Mat) -->
+        <section class="slide" data-slide="split">
             <div class="slide-content">
-                <div class="media-area">
-                    <div class="placeholder" data-label="Assistant with callout problems — over-designed figma, under-developed product"></div>
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Welcome Mat</h2>
+                        <ul>
+                            <li>Removed warning dialog</li>
+                            <li>Added greeting</li>
+                            <li>Generated directional prompts</li>
+                            <li>Designed animation interaction</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Before (Image) / After (video)"></div>
+                    </div>
                 </div>
-                <div class="caption-bar">Inherited a product with beautiful files but broken UX</div>
             </div>
         </section>
 
-        <!-- Slide 5 — Stat: The starting point -->
+        <!-- Slide 12 — split content-left (Refined Input) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Refined Input</h2>
+                        <ul>
+                            <li>Preserves initial height</li>
+                            <li>Adapts to three lines of text</li>
+                            <li>Makes room for future tools</li>
+                            <li>Persistent disclaimer below</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Broken input (Image) / After (video)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 13 — split content-left (Thinking state) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Thinking state</h2>
+                        <ul>
+                            <li>Incorporates branding</li>
+                            <li>Smooths a sometimes laggy loading experience</li>
+                            <li>Creates foundation for chain-of-thought</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Thinking state (Image) / After (video)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 14 — split content-left (Error States) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Error States</h2>
+                        <ul>
+                            <li>Improved descriptions of what went wrong</li>
+                            <li>Includes timestamp on hover</li>
+                            <li>Copy meta information to share/troubleshoot</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Error states · Timestamps · Copy/paste (Figma)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 15 — split content-left (Stop Button) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Stop Button</h2>
+                        <ul>
+                            <li>Enables user to stop the stream</li>
+                            <li>Introduces more control and trust into the system</li>
+                            <li>Lays foundation for other input-driven actions</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Before (Image) / After (video)"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 16 — split content-left (Full screen) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h2>Full screen</h2>
+                        <ul>
+                            <li>Enables user to make Assistant full screen</li>
+                            <li>Encourages AI-Native usage</li>
+                            <li>Lays foundation for dedicated surface</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video of transition"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 17 — split (Encouraged to ship) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>Designers must ship code</h2>
+                        <p class="large">Encouraged by leadership to use AI driven design processes</p>
+                        <ol>
+                            <li>First designer to ship code to production</li>
+                            <li>Developed a tutorial and documentation for others</li>
+                            <li>Eventually used by the COO to ship his own code</li>
+                        </ol>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video from my tutorial showing designers how to ship to production"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 18 — big-metric (CSAT improvement) -->
         <section class="slide big-metric" data-slide="big-metric">
             <div class="slide-content">
-                <h3>The starting point</h3>
-                <div class="stat">16%</div>
-                <div class="stat-description">CSAT score. Dogfooding channel surfaced failures (CEO, COO, HR Team). Assistant couldn't answer basic questions on the page. UX covered the content users were trying to read.</div>
-            </div>
-        </section>
-
-        <!-- Slide 6 — Browser Frame: Getting the lay of the land -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-content">
-                        <h3>Design Process</h3>
-                        <h2>Getting the lay of the land</h2>
-                        <ul>
-                            <li>Iterative roadmap improvements first</li>
-                            <li>Extended panel, NBAs</li>
-                            <li>Building trust while learning the codebase</li>
-                        </ul>
-                    </div>
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Video: clicking to open the headcount report"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 7 — Right Media: Researching agentic -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-content">
-                        <h3>Design Process</h3>
-                        <h2>Researching what "agentic" actually means</h2>
-                        <ul>
-                            <li>Audited which experiences were truly agentic vs. scripted</li>
-                            <li>Mapped interaction patterns across competitors</li>
-                            <li>Experimented with designs that could evolve the UX</li>
-                        </ul>
-                    </div>
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Input explorations, comet behavior, content drawer states"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 8 — Left Media: Framework for self-shippable improvements -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Framework / prioritization view"></div>
-                    </div>
-                    <div class="split-content">
-                        <h3>Product Thinking: Self-Directed UX Strategy</h3>
-                        <h2>A framework for self-shippable improvements</h2>
-                        <ul>
-                            <li>Identified that UX quality was the primary CSAT driver</li>
-                            <li>Mapped customer feedback to issues I could fix myself</li>
-                            <li>Prioritized by impact × ability to ship without eng dependency</li>
-                            <li>Began contributing code directly. Landed first commit</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 9 — Before/After: Onboarding -->
-        <section class="slide" data-slide="comparison">
-            <div class="slide-content">
-                <h3>Product Thinking: Self-Directed UX Strategy</h3>
-                <h2>Onboarding: removed modal dialog, added inline disclaimer</h2>
-                <p>Simplified first-run experience. Reduced friction, set honest expectations.</p>
-                <div class="comparison">
-                    <div class="comparison-side">
-                        <div class="label">Before</div>
-                        <div class="placeholder" data-label="Modal onboarding"></div>
-                    </div>
-                    <div class="comparison-side">
-                        <div class="label">After</div>
-                        <div class="placeholder" data-label="Inline disclaimer"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 10 — Before/After: Input redesign -->
-        <section class="slide" data-slide="comparison">
-            <div class="slide-content">
-                <h3>Product Thinking: Self-Directed UX Strategy</h3>
-                <h2>Input redesign: clarity and usability</h2>
-                <p>Refined the input area. Clearer affordances, better visual hierarchy.</p>
-                <div class="comparison">
-                    <div class="comparison-side">
-                        <div class="label">Before</div>
-                        <div class="placeholder" data-label="Original input"></div>
-                    </div>
-                    <div class="comparison-side">
-                        <div class="label">After</div>
-                        <div class="placeholder" data-label="Redesigned input"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 11 — Browser Frame: Foundational UX patterns -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-content">
-                        <h3>UI/UX & Interaction Design</h3>
-                        <h2>Foundational UX patterns</h2>
-                        <ul>
-                            <li>Error states · Timestamps · Copy/paste · Welcome mat onboarding</li>
-                        </ul>
-                    </div>
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Error handling, timestamp, copy/paste, welcome mat"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 12 — Full-Bleed: Full-screen view -->
-        <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
-            <div class="slide-content">
-                <div class="media-area">
-                    <div class="placeholder" data-label="Video: full-screen prototype"></div>
-                </div>
-                <div class="caption-bar">Full-screen view: richer interactions beyond the sidebar</div>
-            </div>
-        </section>
-
-        <!-- Slide 13 — Content: Visual design decisions -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-content">
-                        <h3>Visual Design & Execution</h3>
-                        <h2>Visual design decisions</h2>
-                        <ul>
-                            <li>Evolved component system from over-designed Figma to shippable, systematic UI</li>
-                            <li>Established consistent type scale, spacing, and color usage across assistant states</li>
-                            <li>Designed motion patterns for assistant responses: fade-in, streaming text, action indicators</li>
-                        </ul>
-                    </div>
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Component breakdown, before/after polish, type scale, motion specs"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 14 — Stat: Measurable impact -->
-        <section class="slide big-metric" data-slide="big-metric">
-            <div class="slide-content">
-                <h3>Impact & Strategic Pivot</h3>
-                <div class="stat">16% → 22%</div>
+                <h3>Improvement</h3>
+                <div class="stat">16% → 27%</div>
                 <div class="stat-description">CSAT improvement. UX improvements directly drove satisfaction gains. Built trust with leadership through visible, self-shipped impact. NYC office was let go, except our team.</div>
             </div>
         </section>
 
-        <!-- Slide 15 — Pull Quote -->
-        <section class="slide quote" data-slide="quote">
+        <!-- Slide 19 — comparison (Directly influencing CSAT) -->
+        <section class="slide comparison" data-slide="comparison">
             <div class="slide-content">
-                <blockquote>"We're supposed to be building <span class="highlight">agents</span>!?"</blockquote>
-                <p class="attribution">Team hadn't identified agent jobs yet. Deterministic vs. non-deterministic. We needed buy-in from resource-constrained teams.</p>
-            </div>
-        </section>
-
-        <!-- Slide 16 — Left Media: Developing the AI strategy -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Strategy diagram. MCP architecture, federated model"></div>
+                <h3>Result</h3>
+                <h2>Directly influencing CSAT</h2>
+                <div class="comparison-grid">
+                    <div class="comparison-before">
+                        <div class="placeholder" data-label="CSAT: Look and feel improvements"></div>
                     </div>
-                    <div class="split-content">
-                        <h3>Product Thinking: AI Strategy</h3>
-                        <h2>Developing the AI strategy</h2>
-                        <ul>
-                            <li>Fix UX by embedding assistant in the sidebar</li>
-                            <li>Use page context to inform responses. A model others could adopt</li>
-                            <li>Each product area gets its own MCP Server</li>
-                            <li>Federated architecture for cross-team adoption</li>
-                        </ul>
+                    <div class="comparison-after">
+                        <div class="placeholder" data-label="CSAT: UX improvements"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 17 — Right Media: Building PAX -->
+        <!-- Slide 20 — media-centered (But agents are the future) -->
+        <section class="slide media-centered" data-slide="media-centered">
+            <div class="slide-content">
+                <h2>But agents are the future</h2>
+                <div class="media-area">
+                    <div class="placeholder" data-label="Sizzle reel of Pedro and Paul's prototypes"></div>
+                </div>
+                <p class="caption">Leadership had been sold a vision of autonomous agents.</p>
+            </div>
+        </section>
+
+        <!-- Slide 21 — split (Designing an agentic foundation) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
-                        <h3>Building PAX (the prototype)</h3>
-                        <h2>Building my own agent to prove the strategy</h2>
+                        <h2>Designing an agentic foundation</h2>
+                        <p class="large">I drove the conversation with Product and Engineering</p>
                         <ul>
-                            <li>First attempt: tried pulling the existing back-end. Architecture was too isolated</li>
-                            <li>Pivot: built a Chrome extension using the Side Panel API</li>
-                            <li>Essentially the embedded experience we wanted for the product</li>
-                            <li>Used Claude SDK for skills and browser use capabilities</li>
+                            <li>Understand the customer stories we'll be solving for</li>
+                            <li>Align on an architecture that scales</li>
+                            <li>Refine the existing UX (sidebar, context)</li>
+                            <li>Feature the existing UI (don't cannibalize)</li>
+                            <li>Federating the AI model for other teams to build</li>
                         </ul>
                     </div>
                     <div class="split-media">
-                        <div class="placeholder" data-label="Opening PAX → fade to embedded assistant"></div>
+                        <div class="placeholder" data-label="Screenshots from my AI Strategy deck"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 18 — Full-Bleed: Context-first design -->
+        <!-- Slide 22 — split (I'm gonna build my own) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>I'm gonna build my own</h2>
+                        <p class="large">Tried pulling the existing back-end.</p>
+                        <ul>
+                            <li>Architecture was too isolated</li>
+                            <li>I was dependent upon front and back end devs</li>
+                            <li>Realized I was still covering the UI</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Image of a broken build"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 23 — split (Pivot to PAX) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>Pivot to PAX</h2>
+                        <p class="large">I prototyped my own Assistant</p>
+                        <ul>
+                            <li>Built a Chrome extension using the Side Panel API</li>
+                            <li>Understood how this would affect the UI</li>
+                            <li>What type of responses I need to design for</li>
+                            <li>How much can the Claude SDK do on its own?</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video of opening PAX"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 24 — split (PAX Performs!) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h2>PAX Performs!</h2>
+                        <p class="large">More capable than our production assistant</p>
+                        <ul>
+                            <li>Can answer questions by reading page</li>
+                            <li>Can navigate the UI using browser tools</li>
+                            <li>Became a "discovery tool" for teams who want to design</li>
+                            <li>Quick prototypes validate ideas before engineering investment</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video of browser controlled"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 25 — media-centered (Shaping the vision) -->
+        <section class="slide media-centered" data-slide="media-centered">
+            <div class="slide-content">
+                <h2>Shaping the vision</h2>
+                <div class="media-area">
+                    <div class="placeholder" data-label="Screenshot of Alex Grant + Stephan"></div>
+                </div>
+                <p class="caption">Got funding from CPO + CTO for developing our AI Vision</p>
+            </div>
+        </section>
+
+        <!-- Slide 26 — split content-left (Collaboration with Design Systems) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h3>Collaboration</h3>
+                        <h2>Collaboration with Design Systems</h2>
+                        <p class="large">Worked with Design Systems Team to build out this framework</p>
+                        <ul>
+                            <li>Collaborating on the page frame and sidebar interaction</li>
+                            <li>Understanding the needs of a dedicated view</li>
+                            <li>Put together a workshop in Amsterdam</li>
+                            <li>Have broken out the entire anatomy of the project</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Zoltan's video of different directions / Image of anatomy docs"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 27 — simple-list (Assistant Principles) -->
+        <section class="slide" data-slide="simple-list">
+            <div class="slide-content">
+                <div class="simple-list">
+                    <div class="simple-list-left">
+                        <h3>Principles</h3>
+                        <div class="simple-list-title">Assistant Principles</div>
+                    </div>
+                    <div class="simple-list-items">
+                        <div class="simple-list-item">
+                            <span class="number">1</span>
+                            <div class="simple-list-item-content">
+                                <h4>Gets out of your way</h4>
+                            </div>
+                        </div>
+                        <div class="simple-list-item">
+                            <span class="number">2</span>
+                            <div class="simple-list-item-content">
+                                <h4>Complements the existing experience</h4>
+                            </div>
+                        </div>
+                        <div class="simple-list-item">
+                            <span class="number">3</span>
+                            <div class="simple-list-item-content">
+                                <h4>Features the existing UI</h4>
+                            </div>
+                        </div>
+                        <div class="simple-list-item">
+                            <span class="number">4</span>
+                            <div class="simple-list-item-content">
+                                <h4>Does not impair use of the product if AI is off</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 28 — split content-left (Sidebar slot) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Projects</h3>
+                        <h2>Sidebar slot</h2>
+                        <p class="large">Getting the assistant out of the way</p>
+                        <ul>
+                            <li>Lives alongside your page</li>
+                            <li>Helps you to improve your existing workflows</li>
+                            <li>Adjusts to your preferences</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Opening the sidebar, dragging to adjust"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 29 — split content-left (Context drawer) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Projects</h3>
+                        <h2>Context drawer</h2>
+                        <p class="large">Building a dynamic input that adapts to your intent</p>
+                        <ul>
+                            <li>What does the assistant see?</li>
+                            <li>What can you do?</li>
+                            <li>How does this change?</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Page context, Dynamic prompts, @mentions, tools"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 30 — full-bleed-caption (Browser use) -->
         <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
             <div class="slide-content">
                 <div class="media-area">
-                    <div class="placeholder" data-label="Video: context drawer — current page + available prompts/workflows"></div>
+                    <div class="placeholder" data-label="Video: assistant taking over the browser with navigation map"></div>
                 </div>
-                <div class="caption-bar">Context-first design: signaling page awareness</div>
+                <div class="caption-bar">Browser use: the agent navigates the UI, Human in the loop interaction</div>
             </div>
         </section>
 
-        <!-- Slide 19 — Left Media: Agent response patterns -->
+        <!-- Slide 31 — split content-left (Agent response patterns) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Status → chain of thought → actions → result"></div>
-                    </div>
                     <div class="split-content">
-                        <h3>UI/UX: Agent Interaction Design</h3>
+                        <h3>Projects</h3>
                         <h2>Agent response patterns</h2>
                         <ul>
                             <li><span class="highlight">Status indicators</span> — what is the agent doing?</li>
@@ -297,99 +572,167 @@
                             <li><span class="highlight">Result</span> — here's your answer</li>
                         </ul>
                     </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Status → chain of thought → actions → result"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 20 — Full-Bleed: Browser use -->
-        <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
-            <div class="slide-content">
-                <div class="media-area">
-                    <div class="placeholder" data-label="Video: assistant taking over the browser with navigation map"></div>
-                </div>
-                <div class="caption-bar">Browser use: the agent navigates the UI</div>
-            </div>
-        </section>
-
-        <!-- Slide 21 — Content: Visual system for agent -->
+        <!-- Slide 32 — split content-left (Full Screen) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
-                        <h3>Visual Design: Agent Visual System</h3>
-                        <h2>Visual system for the agent experience</h2>
+                        <h3>Projects</h3>
+                        <h2>Full Screen</h2>
+                        <p class="large">Anticipating AI-first work</p>
                         <ul>
-                            <li>Designed status states: thinking, acting, complete, error. Each with distinct visual language</li>
-                            <li>Context drawer: page-aware UI with available workflows, styled for information density</li>
-                            <li>Prompt engineering as design: system prompt "soft skills" shaped the interaction personality</li>
+                            <li>Dedicated space</li>
+                            <li>Kickoff workflows</li>
+                            <li>Manage them asynchronously</li>
                         </ul>
                     </div>
                     <div class="split-media">
-                        <div class="placeholder" data-label="Component sheet: agent states, context drawer variants, prompt architecture"></div>
+                        <div class="placeholder" data-label="Open page in full screen, starting a promotion workflow"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 22 — Stat: Outcome -->
-        <section class="slide big-metric" data-slide="big-metric">
-            <div class="slide-content">
-                <h3>Impact</h3>
-                <div class="stat">PAX &gt; Assistant</div>
-                <div class="stat-description">Faster, more accurate, more capable. Answered questions the production assistant could not. Solutions began landing in the actual product. Gained CPO and CTO investment as a discovery tool.</div>
-            </div>
-        </section>
-
-        <!-- Slide 23 — Right Media: From prototype to product strategy -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-content">
-                        <h3>Impact</h3>
-                        <h2>From prototype to product strategy</h2>
-                        <ul>
-                            <li>PAX became the tool used to craft the AI vision</li>
-                            <li>Quick prototypes validate ideas before engineering investment</li>
-                            <li>New interaction patterns: @mentions, mode switching, context passing</li>
-                            <li>Beginning to invest in observability and evaluation</li>
-                        </ul>
-                    </div>
-                    <div class="split-media">
-                        <div class="placeholder" data-label="@mentions prototype + Slack screenshots"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 24 — Section: 02 Drawbridge -->
-        <section class="slide title-secondary" data-slide="title-secondary">
-            <div class="slide-content">
-                <h2>02 — Drawbridge</h2>
-                <p class="large">Designing developer tools. Figma comments for Cursor</p>
-            </div>
-        </section>
-
-        <!-- Slide 25 — Full-Bleed: The friction -->
+        <!-- Slide 33 — full-bleed-caption (Assistant V2 sizzle reel) -->
         <section class="slide full-bleed-caption" data-slide="full-bleed-caption">
             <div class="slide-content">
                 <div class="media-area">
-                    <div class="placeholder" data-label="Video: back-and-forth editing workflow"></div>
+                    <div class="placeholder" data-label="Sizzle reel of Assistant V2 (sidebar, fullscreen, workflows, agents)"></div>
                 </div>
-                <div class="caption-bar">The friction: constant context-switching between agent and browser</div>
+                <div class="caption-bar">Prototyping directly in production</div>
             </div>
         </section>
 
-        <!-- Slide 26 — Browser Frame: Hypothesis & tool design -->
+        <!-- Slide 34 — title (Drawbridge: Cover) -->
+        <section class="slide" data-slide="title">
+            <div class="slide-content">
+                <h1>Drawbridge</h1>
+                <p class="large">How I built a tool to solve for back and forth visual edits for front-end developers</p>
+                <div class="meta">
+                    <div class="meta-item">
+                        <div class="label">Project</div>
+                        <div class="value">Drawbridge</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Role</div>
+                        <div class="value">Product Designer &amp; Engineer</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">Timeline</div>
+                        <div class="value">June 2025–Current</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 35 — split content-left (Me. I am a vibecoder) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split content-left">
+                    <div class="split-content">
+                        <h3>Problem</h3>
+                        <h2>Me. I am a vibecoder</h2>
+                        <p class="large">I tell an LLM what to build</p>
+                        <ul>
+                            <li>I've been building games, websites, and apps</li>
+                            <li>AI accelerates this process</li>
+                            <li>But I inevitably have to tweak the app</li>
+                            <li>My process was breaking down with front-end tweaks</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video: Sizzle reel of my projects"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 36 — split (Problem was telling AI what to fix) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
-                        <h3>Design Process & Product Thinking</h3>
-                        <h2>Hypothesis & tool design</h2>
+                        <h3>Problem</h3>
+                        <h2>Problem was telling AI what to fix</h2>
+                        <p class="large">Describing what I want to change became taxing</p>
                         <ul>
-                            <li>Provide spatial context directly to AI</li>
-                            <li>Click DOM elements to annotate</li>
-                            <li>Draw rectangles over areas</li>
+                            <li>I created screenshots</li>
+                            <li>Annotated them with arrows</li>
+                            <li>Described the changes</li>
+                            <li>But LLM wouldn't always get it</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Image of annotation"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 37 — split (Takes a lot of time) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Problem</h3>
+                        <h2>Takes a lot of time</h2>
+                        <p class="large">Required lots of back and forth, babysitting changes, and making corrections</p>
+                        <ul>
+                            <li>Uploading those changes one by one</li>
+                            <li>Waiting for the results</li>
+                            <li>Trying again if the problem failed</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video: back-and-forth editing workflow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 38 — split (Hypothesis: What if I could leave a comment?) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Process</h3>
+                        <h2>What if I could leave a comment?</h2>
+                        <p class="large">And make sure Cursor has all context needed</p>
+                        <ul>
+                            <li>Leave comments "on" the website</li>
+                            <li>Provide element context directly to AI</li>
+                            <li>Do this from a plugin so I can keep my existing workflow</li>
+                            <li>Manage them like a tasklist</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Concept sketch / early prototype"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 39 — split (Leave "Figma comments" for Cursor) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Process</h3>
+                        <h2>Leave "Figma comments" for Cursor</h2>
+                        <p class="large">A familiar UX pattern with a different recipient</p>
+                        <ul>
+                            <li>Open the plugin</li>
+                            <li>Click an element</li>
+                            <li>Leave a comment</li>
+                            <li>Save it to the "moat"</li>
+                            <li>Info is saved in the backend</li>
                         </ul>
                     </div>
                     <div class="split-media">
@@ -399,54 +742,35 @@
             </div>
         </section>
 
-        <!-- Slide 27 — Left Media: Context-rich comment architecture -->
+        <!-- Slide 40 — split (Draw a rectangle) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Markdown prompt, JSON prompt, screenshots folder"></div>
-                    </div>
                     <div class="split-content">
-                        <h3>Design Process & Product Thinking</h3>
-                        <h2>Context-rich comment architecture</h2>
+                        <h3>Process</h3>
+                        <h2>Draw a rectangle</h2>
+                        <p class="large">Made it possible to capture multiple objects</p>
                         <ul>
-                            <li>Each comment bundles: natural language prompt + JSON structure + screenshot</li>
-                            <li>Maximum context for the AI agent in minimum tokens</li>
-                            <li>Task moat keeps track of all edits in one place</li>
+                            <li>Using Chrome's captureVisibleTab</li>
+                            <li>Passing a visual reference to the task</li>
+                            <li>Mapping the original square back to the UI for reference</li>
+                            <li>Migrated to Chrome Side Panel API for clean separation</li>
                         </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Drawing a rectangle to leave a comment, showing the highlight on the UI"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 28 — Right Media: From streaming to batching -->
+        <!-- Slide 41 — split content-left (UI evolution & Side Panel API) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
-                <div class="split">
+                <div class="split content-left">
                     <div class="split-content">
-                        <h3>UI/UX & Interaction</h3>
-                        <h2>From streaming to batching</h2>
-                        <ul>
-                            <li>Goal: stream tasks with maximum context to Cursor</li>
-                            <li>Settled for batching. Sends all comments in one go</li>
-                            <li>Fewer tokens on initial instructions, then agent processes sequentially</li>
-                            <li>10x my editing speed</li>
-                        </ul>
-                    </div>
-                    <div class="split-media">
-                        <div class="placeholder" data-label="Video: Cursor processing batched tasks"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 29 — Browser Frame: UI evolution & Side Panel API -->
-        <section class="slide" data-slide="split">
-            <div class="slide-content">
-                <div class="split">
-                    <div class="split-content">
-                        <h3>UI/UX & Interaction</h3>
-                        <h2>UI evolution & Side Panel API</h2>
+                        <h3>UI/UX &amp; Interaction</h3>
+                        <h2>UI evolution &amp; Side Panel API</h2>
                         <ul>
                             <li>Light/dark modes, sidebar transitions</li>
                             <li>Hit CSS isolation limits</li>
@@ -460,49 +784,108 @@
             </div>
         </section>
 
-        <!-- Slide 30 — Content: Visual design & craft -->
+        <!-- Slide 42 — split (Context-rich JSON annotations) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
-                        <h3>Visual Design</h3>
-                        <h2>Visual design & craft</h2>
+                        <h3>Process</h3>
+                        <h2>Context-rich JSON annotations</h2>
+                        <p class="large">Made available by task-driven workflows in markdown</p>
                         <ul>
-                            <li>Designed annotation overlay system: click targets, selection rectangles, comment pins</li>
-                            <li>Task moat UI: dense information display with clear status hierarchy</li>
-                            <li>Built light and dark themes. Evolved from injected CSS to isolated Side Panel</li>
+                            <li>Connect to a local file (security)</li>
+                            <li>Spins up task-list.md, task-list.json and screenshots folder</li>
+                            <li>Each comment writes to all three: natural language + JSON structure + screenshot ID</li>
+                            <li>Workflow instructs Cursor to read the files and update the code accordingly</li>
                         </ul>
                     </div>
                     <div class="split-media">
-                        <div class="placeholder" data-label="Annotation overlays, moat UI states, theme variants"></div>
+                        <div class="placeholder" data-label="Markdown prompt, JSON prompt, screenshots folder"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 31 — Bento Grid: Impact & recognition -->
-        <section class="slide principles" data-slide="principles">
+        <!-- Slide 43 — split content-left (Inspired workflow) -->
+        <section class="slide" data-slide="split">
             <div class="slide-content">
-                <h3>Impact</h3>
-                <h2>Impact & recognition</h2>
-                <div class="principles-grid">
-                    <div class="principle-card">
-                        <div class="principle-label">Featured by AI labs</div>
-                        <div class="principle-text">Featured on YouTube twice, drove adoption. Positive reviews gave new ideas for development. 10x personal editing velocity.</div>
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Process</h3>
+                        <h2>Inspired workflow</h2>
+                        <p class="large">Developed a method based on AI Dev Tasks</p>
+                        <ul>
+                            <li>Workflow instructs Cursor to read the task list</li>
+                            <li>Reference the JSON + Screenshots folder</li>
+                            <li>Update the code accordingly</li>
+                            <li>Works through all tasks until complete</li>
+                        </ul>
                     </div>
-                    <div class="principle-card">
-                        <div class="principle-label">Open source</div>
-                        <div class="principle-text"><strong>500+</strong> GitHub stars.</div>
-                    </div>
-                    <div class="principle-card">
-                        <div class="principle-label">OSS management</div>
-                        <div class="principle-text">Reviewed issues, created PRs. Managed releases, added Claude support.</div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Video of Cursor processing the tasks"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 32 — What Drives Me -->
+        <!-- Slide 44 — big-metric (10x faster iteration) -->
+        <section class="slide big-metric" data-slide="big-metric">
+            <div class="slide-content">
+                <h3>Result</h3>
+                <div class="stat">10x</div>
+                <div class="stat-description">Faster iteration. One change took 2–3 minutes, now takes 2–3 minutes for 10 changes.</div>
+            </div>
+        </section>
+
+        <!-- Slide 45 — split (Featured on AI Labs) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Result</h3>
+                        <h2>Featured on AI Labs</h2>
+                        <p class="large">Was featured twice by a favorite YouTube publisher</p>
+                        <ul>
+                            <li>A 10 minute deep-dive into the plugin</li>
+                            <li>Drove adoption on Github</li>
+                            <li>Positive reviews and issues gave new ideas for development</li>
+                            <li>Learned how to manage issues, PRs, releases</li>
+                            <li>Expanded support for Claude Code</li>
+                        </ul>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="YouTube video thumbnail / channel screenshot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 46 — big-metric (620+ Stars on Github) -->
+        <section class="slide big-metric" data-slide="big-metric">
+            <div class="slide-content">
+                <h3>Result</h3>
+                <div class="stat">620+</div>
+                <div class="stat-description">Stars on Github. First software project released on Github.</div>
+            </div>
+        </section>
+
+        <!-- Slide 47 — split (Approved for Chrome Web Store) -->
+        <section class="slide" data-slide="split">
+            <div class="slide-content">
+                <div class="split">
+                    <div class="split-content">
+                        <h3>Result</h3>
+                        <h2>Approved for Chrome Web Store</h2>
+                        <p class="large">First application I've published from start to finish</p>
+                    </div>
+                    <div class="split-media">
+                        <div class="placeholder" data-label="Image of the plugin in web store"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 48 — simple-list (What drives me) -->
         <section class="slide" data-slide="simple-list">
             <div class="slide-content">
                 <div class="simple-list">
@@ -544,7 +927,7 @@
             </div>
         </section>
 
-        <!-- Slide 33 — Thanks -->
+        <!-- Slide 49 — title (Thanks) -->
         <section class="slide" data-slide="title">
             <div class="slide-content">
                 <h1>Thanks</h1>
@@ -554,13 +937,9 @@
 
     </div>
 
-    <nav class="breadcrumb">
-        <a href="#">Presentation</a>
-        <span class="breadcrumb-separator">/</span>
-        <span class="breadcrumb-current">Design Case Studies</span>
-    </nav>
+    <nav class="breadcrumb"></nav>
     <div class="progress" id="progress"></div>
-    <div class="slide-counter" id="counter">1 / 33</div>
+    <div class="slide-counter" id="counter">1 / 49</div>
     <div class="nav-hint">← → or swipe</div>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
