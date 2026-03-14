@@ -56,7 +56,8 @@ bullets: (use bullets: with - item, or keypoints with 1. 2. 3.)
   2. Bullet
   3. Bullet
 meta_label, meta_value: If applicable (e.g. title slide)
-media: Placeholder caption shown inside the media as a guide for me
+media-description: Placeholder caption shown inside the media as a guide for me
+media: File path to the actual media asset
 notes: Presenter notes that are not visible on the slides
 
 Slide-type-specific fields (e.g. comparison_before_*, principle_cards, items) are in the Slide types table above.
@@ -78,9 +79,11 @@ meta_value: Prepared for Ramp
 slide_type: split
 
 section: Intro
-headline: I move fast, learn things, and ship code. 
-caption: Working with AI has amplified my curiosity, and enabled me to do more than ever before.
-media: Sizzle reel. Pizza catnip mode, team photos,  drawbridge, dotgrid, assistant welcome mat, @mentions
+heading: I move fast, learn things, and ship code.
+subheading: Working with AI has amplified my curiosity, and enabled me to do more than ever before.
+
+media-description: Sizzle reel. Pizza catnip mode, team photos, drawbridge, dotgrid, assistant welcome mat, @mentions
+media:
 
 ---
 
@@ -102,11 +105,12 @@ meta_timeline: May 2025–Current
 ## Slide 4 - Personio Assistant: What it is
 slide_type: split
 
+heading: "The Intelligent HR Platform"
+subheading: We aim to leverage AI to help our customers gain efficiencies and lower costs.
 
-headline: "The Intelligent HR Platform"
-caption: We aim to leverage AI to help our customers gain efficiencies and lower costs.
-media: Personio assistant video from website 
-note: This was attractive and hand-wavy at the same time
+media-description: Personio assistant video from website
+media:
+notes: This was attractive and hand-wavy at the same time
 
 ---
 
@@ -116,15 +120,16 @@ slide_type: split
 split_layout: content-left
 
 section: Customer Problems
-heading: Overextended HR professionals 
-subtitle: HR admins, managers and employees at German tech companies. These folks had high expectations — and real pain.
-
+heading: Overextended HR professionals
+subheading: HR admins, managers and employees at German tech companies. These folks had high expectations — and real pain.
 bullets:
   - Drowning in questions from employees
   - Managing employee job changes
   - Juggling roles between admin and strategy
-  - Excited yet skeptical appetites for AI 
-media: Stock image of a Personio persona (unhappy but professional, AI-gen)
+  - Excited yet skeptical appetites for AI
+
+media-description: Stock image of a Personio persona (unhappy but professional, AI-gen)
+media:
 notes: The spread of AI meant we had to build something that worked for everyone — and that set clear expectations early.
 
 ---
@@ -133,14 +138,16 @@ notes: The spread of AI meant we had to build something that worked for everyone
 slide_type: split
 
 section: Solution
-headline: The Assistant
-subtitle: An AI assistant built to provide insights while deflecting common questions
-key points:
-1. Deflect support tickets from employees
-2. Understand your company data
-3. Produce insights and visualizations
-4. Empower you to become a strategic partner
-media: Image of the first version of the assistant (cropped to focus on input)
+heading: The Assistant
+subheading: An AI assistant built to provide insights while deflecting common questions
+bullets:
+  - Deflect support tickets from employees
+  - Understand your company data
+  - Produce insights and visualizations
+  - Empower you to become a strategic partner
+
+media-description: Image of the first version of the assistant (cropped to focus on input)
+media:
 
 ---
 
@@ -148,15 +155,15 @@ media: Image of the first version of the assistant (cropped to focus on input)
 ## Slide 7 - We have some problems
 slide_type: split
 
-headline: CSAT was at 16%
-subtitle: We have some fundamental issues surfaced in Dogfooding
-key points:
+heading: CSAT was at 16%
+subheading: We have some fundamental issues surfaced in Dogfooding
+bullets:
+  - Issues with data accuracy impact trust
+  - Issues with UX impact usabilty and look and feel
+  - These projects were not on the roadmap
 
-1. Issues with data accuracy impact trust
-2. Issues with UX impact usabilty and look and feel
-3. These projects were not on the roadmap
-
-media: images of complaints from dogfooding
+media-description: images of complaints from dogfooding
+media:
 
 
 ---
@@ -172,17 +179,18 @@ notes: Designs were aspirational but one dimensional. UX had not been scoped, or
 
 ## Slide 9
 slide_type: split
-media: video of me prototoypeing 
 
 heading: How I fix problems
-subtitle: I like to prototype on production
+subheading: I like to prototype on production
 bullets:
-- move fast with smaller scope
-- Build functionality iteratively
-  - Test the UX and share 
+  - Move fast with smaller scope
+  - Build functionality iteratively
+  - Test the UX and share
   - Identify issues I wouldn't catch otherwise
   - Then refine with Design Systems
 
+media-description: video of me prototyping
+media:
 
 --- 
 
@@ -196,84 +204,103 @@ heading: Projects
 ## Slide 11
 slide_type: split
 split_layout: content-left
+
 heading: Welcome Mat
-Media: Before (Image) / AFTER (video)
 bullets:
-- removed warning dialog 
-- added greeting
-- generated directional prompts
-- designed animation interaction
+  - removed warning dialog
+  - added greeting
+  - generated directional prompts
+  - designed animation interaction
+
+media-description: Before (Image) / AFTER (video)
+media:
 notes: collaborated with eng on prompts the assistant could help direct employee queries could perform reliably well.
 
 
 ## Slide 12
 slide_type: split
 split_layout: content-left
-media: Broken input (Image) / AFTER (video)
+
 heading: Refined Input
 bullets:
-- Preserves initial height
-- adapts to three lines of text
-- makes room for future tools
-- persistent disclaimer below
+  - Preserves initial height
+  - adapts to three lines of text
+  - makes room for future tools
+  - persistent disclaimer below
+
+media-description: Broken input (Image) / AFTER (video)
+media:
 notes: collaborated with eng on prompts the assistant could help direct employee queries could perform reliably well.
 
 
 ## Slide 13
 slide_type: split
 split_layout: content-left
-media: Broken input (Image) / AFTER (video)
+
 heading: Thinking state
 bullets:
-- Incoporates branding
-- Smooths a sometimes laggy loading experience
-- Creates foundation for chain-of-thought
+  - Incoporates branding
+  - Smooths a sometimes laggy loading experience
+  - Creates foundation for chain-of-thought
+
+media-description: Broken input (Image) / AFTER (video)
+media:
 
 ## Slide 14
 slide_type: split
 split_layout: content-left
-media: Error states · Timestamps · Copy/paste  (Figma)
+
 heading: Error States
 bullets:
-- Improved descriptions of what went wrong
-- Includes timestamp on hover
-- Copy meta information to share/troubleshoot
+  - Improved descriptions of what went wrong
+  - Includes timestamp on hover
+  - Copy meta information to share/troubleshoot
+
+media-description: Error states · Timestamps · Copy/paste (Figma)
+media:
 
 
 ## Slide 15
 slide_type: split
 split_layout: content-left
+
 heading: Stop Button
-media: Before (Image) / AFTER (video)
 bullets:
-- Enables user to stop the stream
-- Intoduces more control and trust into the system
-- Lays foundation for other input-driven actions
+  - Enables user to stop the stream
+  - Intoduces more control and trust into the system
+  - Lays foundation for other input-driven actions
+
+media-description: Before (Image) / AFTER (video)
+media:
 
 
 ## Slide 16
 slide_type: split
 split_layout: content-left
+
 heading: Full screen
-media: Video of transition
 bullets:
-- Enables user to make Assistant full screen
-- Encourages AI-Native useage
-- Lays foundation for dedicated surface
+  - Enables user to make Assistant full screen
+  - Encourages AI-Native useage
+  - Lays foundation for dedicated surface
+
+media-description: Video of transition
+media:
 
 ---
 
 ## Slide 17 - Encouraged to ship
 slide_type: split
-media: sizzle reel (comments from Harbor)
-headline: Designers must ship code
-subtitle: Encoruaged by leaderhip to use AI driven design processes
 
-1. First designer to ship code to production
-2. Developed a tutotrial and documentation for others
-3. Eventually used by the COO to ship his own code
+heading: Designers must ship code
+subheading: Encoruaged by leaderhip to use AI driven design processes
+bullets:
+  - First designer to ship code to production
+  - Developed a tutotrial and documentation for others
+  - Eventually used by the COO to ship his own code
 
-media: video from my tutorial showing designers how to ship to production
+media-description: sizzle reel (comments from Harbor); video from my tutorial showing designers how to ship to production
+media:
 
 ---
 
@@ -304,35 +331,41 @@ notes: This was very compelling idea but there was no path there.
 
 ## Slide 21
 slide_type: split
-media: screenshots from my AI Strategy deck
+
 heading: Designing an agentic foundation
 subheading: I drove the conversation with Product and Engineering
+bullets:
   - Understand the customer stories we'll be solving for
   - Align on an architecture that scales
   - Refine the existing ux (sidebar, context)
   - Feature the existing UI (don't cannibalize)
   - Federating the ai model for other teams to build
- 
-Notes: Eventhough we gained alignment in person, it was met with resistence as the organization saw departures from key figures
+
+media-description: screenshots from my AI Strategy deck
+media:
+notes: Eventhough we gained alignment in person, it was met with resistence as the organization saw departures from key figures
 
 ---
 
 ## Slide 22
 slide_type: split
-media: Image of a broken build?
+
 heading: I'm gonna build my own
-subheading: Tried pulling the existing back-end. 
+subheading: Tried pulling the existing back-end.
 bullets:
   - Architecture was too isolated
   - I was depenent upon front and back end devs
   - Realized i was still covering the UI
 
+media-description: Image of a broken build?
+media:
+
 ---
 
 ## Slide 23
 slide_type: split
-media: Video of opening the pax
-heading: Pivot to PAX 
+
+heading: Pivot to PAX
 subheading: I prototyped my own Assistant
 bullets:
   - Built a Chrome extension using the Side Panel API
@@ -340,18 +373,24 @@ bullets:
   - What type of responses I need to design for
   - How much can the Claude SDK do on its own?
 
+media-description: Video of opening the pax
+media:
+
 ---
 
 ## Slide 24
 slide_type: split
-media: Video of browser controled
+
 heading: PAX Performs!
-subheading: More capable that our production assistant 
+subheading: More capable that our production assistant
 bullets:
   - Can answer questions by reading page
   - Can navigate the UI using browser tools
   - Became a "discovery tool" for teams who want to design
   - Quick prototypes validate ideas before engineering investment
+
+media-description: Video of browser controled
+media:
 
 
 ---
@@ -368,7 +407,7 @@ caption: Got funding from CPO + CTO for developing our AI Vision
 ## Slide 26
 slide_type: split
 split_layout: content-left
-media: Zoltan's video of different directions / Image of anatomy docs
+
 section: Collaboration
 heading: Collaboration with Design Systems
 subheading: Worked with Design Systems Team to build out this framework
@@ -378,9 +417,10 @@ bullets:
   - Put together a workshop in Amsterdam
   - Have broken out the entire anatomy of the project
 
----
+media-description: Zoltan's video of different directions / Image of anatomy docs
+media:
 
-PRINCIPLES
+---
 
 
 ## Slide 27
@@ -399,7 +439,7 @@ bullets:
 ## Slide 28
 slide_type: split
 split_layout: content-left
-media: Opening the sidebar, dragging to adjust
+
 section: Projects
 heading: Sidebar slot
 subheading: Getting the assistant out of the way
@@ -408,12 +448,14 @@ bullets:
   - helps you to improve your existing workflows
   - Adjusts to your preferences
 
+media-description: Opening the sidebar, dragging to adjust
+media:
 
 
 ## Slide 29
 slide_type: split
 split_layout: content-left
-media: Page context, Dynamic prompts, @mentions, tools 
+
 section: Projects
 heading: Context drawer
 subheading: Building a dynamic input that adapts to your intent
@@ -421,6 +463,9 @@ bullets:
   - What does the assistant see?
   - What can you do?
   - How does this change
+
+media-description: Page context, Dynamic prompts, @mentions, tools
+media:
 
 
 ## Slide 30
@@ -432,7 +477,7 @@ caption: Browser use: the agent navigates the UI, Human in the loop interaction
 ## Slide 31
 slide_type: split
 split_layout: content-left
-media: Status → chain of thought → actions → result
+
 section: Projects
 heading: Agent response patterns
 bullets:
@@ -441,11 +486,14 @@ bullets:
   - Actions taken — what did it change?
   - Result — here's your answer
 
+media-description: Status → chain of thought → actions → result
+media:
+
 
 ## Slide 32
 slide_type: split
 split_layout: content-left
-media: open page in full screen, starting a promotion workflow
+
 section: Projects
 heading: Full Screen
 subheading: Anticipating AI - first work
@@ -453,6 +501,9 @@ bullets:
   - Dedidcated space
   - Kickoff workflows
   - Manage them asyncronously
+
+media-description: open page in full screen, starting a promotion workflow
+media:
 
 ---
 
@@ -484,7 +535,7 @@ meta_timeline: June 2025 – Current
 ## Slide 35 - Customer
 slide_type: split
 split_layout: content-left
-media: Video: Sizzle reel of my projects
+
 section: Customer
 heading: I am a vibecoder
 subheading: I tell an LLM what to build
@@ -494,11 +545,14 @@ bullets:
   - But I inevitably have to tweak the app
   - My process was breaking down with front-end tweaks
 
+media-description: Video: Sizzle reel of my projects
+media: 
+
 ---
 
 ## Slide 36 - Problem
 slide_type: split
-media: Image of annotation
+
 section: Problem
 heading: Problem was telling AI what to fix
 subheading: Describing what I want to change became taxing
@@ -508,11 +562,14 @@ bullets:
   - Described the changes
   - But LLM wouldn't always get it
 
+media-description: Image of annotation
+media: assets/portfolio-media/drawbridge/drawbridge-annotation-old-solution.png
+
 ---
 
 ## Slide 37 - Problem
 slide_type: split
-media: Video: back-and-forth editing workflow
+
 section: Problem
 heading: Takes a lot of time
 subheading: Required lots of back and forth, babysitting changes, and making corrections
@@ -520,6 +577,9 @@ bullets:
   - Uploading those changes one by one
   - Waiting for the results
   - Trying again if the problem failed
+
+media-description: video of back-and-forth editing workflow
+media: assets/portfolio-media/drawbridge/drawbridge-problem.mp4
 
 ---
 
@@ -534,6 +594,9 @@ bullets:
   - Provide element context directly to AI
   - Do this from a plugin so I can keep my existing workflow
   - Manage them like a tasklist
+
+media-description: maybe an image of making a comment in figma
+media: assets/portfolio-media/drawbridge/figma-comment.png
 
 ---
 
@@ -550,11 +613,14 @@ bullets:
   - Save it to the "moat"
   - Info is saved in the backend
 
+media-description: image of me making a comment using drawbridge
+media: assets/portfolio-media/drawbridge/drawbridge.gif
+
 ---
 
 ## Slide 40 - Design
 slide_type: split
-media: drawing a rectangle to leave a comment, showing the highlight on the UI
+
 section: Process
 heading: Draw a rectangle
 subheading: Made it possible to capture multiple objects
@@ -563,6 +629,9 @@ bullets:
   - Passing a visual reference to the task
   - Mapping the original square back to the UI for reference
   - Migrated to Chrome Side Panel API for clean separation
+
+media-description: drawing a rectangle to leave a comment, cut to showing the highlight on the UI***
+media: assets/portfolio-media/drawbridge/drawbridge-rectangle.mp4
 
 ---
 
@@ -576,7 +645,9 @@ bullets:
   - Light/dark modes, sidebar transitions
   - Hit CSS isolation limits
   - Migrated to Chrome Side Panel API for clean separation
-media: UI modes + side panel migration
+
+media-description: UI modes + side panel migration
+media: 
 
 ---
 
@@ -591,13 +662,15 @@ bullets:
   - Spins up task-list.md, task-list.json and screenshots folder
   - Each comment writes to all three: natural language prompt + JSON structure + screenshot ID
   - Workflow instructs cursor to read the files, and update the code accordingly
-media: Markdown prompt, JSON prompt, screenshots folder
+
+media-description: Markdown prompt, JSON prompt, screenshots folder
+media:
 
 ---
 
 ## Slide 43 - Engineering
 slide_type: split
-media: Video of Cursor processing the tasks
+
 section: Process
 heading: Inspired workflow
 subheading: Developed a method based on AI Dev Tasks
@@ -606,6 +679,9 @@ bullets:
   - Reference the JSON + Screenshots folder
   - Update the code accordingly
   - Works through all tasks until complete
+
+media-description: Video of Cursor processing the tasks
+media: assets/portfolio-media/drawbridge/drawbridge-cursor.gif
 
 ---
 
@@ -631,6 +707,9 @@ bullets:
   - Learned how to manage issues, PRs, releases
   - Expanded support for Claude Code
 
+media-description: youtube video from AI Labs
+media: https://youtu.be/1cB2iqz_vnM?si=PEQAWdlCoJ80W9Ud
+
 ---
 
 ## Slide 46 - Result
@@ -644,10 +723,13 @@ stat_description: Stars on Github. First software project released on Github.
 
 ## Slide 47 - Result
 slide_type: split
-media: Image of the plugin in web store
+
 section: Result
-headline: Approved for Chrome Web Store
-subheadline: First application I've published from start to finish
+heading: Approved for Chrome Web Store
+subheading: First application I've published from start to finish
+
+media-description: Image of the plugin in web store
+media: assets/portfolio-media/drawbridge/drawbridge-chrome-store.png
 
 ---
 

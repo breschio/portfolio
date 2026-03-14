@@ -164,14 +164,21 @@
         const root = sections[0];
         const current = getSectionForSlide(currentSlide);
 
-        let html = `<span class="breadcrumb-root">${root.label}</span>`;
+        let html = `<span class="breadcrumb-root" data-slide-index="${root.index}">${root.label}</span>`;
 
         if (current && current.index !== root.index) {
             html += `<span class="breadcrumb-separator">/</span>`;
-            html += `<span class="breadcrumb-current">${current.label}</span>`;
+            html += `<span class="breadcrumb-current" data-slide-index="${current.index}">${current.label}</span>`;
         }
 
         breadcrumbEl.innerHTML = html;
+
+        breadcrumbEl.querySelectorAll('[data-slide-index]').forEach(span => {
+            span.style.cursor = 'pointer';
+            span.addEventListener('click', () => {
+                goToSlide(parseInt(span.dataset.slideIndex, 10));
+            });
+        });
     }
 
     // ===========================================
@@ -267,6 +274,9 @@
         } else if (e.key === 'ArrowLeft') {
             e.preventDefault();
             prevSlide();
+        } else if (e.key === 'r' || e.key === 'R') {
+            e.preventDefault();
+            goToSlide(0);
         }
     });
 
