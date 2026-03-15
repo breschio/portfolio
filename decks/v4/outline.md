@@ -79,11 +79,11 @@ meta_value: Prepared for Ramp
 slide_type: split
 
 section: Intro
-heading: I move fast, learn things, and ship code.
+heading: I learn fast and ship things.
 subheading: Working with AI has amplified my curiosity, and enabled me to do more than ever before.
 
 media-description: Sizzle reel. Pizza catnip mode, team photos, drawbridge, dotgrid, assistant welcome mat, @mentions
-media:
+media: assets/portfolio-media/pizzacat/pizzacat-sizzle-1.mp4
 
 ---
 
@@ -94,25 +94,12 @@ slide_type: title
 
 headline: Personio Assistant
 subtitle: How I helped evolve the AI Assistant from a broken UX to a full-blown agentic strategy
-meta_project: Personio AI Team
+meta_team: Personio AI Team
 meta_role: Product Designer
 meta_timeline: May 2025–Current
+media: assets/portfolio-media/personio/new/pa-intro-1.mp4
 
-
-
----
-
-## Slide 4 - Personio Assistant: What it is
-slide_type: split
-
-heading: "The Intelligent HR Platform"
-subheading: We aim to leverage AI to help our customers gain efficiencies and lower costs.
-
-media-description: Personio assistant video from website
-media:
-notes: This was attractive and hand-wavy at the same time
-
----
+--
 
 
 ## Slide 5 - Our Customers
@@ -120,89 +107,112 @@ slide_type: split
 split_layout: content-left
 
 section: Customer Problems
-heading: Overextended HR professionals
-subheading: HR admins, managers and employees at German tech companies. These folks had high expectations — and real pain.
+heading: Our Customer
+subheading: HR admins, managers and employees at European tech companies. These folks had high expectations — and real pain.
 bullets:
   - Drowning in questions from employees
-  - Managing employee job changes
   - Juggling roles between admin and strategy
   - Excited yet skeptical appetites for AI
 
 media-description: Stock image of a Personio persona (unhappy but professional, AI-gen)
-media:
+media: assets/portfolio-media/personio/new/pa-customer-1.png
+
 notes: The spread of AI meant we had to build something that worked for everyone — and that set clear expectations early.
 
 ---
 
-## Slide 6 - Our Solution
+## Slide 6 - The Assistant
 slide_type: split
 
 section: Solution
 heading: The Assistant
 subheading: An AI assistant built to provide insights while deflecting common questions
 bullets:
-  - Deflect support tickets from employees
+  - Deflect support tickets 
   - Understand your company data
   - Produce insights and visualizations
-  - Empower you to become a strategic partner
+  - Become a strategic partner
 
 media-description: Image of the first version of the assistant (cropped to focus on input)
-media:
+media: assets/portfolio-media/personio/new/pa-original-1.png
 
 ---
 
 
 ## Slide 7 - We have some problems
-slide_type: split
+slide_type: big-metric
 
-heading: CSAT was at 16%
-subheading: We have some fundamental issues surfaced in Dogfooding
-bullets:
-  - Issues with data accuracy impact trust
-  - Issues with UX impact usabilty and look and feel
-  - These projects were not on the roadmap
-
-media-description: images of complaints from dogfooding
-media:
-
+heading: 20% CSAT
+subheading: Customer satisfaction was very low
 
 ---
 
+
+## Slide 7 - We heard it from leadership
+slide_type: split
+
+heading: Leadership was dogfooding
+subheading: We had a direct feedback line 
+- Data reliability issues
+  - Key usability issues
+  - Insights laid foundation for future
+  - These projects were not on the roadmap
+
+media-description: images of complaints from dogfooding
+media: assets/portfolio-media/personio/new/pa-dogfooding-clevel.png
+
+
+---
 ## Slide 8 - Problems I identified
 slide_type: full-bleed-caption
 
 caption: Original Figma Files 
-media: Screnshot of figma file with  Assistant. Callout problems
+media-description: Screenshot of Figma file with Assistant. Callout problems
+media: assets/portfolio-media/personio/new/pa-original-2-gaps.png
+
 notes: Designs were aspirational but one dimensional. UX had not been scoped, or realized yet.
 
 ---
 
-## Slide 9
+## Slide 9 - How I work
 slide_type: split
 
-heading: How I fix problems
-subheading: I like to prototype on production
+heading: I ship code
+subheading: I build with AI, refine with teammates, push to GitHub, and ship code. 
 bullets:
-  - Move fast with smaller scope
+  - First designer to ship code to production
   - Build functionality iteratively
-  - Test the UX and share
-  - Identify issues I wouldn't catch otherwise
-  - Then refine with Design Systems
+  - Share with teammates
 
 media-description: video of me prototyping
-media:
+media: assets/portfolio-media/personio/new/pa-github-1.jpeg
 
 --- 
 
-## Slide 10
-slide_type: title-seconmdary
-heading: Projects
 
+## Slide 17 - How I work
+slide_type: split
+
+heading: I teach others
+subheading: I often create tutorials, give talks, and have 1:1's about AI
+bullets:
+  - Developed a tutorial and documentation for others
+  - Eventually used by the COO to ship his own code
+
+media-description: sizzle reel (comments from Harbor); video from my tutorial showing designers how to ship to production
+media: assets/portfolio-media/personio/new/pa-tutorial-1.mp4
+
+---
+
+## Slide 10
+slide_type: title-secondary
+heading: AI Driven Work
+subheading: How I used AI to improve the UX <br> % CSAT  for our the Assistant
 
 ---
 
 ## Slide 11
-slide_type: split
+slide_type: full-bleed-caption
 split_layout: content-left
 
 heading: Welcome Mat
@@ -213,7 +223,8 @@ bullets:
   - designed animation interaction
 
 media-description: Before (Image) / AFTER (video)
-media:
+media: assets/portfolio-media/personio/new/pa-welcome-mat-3.mp4
+
 notes: collaborated with eng on prompts the assistant could help direct employee queries could perform reliably well.
 
 
@@ -229,7 +240,8 @@ bullets:
   - persistent disclaimer below
 
 media-description: Broken input (Image) / AFTER (video)
-media:
+media: assets/portfolio-media/personio/new/pa-input-1.mp4
+
 notes: collaborated with eng on prompts the assistant could help direct employee queries could perform reliably well.
 
 
@@ -239,12 +251,12 @@ split_layout: content-left
 
 heading: Thinking state
 bullets:
-  - Incoporates branding
+  - Incorporates branding
   - Smooths a sometimes laggy loading experience
   - Creates foundation for chain-of-thought
 
-media-description: Broken input (Image) / AFTER (video)
-media:
+media-description: Visual of our thinking state
+media: assets/portfolio-media/personio/new/pa-thinking-1.mp4
 
 ## Slide 14
 slide_type: split
@@ -257,7 +269,7 @@ bullets:
   - Copy meta information to share/troubleshoot
 
 media-description: Error states · Timestamps · Copy/paste (Figma)
-media:
+media: assets/portfolio-media/personio/new/pa-errors-1.png
 
 
 ## Slide 15
@@ -267,47 +279,33 @@ split_layout: content-left
 heading: Stop Button
 bullets:
   - Enables user to stop the stream
-  - Intoduces more control and trust into the system
+  - Introduces more control and trust into the system
   - Lays foundation for other input-driven actions
 
 media-description: Before (Image) / AFTER (video)
-media:
+media: assets/portfolio-media/personio/new/pa-stop-response-1.png
 
 
 ## Slide 16
-slide_type: split
+slide_type: full-bleed-caption
 split_layout: content-left
 
 heading: Full screen
 bullets:
   - Enables user to make Assistant full screen
-  - Encourages AI-Native useage
+  - Encourages AI-Native usage
   - Lays foundation for dedicated surface
 
 media-description: Video of transition
-media:
+media: assets/portfolio-media/personio/new/pa-full-screen-1.mp4
 
 ---
 
-## Slide 17 - Encouraged to ship
-slide_type: split
-
-heading: Designers must ship code
-subheading: Encoruaged by leaderhip to use AI driven design processes
-bullets:
-  - First designer to ship code to production
-  - Developed a tutotrial and documentation for others
-  - Eventually used by the COO to ship his own code
-
-media-description: sizzle reel (comments from Harbor); video from my tutorial showing designers how to ship to production
-media:
-
----
 
 ## Slide 18
 slide_type: big-metric
-section: IMPROVEMENT
-stat: 16% → 27%
+section: Modest improvement
+stat: 20% → 29%
 stat_description: CSAT improvement. UX improvements directly drove satisfaction gains. Built trust with leadership through visible, self-shipped impact. NYC office was let go, except our team.
 
 
@@ -316,13 +314,19 @@ slide_type: comparison
 media: detailed image of CSAT improvements (Look and feel + UX)
 section: result
 headline: Directly influencing CSAT
-notes: This is despite the Assistnat often producing incorrect responses. 
+media-left: assets/portfolio-media/personio/new/pa-csat-trend-1.jpeg
+media-right: assets/portfolio-media/personio/new/pa-csat-detail-1.jpeg
+notes: This is despite the Assistant often producing incorrect responses. 
 ---
 
 ## Slide 20
 slide_type: media-centered
 heading: But agents are the future
-media: sizzle reel of pedro and pauls prototypes
+
+media: assets/portfolio-media/personio/new/pa-pedro-1.mp4
+media-description: sizzle reel of pedro and pauls prototypes
+
+
 caption: Leadership had been sold a vision of autonomous agents. 
 notes: This was very compelling idea but there was no path there.
 
@@ -342,8 +346,8 @@ bullets:
   - Federating the ai model for other teams to build
 
 media-description: screenshots from my AI Strategy deck
-media:
-notes: Eventhough we gained alignment in person, it was met with resistence as the organization saw departures from key figures
+media: assets/portfolio-media/personio/new/pa-agent-strategy.mp4
+notes: Even though we gained alignment in person, it was met with resistance as the organization saw departures from key figures
 
 ---
 
@@ -354,8 +358,8 @@ heading: I'm gonna build my own
 subheading: Tried pulling the existing back-end.
 bullets:
   - Architecture was too isolated
-  - I was depenent upon front and back end devs
-  - Realized i was still covering the UI
+  - I was dependent upon front and back end devs
+  - Realized I was still covering the UI
 
 media-description: Image of a broken build?
 media:
@@ -369,7 +373,7 @@ heading: Pivot to PAX
 subheading: I prototyped my own Assistant
 bullets:
   - Built a Chrome extension using the Side Panel API
-  - Understood How this would affect the UI
+  - Understood how this would affect the UI
   - What type of responses I need to design for
   - How much can the Claude SDK do on its own?
 
@@ -382,14 +386,14 @@ media:
 slide_type: split
 
 heading: PAX Performs!
-subheading: More capable that our production assistant
+subheading: More capable than our production assistant
 bullets:
   - Can answer questions by reading page
   - Can navigate the UI using browser tools
   - Became a "discovery tool" for teams who want to design
   - Quick prototypes validate ideas before engineering investment
 
-media-description: Video of browser controled
+media-description: Video of browser controlled
 media:
 
 
@@ -429,7 +433,7 @@ section: Principles
 heading: Assistant Principles
 bullets:
   - gets out of your way
-  - compliments the existing experience
+  - complements the existing experience
   - features the existing UI
   - does not impair use of the product if AI is off
 
@@ -498,9 +502,9 @@ section: Projects
 heading: Full Screen
 subheading: Anticipating AI - first work
 bullets:
-  - Dedidcated space
+  - Dedicated space
   - Kickoff workflows
-  - Manage them asyncronously
+  - Manage them asynchronously
 
 media-description: open page in full screen, starting a promotion workflow
 media:

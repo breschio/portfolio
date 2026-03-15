@@ -274,7 +274,7 @@
         } else if (e.key === 'ArrowLeft') {
             e.preventDefault();
             prevSlide();
-        } else if (e.key === 'r' || e.key === 'R') {
+        } else if ((e.key === 'r' || e.key === 'R') && (e.metaKey || e.ctrlKey)) {
             e.preventDefault();
             goToSlide(0);
         }
