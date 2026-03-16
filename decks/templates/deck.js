@@ -104,14 +104,58 @@
         }
     }
 
+    function animateCountFrom(element) {
+        const originalText = element.dataset.originalStat || element.textContent;
+        element.dataset.originalStat = originalText;
+
+        const fromValue = parseFloat(element.dataset.countFrom);
+        const parts = parseStatValue(originalText);
+        if (parts.every(p => p.type === 'text') || isNaN(fromValue)) return;
+
+        const startTime = performance.now();
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progressVal = Math.min(elapsed / COUNT_DURATION, 1);
+            const easedProgress = COUNT_EASING(progressVal);
+
+            let result = '';
+            for (const part of parts) {
+                if (part.type === 'text') {
+                    result += part.value;
+                } else {
+                    const currentValue = fromValue + (part.value - fromValue) * easedProgress;
+                    if (part.decimals > 0) {
+                        result += currentValue.toFixed(part.decimals) + part.suffix;
+                    } else {
+                        result += Math.round(currentValue) + part.suffix;
+                    }
+                }
+            }
+
+            element.textContent = result;
+
+            if (progressVal < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = originalText;
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
     function triggerCountUpForSlide(slide) {
         if (slide.classList.contains('big-metric')) {
             const stat = slide.querySelector('.stat');
             if (stat) {
-                // Small delay to sync with fade-in
                 setTimeout(() => animateCountUp(stat), 150);
             }
         }
+
+        slide.querySelectorAll('[data-count-from]').forEach(el => {
+            setTimeout(() => animateCountFrom(el), 150);
+        });
     }
 
     // ===========================================
@@ -137,7 +181,7 @@
     if (deck) {
         slides.forEach((slide, i) => {
             const type = slide.dataset.slide;
-            if (type === 'title' || type === 'title-secondary') {
+            if (type === 'title') {
                 const heading = slide.querySelector('h1') || slide.querySelector('h2');
                 if (heading) {
                     sections.push({ index: i, label: heading.textContent.trim() });

@@ -1,7 +1,7 @@
 # Design Case Studies — Slide Outline
 
 Terrence Breschi · bresch.io
-49 slides · ~45–55 minutes
+57 slides · ~45–55 minutes
 
 **Deck title (browser):** Design Case Studies — Terrence Breschi
 
@@ -70,17 +70,24 @@ slide_type: presentation-cover
 
 section: Portfolio Presentation
 h1: Terrence Breschi
-subtitle: I'm a product designer building and shipping with AI.  
-meta_value: Prepared for Ramp
+subtitle: I am a product designer who uses AI to learn fast and ship things. 
+bullets:
+- Personio Assistant (UX)
+- Drawbridge (Design Tool)
+- Personio Agent (Product Strategy)
 
 ---
 
-## Slide 2 - Who I am
+## Slide 2 - Quick about me
 slide_type: split
 
-section: Intro
-heading: I learn fast and ship things.
-subheading: Working with AI has amplified my curiosity, and enabled me to do more than ever before.
+section: About
+heading: I'm curious, have fun, and share often
+subheading: Working with AI has enabled me to do more than ever before, and I love to share what I build and learn.
+bullets:
+- I make games and build apps
+- I compose the music and do voice overs
+- I share videos and consult friends
 
 media-description: Sizzle reel. Pizza catnip mode, team photos, drawbridge, dotgrid, assistant welcome mat, @mentions
 media: assets/portfolio-media/pizzacat/pizzacat-sizzle-1.mp4
@@ -89,84 +96,107 @@ media: assets/portfolio-media/pizzacat/pizzacat-sizzle-1.mp4
 
 
 
-## Slide 3 - Personio Assistant: Cover
+## Slide 3 - First project I want to share with you is my work on the Personio Assistant
 slide_type: title
 
 headline: Personio Assistant
-subtitle: How I helped evolve the AI Assistant from a broken UX to a full-blown agentic strategy
+subtitle: How I helped the AI Assistant improve a broken UX 
 meta_team: Personio AI Team
 meta_role: Product Designer
 meta_timeline: May 2025–Current
-media: assets/portfolio-media/personio/new/pa-intro-1.mp4
+media: assets/portfolio-media/personio/new/pa-overview-1.mp4
 
---
+---
 
 
-## Slide 5 - Our Customers
+## Slide 4 - Personio is an HR Platform that organizes employee data, conducts performance reviews, admin, payroll, and more. I work on the Assistant whis is becoming the conversational layer
+slide_type: split
+
+section: Product
+heading: The Assistant
+subheading: The conversational partner to your HR workflows
+bullets:
+  - Get insights into your company data
+  - Deflect support tickets 
+  - Produce charts and visualizations
+  - Become a strategic partner
+
+media-description: Image of the first version of the assistant (cropped to focus on input)
+media: assets/portfolio-media/personio/new/pa-overview-1.mp4
+
+---
+
+
+## Slide 5 - Our customers are Chief People Officers, HR Admins, and Mangers at European Tech Compaines, and their jobs aren't getting any easier.
 slide_type: split
 split_layout: content-left
 
-section: Customer Problems
+section: Customer
 heading: Our Customer
-subheading: HR admins, managers and employees at European tech companies. These folks had high expectations — and real pain.
+subheading: HR admins, managers and employees at European tech companies. These folks have high expectations — and real pain.
 bullets:
   - Drowning in questions from employees
   - Juggling roles between admin and strategy
   - Excited yet skeptical appetites for AI
+  - **We are our customer (ICP)**
 
-media-description: Stock image of a Personio persona (unhappy but professional, AI-gen)
 media: assets/portfolio-media/personio/new/pa-customer-1.png
 
-notes: The spread of AI meant we had to build something that worked for everyone — and that set clear expectations early.
 
 ---
 
-## Slide 6 - The Assistant
+## Slide 6 - When I joined, the had some problems, from the get-go. Our CSAT was pretty poor. 
 slide_type: split
-
-section: Solution
-heading: The Assistant
-subheading: An AI assistant built to provide insights while deflecting common questions
-bullets:
-  - Deflect support tickets 
-  - Understand your company data
-  - Produce insights and visualizations
-  - Become a strategic partner
-
-media-description: Image of the first version of the assistant (cropped to focus on input)
-media: assets/portfolio-media/personio/new/pa-original-1.png
-
----
-
-
-## Slide 7 - We have some problems
-slide_type: big-metric
 
 heading: 20% CSAT
-subheading: Customer satisfaction was very low
+subheading: Customers were not satisfied with responses by the Assistant
+bullets:
+- Data was not reliable
+- Incorrect dates and times
+- Wrong files provided
+
+media: assets/portfolio-media/personio/new/pa-dogfooding-csat.png
 
 ---
 
 
-## Slide 7 - We heard it from leadership
+## Slide 7 - But the UX needed work. This is just a sample of feedback we got directly from C-Level executives.
 slide_type: split
 
-heading: Leadership was dogfooding
-subheading: We had a direct feedback line 
-- Data reliability issues
-  - Key usability issues
-  - Insights laid foundation for future
-  - These projects were not on the roadmap
+heading: Leadership pointed out key UX gaps
+subheading: These UX projects were not on the roadmap
+bullets:
+  - Missing functionaly
+  - Neglected details
+  - Broken experiences
 
 media-description: images of complaints from dogfooding
 media: assets/portfolio-media/personio/new/pa-dogfooding-clevel.png
 
 
+
+## Slide 8 - I prototype, get feedback, then refine
+slide_type: split
+
+section: My process
+heading: I prototype, share then refine 
+subheading: I like to build momentum with prototypes.
+principles:
+- Review existing designs
+- Prototype a fix
+- Get feedback from teammates (our customer)
+- Refine in Figma and in code
+- Have an engineer review my PR
+
+media:  assets/portfolio-media/personio/new/pa-process-1.mp4
 ---
-## Slide 8 - Problems I identified
+
+
+---
+## Slide 9 - I reviewed the existing designs
 slide_type: full-bleed-caption
 
-caption: Original Figma Files 
+section: My process
 media-description: Screenshot of Figma file with Assistant. Callout problems
 media: assets/portfolio-media/personio/new/pa-original-2-gaps.png
 
@@ -174,91 +204,88 @@ notes: Designs were aspirational but one dimensional. UX had not been scoped, or
 
 ---
 
-## Slide 9 - How I work
+
+
+
+## Slide 10 - I  built a prototpye of the input
 slide_type: split
 
-heading: I ship code
-subheading: I build with AI, refine with teammates, push to GitHub, and ship code. 
+heading: Fixing the input
+subheading: Allows for editing of longer queries. 
 bullets:
-  - First designer to ship code to production
-  - Build functionality iteratively
-  - Share with teammates
+- Increased the size of the submit button
+- Refined the default and active states
 
-media-description: video of me prototyping
-media: assets/portfolio-media/personio/new/pa-github-1.jpeg
-
---- 
+media: assets/portfolio-media/personio/new/pa-input-2.mp4
 
 
-## Slide 17 - How I work
+
+## Slide 11 - I
 slide_type: split
 
-heading: I teach others
-subheading: I often create tutorials, give talks, and have 1:1's about AI
-bullets:
-  - Developed a tutorial and documentation for others
-  - Eventually used by the COO to ship his own code
+heading: Fixing the Input
+subheading: Designed to handle multiple lines of text
 
-media-description: sizzle reel (comments from Harbor); video from my tutorial showing designers how to ship to production
-media: assets/portfolio-media/personio/new/pa-tutorial-1.mp4
+media: assets/portfolio-media/personio/new/pa-input-1.png
 
----
 
-## Slide 10
-slide_type: title-secondary
-heading: AI Driven Work
-subheading: How I used AI to improve the UX <br> % CSAT  for our the Assistant
+## Slide 12 - Developed the input states
+slide_type: split
 
----
+heading: Refining the states
+subheading: Built out the screens in Figma for reference
 
-## Slide 11
-slide_type: full-bleed-caption
+media: assets/portfolio-media/personio/new/pa-input-2.png
+
+
+
+## Slide 13 - I built a prototype for the welcome mat
+slide_type: split
 split_layout: content-left
 
 heading: Welcome Mat
+subheading: A friendlier approach to collaboration
+
+media-right: assets/portfolio-media/personio/new/pa-overview-1.mp4
+- added greeting
+- designed animation interaction
+
+
+
+## Slide 14 - Improved the inital UX
+slide_type: split
+
+heading: Welcome Mat
+subheading: Initially people felt warned
 bullets:
   - removed warning dialog
-  - added greeting
+  - added disclaimer under input
   - generated directional prompts
-  - designed animation interaction
 
-media-description: Before (Image) / AFTER (video)
-media: assets/portfolio-media/personio/new/pa-welcome-mat-3.mp4
-
-notes: collaborated with eng on prompts the assistant could help direct employee queries could perform reliably well.
+media: assets/portfolio-media/personio/new/pa-welcome-1.png
 
 
-## Slide 12
+## Slide 15 - Explored the evoloution of it
 slide_type: split
-split_layout: content-left
 
-heading: Refined Input
-bullets:
-  - Preserves initial height
-  - adapts to three lines of text
-  - makes room for future tools
-  - persistent disclaimer below
+heading: Welcome Mat explorations
+subheading: How might this experience evolve?
 
-media-description: Broken input (Image) / AFTER (video)
-media: assets/portfolio-media/personio/new/pa-input-1.mp4
-
-notes: collaborated with eng on prompts the assistant could help direct employee queries could perform reliably well.
+media: assets/portfolio-media/personio/new/pa-welcome-3.png
 
 
-## Slide 13
+
+
+## Slide 16 - Then I enhanced the thinking state
 slide_type: split
-split_layout: content-left
 
 heading: Thinking state
-bullets:
-  - Incorporates branding
-  - Smooths a sometimes laggy loading experience
-  - Creates foundation for chain-of-thought
+subheading: Communicate what's happening, while creating a foundation for chain of thought
 
-media-description: Visual of our thinking state
-media: assets/portfolio-media/personio/new/pa-thinking-1.mp4
+media-right: assets/portfolio-media/personio/new/pa-thinking-2.mp4
 
-## Slide 14
+
+## Slide 17 - Then I started communicating errors
 slide_type: split
 split_layout: content-left
 
@@ -268,11 +295,10 @@ bullets:
   - Includes timestamp on hover
   - Copy meta information to share/troubleshoot
 
-media-description: Error states · Timestamps · Copy/paste (Figma)
-media: assets/portfolio-media/personio/new/pa-errors-1.png
+media: assets/portfolio-media/personio/new/pa-errors-2.png
 
 
-## Slide 15
+## Slide 18 - Designd a stop button 
 slide_type: split
 split_layout: content-left
 
@@ -282,46 +308,404 @@ bullets:
   - Introduces more control and trust into the system
   - Lays foundation for other input-driven actions
 
-media-description: Before (Image) / AFTER (video)
-media: assets/portfolio-media/personio/new/pa-stop-response-1.png
+media: assets/portfolio-media/personio/new/pa-stop-response-2.png
 
 
-## Slide 16
-slide_type: full-bleed-caption
+
+## Slide 19 - Created a bigger canvas
+slide_type: split
 split_layout: content-left
 
 heading: Full screen
+subheading: Laying the foundation for AI first workflows
 bullets:
   - Enables user to make Assistant full screen
   - Encourages AI-Native usage
-  - Lays foundation for dedicated surface
+  - Lays foundation for dedicated surface 
 
 media-description: Video of transition
 media: assets/portfolio-media/personio/new/pa-full-screen-1.mp4
 
----
 
 
-## Slide 18
-slide_type: big-metric
-section: Modest improvement
-stat: 20% → 29%
-stat_description: CSAT improvement. UX improvements directly drove satisfaction gains. Built trust with leadership through visible, self-shipped impact. NYC office was let go, except our team.
-
-
-## Slide 19
+## Slide 20 - I communicate changes directly to our slack channel, and we're starting to see positive results
 slide_type: comparison
-media: detailed image of CSAT improvements (Look and feel + UX)
-section: result
-headline: Directly influencing CSAT
+
+
+headline: Proactive communication
+subheading: Helps to build positive momentum with our team and stakeholders
+
+media-left: assets/portfolio-media/personio/new/pa-slack-post-1.png
+media-right: assets/portfolio-media/personio/new/pa-slack-post-2.png
+
+notes: I made it a practice to communicate updates when 
+
+
+## Slide 21 - The UX improvements positively impacted our CSAT score
+slide_type: comparison
+
+headline: Positive impact to "Ease of Use" and "Look and Feel" 
 media-left: assets/portfolio-media/personio/new/pa-csat-trend-1.jpeg
 media-right: assets/portfolio-media/personio/new/pa-csat-detail-1.jpeg
-notes: This is despite the Assistant often producing incorrect responses. 
+
+notes: This is despite the Assistant often producing incorrect responses. I also want to call out that there's still a lot of work to be done to improve the UX.
+
+
+## Slide 22 - And we've seen a positive improvement
+slide_type: big-metric
+section: CSAT Results
+stat: 20% → 29%
+stat_description: Modest improvement to customer satisfaction
+
+
+
+## Slide 23 - I was the first designer to ship to production. I built out docs, and created a video tutorial for other designers to learn. (10+ Desi)
+slide_type: split
+
+heading: First designer to ship to production
+subheading: I created tutorials, give presentations, and had 1:1's about this process
+bullets:
+  - Developed a tutorial and documentation for others
+  - 10+ Designers shipped to production by end of 2025
+  - Eventually my docs were used by the COO to ship code
+
+
+media: assets/portfolio-media/personio/new/pa-tutorial-1.mp4
+
+
 ---
 
-## Slide 20
+## Slide 24 - Working this way isn't perfect
+slide_type: title-secondary
+
+heading: But this workflow was not perfect
+subheading: So I built a tool to impove my own experience
+
+
+---
+
+## Slide 25 - Second project is a tool I built for  myself to leave comments on websites for Cusor to execute
+slide_type: title
+
+h1: Drawbridge
+subtitle: How I built a Chrome Extension to streamline visual edits for AI-Driven development
+meta_project: Drawbridge (Personal Project)
+meta_role: Designer & Engineer
+meta_timeline: June 2025 – Current
+media: assets/portfolio-media/drawbridge/drawbridge-rectangle.mp4
+
+
+---
+
+## Slide 26 - I'm my own customer
+slide_type: split
+split_layout: content-left
+
+section: Customer
+heading: I design and build with AI 
+subheading: I tell an LLM what to build
+bullets:
+  - I've been building games, websites, and apps
+  - AI accelerates this process
+  - But I inevitably have to tweak the app
+  - My process was breaking down with front-end tweaks
+
+media-description: Video: Sizzle reel of my projects
+media: assets/portfolio-media/drawbridge/drawbridge-problem.mp4
+
+---
+
+## Slide 27 - Describing changes is time consuming
+slide_type: split
+
+section: Problem
+heading: Describing changes is a Problem 
+subheading: Describing ui element and adjustments became taxing
+bullets:
+  - I created screenshots
+  - Annotated them with arrows
+  - Described the changes
+  - But LLM wouldn't always get it
+
+media-description: Image of annotation
+media: assets/portfolio-media/drawbridge/drawbridge-before.mp4
+
+---
+
+## Slide 28 - This requires a lot of back and forth
+slide_type: split
+
+section: Problem
+heading: Very repetitive
+subheading: Required lots of back and forth, babysitting changes, and making corrections
+bullets:
+  - Uploading those changes one by one
+  - Waiting for the results
+  - Trying again if the problem failed
+
+media-description: video of back-and-forth editing workflow
+media: assets/portfolio-media/drawbridge/drawbridge-raw-workflow.mp4
+
+---
+
+## Slide 29 - I had a simple hypothesis that I could comment directly on the web page, gather more context from the dom, and batch my fixes
+slide_type: split
+
+section: Hypothesis
+heading: What if I could leave a comment?
+subheading: And make sure Cursor has all context needed
+bullets:
+  - Leave comments "on" the website
+  - Provide element context directly to AI
+  - Do this from a plugin so I can keep my existing workflow
+  - Manage them like a tasklist
+
+media-description: maybe an image of making a comment in figma
+media: assets/portfolio-media/drawbridge/figma-comment.png
+
+---
+
+
+## Slide 30 - How I fixed it
+slide_type: title-secondary
+
+heading: My solution
+subheading: How Drawbridge works
+
+
+---
+
+
+## Slide 31 - Ok so how does this work? After you open the plugin you connect to a local repo
+slide_type: split
+
+section: Process
+heading: Connect to a local file
+subheading: Keeps the context of your edits in one file
+bullets:
+  - creates a .moat file that stores your changes
+  - Nothing is sent back to the cloud
+  - Only AI is what's used in your IDE
+  - Control all changes via normal git commands
+
+media: assets/portfolio-media/drawbridge/drawbridge-connect.mp4
+
+---
+
+## Slide 32 - You then select an element on the page you want to change. Leave a comment, and move on. 
+slide_type: split
+
+section: Process
+heading: Leave "Figma comments" for Cursor
+subheading: A familiar UX pattern with a different recipient
+bullets:
+  - Click an element
+  - Leave a comment
+  - Save it to the "moat"
+  - Info is saved in the .moat file
+
+media-description: image of me making a comment using drawbridge
+media: assets/portfolio-media/drawbridge/db-comment-1.mp4
+
+---
+
+## Slide 33 - I also wanted to make it possible to draw a rectangle to capture larger areas that spanned multiple elements
+
+slide_type: split
+
+section: Process
+heading: Draw a rectangle
+subheading: Made it possible to capture multiple objects
+bullets:
+  - Using Chrome's captureVisibleTab
+  - Passing a visual reference to the task
+  - Mapping the original square back to the UI for reference
+
+media-description: drawing a rectangle to leave a comment, cut to showing the highlight on the UI***
+media: assets/portfolio-media/drawbridge/db-rectangle-1.mp4
+
+---
+
+## Slide 34 - What's happening under the hood
+slide_type: split
+
+section: Process
+heading: Engineering the workflow
+subheading: Create richer context that require less verbose comments
+bullets:
+  - Spins up task-list.md, task-list.json and screenshots folder
+  - Each comment writes to all three: natural language prompt + JSON structure + screenshot ID
+  - Bounds for rectangle are also included
+
+media-description: Markdown prompt, JSON prompt, screenshots folder
+media: assets/portfolio-media/drawbridge/db-engineering-1.mp4
+
+---
+
+## Slide 35 - Then you use cursor to run the workflow
+slide_type: split
+
+section: Process
+heading: Runs a workflow that reads edits and makes changes 
+subheading: Emulated a workflow inspired by AI Dev Tasks
+bullets:
+  - Workflow instructs cursor to read the files
+  - Reference the JSON + Screenshots folder
+  - Update the code accordingly
+  - Works through all tasks until complete
+
+media-description: Video of Cursor processing the tasks
+media: assets/portfolio-media/drawbridge/db-workflow-1.mp4
+
+---
+
+## Slide 36 - Then you see your changes
+slide_type: split
+
+section: Process
+heading: Changes are visible in the browswer
+subheading: Batched tasks are processed in one go
+bullets:
+  - Reduces back and forth
+  - Maximizes context window for token usage
+  - Helps to remain in flow state
+
+media: assets/portfolio-media/drawbridge/db-changes-1.mp4
+
+---
+
+
+## Slide 37 - Result
+slide_type: big-metric
+
+section: Result
+stat: 10x Faster iteration
+stat_description: One change took 2–3 minutes. Now 10 changes takes 2–3 minutes.
+
+---
+
+## Slide 38 - Result
+slide_type: split
+
+section: Result
+heading: Featured on AI Labs
+subheading: Was featured twice by a favorite YouTube publisher
+bullets:
+  - A 10 minute deep-dive into the plugin
+  - Drove adoption on Github
+  - Positive reviews and issues gave new ideas for development
+  - Learned how to manage issues, PRs, releases
+  - Expanded support for Claude Code
+
+media-description: youtube video from AI Labs (@agent autoplay this with sound off)
+media: https://youtu.be/1cB2iqz_vnM?si=PEQAWdlCoJ80W9Ud 
+
+---
+
+## Slide 39 - Result
+slide_type: split
+
+section: Result
+heading: 627 Github Stars
+subheading: First starred software project on Github.
+media: assets/portfolio-media/drawbridge/db-github-1.png 
+---
+
+## Slide 40 - Result
+slide_type: split
+
+section: Result
+heading: Approved for Chrome Web Store
+subheading: First application I've published from start to finish
+
+media: assets/portfolio-media/drawbridge/drawbridge-chrome-store.png
+
+
+---
+
+
+## Slide 41 - Learnings
+slide_type: comparison
+
+section: Learnings
+heading: Far from perfect
+subheading: Investigating Chrome's side-panel API for better isolation
+
+media-description: Image of the plugin in web store
+media-left: assets/portfolio-media/drawbridge/db-v1.jpeg
+media-right: assets/portfolio-media/drawbridge/db-v2.jpeg
+
+
+---
+
+
+## Slide 42 - How my sideproject inspired learnings
+slide_type: title-secondary
+
+heading: Drawbridge inspried a new solution at Personio
+subheading: Here's how I applied my learnings
+
+
+
+---
+## Slide 43 - How I'm shaping the vision for Personio Assistant
+slide_type: title
+
+headline: Personio Assistant Vision
+subtitle: How I'm helping to drive the vision for AI at Personio
+meta_team: Personio AI Team
+meta_role: Product Designer, Engineer
+meta_timeline: October 2025–Current
+media: assets/portfolio-media/personio/new/pa-vision-1.mp4
+
+---
+
+
+## Slide 44 - We still have some major challenges to solve
+slide_type: split
+
+heading:  I built my own Assistant
+subheading: Simulate an embedded sidebar ui, and "agentic" UX
+bullets:
+  - Built a Chrome extension using the Side Panel API
+  - Understood how this would affect the UI
+  - What type of responses I need to design for
+  - See what I could do with Claude SDK do on its own?
+
+media-description: Video of opening the pax
+media: assets/portfolio-media/personio/new/pa-pax-1.mp4
+
+
+
+## Slide 45 - My Agent peforms
+slide_type: split
+
+heading: It's alive!
+subheading: More capable than our production assistant
+bullets:
+  - Can answer questions by reading page
+  - Can navigate the UI using browser tools
+  - Became a "discovery tool" for teams who want to design
+  - Quick prototypes validate ideas before engineering investment
+
+media-description: Video of browser controlled
+media: assets/portfolio-media/personio/new/pa-pax-2.mp4
+
+
+---
+
+## Slide 46 - Shaping the vision
 slide_type: media-centered
-heading: But agents are the future
+heading: Shaping the vision
+media: screenshot of Alex Grant + Stephan 
+caption: Got funding from CPO + CTO for developing our AI Vision
+
+---
+
+
+## Slide 47 - There was no lack of ideas, and "Agents" have been a buzzword sometime
+slide_type: media-centered
+heading: Agents are the future
 
 media: assets/portfolio-media/personio/new/pa-pedro-1.mp4
 media-description: sizzle reel of pedro and pauls prototypes
@@ -333,7 +717,7 @@ notes: This was very compelling idea but there was no path there.
 ---
 
 
-## Slide 21
+## Slide 48 - Being opinionated about how the Archticture works
 slide_type: split
 
 heading: Designing an agentic foundation
@@ -345,70 +729,21 @@ bullets:
   - Feature the existing UI (don't cannibalize)
   - Federating the ai model for other teams to build
 
-media-description: screenshots from my AI Strategy deck
 media: assets/portfolio-media/personio/new/pa-agent-strategy.mp4
-notes: Even though we gained alignment in person, it was met with resistance as the organization saw departures from key figures
-
----
-
-## Slide 22
-slide_type: split
-
-heading: I'm gonna build my own
-subheading: Tried pulling the existing back-end.
-bullets:
-  - Architecture was too isolated
-  - I was dependent upon front and back end devs
-  - Realized I was still covering the UI
-
-media-description: Image of a broken build?
-media:
-
----
-
-## Slide 23
-slide_type: split
-
-heading: Pivot to PAX
-subheading: I prototyped my own Assistant
-bullets:
-  - Built a Chrome extension using the Side Panel API
-  - Understood how this would affect the UI
-  - What type of responses I need to design for
-  - How much can the Claude SDK do on its own?
-
-media-description: Video of opening the pax
-media:
-
----
-
-## Slide 24
-slide_type: split
-
-heading: PAX Performs!
-subheading: More capable than our production assistant
-bullets:
-  - Can answer questions by reading page
-  - Can navigate the UI using browser tools
-  - Became a "discovery tool" for teams who want to design
-  - Quick prototypes validate ideas before engineering investment
-
-media-description: Video of browser controlled
-media:
 
 
----
 
-## Slide 25
-slide_type: media-centered
-heading: Shaping the vision
-media: screenshot of Alex Grant + Stephan 
-caption: Got funding from CPO + CTO for developing our AI Vision
-
----
+## Slide 49 - Getting praise from the Engineering Manger
+slide_type: testimonial
 
 
-## Slide 26
+media: assets/portfolio-media/personio/new/pa-bannon-1.png
+quote: "I haven't worked with any Product Designers who will tell a room full of engineers how to build something"
+attribution: Alex Bannon, Engineering Director - AI
+
+
+
+## Slide 50 - Driving collaboration with the larger Design Systems + Architecture Team
 slide_type: split
 split_layout: content-left
 
@@ -418,34 +753,21 @@ subheading: Worked with Design Systems Team to build out this framework
 bullets:
   - Collaborating on the page frame and sidebar interaction
   - Understanding the needs of a dedicated view
-  - Put together a workshop in Amsterdam
-  - Have broken out the entire anatomy of the project
+  - How it impacts other product areas
+  - I'm hosting a workshop in Amsterdam next week to iron out the details
 
-media-description: Zoltan's video of different directions / Image of anatomy docs
-media:
-
----
+media-description: assets/portfolio-media/personio/new/pa-design-spec-1.mp4
+media: 
 
 
-## Slide 27
-slide_type: simple-list
-section: Principles
-heading: Assistant Principles
-bullets:
-  - gets out of your way
-  - complements the existing experience
-  - features the existing UI
-  - does not impair use of the product if AI is off
 
 
----
-
-## Slide 28
+## Slide 51
 slide_type: split
 split_layout: content-left
 
 section: Projects
-heading: Sidebar slot
+heading: Sidebar 
 subheading: Getting the assistant out of the way
 bullets:
   - lives alongside your page
@@ -453,10 +775,10 @@ bullets:
   - Adjusts to your preferences
 
 media-description: Opening the sidebar, dragging to adjust
-media:
+media: assets/portfolio-media/personio/new/pa-v2-sidebar-1.mp4
 
 
-## Slide 29
+## Slide 52
 slide_type: split
 split_layout: content-left
 
@@ -469,32 +791,28 @@ bullets:
   - How does this change
 
 media-description: Page context, Dynamic prompts, @mentions, tools
-media:
+media: assets/portfolio-media/personio/new/pa-v2-context-drawer-1.mp4
 
 
-## Slide 30
-slide_type: full-bleed-caption
-media: Video: assistant taking over the browser with navigation map
-caption: Browser use: the agent navigates the UI, Human in the loop interaction
 
 
-## Slide 31
+## Slide 53
 slide_type: split
 split_layout: content-left
 
 section: Projects
-heading: Agent response patterns
+heading: Human in the loop
+subheading: Streamlining control for humans over agents
 bullets:
-  - Status indicators — what is the agent doing?
-  - Chain of thought — why is it doing it?
-  - Actions taken — what did it change?
-  - Result — here's your answer
+  - What does the agent want to do?
+  - What does it want permission for?
+  - What are your options?
 
 media-description: Status → chain of thought → actions → result
-media:
+media: assets/portfolio-media/personio/new/pa-v2-human-loop-1.mp4
 
 
-## Slide 32
+## Slide 54
 slide_type: split
 split_layout: content-left
 
@@ -511,251 +829,25 @@ media:
 
 ---
 
-## Slide 33
+## Slide 55
 slide_type: full-bleed-caption
 media: sizzle reel of Assistant V2 (sidebar, fullscreen, workflows, agents)
-Notes
-  - Prototyping directly in Production
-  - Building model switcher into backend
-  - Experimenting with different functionality
-  - Creating demos for leadership
+heading: Creating an agentic platform that handle asynchronus tasks 
 
 
 
----
-
-## Slide 34 - Intro
-slide_type: title
-
-h1: Drawbridge
-subtitle: How I built a tool to solve for back and forth visual edits for front-end developers
-meta_project: Drawbridge
-meta_role: Product Designer & Engineer
-meta_timeline: June 2025 – Current
-
-
----
-
-## Slide 35 - Customer
-slide_type: split
-split_layout: content-left
-
-section: Customer
-heading: I am a vibecoder
-subheading: I tell an LLM what to build
-bullets:
-  - I've been building games, websites, and apps
-  - AI accelerates this process
-  - But I inevitably have to tweak the app
-  - My process was breaking down with front-end tweaks
-
-media-description: Video: Sizzle reel of my projects
-media: 
-
----
-
-## Slide 36 - Problem
-slide_type: split
-
-section: Problem
-heading: Problem was telling AI what to fix
-subheading: Describing what I want to change became taxing
-bullets:
-  - I created screenshots
-  - Annotated them with arrows
-  - Described the changes
-  - But LLM wouldn't always get it
-
-media-description: Image of annotation
-media: assets/portfolio-media/drawbridge/drawbridge-annotation-old-solution.png
-
----
-
-## Slide 37 - Problem
-slide_type: split
-
-section: Problem
-heading: Takes a lot of time
-subheading: Required lots of back and forth, babysitting changes, and making corrections
-bullets:
-  - Uploading those changes one by one
-  - Waiting for the results
-  - Trying again if the problem failed
-
-media-description: video of back-and-forth editing workflow
-media: assets/portfolio-media/drawbridge/drawbridge-problem.mp4
-
----
-
-## Slide 38 - Hypothesis
-slide_type: split
-
-section: Process
-heading: What if I could leave a comment?
-subheading: And make sure Cursor has all context needed
-bullets:
-  - Leave comments "on" the website
-  - Provide element context directly to AI
-  - Do this from a plugin so I can keep my existing workflow
-  - Manage them like a tasklist
-
-media-description: maybe an image of making a comment in figma
-media: assets/portfolio-media/drawbridge/figma-comment.png
-
----
-
-## Slide 39 - Design
-slide_type: split
-
-section: Process
-heading: Leave "Figma comments" for Cursor
-subheading: A familiar UX pattern with a different recipient
-bullets:
-  - Open the plugin
-  - Click an element
-  - Leave a comment
-  - Save it to the "moat"
-  - Info is saved in the backend
-
-media-description: image of me making a comment using drawbridge
-media: assets/portfolio-media/drawbridge/drawbridge.gif
-
----
-
-## Slide 40 - Design
-slide_type: split
-
-section: Process
-heading: Draw a rectangle
-subheading: Made it possible to capture multiple objects
-bullets:
-  - Using Chrome's captureVisibleTab
-  - Passing a visual reference to the task
-  - Mapping the original square back to the UI for reference
-  - Migrated to Chrome Side Panel API for clean separation
-
-media-description: drawing a rectangle to leave a comment, cut to showing the highlight on the UI***
-media: assets/portfolio-media/drawbridge/drawbridge-rectangle.mp4
-
----
-
-## Slide 41 - Design
-slide_type: split
-split_layout: content-left
-
-section: UI/UX & Interaction
-heading: UI evolution & Side Panel API
-bullets:
-  - Light/dark modes, sidebar transitions
-  - Hit CSS isolation limits
-  - Migrated to Chrome Side Panel API for clean separation
-
-media-description: UI modes + side panel migration
-media: 
-
----
-
-## Slide 42 - Engineering
-slide_type: split
-
-section: Process
-heading: Context-rich JSON annotations
-subheading: Made available by task-driven workflows in markdown
-bullets:
-  - Connect to a local file (security)
-  - Spins up task-list.md, task-list.json and screenshots folder
-  - Each comment writes to all three: natural language prompt + JSON structure + screenshot ID
-  - Workflow instructs cursor to read the files, and update the code accordingly
-
-media-description: Markdown prompt, JSON prompt, screenshots folder
-media:
-
----
-
-## Slide 43 - Engineering
-slide_type: split
-
-section: Process
-heading: Inspired workflow
-subheading: Developed a method based on AI Dev Tasks
-bullets:
-  - Workflow instructs cursor to read the task list
-  - Reference the JSON + Screenshots folder
-  - Update the code accordingly
-  - Works through all tasks until complete
-
-media-description: Video of Cursor processing the tasks
-media: assets/portfolio-media/drawbridge/drawbridge-cursor.gif
-
----
-
-## Slide 44 - Result
-slide_type: big-metric
-
-section: Result
-stat: 10x
-stat_description: Faster iteration. One change took 2–3 minutes, now takes 2–3 minutes for 10 changes.
-
----
-
-## Slide 45 - Result
-slide_type: split
-
-section: Result
-heading: Featured on AI Labs
-subheading: Was featured twice by a favorite YouTube publisher
-bullets:
-  - A 10 minute deep-dive into the plugin
-  - Drove adoption on Github
-  - Positive reviews and issues gave new ideas for development
-  - Learned how to manage issues, PRs, releases
-  - Expanded support for Claude Code
-
-media-description: youtube video from AI Labs
-media: https://youtu.be/1cB2iqz_vnM?si=PEQAWdlCoJ80W9Ud
-
----
-
-## Slide 46 - Result
-slide_type: big-metric
-
-section: Result
-stat: 620+
-stat_description: Stars on Github. First software project released on Github.
-
----
-
-## Slide 47 - Result
-slide_type: split
-
-section: Result
-heading: Approved for Chrome Web Store
-subheading: First application I've published from start to finish
-
-media-description: Image of the plugin in web store
-media: assets/portfolio-media/drawbridge/drawbridge-chrome-store.png
-
----
-
-## Slide 48
+## Slide 56
 slide_type: simple-list
 
-section: Conclusion
-list_title: What drives me
-items:
-  - title: Move fast and learn
-    body: I like to move fast and learn things.
-  - title: Side projects
-    body: I use side projects to nurture curiosity and develop insights.
-  - title: Applied AI
-    body: Deeply interested in Applied AI as a catalyst for creativity and problem solving.
-  - title: People
-    body: Want to work with people who feel the same way.
+Results
+- Heading to Amsterdam next week for workshop with DS / FEs
+- Interest from other designers to use PAX (Design discovery tool)
+- Aligning with leadership on the vision for the project
 
 ---
 
-## Slide 49
+## Slide 57
 slide_type: title
 
-h1: Thanks
-subtitle: Terrence Breschi · bresch.io
+heading: Thanks for your time!
+subtitle: Terrence Breschi · 2026
