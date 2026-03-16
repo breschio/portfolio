@@ -697,7 +697,7 @@ media: assets/portfolio-media/personio/new/pa-pax-2.mp4
 ## Slide 46 - Shaping the vision
 slide_type: media-centered
 heading: Shaping the vision
-media: screenshot of Alex Grant + Stephan 
+media: assets/portfolio-media/personio/new/pa-pax-funding.png
 caption: Got funding from CPO + CTO for developing our AI Vision
 
 ---
@@ -756,8 +756,7 @@ bullets:
   - How it impacts other product areas
   - I'm hosting a workshop in Amsterdam next week to iron out the details
 
-media-description: assets/portfolio-media/personio/new/pa-design-spec-1.mp4
-media: 
+media:  assets/portfolio-media/personio/new/pa-design-spec-1.mp4
 
 
 
@@ -825,21 +824,28 @@ bullets:
   - Manage them asynchronously
 
 media-description: open page in full screen, starting a promotion workflow
-media:
+media: assets/portfolio-media/personio/new/pa-v2-fullscreen-1.mp4
 
 ---
 
 ## Slide 55
-slide_type: full-bleed-caption
-media: sizzle reel of Assistant V2 (sidebar, fullscreen, workflows, agents)
-heading: Creating an agentic platform that handle asynchronus tasks 
+slide_type: split
+split_layout: content-left
+
+heading: Canvas for agents
+subheading: Imagining a surface to handle asynchronus tasks by agents
+
+media: assets/portfolio-media/personio/new/pa-v2-agentic-1.png
+
+
 
 
 
 ## Slide 56
 slide_type: simple-list
 
-Results
+Heading: Results
+Subheading: Building momentum
 - Heading to Amsterdam next week for workshop with DS / FEs
 - Interest from other designers to use PAX (Design discovery tool)
 - Aligning with leadership on the vision for the project
