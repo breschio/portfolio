@@ -70,13 +70,14 @@ slide_type: presentation-cover
 
 section: Portfolio Presentation
 h1: Terrence Breschi
-subtitle: Portfolio Review for Ramp
+subtitle: Portfolio Review for Vanta
 bullets:
 - Personio Assistant (UX)
 - Drawbridge (Design Tool)
 - Personio Agent (Product Strategy)
 
 ---
+
 
 ## Slide 2 - Quick about me
 slide_type: split
@@ -93,7 +94,6 @@ media-description: Sizzle reel. Pizza catnip mode, team photos, drawbridge, dotg
 media: assets/portfolio-media/pizzacat/pizzacat-sizzle-1.mp4
 
 ---
-
 
 
 ## Slide 3 - First project I want to share with you is my work on the Personio Assistant
@@ -168,7 +168,7 @@ section: Problem
 heading: UX has gaps
 subheading: Leadership was vocal, but these projects were not on the roadmap
 bullets:
-  - Missing functionaly
+  - Missing functionality
   - Neglected details
   - Broken experiences
 
@@ -181,14 +181,8 @@ media: assets/portfolio-media/personio/new/pa-dogfooding-clevel.png
 slide_type: split
 
 section: My process
-heading: I understand, prototype, share then refine 
-subheading: I like to build momentum with prototypes.
-bullets:
-- Review existing designs
-- Prototype a fix
-- Get feedback from teammates (our customer)
-- Refine in Figma and in code
-- Have an engineer review my PR
+heading: I like to build momentum with prototypes. 
+subheading: I understand, prototype, share then refine 
 
 media: assets/portfolio-media/personio/new/pa-process-1.mp4
 ---
@@ -256,9 +250,9 @@ slide_type: split
 heading: Welcome UX
 subheading: Initially people felt warned
 bullets:
-  - removed warning dialog
-  - added disclaimer under input
-  - designed to show more prompts
+  - Removed warning dialog
+  - Added disclaimer under input
+  - Designed to show more prompts
 
 media: assets/portfolio-media/personio/new/pa-welcome-1.png
 
@@ -269,9 +263,9 @@ slide_type: split
 heading: Explorations
 subheading: How might this experience evolve?
 bullets:
-  - removed warning dialog
-  - added disclaimer under input
-  - generated directional prompts
+  - Removed warning dialog
+  - Added disclaimer under input
+  - Generated directional prompts
 
 media: assets/portfolio-media/personio/new/pa-welcome-3.png
 
@@ -285,8 +279,8 @@ heading: Welcome Mat
 subheading: A friendlier approach to collaboration
 
 media-right: assets/portfolio-media/personio/new/pa-overview-1.mp4
-- added greeting
-- designed animation interaction
+- Added greeting
+- Designed animation interaction
 
 
 
@@ -382,7 +376,6 @@ stat_description: Modest improvement to customer satisfaction
 slide_type: split
 
 heading: First designer to ship to production
-subheading: I created tutorials, give presentations, and had 1:1's about this process
 bullets:
   - Developed a tutorial and documentation for others
   - 10+ Designers shipped to production by end of 2025
@@ -421,12 +414,9 @@ slide_type: split
 split_layout: content-left
 
 section: Customer
-heading: I design and build with AI 
-subheading: I tell an LLM what to build
-bullets:
-  - I've been building games, websites, and apps
+heading: I design, build and ship
   - AI accelerates this process
-  - But I inevitably have to tweak the app
+  - But I inevitably have to tweak something
   - My process was breaking down with front-end tweaks
 
 media-description: Video: Sizzle reel of my projects
@@ -439,7 +429,6 @@ slide_type: split
 
 section: Problem
 heading: Describing changes is a Problem 
-subheading: Describing ui element and adjustments became taxing
 bullets:
   - I created screenshots
   - Annotated them with arrows
@@ -457,7 +446,6 @@ slide_type: split
 
 section: Hypothesis
 heading: What if I could leave a comment?
-subheading: And make sure Cursor has all context needed
 bullets:
   - Leave comments "on" the website
   - Provide element context directly to AI
@@ -485,12 +473,10 @@ slide_type: split
 
 section: Process
 heading: Connect to a local file
-subheading: Keeps the context of your edits in one file
 bullets:
-  - creates a .moat file that stores your changes
-  - Nothing is sent back to the cloud
-  - Only AI is what's used in your IDE
-  - Control all changes via normal git commands
+  - Creates a local file that stores your changes
+  - Nothing is sent to the cloud
+  - Only use AI in your IDE
 
 media: assets/portfolio-media/drawbridge/drawbridge-connect.mp4
 
@@ -501,12 +487,8 @@ slide_type: split
 
 section: Process
 heading: Leave comments for Cursor
-subheading: A familiar UX pattern with a different recipient
-bullets:
-  - Click an element
-  - Leave a comment
-  - Save it to the "moat"
-  - Info is saved in the .moat file
+subheading: A familiar UX pattern for an AI teammate
+
 
 media-description: image of me making a comment using drawbridge
 media: assets/portfolio-media/drawbridge/db-comment-1.mp4
@@ -519,11 +501,7 @@ slide_type: split
 
 section: Process
 heading: Draw a rectangle
-subheading: Made it possible to capture multiple objects
-bullets:
-  - Using Chrome's captureVisibleTab
-  - Passing a visual reference to the task
-  - Mapping the original square back to the UI for reference
+subheading: Capture multiple objects on the page
 
 media-description: drawing a rectangle to leave a comment, cut to showing the highlight on the UI***
 media: assets/portfolio-media/drawbridge/db-rectangle-1.mp4
@@ -550,13 +528,9 @@ media: assets/portfolio-media/drawbridge/db-engineering-1.mp4
 slide_type: split
 
 section: Process
-heading: Runs a workflow that reads edits and makes changes 
-subheading: Emulated a workflow inspired by AI Dev Tasks
-bullets:
-  - Workflow instructs cursor to read the files
-  - Reference the JSON + Screenshots folder
-  - Update the code accordingly
-  - Works through all tasks until complete
+heading: Type "bridge" to read edits and makes changes 
+subheading: Automated workflow steps through tasks and reads context
+
 
 media-description: Video of Cursor processing the tasks
 media: assets/portfolio-media/drawbridge/db-workflow-1.mp4
@@ -568,7 +542,6 @@ slide_type: split
 
 section: Process
 heading: Changes are visible in the browswer
-subheading: Batched tasks are processed in one go
 bullets:
   - Reduces back and forth
   - Maximizes context window for token usage
@@ -598,8 +571,7 @@ bullets:
   - A 10 minute deep-dive into the plugin
   - Drove adoption on Github
   - Positive reviews and issues gave new ideas for development
-  - Learned how to manage issues, PRs, releases
-  - Expanded support for Claude Code
+
 
 media-description: youtube video from AI Labs (@agent do not autoplay just show the video embedded)
 media: https://youtu.be/1cB2iqz_vnM?si=PEQAWdlCoJ80W9Ud 
@@ -610,8 +582,12 @@ media: https://youtu.be/1cB2iqz_vnM?si=PEQAWdlCoJ80W9Ud
 slide_type: split
 
 section: Result
-heading: 627 Github Stars
+heading: 633 Github Stars
 subheading: First starred software project on Github.
+bullets:
+  - Learned how to manage issues, PRs, releases
+  - Expanded support for Claude Code
+
 media: assets/portfolio-media/drawbridge/db-github-1.png 
 ---
 
@@ -646,7 +622,7 @@ media-right: assets/portfolio-media/drawbridge/db-v2.jpeg
 ## Slide 43 - How my sideproject inspired learnings
 slide_type: title-secondary
 
-heading: Drawbridge inspired a new solution at Personio
+heading: Drawbridge inspired solutions at Personio
 subheading: Here's how I applied my learnings
 
 
@@ -671,10 +647,10 @@ slide_type: split
 heading:  I built my own Assistant
 subheading: Simulate an embedded sidebar ui, and "agentic" UX
 bullets:
-  - Built a Chrome extension using the Side Panel API
+  - Built using Chrome's Side Panel API
   - Understood how this would affect the UI
-  - What type of responses I need to design for
-  - See what I could do with Claude SDK do on its own?
+  - Designed for agent response types
+- Learned the Claude Agent SDK
 
 media-description: Video of opening the pax
 media: assets/portfolio-media/personio/new/pa-pax-1.mp4
@@ -687,10 +663,11 @@ slide_type: split
 heading: It's alive!
 subheading: More capable than our production assistant
 bullets:
-  - Can answer questions by reading page
-  - Can navigate the UI using browser tools
-  - Became a "discovery tool" for teams who want to design
-  - Quick prototypes validate ideas before engineering investment
+  - Answers questions by reading page
+  - Navigates the UI with browser tools
+  - Quick prototyping tests ideas
+  - Became a "discovery tool" for teams
+
 
 media-description: Video of browser controlled
 media: assets/portfolio-media/personio/new/pa-pax-2.mp4
@@ -724,14 +701,14 @@ notes: This was very compelling idea but there was no path there.
 ## Slide 49 - Being opinionated about how the Architecture works
 slide_type: split
 
-heading: Designing an agentic foundation
-subheading: I drove the conversation with Product and Engineering
+heading: Designing technical architecture
+subheading: I drive the conversation with Product and Engineering
 bullets:
-  - Understand the customer stories we'll be solving for
+  - Understand customer problems
   - Align on an architecture that scales
-  - Refine the existing ux (sidebar, context)
-  - Feature the existing UI (don't cannibalize)
-  - Federating the ai model for other teams to build
+  - Refine the existing UX
+  - Highlight product areas
+  - Federating the ai model 
 
 media: assets/portfolio-media/personio/new/pa-agent-strategy.mp4
 
@@ -743,7 +720,7 @@ slide_type: testimonial
 
 media: assets/portfolio-media/personio/new/pa-bannon-1.png
 quote: "I haven't worked with any Product Designers who will tell a room full of engineers how to build something"
-attribution: Alex Bannon, Engineering Director - AI
+attribution: Alex Bannon, Engineering Director - AI (Ex-Spotify)
 
 
 
@@ -753,12 +730,10 @@ split_layout: content-left
 
 section: Collaboration
 heading: Collaboration with Design Systems
-subheading: Worked with Design Systems Team to build out this framework
 bullets:
-  - Collaborating on the page frame and sidebar interaction
-  - Understanding the needs of a dedicated view
-  - How it impacts other product areas
-  - I'm hosting a workshop in Amsterdam next week to iron out the details
+  - Designing page frame and sidebar interaction
+  - Creating interaction models with product areas
+  - Leading a workshop in Amsterdam next week!
 
 media:  assets/portfolio-media/personio/new/pa-design-spec-1.mp4
 
@@ -771,10 +746,10 @@ split_layout: content-left
 
 section: Projects
 heading: Sidebar 
-subheading: Getting the assistant out of the way
+subheading: Crafting the intelligent layer
 bullets:
-  - lives alongside your page
-  - helps you to improve your existing workflows
+  - Lives alongside your page
+  - Helps you to improve your existing workflows
   - Adjusts to your preferences
 
 media-description: Opening the sidebar, dragging to adjust
@@ -787,11 +762,11 @@ split_layout: content-left
 
 section: Projects
 heading: Context drawer
-subheading: Building a dynamic input that adapts to your intent
+subheading: Imagining a dynamic input that adapts to your intent
 bullets:
   - What does the assistant see?
   - What can you do?
-  - How does this change
+  - How might this change?
 
 media-description: Page context, Dynamic prompts, @mentions, tools
 media: assets/portfolio-media/personio/new/pa-v2-context-drawer-1.mp4
@@ -836,27 +811,39 @@ media: assets/portfolio-media/personio/new/pa-v2-fullscreen-1.mp4
 slide_type: split
 split_layout: content-left
 
-heading: Canvas for agents
-subheading: Imagining a surface to handle asynchronous tasks by agents
+heading: Promotion workflow
+subheading: Considering the steps needed to automate compliance and approval checks
 
-media: assets/portfolio-media/personio/new/pa-v2-agentic-1.png
-
-
-
+media: assets/portfolio-media/personio/new/pa-wkflw-promotion-1.mp4
 
 
 ## Slide 57
+slide_type: split
+split_layout: content-left
+
+heading: Parental leave workflow
+subheading: Considering the steps needed to automate compliance and approval checks
+
+media: assets/portfolio-media/personio/new/pa-wkflw-parental-1.mp4
+
+
+
+
+
+
+## Slide 58
 slide_type: simple-list
 
 section: Results
 heading: Building momentum
-- Heading to Amsterdam next week for workshop with DS / FEs
-- Interest from other designers to use PAX (Design discovery tool)
-- Aligning with leadership on the vision for the project
+- Alignment with leadership on the vision
+- Offsite in Amsterdam next week for workshop 
+- Requests from designers to use PAX 
+
 
 ---
 
-## Slide 58
+## Slide 59
 slide_type: title
 
 heading: Thanks for your time!
