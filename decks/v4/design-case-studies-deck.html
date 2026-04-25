@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../templates/deck.css">
+    <link rel="stylesheet" href="../templates/deck.css?v=section-links">
 </head>
 <body>
     <div class="deck" id="deck">
@@ -18,10 +18,10 @@
             <div class="slide-content">
                 <h1>Terrence Breschi</h1>
                 <p class="large">Portfolio Review for Vanta</p>
-                <ul>
-                    <li>Personio Assistant (UX)</li>
-                    <li>Drawbridge (Design Tool)</li>
-                    <li>Personio Agent (Product Strategy)</li>
+                <ul class="section-links">
+                    <li><a href="?slide=2#personio-assistant" data-slide-target="personio-assistant">Personio Assistant (UX)</a></li>
+                    <li><a href="?slide=25#drawbridge" data-slide-target="drawbridge">Drawbridge (Design Tool)</a></li>
+                    <li><a href="?slide=42#personio-agent" data-slide-target="personio-agent">Personio Agent (Product Strategy)</a></li>
                 </ul>
             </div>
         </section>
@@ -48,7 +48,7 @@
         </section>
 
         <!-- Slide 3 — title (Personio Assistant: Cover) -->
-        <section class="slide" data-slide="title">
+        <section class="slide" id="personio-assistant" data-slide="title">
             <div class="title-bg-video">
                 <video src="../../assets/portfolio-media/personio/new/pa-overview-1.mp4" autoplay loop muted playsinline></video>
             </div>
@@ -447,7 +447,7 @@
         </section>
 
         <!-- Slide 26 — title (Drawbridge: Cover) -->
-        <section class="slide" data-slide="title">
+        <section class="slide" id="drawbridge" data-slide="title">
             <div class="title-bg-video">
                 <video src="../../assets/portfolio-media/drawbridge/drawbridge-rectangle.mp4" autoplay loop muted playsinline></video>
             </div>
@@ -680,13 +680,13 @@
             </div>
         </section>
 
-        <!-- Slide 40 — split (633 Github Stars) -->
+        <!-- Slide 40 — split (910 Github Stars) -->
         <section class="slide" data-slide="split">
             <div class="slide-content">
                 <div class="split">
                     <div class="split-content">
                         <h3>Result</h3>
-                        <h2 data-count-from="0">633 Github Stars</h2>
+                        <h2 data-count-from="0" data-github-repo="breschio/drawbridge" data-github-stars data-github-stars-template="{stars} Github Stars">910 Github Stars</h2>
                         <p class="large">First starred software project on Github.</p>
                         <ul>
                             <li>Learned how to manage issues, PRs, releases</li>
@@ -694,7 +694,7 @@
                         </ul>
                     </div>
                     <div class="split-media">
-                        <img src="../../assets/portfolio-media/drawbridge/db-github-1.png" alt="627 Github Stars on Github">
+                        <img src="../../assets/portfolio-media/drawbridge/db-github-1.png" alt="910 Github Stars on Github" data-github-repo="breschio/drawbridge" data-github-template="" data-github-alt-template="{stars} Github Stars on Github">
                     </div>
                 </div>
             </div>
@@ -742,7 +742,7 @@
         </section>
 
         <!-- Slide 44 — title (Personio Assistant Vision: Cover) -->
-        <section class="slide" data-slide="title">
+        <section class="slide" id="personio-agent" data-slide="title">
             <div class="title-bg-video">
                 <video src="../../assets/portfolio-media/personio/new/pa-vision-1.mp4" autoplay loop muted playsinline></video>
             </div>
@@ -812,10 +812,10 @@
         <section class="slide media-centered" data-slide="media-centered">
             <div class="slide-content">
                 <h2>Shaping the vision</h2>
-                <div class="media-area">
+                <div class="media-wrapper">
                     <img src="../../assets/portfolio-media/personio/new/pa-pax-funding.png" alt="Got funding from CPO and CTO for developing AI Vision">
                 </div>
-                <p class="caption">Got funding from CPO + CTO for developing our AI Vision</p>
+                <p class="media-caption">Got funding from CPO + CTO for developing our AI Vision</p>
             </div>
         </section>
 
@@ -823,10 +823,10 @@
         <section class="slide media-centered" data-slide="media-centered">
             <div class="slide-content">
                 <h2>Agents are the future</h2>
-                <div class="media-area">
+                <div class="media-wrapper">
                     <video src="../../assets/portfolio-media/personio/new/pa-pedro-1.mp4" autoplay loop muted playsinline></video>
                 </div>
-                <p class="caption">Leadership had been sold a vision of autonomous agents.</p>
+                <p class="media-caption">Leadership had been sold a vision of autonomous agents.</p>
             </div>
         </section>
 
@@ -1059,6 +1059,7 @@
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
         </svg>
     </button>
-    <script src="../templates/deck.js"></script>
+    <script src="../../github-stats.js?v=section-links"></script>
+    <script src="../templates/deck.js?v=section-links"></script>
 </body>
 </html>

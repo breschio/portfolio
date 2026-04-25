@@ -265,23 +265,32 @@
                 return index;
             }
         }
+
+        const targetId = window.location.hash.slice(1);
+        if (targetId) {
+            const targetSlide = document.getElementById(targetId);
+            const targetIndex = Array.from(slides).indexOf(targetSlide);
+            if (targetIndex >= 0) {
+                return targetIndex;
+            }
+        }
+
         return 0;
     }
 
-    // Initialize slide from URL or default to first (skip when no deck, e.g. preview page)
-    document.addEventListener('DOMContentLoaded', () => {
+    function initializeDeck() {
         if (!deck) return;
         const initialSlide = getInitialSlide();
         currentSlide = initialSlide;
+        updateSlide();
+    }
 
-        // Add active class after brief delay to trigger animation
-        setTimeout(() => {
-            if (slides[currentSlide]) {
-                updateSlide();
-                triggerCountUpForSlide(slides[currentSlide]);
-            }
-        }, 100);
-    });
+    // Initialize slide from URL or default to first (skip when no deck, e.g. preview page)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeDeck);
+    } else {
+        initializeDeck();
+    }
 
     function goToSlide(index) {
         currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
@@ -307,6 +316,22 @@
             updateSlide();
         }
     }
+
+    // ===========================================
+    // INTERNAL SLIDE LINKS
+    // ===========================================
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('[data-slide-target]');
+        if (!link || !deck) return;
+
+        const targetSlide = document.getElementById(link.dataset.slideTarget);
+        const targetIndex = Array.from(slides).indexOf(targetSlide);
+        if (targetIndex < 0) return;
+
+        e.preventDefault();
+        goToSlide(targetIndex);
+        history.pushState(null, '', `?slide=${targetIndex}#${link.dataset.slideTarget}`);
+    });
 
     // ===========================================
     // KEYBOARD NAVIGATION (arrows only)
