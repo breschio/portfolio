@@ -582,7 +582,7 @@ media: https://youtu.be/1cB2iqz_vnM?si=PEQAWdlCoJ80W9Ud
 slide_type: split
 
 section: Result
-heading: 633 Github Stars
+heading: 910 Github Stars
 subheading: First starred software project on Github.
 bullets:
   - Learned how to manage issues, PRs, releases

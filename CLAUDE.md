@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Design portfolio with two separate systems:
 
-1. **Portfolio landing site** (`index.html`, `styles.css`, `script.js`) — standalone pages with sidebar navigation linking to case studies and decks
-2. **Slide deck presentation system** (`decks/`) — modular slide decks for portfolio reviews, the primary focus of active development
+1. **Portfolio landing site** (`index.html`, `styles.css`, `script.js`) — standalone pages with sidebar navigation linking to case studies and the deck
+2. **Slide deck presentation system** (`decks/`) — a single v4 portfolio review deck plus shared templates
 
 ## Development
 
@@ -23,27 +23,14 @@ The landing site (`styles.css`, `script.js`) and deck system (`deck.css`, `deck.
 ## Slide Deck Architecture
 
 ### Core Files (DO NOT MODIFY unless adding new features)
-- `decks/templates/deck.css` — Single source of truth for all deck styles. 4px baseline grid, 12-column layout, light/dark theme via CSS variables (`--bg`, `--text`, `--accent`, `--surface`). Accent: `#FF2F00` (light), `#FF4500` (dark). Changes here flow to all decks and `slide-templates-preview.html`.
+- `decks/templates/deck.css` — Single source of truth for deck styles. 4px baseline grid, 12-column layout, light/dark theme via CSS variables (`--bg`, `--text`, `--accent`, `--surface`). Accent: `#FF2F00` (light), `#FF4500` (dark). Changes here flow to the v4 deck and `slide-templates-preview.html`.
 - `decks/templates/deck.js` — Navigation (arrow keys, touch/swipe), count-up animation for `.big-metric` slides, theme toggle with localStorage, auto-deck navigation. Exposes `window.slideDeck` API (`goToSlide()`, `nextSlide()`, `prevSlide()`, `getCurrentSlide()`, `getTotalSlides()`).
 
 ### V4 Design Target
-- `decks/v4/design-case-studies-deck.html` — Primary design target for deck.css changes. Systematic UX/UI changes to deck.css should be validated against this deck and `slide-templates-preview.html`.
+- `decks/v4/design-case-studies-deck.html` — The only maintained presentation deck. Systematic UX/UI changes to deck.css should be validated against this deck and `slide-templates-preview.html`.
 
-### V1 vs V2 Decks
-- `decks/v1/` — Original comprehensive version with full narrative
-- `decks/v2/` — Condensed iteration (e.g. Personio Assistant is 48% smaller). Active experimentation.
-- Both versions share the same `decks/templates/` core files
-
-### Deck Flow
-`cover-deck.html` → `about-deck.html` → `personio-assistant-deck.html` → `drawbridge-deck.html` → `personio-agent-deck.html`
-
-Auto-navigation between decks via `data-next-deck` attribute on `<body>`:
-```html
-<body data-next-deck="next-deck.html">
-```
-
-### Content.md Files
-Each version has a `content.md` — markdown reference of all slide text/assets. Not rendered directly; used for reviewing and editing content outside HTML.
+### Outline Files
+The v4 outline files are markdown references for slide text/assets. They are not rendered directly; use them for reviewing and editing content outside HTML.
 
 ### Reference Files
 - `deck-TEMPLATE.html` — Master template with all slide type examples
