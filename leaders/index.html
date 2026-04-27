@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leaders / bresch.io</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .letter-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            box-sizing: border-box;
+        }
+
+        .letter-content {
+            max-width: 660px;
+            width: 100%;
+        }
+
+        .letter-content h1 {
+            font-size: 14px;
+            font-weight: 400;
+            font-family: "Space Mono", Monaco, monospace;
+            margin-bottom: 60px;
+            color: var(--text-secondary);
+        }
+
+        .letter-content h1 a {
+            color: var(--text-secondary);
+            text-decoration: underline;
+        }
+
+        .letter-content h1 a:hover {
+            color: var(--accent-color);
+        }
+
+        .letter-headline {
+            font-size: 24px;
+            font-weight: 400;
+            font-family: "Space Mono", Monaco, monospace;
+            line-height: 1.35;
+            margin-bottom: 48px;
+            text-transform: none;
+            color: var(--text-primary);
+        }
+
+        .letter-content p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            text-transform: none;
+            color: var(--text-secondary);
+        }
+
+        .letter-content p:last-of-type {
+            margin-bottom: 48px;
+        }
+
+        .highlight {
+            color: var(--text-primary);
+        }
+
+        .intro-link {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-transform: none;
+        }
+
+        .intro-link:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .letter-page {
+                padding: 60px 24px;
+                align-items: flex-start;
+            }
+
+            .letter-content h1 {
+                margin-bottom: 48px;
+            }
+
+            .letter-headline {
+                font-size: 20px;
+                margin-bottom: 36px;
+            }
+
+            .letter-content p {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="letter-page">
+        <article class="letter-content">
+            <h1><a href="../index.html">← bresch.io</a></h1>
+
+            <p class="letter-headline">For design leaders who haven't made the AI jump yet.</p>
+
+            <p>If you're a design director or senior design leader and you feel quietly behind on AI tooling, I think that's a reasonable place to be. The tools are changing fast, the discourse is noisy, and a lot of the advice out there assumes you already have hours to experiment or a team ready to reorganize around it.</p>
+
+            <p>I've been living in that messy middle for a while. I led design at Meta, and today I lead AI product design at <span class="highlight">Personio</span>. I also built <span class="highlight">Drawbridge</span>, an open source tool for AI-assisted design and development that has 900+ stars on GitHub. I don't say that as a credential stack. I say it because I've had to make this stuff practical in real product environments, not just talk about it.</p>
+
+            <p>Working with me is simple: we meet 1:1, hands-on, and start wherever you actually are. We can look at the tools, your current workflow, the meetings and artifacts your team depends on, the places where AI feels useful, and the places where it feels risky or annoying. Then we design a way of working that fits you instead of forcing you into someone else's playbook.</p>
+
+            <p>If that would be useful, book a 20-minute intro call. We can talk about what you're trying to learn, where you're stuck, and whether I can help.</p>
+
+            <a href="https://calendly.com/tbreschi/intro" class="intro-link" target="_blank" rel="noopener">Book a 20-minute intro call</a>
+        </article>
+    </main>
+    <script>
+        // Apply saved theme preference.
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+            }
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
