@@ -166,7 +166,12 @@
       }
       // next arrow
       if (pagerNext) {
-        if (idx >= total) {
+        var override = project.dataset.pagerNextHref;
+        if (override) {
+          pagerNext.classList.remove('is-disabled');
+          pagerNext.removeAttribute('aria-disabled');
+          pagerNext.setAttribute('href', override);
+        } else if (idx >= total) {
           pagerNext.classList.add('is-disabled');
           pagerNext.setAttribute('aria-disabled', 'true');
           pagerNext.removeAttribute('href');
@@ -209,8 +214,12 @@
       var href = target && target.getAttribute('href');
       if (!href) return;
       e.preventDefault();
-      var el = document.querySelector(href);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (href.charAt(0) === '#') {
+        var el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        location.href = href;
+      }
     });
 
     // Set initial state from current hash or first project.
