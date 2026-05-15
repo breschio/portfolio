@@ -1,192 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — projects</title>
+  <meta name="description" content="Terrence Breschi — designer · builder · ships AI. Selected projects." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
 
-      gtag('config', 'G-GFN119M0JG');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bresch.io</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=block" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GFN119M0JG');
+  </script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      root.classList.add('is-index'); // enables viewport scroll-snap (see styles.css)
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-    <button class="hamburger-menu" aria-label="Toggle menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="12" x2="20" y2="12" class="line-top" />
-            <line x1="4" y1="12" x2="20" y2="12" class="line-middle" />
-            <line x1="4" y1="12" x2="20" y2="12" class="line-bottom" />
-        </svg>
+<body data-page="projects-index">
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
     </button>
-    <div class="container">
-        <nav class="sidebar">
-            <h1>bresch.io</h1>
-            <ul>
-                <li><a href="#personio">Personio</a></li>
-                <li><a href="#drawbridge">Drawbridge</a></li>
-                <li><a href="#pizza-cat">Pizza Cat</a></li>
-                <li><a href="#meta-avatars-store">Meta</a></li>
-                <li><a href="#ig-action-buttons">Instagram</a></li>
-                <li><a href="#facebook-ads-design-system">Facebook</a></li>
-            </ul>
-            <div class="about-me">
-                <img src="./assets/terrence-breschi-profile.png" alt="Terrence Anthony Breschi" class="avatar" loading="lazy">
-                <p>hey, i'm terrence. i design, build and ship with ai.</p>
-                <div class="about-row">
-                    <a href="about.html" class="about-link">about</a>
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon">
-                            <circle cx="12" cy="12" r="4" class="sun-core"/>
-                            <g class="sun-rays">
-                                <path d="M12 3v1"/>
-                                <path d="M12 20v1"/>
-                                <path d="M3 12h1"/>
-                                <path d="M20 12h1"/>
-                                <path d="m18.364 5.636-.707.707"/>
-                                <path d="m6.343 17.657-.707.707"/>
-                                <path d="m5.636 5.636.707.707"/>
-                                <path d="m17.657 17.657.707.707"/>
-                            </g>
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
-                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <main class="content">
-            <section id="personio" class="project">
-                <img src="./assets/personio-input.gif" width="100%" height="auto" alt="Personio" loading="lazy">
-                <div class="project-info">
-                    <div class="left-column">
-                        <h2>Personio</h2>
-                        <p class="date">2025 / Cursor, Figma</p>
-                        <div class="link-container">
-                            <a href="https://www.personio.com/" target="_blank" class="project-link">Link</a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <p class="description">I'm leading design for Personio's AI products. We're exploring how to safely share context with the Assistant while testing new UI patterns and interactions. Concept work shown above.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="drawbridge" class="project">
-                <img src="./assets/drawbridge.gif" width="100%" height="auto" alt="Drawbridge" loading="lazy">
-                <div class="project-info">
-                    <div class="left-column">
-                        <h2>Drawbridge</h2>
-                        <p class="date">2025 / cursor, figma</p>
-                        <div class="link-container">
-                            <a href="drawbridge.html" class="project-link case-study-link" data-section="drawbridge">Case study</a>
-                            <a href="https://github.com/breschio/drawbridge" target="_blank" class="project-link">Github</a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <p class="description">A Chrome plugin I built for AI-driven design and development. It allows you to make 'Figma comments' in the browser for processing by Claude or Cursor.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="pizza-cat" class="project">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/8lnwXHsIThc?si=M-DVYUiHHJS4oRB1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="project-info">
-                    <div class="left-column">
-                        <h2>Pizza Cat</h2>
-                        <p class="date">2024 / cursor, figma, supabase, google music fx</p>
-                        <div class="link-container">
-                            <a href="http://pizzacat.surf/" target="_blank" class="project-link">Play</a>
-                            <a href="https://github.com/breschio/PizzaCat" target="_blank" class="project-link">Github</a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <p class="description">A simple game I built to learn the fundamentals of AI-driven development. I wanted to understand how AI can help create interactive experiences from scratch.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="meta-avatars-store" class="project mobile-project">
-                <div class="mobile-project-container">
-                    <div class="mobile-media">
-                        <video width="auto" autoplay loop muted playsinline>
-                            <source src="./assets/meta-avatars-store-mask.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="mobile-project-info">
-                        <h2>Meta Avatars Store</h2>
-                        <p class="date">2020 / Figma</p>
-                        <p class="description">I designed the shopping experience for Meta's Avatar Store, making digital self-expression feel personal through clothing and accessories.</p>
-                        <div class="link-container" style="display: none;">
-                            <a href="#" target="_blank" class="project-link">Link 1</a>
-                            <a href="#" target="_blank" class="project-link">Link 2</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="ig-action-buttons" class="project mobile-project">
-                <div class="mobile-project-container">
-                    <div class="mobile-media">
-                        <video width="auto" autoplay loop muted playsinline>
-                            <source src="./assets/instagram-action-buttons-mask.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="mobile-project-info">
-                        <h2>Instagram Action Buttons</h2>
-                        <p class="date">2020 / Figma</p>
-                        <p class="description">I streamlined the setup for businesses to get bookings, leads, and sales directly from their Instagram profiles.</p>
-                        <div class="link-container" style="display: none;">
-                            <a href="#" target="_blank" class="project-link">Link 1</a>
-                            <a href="#" target="_blank" class="project-link">Link 2</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="facebook-ads-design-system" class="project">
-                <div class="video-wrapper">
-                    <iframe src="https://player.vimeo.com/video/891511433?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="Company Layer LWI"></iframe>
-                </div>
-                <div class="project-info">
-                    <div class="left-column">
-                        <h2>Facebook Ads Design System</h2>
-                        <p class="date">2019 / figma</p>
-                        <div class="link-container" style="display: none;">
-                            <a href="#" target="_blank" class="project-link">Link 1</a>
-                            <a href="#" target="_blank" class="project-link">Link 2</a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <p class="description">I developed and tested a design system that unified the advertising experience across Facebook, Instagram, and Business Suite, reducing inconsistencies and improving design velocity.</p>
-                    </div>
-                </div>
-            </section>
+  </header>
 
-            
-
-            <section id="contact" class="project" style="display: none;">
-                <h2>Contact</h2>
-                <p>Feel free to reach out to me at t@bresch.io</p>
-                <div class="media-placeholder"></div>
-            </section>
-
-            
-        </main>
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children" data-scrollspy-group="drawer">
+          <a class="drawer-child is-active" href="#drawbridge" data-scrollspy-target="drawbridge">Drawbridge</a>
+          <a class="drawer-child" href="#personio" data-scrollspy-target="personio">Personio</a>
+          <a class="drawer-child" href="#pizza-cat" data-scrollspy-target="pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="#meta-avatars" data-scrollspy-target="meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="#instagram-action-buttons" data-scrollspy-target="instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="#facebook-ads-system" data-scrollspy-target="facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="blog.html">Blog</a>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="consulting.html">Consulting</a>
+      </div>
     </div>
-    <script src="script.js"></script>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+      <nav class="rail-nav">
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children" data-scrollspy-group="rail">
+            <a class="rail-child is-active" href="#drawbridge" data-scrollspy-target="drawbridge">Drawbridge</a>
+            <a class="rail-child" href="#personio" data-scrollspy-target="personio">Personio</a>
+            <a class="rail-child" href="#pizza-cat" data-scrollspy-target="pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="#meta-avatars" data-scrollspy-target="meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="#instagram-action-buttons" data-scrollspy-target="instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="#facebook-ads-system" data-scrollspy-target="facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="blog.html">Blog</a>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="consulting.html">Consulting</a>
+        </div>
+      </nav>
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar topbar-sticky" role="navigation" aria-label="Project navigation">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <span class="crumb-seg">projects</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active" data-current-project>drawbridge</span>
+        </nav>
+        <div class="pager">
+          <span class="pager-count" data-pager-count>01 / 06</span>
+          <div class="pager-arrows">
+            <a class="pager-btn is-disabled" data-pager-prev aria-disabled="true" aria-label="Previous project">←</a>
+            <a class="pager-btn is-primary" href="#personio" data-pager-next aria-label="Next project">→</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 01 · Drawbridge -->
+      <article id="drawbridge" class="project-page" data-project data-project-index="1" data-project-name="drawbridge">
+        <figure class="media reveal" data-media>
+          <img alt="Drawbridge demo" src="assets/drawbridge.gif" loading="eager" />
+          <button class="media-play" type="button" aria-label="Play demo" data-media-play>
+            <span class="play-disc"><span class="play-tri" aria-hidden="true"></span></span>
+          </button>
+          <div class="media-overlay">
+            <div class="badge">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="badge-label">demo · drawbridge</span>
+            </div>
+            <span class="timer" data-media-timer>00:00 / 00:48</span>
+          </div>
+          <div class="media-progress" style="--progress: 0%"></div>
+        </figure>
+        <section class="project-meta reveal" style="--reveal-delay: 60ms">
+          <div class="lhs">
+            <h2 class="title">Drawbridge</h2>
+            <p class="meta">2025 / Cursor, Figma</p>
+            <div class="actions">
+              <a class="link-line" href="drawbridge.html">Case study →</a>
+              <a class="link-line" href="https://github.com/breschio/drawbridge" target="_blank" rel="noopener">Github</a>
+            </div>
+          </div>
+          <div class="rhs">
+            <p class="body">A Chrome plugin I built for AI-driven design and development. It allows you to make &lsquo;Figma comments&rsquo; in the browser for processing by Claude or Cursor.</p>
+            <p class="body-secondary">Open source. 900+ stars on GitHub. The case study unpacks the build story — how the annotation primitive came from a hallway gripe and turned into an open tool.</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- 02 · Personio -->
+      <article id="personio" class="project-page" data-project data-project-index="2" data-project-name="personio">
+        <figure class="media reveal">
+          <img alt="Personio Assistant input" src="assets/personio-input.gif" loading="lazy" />
+          <div class="media-overlay">
+            <div class="badge">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="badge-label">concept · personio assistant</span>
+            </div>
+          </div>
+        </figure>
+        <section class="project-meta reveal" style="--reveal-delay: 60ms">
+          <div class="lhs">
+            <h2 class="title">Personio</h2>
+            <p class="meta">2025 / Cursor, Figma</p>
+            <div class="actions">
+              <a class="link-line" href="https://www.personio.com/" target="_blank" rel="noopener">Link</a>
+              <a class="link-line" href="personio.html">Case study →</a>
+            </div>
+          </div>
+          <div class="rhs">
+            <p class="body">I&rsquo;m leading design for Personio&rsquo;s AI products. We&rsquo;re exploring how to safely share context with the Assistant while testing new UI patterns and interactions.</p>
+            <p class="body-secondary">Concept work shown above. Detailed case study available on request.</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- 03 · Pizza Cat -->
+      <article id="pizza-cat" class="project-page" data-project data-project-index="3" data-project-name="pizza cat">
+        <figure class="media reveal">
+          <iframe src="https://www.youtube.com/embed/8lnwXHsIThc?si=M-DVYUiHHJS4oRB1" title="Pizza Cat — gameplay" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </figure>
+        <section class="project-meta reveal" style="--reveal-delay: 60ms">
+          <div class="lhs">
+            <h2 class="title">Pizza Cat</h2>
+            <p class="meta">2024 / Cursor, Figma, Supabase, Google Music FX</p>
+            <div class="actions">
+              <a class="link-line" href="http://pizzacat.surf/" target="_blank" rel="noopener">Play</a>
+              <a class="link-line" href="https://github.com/breschio/PizzaCat" target="_blank" rel="noopener">Github</a>
+            </div>
+          </div>
+          <div class="rhs">
+            <p class="body">A simple game I built to learn the fundamentals of AI-driven development. I wanted to understand how AI can help create interactive experiences from scratch.</p>
+            <p class="body-secondary">Soundtrack scored with Google Music FX. Backend on Supabase. Built end-to-end with Cursor — first time I shipped a real game.</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- 04 · Meta Avatars Store -->
+      <article id="meta-avatars" class="project-page" data-project data-project-index="4" data-project-name="meta avatars store">
+        <figure class="media reveal">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="assets/meta-avatars-store-mask.mp4" type="video/mp4">
+          </video>
+          <div class="media-overlay">
+            <div class="badge">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="badge-label">demo · meta avatars store</span>
+            </div>
+          </div>
+        </figure>
+        <section class="project-meta reveal" style="--reveal-delay: 60ms">
+          <div class="lhs">
+            <h2 class="title">Meta Avatars Store</h2>
+            <p class="meta">2020 / Figma</p>
+          </div>
+          <div class="rhs">
+            <p class="body">I designed the shopping experience for Meta&rsquo;s Avatar Store, making digital self-expression feel personal through clothing and accessories.</p>
+            <p class="body-secondary">Worked across Facebook, Instagram, and Messenger surfaces. The challenge: a shopping flow that felt native to each app while sharing one inventory model.</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- 05 · Instagram Action Buttons -->
+      <article id="instagram-action-buttons" class="project-page" data-project data-project-index="5" data-project-name="instagram action buttons">
+        <figure class="media reveal">
+          <video autoplay loop muted playsinline preload="metadata">
+            <source src="assets/instagram-action-buttons-mask.mp4" type="video/mp4">
+          </video>
+          <div class="media-overlay">
+            <div class="badge">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="badge-label">demo · instagram actions</span>
+            </div>
+          </div>
+        </figure>
+        <section class="project-meta reveal" style="--reveal-delay: 60ms">
+          <div class="lhs">
+            <h2 class="title">Instagram Action Buttons</h2>
+            <p class="meta">2020 / Figma</p>
+          </div>
+          <div class="rhs">
+            <p class="body">I streamlined the setup for businesses to get bookings, leads, and sales directly from their Instagram profiles.</p>
+            <p class="body-secondary">A small surface — one button on a profile — with big consequences for SMB conversion. The hard part was the setup flow: connecting business tools without making it feel like an enterprise install.</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- 06 · Facebook Ads Design System -->
+      <article id="facebook-ads-system" class="project-page" data-project data-project-index="6" data-project-name="facebook ads design system">
+        <figure class="media reveal">
+          <iframe src="https://player.vimeo.com/video/891511433?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Facebook Ads Design System" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"></iframe>
+        </figure>
+        <section class="project-meta reveal" style="--reveal-delay: 60ms">
+          <div class="lhs">
+            <h2 class="title">Facebook Ads Design System</h2>
+            <p class="meta">2019 / Figma</p>
+          </div>
+          <div class="rhs">
+            <p class="body">I developed and tested a design system that unified the advertising experience across Facebook, Instagram, and Business Suite — reducing inconsistencies and improving design velocity.</p>
+            <p class="body-secondary">One source of truth for hundreds of components shipping to millions of advertisers. The hard part wasn&rsquo;t the tokens — it was getting four product teams to agree on what &lsquo;Ad&rsquo; meant.</p>
+          </div>
+        </section>
+      </article>
+
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

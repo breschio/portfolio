@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — consulting · advisory</title>
+  <meta name="description" content="1:1 advisory for leaders who haven't made the AI jump yet. Hands-on, in your workflow." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GFN119M0JG');
+  </script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- consulting needs space grotesk + playfair display italic for the logo strip -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children">
+          <a class="drawer-child" href="/#drawbridge">Drawbridge</a>
+          <a class="drawer-child" href="/#personio">Personio</a>
+          <a class="drawer-child" href="/#pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="/#meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="/#instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="/#facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="blog.html">Blog</a>
+      </div>
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="consulting.html">Consulting</a>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+      <nav class="rail-nav">
+        <div class="rail-section">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children">
+            <a class="rail-child" href="/#drawbridge">Drawbridge</a>
+            <a class="rail-child" href="/#personio">Personio</a>
+            <a class="rail-child" href="/#pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="/#meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="/#instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="/#facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="blog.html">Blog</a>
+        </div>
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="consulting.html">Consulting</a>
+        </div>
+      </nav>
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar reveal">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <span class="crumb-seg">consulting</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active" style="color: var(--accent)">advisory</span>
+        </nav>
+      </div>
+
+      <section class="advisory-card reveal" style="--reveal-delay: 60ms">
+        <div class="row">
+
+          <div class="portrait" aria-hidden="true">
+            <div class="portrait-tag">
+              <div class="portrait-disc">TB</div>
+              <div class="portrait-meta">portrait — 4:5</div>
+            </div>
+            <div class="portrait-strip">
+              <span class="name">Terrence Breschi</span>
+              <span class="where">Berlin · 2026</span>
+            </div>
+          </div>
+
+          <div class="advisory-copy">
+            <p class="advisory-eyebrow">consulting · 1:1 advisory</p>
+            <h1 class="advisory-title">For leaders who haven&rsquo;t made the AI jump yet.</h1>
+            <p class="advisory-lede">If you lead a team and feel quietly behind on AI, you&rsquo;re not alone — and you&rsquo;re not late. We meet 1:1, hands-on, and start where you actually are. Your tools, your workflow, the artifacts your team depends on.</p>
+
+            <div class="stats">
+              <div class="stat">
+                <span class="stat-value">10K+</span>
+                <span class="stat-label">companies on personio ai</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat">
+                <span class="stat-value">900+</span>
+                <span class="stat-label">github stars · drawbridge</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat">
+                <span class="stat-value">6 yrs</span>
+                <span class="stat-label">design lead · meta + personio</span>
+              </div>
+            </div>
+
+            <div class="cta-row">
+              <a class="cta" href="mailto:t@bresch.io?subject=intro%20call">→ Book a 30-minute intro call</a>
+              <span class="cta-note">free · no agenda · usually replies same day</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="worked-with reveal" style="--reveal-delay: 120ms">
+        <div class="row-head">
+          <span class="label">worked with</span>
+          <span class="rule" aria-hidden="true"></span>
+          <span class="span">2014 — present</span>
+        </div>
+        <div class="logos">
+          <span class="logo-meta">Meta</span>
+          <span class="logo-yahoo">Yahoo!</span>
+          <span class="logo-bestbuy">Best Buy</span>
+          <span class="logo-personio">personio</span>
+          <span class="logo-classy">classy</span>
+          <span class="logo-marymacgill">Mary Macgill</span>
+        </div>
+        <p class="note">Selected. Full client list available on request.</p>
+      </section>
+
+      <section class="quote-block reveal" style="--reveal-delay: 180ms">
+        <p class="quote-label">what people say</p>
+        <blockquote class="quote-text">&ldquo;Terrence helped our team go from anxious about AI to shipping it. He doesn&rsquo;t pitch tools — he sits with you, in your workflow, and shows you what&rsquo;s worth keeping.&rdquo;</blockquote>
+        <div class="quote-attrib">
+          <div class="avatar-sm" aria-hidden="true">JD</div>
+          <span class="who-name">[ placeholder client ]</span>
+          <span class="who-role">· VP of Product, mid-market SaaS</span>
+        </div>
+      </section>
+
+      <section class="two-col reveal" style="--reveal-delay: 220ms">
+        <div class="lhs">
+          <h2 class="title">What helps</h2>
+          <p class="sub">1:1, hands-on, your tools</p>
+          <div class="links">
+            <a class="link-line" href="about.html">About</a>
+            <a class="link-line" href="#past-clients">Past clients</a>
+          </div>
+        </div>
+        <div class="rhs">
+          <p>Most AI advice right now is either evangelism or panic. Neither is useful when you have a team to lead. We start where you actually are — your tools, your workflow, the artifacts your team depends on.</p>
+          <p>I lead AI product design at Personio (shipped to 10K+ companies) and built Drawbridge (open-source, 900+ stars). I&rsquo;ve made this stuff work in real product environments, not just written about it.</p>
+        </div>
+      </section>
+
+      <section class="tri-grid reveal" style="--reveal-delay: 260ms">
+        <div class="col">
+          <span class="eb">01 — where you are</span>
+          <p class="body">A read on your stack, team, and the parts of the workflow that feel risky or stuck.</p>
+        </div>
+        <div class="col">
+          <span class="eb">02 — why me</span>
+          <p class="body">Designer and builder at Personio + Meta. I&rsquo;ve shipped AI to 10K+ companies and built Drawbridge.</p>
+        </div>
+        <div class="col">
+          <span class="eb">03 — what helps</span>
+          <p class="body">A working session, not a slide deck. We build a way of working that fits you, not someone else&rsquo;s playbook.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

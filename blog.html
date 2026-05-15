@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — blog · what it feels like to design with AI</title>
+  <meta name="description" content="What it actually feels like to design with an AI on your shoulder." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GFN119M0JG');
+  </script>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children">
+          <a class="drawer-child" href="/#drawbridge">Drawbridge</a>
+          <a class="drawer-child" href="/#personio">Personio</a>
+          <a class="drawer-child" href="/#pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="/#meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="/#instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="/#facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="blog.html">Blog</a>
+        <div class="drawer-children">
+          <a class="drawer-child is-active" href="blog.html">Article 01</a>
+          <a class="drawer-child" href="blog.html#02">Article 02</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="consulting.html">Consulting</a>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+
+      <nav class="rail-nav">
+        <div class="rail-section">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children">
+            <a class="rail-child" href="/#drawbridge">Drawbridge</a>
+            <a class="rail-child" href="/#personio">Personio</a>
+            <a class="rail-child" href="/#pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="/#meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="/#instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="/#facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="blog.html">Blog</a>
+          <div class="rail-children">
+            <a class="rail-child is-active" href="blog.html">Article 01</a>
+            <a class="rail-child" href="blog.html#02">Article 02</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="consulting.html">Consulting</a>
+        </div>
+      </nav>
+
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar reveal">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <span class="crumb-seg">blog</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active">what it feels like to design with ai</span>
+        </nav>
+      </div>
+
+      <article class="article">
+
+        <header class="article-head reveal" style="--reveal-delay: 60ms">
+          <div class="article-kicker">
+            <span class="date">May 14, 2026</span>
+            <span class="sep">·</span>
+            <span class="tag">essay</span>
+            <span class="sep">·</span>
+            <span class="read">6 min read</span>
+          </div>
+          <h1 class="article-title">What it actually feels like to design with an AI on your shoulder.</h1>
+          <div class="article-byline">
+            <div class="avatar-sm" aria-hidden="true">TB</div>
+            <span class="name">Terrence Breschi</span>
+            <span class="where">· Personio, on the side</span>
+          </div>
+        </header>
+
+        <figure class="article-hero reveal" style="--reveal-delay: 120ms">
+          <div class="article-hero-figure" aria-hidden="true"></div>
+          <figcaption class="article-hero-caption">Caption — optional. The studio desk, mid-pair with the Assistant.</figcaption>
+        </figure>
+
+        <div class="article-body reveal" style="--reveal-delay: 180ms">
+          <p class="article-lede">For the first six months, I thought I was just typing faster. Then I started noticing the smaller shifts — the way I'd start a sentence and let the Assistant finish it, the way I'd argue with a draft before I'd argue with myself.</p>
+          <p>Most people who write about designing with AI either pitch it like a productivity hack or panic about what it means for the craft. Neither of those describes what it actually feels like at the desk on a Tuesday.</p>
+          <p>What it feels like, mostly, is having someone sit slightly behind you. Not over your shoulder — that metaphor implies surveillance. More like a colleague who's quiet by default, but who has a useful thing to say if you turn and ask. The work is mine. The conversation is new.</p>
+
+          <blockquote>&ldquo;The work is mine. The conversation is new.&rdquo;</blockquote>
+
+          <h2 class="article-h2">Three places it actually helps.</h2>
+          <p>The first is what I'd call scaffolding work — the kind of thing where you know the shape of the thing you want, but writing the first version is a slog. Empty states, error copy, the boring middle of a flow. The Assistant gets the scaffolding 70% right, which is enough to react to.</p>
+
+          <figure class="article-figure">
+            <div class="article-figure-img" aria-hidden="true"></div>
+            <figcaption class="article-figure-caption">Fig. 01 — A morning chat with the Assistant. Half the prompts get deleted before sending.</figcaption>
+          </figure>
+
+          <p>The second is rubber-ducking. I describe a problem out loud — in writing, at a keyboard — and the act of describing it well enough for the Assistant to respond usefully forces me to think about it. Half the time the answer isn't the Assistant's, it's mine, surfaced by the act of writing.</p>
+          <p>The third is harder to name. Something like refusing the obvious move. The Assistant produces a fluent default. I see that default and feel, often correctly, that the real answer is somewhere else.</p>
+        </div>
+
+        <footer class="article-foot reveal" style="--reveal-delay: 220ms">
+          <div class="article-foot-row">
+            <div class="article-tags">
+              <span class="pill">#ai</span>
+              <span class="pill">#design-practice</span>
+              <span class="pill">#essay</span>
+            </div>
+            <div class="share-row">
+              <span class="share-label">share</span>
+              <a class="link-line" href="#" data-copy-link>copy link</a>
+              <a class="link-line" href="https://x.com/intent/tweet" target="_blank" rel="noopener">x ↗</a>
+              <a class="link-line" href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" rel="noopener">linkedin ↗</a>
+            </div>
+          </div>
+
+          <div class="author-card">
+            <div class="avatar-md" aria-hidden="true">TB</div>
+            <div class="body-text">
+              <div class="author-name">— Terrence</div>
+              <p class="author-blurb">Designing with AI at Personio. Builder of Drawbridge. If this resonated, the next post lands when it lands — subscribe and you'll get it in your inbox.</p>
+            </div>
+          </div>
+        </footer>
+
+      </article>
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
