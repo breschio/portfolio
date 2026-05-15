@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFN119M0JG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GFN119M0JG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/favicon.ico">
+    <title>Assistant Improvements | bresch i/o</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Light theme (default) - matches main site */
+        :root {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Dark theme via media query */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121212;
+                --text: #e0e0e0;
+                --text-secondary: #a0a0a0;
+                --text-muted: #777;
+                --border: #444;
+                --accent: #FF4500;
+                --link-color: #6ea8fe;
+                --card-bg: #1a1a1a;
+                --code-bg: #2a2a2a;
+            }
+        }
+
+        /* Force Light Theme */
+        body.light-theme {
+            --bg: #ffffff;
+            --text: #333;
+            --text-secondary: #666;
+            --text-muted: #999;
+            --border: #ccc;
+            --accent: #FF2F00;
+            --link-color: #007bff;
+            --card-bg: #f8f8f8;
+            --code-bg: #f0f0f0;
+        }
+
+        /* Force Dark Theme */
+        body.dark-theme {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #777;
+            --border: #444;
+            --accent: #FF4500;
+            --link-color: #6ea8fe;
+            --card-bg: #1a1a1a;
+            --code-bg: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100vh;
+            background: var(--bg);
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            opacity: 0;
+            animation: slideInFromRight 0.4s ease-out forwards;
+            min-height: 100vh;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        body.navigating-back {
+            animation: slideOutToRight 0.3s ease-in forwards;
+        }
+
+        @keyframes slideOutToRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+        }
+
+        .back-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            z-index: 100;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .meta-item .label {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-item .value {
+            color: var(--text);
+        }
+
+        .hero-media {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-media img,
+        .hero-media video {
+            width: 100%;
+            border-radius: 32px;
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .content li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .content strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .content em {
+            font-style: italic;
+        }
+
+        .content a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content code {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9em;
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+        }
+
+        .callout {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .callout.highlight {
+            border-left: 3px solid var(--accent);
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        .callout p strong {
+            font-size: 1.25rem;
+        }
+
+        .image-full {
+            position: relative;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 1100px;
+            margin: 4rem 0;
+            padding: 0 2rem;
+            box-sizing: border-box;
+        }
+
+        .image-full img {
+            width: 100%;
+            border-radius: 32px;
+        }
+
+        .image-full video {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .image-content {
+            margin: 4rem 0;
+        }
+
+        .image-content img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .image-content .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .image-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .placeholder-box {
+            width: 100%;
+            min-height: 300px;
+            background: var(--card-bg);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .placeholder-box::before {
+            content: attr(data-size);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            white-space: nowrap;
+            background: var(--bg);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .placeholder-box.image-placeholder {
+            aspect-ratio: 16 / 9;
+            min-height: 400px;
+        }
+
+        .placeholder-box.video-placeholder {
+            aspect-ratio: 16 / 9;
+            min-height: 400px;
+        }
+
+        .hero-media .placeholder-box {
+            aspect-ratio: 16 / 9;
+            min-height: 500px;
+        }
+
+        .hero-media .placeholder-box::before {
+            font-size: 0.8rem;
+        }
+
+        .video-full {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .video-full .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .video-full .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-full video {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .video-full .caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .stat-card .label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .before-after .panel {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .before-after .panel-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .before-after .panel p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Before/After Image Slider */
+        .image-compare {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 32px;
+            cursor: ew-resize;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .image-compare img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+        }
+
+        .image-compare .compare-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-compare .compare-before img {
+            display: block;
+            height: 100%;
+            width: auto;
+            max-width: none;
+        }
+
+        .image-compare .compare-handle {
+            position: absolute;
+            top: 0;
+            left: 80%;
+            width: 2px;
+            height: 100%;
+            background: var(--text);
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .image-compare .compare-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: var(--bg);
+            border: 2px solid var(--text);
+            border-radius: 50%;
+        }
+
+        .image-compare .compare-handle::after {
+            content: '◀ ▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            color: var(--text);
+            letter-spacing: 2px;
+            white-space: nowrap;
+            z-index: 11;
+        }
+
+        .links-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .link-button:hover {
+            border-color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                position: static;
+                display: block;
+                padding: 1.5rem 2rem 0;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .image-grid,
+            .before-after,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="personio-case-studies.html" class="back-link return-home-link">← Back</a>
+
+    <header class="hero">
+        <h1>Personio Assistant: UX Improvements</h1>
+        <p class="subtitle">Personio's AI Assistant had a 19% CSAT score. I shipped six UX improvements directly to production—becoming the first designer at the company to commit code—fixing fundamental usability issues from input to error handling. These tactical wins bought time and revealed a deeper truth: when building with AI, it's not how it looks—it's how it works.</p>
+
+        <div class="meta-grid">
+            <div class="meta-item">
+                <div class="label">Role</div>
+                <div class="value">Principal Product Designer</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Timeline</div>
+                <div class="value">October - December 2024</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Team</div>
+                <div class="value">PM, Front-end Engineer, 7 Backend/ML Engineers</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-media">
+        <img src="assets/portfolio-media/personio/personio-assistant-1.png" alt="Personio Assistant in production showing the panel interface with inbox highlights and suggested prompts">
+    </div>
+
+    <div class="content">
+        <h2>Problem</h2>
+        <p>I inherited beautiful Figma files from an esteemed designer. Elegant, minimalist, futuristic. Production told a different story.</p>
+
+        <p>The gaps between design intent and production reality:</p>
+
+        <div class="image-full">
+            <img src="assets/portfolio-media/personio/personio-assistant-2-flat-colors.png" alt="Design intent vs production reality - gradient background comparison">
+        </div>
+
+        <p><strong>Gradient backgrounds never shipped.</strong> The shader implementation was complex and hurt performance. The assistant launched with flat colors instead.</p>
+
+        <div class="image-full">
+            <img src="assets/portfolio-media/personio/personio-assistant-3-rigid-inbox.png" alt="Comparison of Figma gradient design versus production flat background">
+        </div>
+
+        <p><strong>Single-line input box.</strong> Couldn't accept longer prompts. When users typed multi-line questions, text disappeared behind the field—impossible to review before sending.</p>
+
+        <div class="image-full">
+            <img src="assets/portfolio-media/personio/personio-assistant-4-static-prompts.png" alt="Production input box truncating a multi-line question">
+        </div>
+
+        <p><strong>Static suggested prompts.</strong> Originally designed for admins—but we were about to launch to all employees. "How can I enforce two-factor authentication for my users?" doesn't help someone trying to understand when they'll get their next paycheck.</p>
+
+        <div class="image-full">
+            <div class="image-compare" id="compare-slider">
+                <img src="assets/portfolio-media/personio/personio-assistant-5-covers-ui-b.png" alt="UI without assistant overlay">
+                <div class="compare-before">
+                    <img src="assets/portfolio-media/personio/personio-assistant-5-covers-ui-a.png" alt="Assistant floating over and blocking page content">
+                </div>
+                <div class="compare-handle"></div>
+            </div>
+        </div>
+
+        <p><strong>Floating window obstructing the UI.</strong> The assistant covered key elements of the page—especially troubling when it suggested actions hidden beneath itself.</p>
+
+        <p><strong>Responses streamed bottom-to-top.</strong> Users had to scroll against the flow of new content to read answers.</p>
+
+        <p><strong>No stop button.</strong> Once a query started, users waited for completion even when the response was clearly wrong.</p>
+
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-stop-button-jonas.jpeg" alt="Slack message from Jonas asking about stop button functionality">
+        </div>
+
+        <p><strong>No source citations.</strong> No way to verify where information came from.</p>
+
+        <p><strong>No error handling.</strong> Generic messages, no timestamps, no way to share details with support.</p>
+
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-time-stamp-hanna.jpeg" alt="Slack message from Hanna requesting timestamp functionality">
+        </div>
+
+        <p>Meanwhile, CSAT sat at 19%. CEO and COO sent screenshots of wrong answers to the team. The dogfooding channel lit up daily.</p>
+
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-wrong-answers-hanno.jpeg" alt="Slack message from Hanno about assistant hallucinating and giving wrong answers">
+        </div>
+
+        <p>The assistant looked like a product problem. It was actually a dozen gaps between design intent and production reality.</p>
+
+        <h2>Hypothesis</h2>
+        <p><strong>It's not how it looks—it's how it works.</strong></p>
+
+        <p>Beautiful mocks had been compromised on the way to production, and no one was closing the loop. I realized that many of these fixes were designs that didn't land with engineers.</p>
+
+        <p>Then it occured to me that I should learn how to fix these problems myself. A designer with access to AI can't just design interfaces—they need to understand how to fix bugs, and ship code.</p>
+
+        <p>This case study documents my shift toward the practice of designing, building, and shipping.</p>
+
+        <h2>Process</h2>
+        
+        <p><strong>Phase 1: Following the roadmap</strong></p>
+        <p>Initially I trusted my PM to guide priorities. We tackled new features that addressed some desired complexity—but I kept noticing things that weren't on the roadmap.</p>
+
+        <p><strong>Phase 2: Seeing the gaps</strong></p>
+        <p>I started cataloging what production actually looked like versus the Figma files. Background styles. Input behavior. Prompt relevance. The list grew.</p>
+
+        <p><strong>Phase 3: Figma → Prototype → Production</strong></p>
+        <p>I began fixing simple things in Figma, then translating them to our internal prototyping tools to test interactions. This got me closer to the code, but still dependent on handoffs.</p>
+
+        <p><strong>Phase 4: The push to commit</strong></p>
+        <p>My manager dangled a carrot: "You could be the first designer at Personio to commit code."</p>
+
+        <p>I bit. My first fix: the background color of instructions sent to the assistant.</p>
+
+        <div class="image-content">
+            <img src="assets/portfolio-media/personio/personio-assistant-first-commit.jpeg" alt="First production commit merge request">
+            <p class="caption">First production commit — July 10, 2025</p>
+        </div>
+
+        <p><strong>Phase 5: Learning the pipeline</strong></p>
+        <p>My front-end engineer walked me through the PR process—how to address common pipeline failures, how to structure commits for review. He helped me land my first production fix.</p>
+
+        <p>From there, I kept going. I made 3-4 production commits between July and October 2025.</p>
+
+        <h2>Solution</h2>
+        <p>Six improvements, organized by the user journey through the assistant:</p>
+
+        <h3>1. First Impression: Welcome Mat</h3>
+        <p>Static admin prompts replaced with starter prompts relevant to employees. Designed to demonstrate capabilities through example and reduce cognitive load for new users.</p>
+
+        <div class="image-full">
+            <img src="assets/portfolio-media/personio/personio-assistant-8-welcome-mat-exploration.png" alt="Exploring the evolution of dynamic prompts">
+            <p class="caption">Exploring the evolution of dynamic prompts</p>
+        </div>
+
+        <div class="image-full">
+            <img src="assets/portfolio-media/personio/personio-assistant-1.png" alt="Introduced simple prompts to help educate humans">
+            <p class="caption">Introduced simple prompts to help educate humans</p>
+        </div>
+
+        <div class="image-full">
+            <video src="assets/portfolio-media/personio/personio-assistant-welcome-mat-1.mp4" autoplay loop muted playsinline></video>
+            <p class="caption">Refined the animation sequence to introduce content</p>
+        </div>
+
+        <h3>2. Asking Questions: Flexible Input</h3>
+        <p>Single-line input replaced with a flexible field that accommodates 4 lines before truncating. Grows dynamically as users type.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Before: Single-line input truncating question"></div>
+            <p class="caption">Before: Single-line input truncating question</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - After: Flexible input showing 4 lines visible"></div>
+            <p class="caption">After: Flexible input showing 4 lines visible</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Input field growing dynamically"></div>
+            <p class="caption">Input field growing dynamically as user types</p>
+        </div>
+
+        <h3>3. Reading Responses: Flow Direction + Citations</h3>
+        <p>Reversed response streaming from bottom-to-top to top-to-bottom. Added scroll-to-bottom button for longer responses. Implemented source citations so users can verify information.</p>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Bottom-to-top streaming"></div>
+            <p class="caption">Before: Bottom-to-top streaming, difficult to follow</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Top-to-bottom flow"></div>
+            <p class="caption">After: Top-to-bottom flow with scroll-to-bottom button</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response without citations"></div>
+            <p class="caption">Before: Response without citations</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response with source citations"></div>
+            <p class="caption">After: Response with source citations</p>
+        </div>
+
+        <h3>4. Controlling the Experience: Stop Button</h3>
+        <p>Added stop button during streaming responses. Users can interrupt at any point instead of waiting for completion.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response streaming with no stop option"></div>
+            <p class="caption">Before: Response streaming with no stop option</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Stop button visible during response"></div>
+            <p class="caption">After: Stop button visible during response</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Stopping a response mid-stream"></div>
+            <p class="caption">Stopping a response mid-stream</p>
+        </div>
+
+        <h3>5. Taking Action: Navigation Button</h3>
+        <p>Added button that appears when the assistant detects actionable intent. Takes users directly to the relevant screen instead of leaving them to navigate manually.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Answer about taking action, no way to act"></div>
+            <p class="caption">Before: Answer about taking action, no way to act</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Response with Take action button"></div>
+            <p class="caption">After: Response with "Take action" button</p>
+        </div>
+
+        <div class="video-full">
+            <div class="placeholder-box video-placeholder" data-size="Suggested: 1920×1080px (16:9) - Clicking action button and navigating"></div>
+            <p class="caption">Clicking action button and navigating to relevant screen</p>
+        </div>
+
+        <h3>6. Error Handling: Timestamps + Copy Function</h3>
+        <p>Replaced generic error messages with descriptive explanations, timestamps for debugging, and copy functionality for support escalation.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Generic error message"></div>
+            <p class="caption">Before: Generic error message</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Descriptive error with timestamp and copy button"></div>
+            <p class="caption">After: Descriptive error with timestamp and copy button</p>
+        </div>
+
+        <h3>Unresolved: Floating Window</h3>
+        <p>The assistant's floating position—obstructing the UI it was meant to help with—required more than a UX fix. I explored embedded sidebar approaches in mockups.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Embedded sidebar exploration"></div>
+            <p class="caption">Embedded sidebar exploration — assistant alongside content instead of over it</p>
+        </div>
+
+        <p>This problem eventually inspired Case Study 2, where I rebuilt the assistant as a Chrome extension using the Sidepanel API—positioning the agent next to the page instead of on top of it.</p>
+
+        <h2>Results</h2>
+        <p><strong>CSAT improved from 19% to 22%</strong>—a 16% relative increase, though still low in absolute terms. These were UX fixes, not accuracy improvements; the number reflects that the underlying model quality remained the bottleneck.</p>
+
+        <p>C-suite feedback continued, but the dynamic shifted. They kept sharing screenshots because they knew the team was listening and acting, not because issues were being ignored.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - PM feedback on the work"></div>
+            <p class="caption">PM feedback on the work</p>
+        </div>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Engineering lead feedback"></div>
+            <p class="caption">Engineering lead feedback</p>
+        </div>
+
+        <p>The bigger impact was organizational. I gave a talk to the entire design organization—delivered while sitting next to the VP of Design, who congratulated me afterward along with designers in the room.</p>
+
+        <div class="image-full">
+            <div class="placeholder-box image-placeholder" data-size="Suggested: 1200×675px (16:9) - Slack reactions after design org talk"></div>
+            <p class="caption">Slack reactions after design org talk</p>
+        </div>
+
+        <p>What happened next:</p>
+        <ul>
+            <li>5-10 designers have since shipped their own production fixes</li>
+            <li>1-2 designers contributed improvements to the tutorial resources I created</li>
+            <li>Documentation and video tutorials now exist for any designer who wants to follow the same path</li>
+        </ul>
+
+        <p>I made 3-4 production commits between October and December 2024. But the real result is that I'm no longer the only designer at Personio who commits code.</p>
+
+        <h2>What I Learned</h2>
+        <p><strong>It's not how it looks—it's how it works.</strong></p>
+
+        <p>I started this work thinking I could fix a failing assistant with better UX. I shipped six improvements. CSAT moved from 19% to 22%. Designers across the organization started committing code.</p>
+
+        <p>But the assistant still gave wrong answers. It still couldn't see the page. The UX layer was no longer the bottleneck—the model's accuracy and context awareness were.</p>
+
+        <p>That's the shift: when building with AI, designers can't stop at the interface. We need to understand how the model works, what context it has, when it fails, and why. Otherwise we're polishing a broken engine.</p>
+
+        <p>These UX wins bought time. They proved I could ship. But they also taught me where the real problems lived—which led directly to rebuilding the assistant's architecture from first principles.</p>
+
+        <p><strong>→ See Case Study 2: <a href="personio-agent-experience.html">Personio Agent Experience (PAX)</a></strong></p>
+    </div>
+
+    <footer>
+        <a href="personio-case-studies.html">← Back</a>
+    </footer>
+
+    <script>
+        // Sync theme from localStorage (matches main site behavior)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+        }
+
+        // Handle back navigation with directional animation
+        document.querySelectorAll('a[href="personio-case-studies.html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.add('navigating-back');
+                setTimeout(() => {
+                    window.location.href = 'personio-case-studies.html';
+                }, 300);
+            });
+        });
+
+        // Image comparison slider
+        document.querySelectorAll('.image-compare').forEach(container => {
+            const beforeEl = container.querySelector('.compare-before');
+            const beforeImg = beforeEl.querySelector('img');
+            const handle = container.querySelector('.compare-handle');
+            let isDragging = false;
+
+            // Set before image width to match container
+            const setImageWidth = () => {
+                beforeImg.style.width = container.offsetWidth + 'px';
+            };
+            setImageWidth();
+            window.addEventListener('resize', setImageWidth);
+
+            const updatePosition = (x) => {
+                const rect = container.getBoundingClientRect();
+                let pos = (x - rect.left) / rect.width;
+                pos = Math.max(0, Math.min(1, pos));
+                const percent = pos * 100;
+                beforeEl.style.width = percent + '%';
+                handle.style.left = percent + '%';
+            };
+
+            const onMove = (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                updatePosition(x);
+            };
+
+            const onEnd = () => {
+                isDragging = false;
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('touchend', onEnd);
+            };
+
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                updatePosition(e.clientX);
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('mouseup', onEnd);
+            });
+
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                updatePosition(e.touches[0].clientX);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('touchend', onEnd);
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../assets/favicon.ico">
+    <title>Slide Templates Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="deck.css">
+</head>
+<body class="preview-page">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+    </button>
+
+    <header class="preview-header">
+        <p class="preview-prompt"><code>use this .presentation-cover</code> for the cover page.</p>
+        <h1>Slide Templates</h1>
+        <p>Visual reference for all available slide layouts. Click any template to view it in presentation mode.</p>
+        <nav class="preview-section-links">
+            <span class="preview-section-label">Sections:</span>
+            <a href="../v4/design-case-studies-deck.html?slide=2">01 — From Chatbot to Agent</a>
+            <a href="../v4/design-case-studies-deck.html?slide=25#drawbridge">02 — Drawbridge</a>
+        </nav>
+    </header>
+
+    <div class="preview-grid">
+
+        <!-- 1. Presentation Cover -->
+        <a href="../v4/design-case-studies-deck.html" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">1</span>
+                <div class="mini-slide" style="text-align: center; justify-content: center;">
+                    <div class="mini-label">Design Portfolio</div>
+                    <div class="mini-title">Your Name</div>
+                    <div class="mini-subtitle">Your tagline goes here.</div>
+                    <div class="mini-deck-nav">
+                        <div class="mini-deck-link">
+                            <span><span class="mini-deck-number">01</span> First Deck</span>
+                            <span>→</span>
+                        </div>
+                        <div class="mini-deck-link">
+                            <span><span class="mini-deck-number">02</span> Second Deck</span>
+                            <span>→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>1. Presentation Cover</h3>
+                <p>Multi-deck landing pages. <code>.presentation-cover</code></p>
+                <button class="copy-prompt" data-class=".presentation-cover">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 2. Title -->
+        <a href="deck-TEMPLATE.html?slide=0" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">2</span>
+                <div class="mini-slide">
+                    <div class="mini-title">Project Title</div>
+                    <div class="mini-subtitle">A brief description of the project and its significance.</div>
+                    <div class="mini-meta">
+                        <div><strong>Role</strong><br>Designer</div>
+                        <div><strong>Timeline</strong><br>Q1 2024</div>
+                        <div><strong>Team</strong><br>Product</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>2. Title</h3>
+                <p>Opening slides, case study intros. <code>title</code></p>
+                <button class="copy-prompt" data-class="title">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 3. Split -->
+        <a href="deck-TEMPLATE.html?slide=1" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">3</span>
+                <div class="mini-slide">
+                    <div class="mini-split">
+                        <div class="mini-split-content">
+                            <div class="mini-label">Section</div>
+                            <div class="mini-title">Headline</div>
+                            <div class="mini-list-item">• Key point one</div>
+                            <div class="mini-list-item">• Key point two</div>
+                        </div>
+                        <div class="mini-placeholder">Image</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>3. Split</h3>
+                <p>Feature explanations with visuals. <code>.split</code></p>
+                <button class="copy-prompt" data-class=".split">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 4. Split Square -->
+        <a href="deck-TEMPLATE.html?slide=2" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">4</span>
+                <div class="mini-slide">
+                    <div class="mini-split">
+                        <div class="mini-split-content">
+                            <div class="mini-label">Section</div>
+                            <div class="mini-title">Headline</div>
+                            <div class="mini-list-item">• Key point</div>
+                        </div>
+                        <div class="mini-placeholder" style="aspect-ratio: 1;">1:1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>4. Split Square</h3>
+                <p>Square media (1:1 aspect ratio). <code>.split.split-square</code></p>
+                <button class="copy-prompt" data-class=".split.split-square">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 5. Split Strip -->
+        <a href="deck-TEMPLATE.html?slide=3" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">5</span>
+                <div class="mini-slide">
+                    <div class="mini-label">Section</div>
+                    <div class="mini-title">Headline</div>
+                    <div class="mini-subtitle">Context for the strip media below.</div>
+                    <div class="mini-placeholder" style="height: 40px; flex: none;">Strip Image</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>5. Split Strip</h3>
+                <p>9:16 portrait media on right. <code>.split.split-strip</code></p>
+                <button class="copy-prompt" data-class=".split.split-strip">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 6. Split Edge-Bleed -->
+        <a href="deck-TEMPLATE.html?slide=4" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">6</span>
+                <div class="mini-slide" style="padding: 0;">
+                    <div class="mini-edge-bleed">
+                        <div class="mini-edge-text">
+                            <div>
+                                <div class="mini-label">Section</div>
+                                <div class="mini-title">Dramatic headline</div>
+                            </div>
+                            <div class="mini-subtitle">Supporting context.</div>
+                        </div>
+                        <div class="mini-edge-image"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>6. Split Edge-Bleed</h3>
+                <p>Hero moments, dramatic visuals. <code>.split-edge-bleed</code></p>
+                <button class="copy-prompt" data-class=".split-edge-bleed">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 7. Media Centered -->
+        <a href="deck-TEMPLATE.html?slide=5" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">7</span>
+                <div class="mini-slide mini-media-centered">
+                    <div class="mini-label">Section</div>
+                    <div class="mini-title">Media Headline</div>
+                    <div class="mini-media-wrapper">
+                        <div class="mini-placeholder" style="width: 120px; height: 70px;">Hero Image</div>
+                    </div>
+                    <div class="mini-media-caption">Caption text</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>7. Media Centered</h3>
+                <p>Hero images at natural aspect ratio. <code>.media-centered</code></p>
+                <button class="copy-prompt" data-class=".media-centered">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 8. Comparison -->
+        <a href="deck-TEMPLATE.html?slide=8" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">8</span>
+                <div class="mini-slide">
+                    <div class="mini-label">Section</div>
+                    <div class="mini-title">Comparison</div>
+                    <div class="mini-comparison">
+                        <div class="mini-comparison-side">
+                            <div class="mini-comparison-label">Before</div>
+                            <div class="mini-placeholder">A</div>
+                        </div>
+                        <div class="mini-comparison-side">
+                            <div class="mini-comparison-label">After</div>
+                            <div class="mini-placeholder">B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>8. Comparison</h3>
+                <p>Before/after, A/B comparisons. <code>.comparison</code></p>
+                <button class="copy-prompt" data-class=".comparison">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 9. Simple List -->
+        <a href="deck-TEMPLATE.html?slide=9" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">9</span>
+                <div class="mini-slide">
+                    <div class="mini-split">
+                        <div>
+                            <div class="mini-label">Section</div>
+                            <div class="mini-title">List Title</div>
+                        </div>
+                        <div>
+                            <div class="mini-list-item"><span class="mini-number">1</span> First point</div>
+                            <div class="mini-list-item"><span class="mini-number">2</span> Second point</div>
+                            <div class="mini-list-item"><span class="mini-number">3</span> Third point</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>9. Simple List</h3>
+                <p>Numbered points with descriptions. <code>.simple-list</code></p>
+                <button class="copy-prompt" data-class=".simple-list">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 10. Quote -->
+        <a href="deck-TEMPLATE.html?slide=10" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">10</span>
+                <div class="mini-slide" style="justify-content: center;">
+                    <div class="mini-quote">"A key insight with emphasized words for impact."</div>
+                    <div style="text-align: center; font-size: 8px; color: var(--text-muted);">— Attribution</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>10. Quote</h3>
+                <p>Key insights, thesis statements. <code>.quote</code></p>
+                <button class="copy-prompt" data-class=".quote">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 11. Testimonial -->
+        <a href="deck-TEMPLATE.html?slide=11" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">11</span>
+                <div class="mini-slide" style="justify-content: center; align-items: center; text-align: center;">
+                    <div class="mini-testimonial-avatar" style="width: 32px; height: 32px; margin-bottom: 8px;"></div>
+                    <div class="mini-quote" style="padding: 8px;">"A quote from a specific person."</div>
+                    <div style="font-size: 8px; color: var(--text-muted);">Full Name · Title</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>11. Testimonial</h3>
+                <p>Single person endorsement. <code>.testimonial</code></p>
+                <button class="copy-prompt" data-class=".testimonial">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 12. Multi-Testimonial -->
+        <a href="deck-TEMPLATE.html?slide=12" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">12</span>
+                <div class="mini-slide" style="justify-content: center;">
+                    <div class="mini-testimonials">
+                        <div>
+                            <div class="mini-testimonial-avatar"></div>
+                            <div class="mini-testimonial-quote">"Quote 1"</div>
+                            <div class="mini-testimonial-name">Name</div>
+                        </div>
+                        <div>
+                            <div class="mini-testimonial-avatar"></div>
+                            <div class="mini-testimonial-quote">"Quote 2"</div>
+                            <div class="mini-testimonial-name">Name</div>
+                        </div>
+                        <div>
+                            <div class="mini-testimonial-avatar"></div>
+                            <div class="mini-testimonial-quote">"Quote 3"</div>
+                            <div class="mini-testimonial-name">Name</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>12. Multi-Testimonial</h3>
+                <p>Multiple endorsements. <code>.multi-testimonial</code></p>
+                <button class="copy-prompt" data-class=".multi-testimonial">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 13. Timeline -->
+        <a href="deck-TEMPLATE.html?slide=13" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">13</span>
+                <div class="mini-slide">
+                    <div class="mini-label">Process</div>
+                    <div class="mini-title">Timeline</div>
+                    <div class="mini-timeline">
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 1</div>
+                            <div class="mini-timeline-title">Discovery</div>
+                        </div>
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 2</div>
+                            <div class="mini-timeline-title">Research</div>
+                        </div>
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 3</div>
+                            <div class="mini-timeline-title">Design</div>
+                        </div>
+                        <div class="mini-timeline-item">
+                            <div class="mini-timeline-phase">Phase 4</div>
+                            <div class="mini-timeline-title">Build</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>13. Timeline</h3>
+                <p>Process flows, project phases. <code>.timeline</code></p>
+                <button class="copy-prompt" data-class=".timeline">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 14. Big Metric -->
+        <a href="deck-TEMPLATE.html?slide=14" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">14</span>
+                <div class="mini-slide" style="justify-content: center; text-align: center;">
+                    <div class="mini-stat">47%</div>
+                    <div class="mini-stat-desc">Description of what this metric means and why it matters.</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>14. Big Metric</h3>
+                <p>Impact numbers, KPIs. <code>.big-metric</code></p>
+                <button class="copy-prompt" data-class=".big-metric">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 15. Full-Bleed Caption -->
+        <a href="deck-TEMPLATE.html?slide=6" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">15</span>
+                <div class="mini-slide" style="padding: 0;">
+                    <div class="mini-full-bleed">
+                        <div class="mini-full-bleed-media"></div>
+                        <div class="mini-full-bleed-caption">Brief description of what's shown</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>15. Full-Bleed Caption</h3>
+                <p>Showcase screenshots, demos. <code>.full-bleed-caption</code></p>
+                <button class="copy-prompt" data-class=".full-bleed-caption">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 16. Image Callout -->
+        <a href="deck-TEMPLATE.html?slide=7" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">16</span>
+                <div class="mini-slide">
+                    <div class="mini-callout-container">
+                        <div class="mini-callout mini-callout-left">
+                            Feature 1 <span class="mini-callout-line"></span>
+                        </div>
+                        <div class="mini-callout-image"></div>
+                        <div class="mini-callout mini-callout-right">
+                            <span class="mini-callout-line"></span> Feature 2
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>16. Image Callout</h3>
+                <p>UI annotation, feature highlights. <code>.image-callout</code></p>
+                <button class="copy-prompt" data-class=".image-callout">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 17. Principles -->
+        <a href="deck-TEMPLATE.html?slide=15" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">17</span>
+                <div class="mini-slide">
+                    <div class="mini-title" style="margin-bottom: 8px;">Principles</div>
+                    <div class="mini-principles">
+                        <div class="mini-principle-card">
+                            <div class="mini-principle-label">Principle 1</div>
+                            <div class="mini-principle-text">What you believe.</div>
+                        </div>
+                        <div class="mini-principle-card">
+                            <div class="mini-principle-label">Principle 2</div>
+                            <div class="mini-principle-text">How it guides.</div>
+                        </div>
+                        <div class="mini-principle-card">
+                            <div class="mini-principle-label">Principle 3</div>
+                            <div class="mini-principle-text">What you achieve.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>17. Principles</h3>
+                <p>Values, guidelines, rules. <code>.principles</code></p>
+                <button class="copy-prompt" data-class=".principles">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 18. Highlight -->
+        <a href="deck-TEMPLATE.html?slide=16" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">18</span>
+                <div class="mini-slide" style="justify-content: center;">
+                    <div class="mini-highlight">
+                        <div class="mini-title">Highlight Title</div>
+                        <div class="mini-subtitle">Use this to call attention to a single important thing.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>18. Highlight</h3>
+                <p>Single important point. <code>.highlight</code></p>
+                <button class="copy-prompt" data-class=".highlight">Copy prompt</button>
+            </div>
+        </a>
+
+        <!-- 19. Title Secondary -->
+        <a href="deck-TEMPLATE.html?slide=17" class="preview-card">
+            <div class="preview-thumbnail">
+                <span class="preview-number">19</span>
+                <div class="mini-slide" style="justify-content: center; align-items: center; text-align: center;">
+                    <div class="mini-title">Section Title</div>
+                </div>
+            </div>
+            <div class="preview-info">
+                <h3>19. Title Secondary</h3>
+                <p>Centered title only, section breaks. <code>.title-secondary</code></p>
+                <button class="copy-prompt" data-class=".title-secondary">Copy prompt</button>
+            </div>
+        </a>
+
+    </div>
+
+    <script src="deck.js"></script>
+    <script>
+        // Copy prompt on button click (preview-specific)
+        document.querySelectorAll('.copy-prompt').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const slideClass = btn.dataset.class;
+                const prompt = `use this ${slideClass}`;
+
+                try {
+                    await navigator.clipboard.writeText(prompt);
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = 'Copy prompt';
+                        btn.classList.remove('copied');
+                    }, 1500);
+                } catch (err) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = prompt;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    btn.textContent = 'Copied!';
+                    btn.classList.add('copied');
+                    setTimeout(() => {
+                        btn.textContent = 'Copy prompt';
+                        btn.classList.remove('copied');
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
