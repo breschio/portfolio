@@ -15,7 +15,35 @@
   var nextChapter = stage.getAttribute('data-next-chapter');   // e.g. "personio-pivot.html"
   var prevChapter = stage.getAttribute('data-prev-chapter');   // e.g. "personio-cover.html"
 
+  // Global deck position. Each chapter file declares its starting offset and
+  // the total count across all chapters. The pager shows global current/total
+  // — so it reads as a single 1-of-33 deck across all three chapter files.
+  var chapterStart = parseInt(stage.getAttribute('data-chapter-start') || '1', 10);
+  var globalTotal  = parseInt(stage.getAttribute('data-global-total')  || total, 10);
+
   function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  // ---- one-time slide setup ----
+  // Move the eyebrow tag out of `.slide-topbar` so it appears above the
+  // slide title (matches Paper spec). Target preference:
+  //   a) `.text-col` (split layout) — eyebrow goes inside text column;
+  //   b) parent of `.slide-title` — eyebrow placed just before title.
+  // Inline `.counter` elements stay hidden via CSS — only the topbar pager
+  // shows the slide number.
+  slides.forEach(function (s) {
+    var tag = s.querySelector('.slide-topbar .tag');
+    if (tag) {
+      var textCol = s.querySelector('.text-col');
+      var title = s.querySelector('.slide-title');
+      if (textCol) {
+        textCol.prepend(tag);
+      } else if (title && title.parentElement) {
+        title.parentElement.insertBefore(tag, title);
+      }
+      tag.classList.add('slide-eyebrow');
+      tag.classList.remove('tag');
+    }
+  });
 
   function indexOfSlide(target) {
     for (var i = 0; i < slides.length; i++) if (slides[i] === target) return i;
@@ -28,7 +56,10 @@
     slides.forEach(function (s, i) {
       s.classList.toggle('is-active', i === index);
     });
-    if (counter) counter.textContent = pad(index + 1) + ' / ' + pad(total);
+    if (counter) {
+      var globalIdx = chapterStart + index;     // local 0-based + global 1-based start
+      counter.textContent = pad(globalIdx) + ' / ' + pad(globalTotal);
+    }
 
     // prev
     if (prevBtn) {

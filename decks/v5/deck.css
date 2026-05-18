@@ -36,11 +36,12 @@ html.deck-page .content {
   overflow: clip;
 }
 
-/* The slide is laid out at 1440px wide; container queries scale it via cqw units. */
+/* The slide is laid out at 1440px wide; container queries scale it via cqw units.
+   Padding is 0 so content fills the deck-stage border edge-to-edge. */
 .deck-stage .slide {
   width: 100%;
   height: 100%;
-  padding: 5.555cqw;            /* 80 / 1440 */
+  padding: 0;
   font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
@@ -239,23 +240,43 @@ html.deck-page .content {
    Content slides — shared parts
    ============================================================ */
 
-/* Topline (top of every content slide): small orange tag left, slide counter right */
+/* Topline (top of every content slide). Tag often gets moved out by JS to live
+   above the slide title — when that happens, the counter is the only child and
+   the margin-left: auto keeps it pinned right. */
 .slide-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.slide-topbar .tag {
+.slide-topbar .tag,
+.slide-eyebrow {
   font-size: 0.972cqw;          /* 14 / 1440 */
   line-height: 1.285;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--v5-accent);
 }
+.slide-eyebrow {
+  display: block;
+  margin-bottom: 0.555cqw;      /* 8 / 1440 — sits just above the headline */
+}
 .slide-topbar .counter {
   font-size: 0.972cqw;
   line-height: 1.285;
   color: var(--v5-muted);
+  margin-left: auto;            /* stays right-aligned even when tag is moved */
+}
+/* Inline slide counters are hidden — the topbar pager is the single source
+   of truth for slide position across the Personio deck (1 of 33). */
+.slide .counter { display: none; }
+
+/* In :has(video) slide-split (media-on-top), eyebrow sits in title column above title */
+.slide-split:has(video) .text-col > .slide-eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+}
+.slide-split:has(video) .text-col > .slide-title {
+  grid-row: 2 / span 99;        /* below the eyebrow */
 }
 
 /* Slide title + lede block */
@@ -342,7 +363,10 @@ html.deck-page .content {
 }
 
 /* ============================================================
-   Pattern: split — text on one side, media on the other
+   Pattern: split — default is side-by-side (text + media columns,
+   60% media / 40% text). The .media-left modifier flips the order.
+   Slides whose media is a <video> get a different layout below
+   (media on top, title + body underneath) — controlled by :has(video).
    ============================================================ */
 .slide-split .slide-body {
   display: grid;
@@ -351,26 +375,54 @@ html.deck-page .content {
 }
 .slide-split .split-row {
   display: grid;
-  /* Default: text-left, media-right — 40% text · 60% media */
-  grid-template-columns: 2fr 3fr;
-  gap: 3.888cqw;                /* 56 / 1440 */
+  grid-template-columns: 2fr 3fr;       /* text 40 · media 60 */
+  gap: 3.888cqw;
   align-items: stretch;
 }
 .slide-split.media-left .split-row {
-  /* Media-left variant: 60% media · 40% text */
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 2fr;       /* media 60 · text 40 */
 }
 .slide-split .text-col {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.666cqw;                /* 24 / 1440 */
+  gap: 1.666cqw;
 }
-.slide-split.media-left .text-col {
-  order: 2;
+.slide-split.media-left .text-col { order: 2; }
+.slide-split.media-left .slide-media { order: 1; }
+
+/* ============================================================
+   Video slides — media on TOP (scales with width), title bottom-left,
+   body content bottom-right. Mirrors the homepage project-page rhythm
+   so animated content gets the prominent slot.
+   The :has(video) selector targets only slides with a <video> child;
+   image slides keep the side-by-side split above.
+   ============================================================ */
+.slide-split:has(video) .slide-body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;    /* topbar | media | bottom row */
+  gap: 1.666cqw;
 }
-.slide-split.media-left .slide-media {
-  order: 1;
+.slide-split:has(video) .split-row {
+  display: contents;                    /* promote media + text-col into slide-body grid */
+}
+.slide-split:has(video) .slide-media {
+  width: 100%;
+  min-height: 0;
+}
+.slide-split:has(video) .text-col {
+  display: grid;
+  grid-template-columns: 25cqw 1fr;
+  column-gap: 4cqw;
+  row-gap: 0.8cqw;
+  align-items: start;
+  justify-content: start;
+}
+.slide-split:has(video) .text-col > *           { grid-column: 2; }
+.slide-split:has(video) .text-col > .slide-title {
+  grid-column: 1;
+  grid-row: 1 / span 99;
+  align-self: start;
 }
 
 /* ============================================================

@@ -147,39 +147,34 @@
       var idx = parseInt(project.dataset.projectIndex, 10);
       var name = project.dataset.projectName;
       var id = project.id;
+      // Each project's pager counts slides WITHIN that case study (not across
+      // projects). data-case-study-count = total slides in that project's deck;
+      // defaults to 1 for projects that don't have a deck yet. Arrows navigate
+      // strictly inside the case study — switching to another project uses the
+      // rail / drawer nav instead.
+      var caseStudyCount = parseInt(project.dataset.caseStudyCount || '1', 10);
 
       if (crumbCurrent) crumbCurrent.textContent = name;
-      if (pagerCount) pagerCount.textContent = pad2(idx) + ' / ' + pad2(total);
+      if (pagerCount) pagerCount.textContent = pad2(1) + ' / ' + pad2(caseStudyCount);
 
-      // prev arrow
+      // prev arrow: disabled — this is the case study's first slide
       if (pagerPrev) {
-        if (idx <= 1) {
-          pagerPrev.classList.add('is-disabled');
-          pagerPrev.setAttribute('aria-disabled', 'true');
-          pagerPrev.removeAttribute('href');
-        } else {
-          var prevProj = projects[idx - 2];
-          pagerPrev.classList.remove('is-disabled');
-          pagerPrev.removeAttribute('aria-disabled');
-          pagerPrev.setAttribute('href', '#' + prevProj.id);
-        }
+        pagerPrev.classList.add('is-disabled');
+        pagerPrev.setAttribute('aria-disabled', 'true');
+        pagerPrev.removeAttribute('href');
       }
-      // next arrow
+      // next arrow: enter the case study deck via data-pager-next-href; if no
+      // deck (1-slide case study) the arrow is disabled.
       if (pagerNext) {
         var override = project.dataset.pagerNextHref;
-        if (override) {
+        if (override && caseStudyCount > 1) {
           pagerNext.classList.remove('is-disabled');
           pagerNext.removeAttribute('aria-disabled');
           pagerNext.setAttribute('href', override);
-        } else if (idx >= total) {
+        } else {
           pagerNext.classList.add('is-disabled');
           pagerNext.setAttribute('aria-disabled', 'true');
           pagerNext.removeAttribute('href');
-        } else {
-          var nextProj = projects[idx];
-          pagerNext.classList.remove('is-disabled');
-          pagerNext.removeAttribute('aria-disabled');
-          pagerNext.setAttribute('href', '#' + nextProj.id);
         }
       }
 
