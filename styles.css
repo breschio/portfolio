@@ -308,7 +308,8 @@ a.link-line:hover { text-underline-offset: 4px; color: var(--accent); }
   display: flex;
   flex-direction: column;
   gap: var(--s-7);
-  max-width: var(--content-max);
+  /* No max-width — content fills the available viewport width (rail-aside).
+     Reading-width pages (blog, consulting, about) constrain their own inner copy. */
 }
 
 /* topbar: breadcrumb + pager */
@@ -341,10 +342,27 @@ a.link-line:hover { text-underline-offset: 4px; color: var(--accent); }
 html.is-index .content {
   padding-top: 0;
   gap: 0;
-  /* media is 16:9 with height capped at 56vh; pad either side of that gives
-     the content's outer width. Falls back to --content-max on tall viewports. */
-  max-width: min(var(--content-max), calc(56vh * 16 / 9 + (var(--content-px) * 2)));
+  /* No width cap — let the scroll-through projects fill viewport width.
+     Media inside .project-page handles its own aspect ratio. */
 }
+/* Each project section centers its media + meta vertically within the viewport,
+   matching the other case-study pages. The media is capped to ~56vh so the 16:9
+   frame and the meta below both fit on screen without scroll. */
+/* Each project section is top-anchored — media starts at the same y as the
+   rail's "PROJECTS" label, then meta hangs below. Media is left-aligned and
+   grows with viewport width (no max-width cap).
+   Grid (not flex) used here so the layout is fully deterministic across all
+   sections — earlier flex setup behaved differently between the first
+   article and snapped subsequent ones. */
+html.is-index .project-page {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  row-gap: var(--s-5);
+  align-items: start;
+  padding-block: var(--s-6);
+}
+/* No margin-inline: auto → media left-aligned.
+   No max-width → media fills full content width and scales with viewport. */
 .topbar-sticky::after {
   content: "";
   position: absolute;
@@ -376,9 +394,17 @@ html.is-index .content {
 
 /* enable mandatory scroll-snap on the viewport when on the index.
    scroll-snap-type must be on the *scroll container* (html in most browsers);
-   declaring it on body doesn't drive viewport scrolling. */
+   declaring it on body doesn't drive viewport scrolling.
+
+   scroll-padding-top: 66px reserves space for the sticky topbar so every
+   snapped section lands consistently below it (rather than relying on
+   per-element scroll-margin-top which can interact oddly with sticky). */
 html.is-index {
   scroll-snap-type: y mandatory;
+  scroll-padding-top: 66px;
+}
+html.is-index .project-page {
+  scroll-margin-top: 0;
 }
 html.is-index .project-page {
   scroll-snap-stop: always;

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — projects · personio · deck · agent experience</title>
+  <meta name="description" content="Personio Agent Experience — Pivot to PAX. Case study deck." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      root.classList.add('deck-page');
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children">
+          <a class="drawer-child" href="/#drawbridge">Drawbridge</a>
+          <a class="drawer-child is-active" href="/#personio">Personio</a>
+          <a class="drawer-child" href="/#pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="/#meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="/#instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="/#facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/blog.html">Blog</a>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/consulting.html">Consulting</a>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="/about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+      <nav class="rail-nav">
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children">
+            <a class="rail-child" href="/#drawbridge">Drawbridge</a>
+            <a class="rail-child is-active" href="/#personio">Personio</a>
+            <a class="rail-child" href="/#pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="/#meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="/#instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="/#facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/blog.html">Blog</a>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/consulting.html">Consulting</a>
+        </div>
+      </nav>
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="/about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar reveal">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <a class="crumb-seg" href="/">projects</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="/#personio">personio</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="personio-cover.html">deck</a>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active">agent experience</span>
+        </nav>
+        <div class="pager">
+          <span class="pager-count" data-slide-count>01 / 07</span>
+          <div class="pager-arrows">
+            <a class="pager-btn" href="personio-cover.html" data-slide-prev aria-label="Previous">←</a>
+            <a class="pager-btn is-primary" href="#02" data-slide-next aria-label="Next slide">→</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-stage reveal" style="--reveal-delay: 60ms" aria-label="Agent Experience chapter"
+           data-prev-chapter="personio-assistant.html"
+           data-next-chapter="personio-v2.html">
+
+        <!-- Slide 01 — chapter intro (Paper: DVW-0) -->
+        <section class="slide slide-chapter-intro is-active" data-slide-index="1">
+          <div class="slide-body slide-body-spread">
+            <header class="slide-topline">
+              <span class="slide-tag">case study · 20 / 33</span>
+              <span class="slide-meta-right">bresch.io / portfolio</span>
+            </header>
+            <div class="chapter-intro">
+              <span class="chapter-section">portfolio · personio</span>
+              <h1 class="chapter-headline">Agent Experience</h1>
+              <p class="chapter-lede">Drove the agentic conversation. Built PAX as a side prototype to bypass blocked back-end work. Got funding from CPO + CTO.</p>
+            </div>
+            <footer class="chapter-meta">
+              <div class="meta-cell"><span class="meta-label">Project</span><span class="meta-value">Personio AI Team</span></div>
+              <div class="meta-cell"><span class="meta-label">Role</span><span class="meta-value">Product Designer · Prototyper</span></div>
+              <div class="meta-cell"><span class="meta-label">Timeline</span><span class="meta-value">Aug 2025 — Oct 2025</span></div>
+              <div class="meta-cell meta-cell-right"><span class="meta-label">Status</span><span class="meta-value meta-accent">🔒 case study deck</span></div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- Slide 20 — title-media (Paper: EKP-0 — But agents are the future) -->
+        <section class="slide slide-title-media" data-slide-index="2">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">pivot</span>
+              <span class="counter">20 / 33</span>
+            </header>
+            <h2 class="slide-title slide-title-lg">But agents are the future.</h2>
+            <div class="slide-media">
+              <video src="/assets/portfolio-media/personio/new/pa-pedro-1.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <p class="tm-caption">Leadership had been sold a vision of autonomous agents — a compelling idea, but no path there.</p>
+          </div>
+        </section>
+
+        <!-- Slide 21 — split, media-left (Paper: EL1-0 — Agentic foundation) -->
+        <section class="slide slide-split media-left" data-slide-index="3">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">agentic foundation</span>
+              <span class="counter">21 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-v2-agentic-1.png" alt="Screens from AI Strategy Deck" />
+                <span class="media-label">screens from AI strategy deck</span>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Designing an agentic foundation.</h2>
+                <p class="slide-lede">I drove the conversation with Product and Engineering.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Understand the customer stories we'll be solving for</span></li>
+                  <li><span class="n">02</span><span class="t">Align on an architecture that scales</span></li>
+                  <li><span class="n">03</span><span class="t">Refine the existing UX (sidebar, context)</span></li>
+                  <li><span class="n">04</span><span class="t">Feature the existing UI — don't cannibalize</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 22 — split, media-left (Paper: ELW-0 — Build my own) -->
+        <section class="slide slide-split media-left" data-slide-index="4">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">prototype</span>
+              <span class="counter">22 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-paycheck-fail-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">broken build — placeholder</span>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">I'm gonna build my own.</h2>
+                <p class="slide-lede">Tried pulling the existing back-end.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Architecture was too isolated</span></li>
+                  <li><span class="n">02</span><span class="t">I was dependent on front and back end devs</span></li>
+                  <li><span class="n">03</span><span class="t">Realized I was still covering the UI</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 23 — split, media-left (Paper: EML-0 — Pivot to PAX) -->
+        <section class="slide slide-split media-left" data-slide-index="5">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">pax · pivot</span>
+              <span class="counter">23 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-pax-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">video — opening pax</span>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Pivot to PAX.</h2>
+                <p class="slide-lede">I prototyped my own Assistant.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Built a Chrome extension using the Side Panel API</span></li>
+                  <li><span class="n">02</span><span class="t">Understood how this would affect the UI</span></li>
+                  <li><span class="n">03</span><span class="t">What type of responses I need to design for</span></li>
+                  <li><span class="n">04</span><span class="t">How much can the Claude SDK do on its own?</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 24 — split, media-left (Paper: END-0 — PAX Performs) -->
+        <section class="slide slide-split media-left" data-slide-index="6">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">validation</span>
+              <span class="counter">24 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-pax-2.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">video — browser controlled</span>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">PAX Performs!</h2>
+                <p class="slide-lede">More capable than our production assistant.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Can answer questions by reading the page</span></li>
+                  <li><span class="n">02</span><span class="t">Can navigate the UI using browser tools</span></li>
+                  <li><span class="n">03</span><span class="t">Became a "discovery tool" for design teams</span></li>
+                  <li><span class="n">04</span><span class="t">Quick prototypes validate ideas before engineering investment</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 25 — title-media (Paper: EO5-0 — Shaping the vision) -->
+        <section class="slide slide-title-media" data-slide-index="7">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">funding</span>
+              <span class="counter">25 / 33</span>
+            </header>
+            <h2 class="slide-title slide-title-lg">Shaping the vision.</h2>
+            <div class="slide-media">
+              <video src="/assets/portfolio-media/personio/new/pa-vision-1.mp4" autoplay loop muted playsinline></video>
+              <span class="media-label">screenshot — alex grant + stephan</span>
+            </div>
+            <p class="tm-caption">Got funding from CPO + CTO for developing our AI Vision.</p>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="deck-nav.js" defer></script>
+  <script src="/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — projects · personio · deck · assistant v2</title>
+  <meta name="description" content="Personio Assistant V2 — Agentic Foundation. Case study deck." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      root.classList.add('deck-page');
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children">
+          <a class="drawer-child" href="/#drawbridge">Drawbridge</a>
+          <a class="drawer-child is-active" href="/#personio">Personio</a>
+          <a class="drawer-child" href="/#pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="/#meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="/#instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="/#facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/blog.html">Blog</a>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/consulting.html">Consulting</a>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="/about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+      <nav class="rail-nav">
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children">
+            <a class="rail-child" href="/#drawbridge">Drawbridge</a>
+            <a class="rail-child is-active" href="/#personio">Personio</a>
+            <a class="rail-child" href="/#pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="/#meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="/#instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="/#facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/blog.html">Blog</a>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/consulting.html">Consulting</a>
+        </div>
+      </nav>
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="/about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar reveal">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <a class="crumb-seg" href="/">projects</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="/#personio">personio</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="personio-cover.html">deck</a>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active">assistant v2</span>
+        </nav>
+        <div class="pager">
+          <span class="pager-count" data-slide-count>01 / 09</span>
+          <div class="pager-arrows">
+            <a class="pager-btn" href="personio-cover.html" data-slide-prev aria-label="Previous">←</a>
+            <a class="pager-btn is-primary" href="#02" data-slide-next aria-label="Next slide">→</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-stage reveal" style="--reveal-delay: 60ms" aria-label="Assistant V2 chapter"
+           data-prev-chapter="personio-pivot.html">
+
+        <!-- Slide 01 — chapter intro (Paper: DVA-0) -->
+        <section class="slide slide-chapter-intro is-active" data-slide-index="1">
+          <div class="slide-body slide-body-spread">
+            <header class="slide-topline">
+              <span class="slide-tag">case study · 26 / 33</span>
+              <span class="slide-meta-right">bresch.io / portfolio</span>
+            </header>
+            <div class="chapter-intro">
+              <span class="chapter-section">portfolio · personio</span>
+              <h1 class="chapter-headline">Assistant V2</h1>
+              <p class="chapter-lede">Design Systems collaboration. Sidebar slot, context drawer, browser use, agent response patterns. The new shape of the product.</p>
+            </div>
+            <footer class="chapter-meta">
+              <div class="meta-cell"><span class="meta-label">Project</span><span class="meta-value">Personio AI Team</span></div>
+              <div class="meta-cell"><span class="meta-label">Role</span><span class="meta-value">Product Designer</span></div>
+              <div class="meta-cell"><span class="meta-label">Timeline</span><span class="meta-value">Oct 2025 — Current</span></div>
+              <div class="meta-cell meta-cell-right"><span class="meta-label">Status</span><span class="meta-value meta-accent">🔒 case study deck</span></div>
+            </footer>
+          </div>
+        </section>
+
+        <!-- Slide 26 — split, text-left (Paper: E5C-0 — Design Systems) -->
+        <section class="slide slide-split" data-slide-index="2">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">collaboration</span>
+              <span class="counter">26 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Collaboration with Design Systems.</h2>
+                <p class="slide-lede">Worked with Design Systems Team to build out this framework.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Collaborating on the page frame + sidebar interaction</span></li>
+                  <li><span class="n">02</span><span class="t">Understanding the needs of a dedicated view</span></li>
+                  <li><span class="n">03</span><span class="t">Workshop in Amsterdam</span></li>
+                  <li><span class="n">04</span><span class="t">Broke out the entire anatomy of the project</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-design-spec-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">zoltan's directions / anatomy docs</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 27 — principles (Paper: EOH-0 — Assistant Principles) -->
+        <section class="slide slide-principles" data-slide-index="3">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">principles</span>
+              <span class="counter">27 / 33</span>
+            </header>
+            <h2 class="slide-title slide-title-lg">Assistant Principles.</h2>
+            <ol class="principle-list">
+              <li><span class="n">01</span><span class="t">Gets out of your way.</span></li>
+              <li><span class="n">02</span><span class="t">Complements the existing experience.</span></li>
+              <li><span class="n">03</span><span class="t">Features the existing UI.</span></li>
+              <li><span class="n">04</span><span class="t">Does not impair use of the product if AI is off.</span></li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Slide 28 — split, text-left (Paper: E64-0 — Sidebar slot) -->
+        <section class="slide slide-split" data-slide-index="4">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects v2 · sidebar slot</span>
+              <span class="counter">28 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Sidebar slot.</h2>
+                <p class="slide-lede">Getting the assistant out of the way.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Lives alongside your page</span></li>
+                  <li><span class="n">02</span><span class="t">Helps you improve your existing workflows</span></li>
+                  <li><span class="n">03</span><span class="t">Adjusts to your preferences</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-v2-sidebar-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">opening + dragging the sidebar</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 29 — split, text-left (Paper: E6T-0 — Context drawer) -->
+        <section class="slide slide-split" data-slide-index="5">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects v2 · context drawer</span>
+              <span class="counter">29 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Context drawer.</h2>
+                <p class="slide-lede">A dynamic input that adapts to your intent.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">What does the assistant see?</span></li>
+                  <li><span class="n">02</span><span class="t">What can you do?</span></li>
+                  <li><span class="n">03</span><span class="t">How does this change?</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-v2-context-drawer-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">page context · dynamic prompts · @mentions · tools</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 30 — full-bleed media (Paper: E8Z-0 — Browser use) -->
+        <section class="slide slide-full-bleed" data-slide-index="6">
+          <div class="slide-body">
+            <div class="slide-media">
+              <video src="/assets/portfolio-media/personio/new/pa-v2-human-loop-1.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="caption-row">
+              <span class="caption-label">agent demo</span>
+              <span class="caption-text">Browser use: the agent navigates the UI — human-in-the-loop interaction.</span>
+              <span class="counter">30 / 33</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 31 — split, media-left (Paper: E7I-0 — Agent response patterns) -->
+        <section class="slide slide-split media-left" data-slide-index="7">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects v2 · response patterns</span>
+              <span class="counter">31 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-wkflw-parental-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">status &rarr; thought &rarr; actions &rarr; result</span>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Agent response patterns.</h2>
+                <p class="slide-lede">A grammar for how the agent reports back.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Status indicators — what is the agent doing?</span></li>
+                  <li><span class="n">02</span><span class="t">Chain of thought — why is it doing it?</span></li>
+                  <li><span class="n">03</span><span class="t">Actions taken — what did it change?</span></li>
+                  <li><span class="n">04</span><span class="t">Result — here's your answer</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 32 — split, text-left (Paper: E8A-0 — Full Screen v2) -->
+        <section class="slide slide-split" data-slide-index="8">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects v2 · full screen</span>
+              <span class="counter">32 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Full Screen.</h2>
+                <p class="slide-lede">Anticipating AI-first work.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">A dedicated space</span></li>
+                  <li><span class="n">02</span><span class="t">Kickoff workflows</span></li>
+                  <li><span class="n">03</span><span class="t">Manage them asynchronously</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-v2-fullscreen-1.mp4" autoplay loop muted playsinline></video>
+                <span class="media-label">promotion workflow — full screen</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 33 — full-bleed media (Paper: E99-0 — Sizzle reel V2) -->
+        <section class="slide slide-full-bleed" data-slide-index="9">
+          <div class="slide-body">
+            <div class="slide-media">
+              <video src="/assets/portfolio-media/personio/new/pa-wkflw-promotion-1.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="caption-row">
+              <span class="caption-label">sizzle</span>
+              <span class="caption-text">Assistant V2 — sidebar, fullscreen, workflows, agents.</span>
+              <span class="counter">33 / 33</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="deck-nav.js" defer></script>
+  <script src="/script.js" defer></script>
+</body>
+</html>

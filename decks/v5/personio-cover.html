@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — projects · personio · deck</title>
+  <meta name="description" content="Personio case study deck — three chapters." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      root.classList.add('deck-page');
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children">
+          <a class="drawer-child" href="/#drawbridge">Drawbridge</a>
+          <a class="drawer-child is-active" href="/#personio">Personio</a>
+          <a class="drawer-child" href="/#pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="/#meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="/#instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="/#facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/blog.html">Blog</a>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/consulting.html">Consulting</a>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="/about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+      <nav class="rail-nav">
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children">
+            <a class="rail-child" href="/#drawbridge">Drawbridge</a>
+            <a class="rail-child is-active" href="/#personio">Personio</a>
+            <a class="rail-child" href="/#pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="/#meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="/#instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="/#facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/blog.html">Blog</a>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/consulting.html">Consulting</a>
+        </div>
+      </nav>
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="/about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar reveal">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <a class="crumb-seg" href="/">projects</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="/#personio">personio</a>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active">deck</span>
+        </nav>
+        <div class="pager">
+          <span class="pager-count">cover · 3 chapters</span>
+          <div class="pager-arrows">
+            <a class="pager-btn" href="/#personio" aria-label="Back to Personio">←</a>
+            <a class="pager-btn is-primary" href="personio-assistant.html" aria-label="Start chapter 01 — Assistant">→</a>
+          </div>
+        </div>
+      </div>
+
+      <section class="deck-stage reveal" style="--reveal-delay: 60ms" aria-label="Personio — case study index">
+        <div class="slide is-active">
+          <div class="slide-body">
+
+            <div class="hero">
+              <h1>Personio.</h1>
+              <p class="lede">Three case studies, one product. From rescuing a broken UX to designing an agentic foundation.</p>
+            </div>
+
+            <div class="chapters">
+
+              <a class="chapter" href="personio-assistant.html" aria-label="Chapter 01 — Assistant (V1 · UX Rescue)">
+                <span class="num">01</span>
+                <span class="ident">
+                  <span class="tag">v1 · ux rescue</span>
+                  <span class="title">Assistant.</span>
+                </span>
+                <span class="desc">Welcome mat, refined input, thinking, errors, stop, full screen. UX work that moved CSAT 16% &rarr; 27%.</span>
+                <span class="range">
+                  <span class="label">slides</span>
+                  <span class="span">04 — 19</span>
+                </span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+
+              <a class="chapter" href="personio-pivot.html" aria-label="Chapter 02 — Agent Experience (Pivot · Prototype)">
+                <span class="num">02</span>
+                <span class="ident">
+                  <span class="tag">pivot · prototype</span>
+                  <span class="title">Agent Experience.</span>
+                </span>
+                <span class="desc">Drove the agentic conversation. Built PAX as a side prototype to bypass blocked back-end work. Got funding from CPO + CTO.</span>
+                <span class="range">
+                  <span class="label">slides</span>
+                  <span class="span">20 — 25</span>
+                </span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+
+              <a class="chapter" href="personio-v2.html" aria-label="Chapter 03 — Assistant V2 (Agentic Foundation)">
+                <span class="num">03</span>
+                <span class="ident">
+                  <span class="tag">v2 · agentic foundation</span>
+                  <span class="title">Assistant V2.</span>
+                </span>
+                <span class="desc">Design Systems collaboration. Sidebar slot, context drawer, browser use, agent response patterns. The new shape of the product.</span>
+                <span class="range">
+                  <span class="label">slides</span>
+                  <span class="span">26 — 33</span>
+                </span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>

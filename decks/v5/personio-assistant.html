@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>bresch.io — projects · personio · deck · assistant</title>
+  <meta name="description" content="Personio Assistant — V1, UX Rescue. Case study deck." />
+  <meta name="theme-color" content="#F8F5EC" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14130F" media="(prefers-color-scheme: dark)" />
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      root.classList.add('deck-page');
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          root.setAttribute('data-theme', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="deck.css" />
+</head>
+<body>
+  <header class="mobile-bar">
+    <a class="wordmark" href="/">bresch.io</a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="drawer" aria-expanded="false" data-drawer-toggle>
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <nav id="drawer" class="drawer" aria-label="Primary">
+    <div class="drawer-nav">
+      <div class="drawer-section is-active">
+        <a class="drawer-section-label" href="/">Projects</a>
+        <div class="drawer-children">
+          <a class="drawer-child" href="/#drawbridge">Drawbridge</a>
+          <a class="drawer-child is-active" href="/#personio">Personio</a>
+          <a class="drawer-child" href="/#pizza-cat">Pizza Cat</a>
+          <a class="drawer-child" href="/#meta-avatars">Meta Avatars</a>
+          <a class="drawer-child" href="/#instagram-action-buttons">Instagram Actions</a>
+          <a class="drawer-child" href="/#facebook-ads-system">Facebook Ads</a>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/blog.html">Blog</a>
+      </div>
+      <div class="drawer-section">
+        <a class="drawer-section-label" href="/consulting.html">Consulting</a>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="who">
+        <div class="avatar" aria-hidden="true">tb</div>
+        <div class="who-stack">
+          <div class="who-name">Terrence Breschi</div>
+          <div class="who-role">designer · builder · ships AI</div>
+        </div>
+      </div>
+      <a class="about-link" href="/about.html">about</a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+    <aside class="rail" aria-label="Primary">
+      <div class="rail-mark">
+        <a class="wordmark" href="/">bresch.io</a>
+        <span class="index-tag">/ INDEX</span>
+      </div>
+      <nav class="rail-nav">
+        <div class="rail-section is-active">
+          <a class="rail-section-label" href="/">Projects</a>
+          <div class="rail-children">
+            <a class="rail-child" href="/#drawbridge">Drawbridge</a>
+            <a class="rail-child is-active" href="/#personio">Personio</a>
+            <a class="rail-child" href="/#pizza-cat">Pizza Cat</a>
+            <a class="rail-child" href="/#meta-avatars">Meta Avatars</a>
+            <a class="rail-child" href="/#instagram-action-buttons">Instagram Actions</a>
+            <a class="rail-child" href="/#facebook-ads-system">Facebook Ads</a>
+          </div>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/blog.html">Blog</a>
+        </div>
+        <div class="rail-section">
+          <a class="rail-section-label" href="/consulting.html">Consulting</a>
+        </div>
+      </nav>
+      <div class="rail-foot">
+        <div class="who">
+          <div class="avatar" aria-hidden="true">tb</div>
+          <div class="who-stack">
+            <div class="who-name">Terrence Breschi</div>
+            <div class="who-role">designer · builder · ships AI</div>
+          </div>
+        </div>
+        <div class="util-row">
+          <a class="about-link" href="/about.html">about</a>
+          <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+            <span>THEME</span>
+            <span class="knob" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="topbar reveal">
+        <nav class="crumb" aria-label="Breadcrumb">
+          <a class="crumb-seg" href="/">projects</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="/#personio">personio</a>
+          <span class="crumb-sep">/</span>
+          <a class="crumb-seg" href="personio-cover.html">deck</a>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-seg is-active">assistant</span>
+        </nav>
+        <div class="pager">
+          <span class="pager-count" data-slide-count>01 / 17</span><!-- updated by deck-nav.js -->
+          <div class="pager-arrows">
+            <a class="pager-btn" href="personio-cover.html" data-slide-prev aria-label="Previous">←</a>
+            <a class="pager-btn is-primary" href="#02" data-slide-next aria-label="Next slide">→</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-stage reveal" style="--reveal-delay: 60ms" aria-label="Assistant chapter"
+           data-prev-chapter="personio-cover.html"
+           data-next-chapter="personio-pivot.html">
+
+        <!-- Slide 01 — chapter intro (Paper: DTI-0) -->
+        <section class="slide slide-chapter-intro is-active" data-slide-index="1" data-slide-meta="03 / 33">
+          <div class="slide-body slide-body-spread">
+
+            <header class="slide-topline">
+              <span class="slide-tag">case study · 03 / 33</span>
+              <span class="slide-meta-right">bresch.io / portfolio</span>
+            </header>
+
+            <div class="chapter-intro">
+              <span class="chapter-section">portfolio · personio</span>
+              <h1 class="chapter-headline">Assistant</h1>
+              <p class="chapter-lede">How I helped evolve the AI Assistant from a broken UX to a full-blown agentic strategy.</p>
+            </div>
+
+            <footer class="chapter-meta">
+              <div class="meta-cell">
+                <span class="meta-label">Project</span>
+                <span class="meta-value">Personio AI Team</span>
+              </div>
+              <div class="meta-cell">
+                <span class="meta-label">Role</span>
+                <span class="meta-value">Product Designer</span>
+              </div>
+              <div class="meta-cell">
+                <span class="meta-label">Timeline</span>
+                <span class="meta-value">May 2025 — Current</span>
+              </div>
+              <div class="meta-cell meta-cell-right">
+                <span class="meta-label">Status</span>
+                <span class="meta-value meta-accent">🔒 case study deck</span>
+              </div>
+            </footer>
+
+          </div>
+        </section>
+
+        <!-- Slide 04 — split, media-left (Paper: DWI-0 — What it is) -->
+        <section class="slide slide-split media-left" data-slide-index="2">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">personio assistant · what it is</span>
+              <span class="counter">04 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-overview-1.mp4" autoplay loop muted playsinline></video>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">&ldquo;The Intelligent HR Platform&rdquo;</h2>
+                <p class="slide-lede">We aim to leverage AI to help our customers gain efficiencies and lower costs.</p>
+                <p class="slide-lede" style="font-style: italic; max-width: 36cqw;">— attractive and hand-wavy at the same time.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 05 — split, text-left (Paper: DWX-0 — Our Customers) -->
+        <section class="slide slide-split" data-slide-index="3">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">customer problems</span>
+              <span class="counter">05 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Overextended HR<br>professionals.</h2>
+                <p class="slide-lede">HR admins, managers and employees at European tech companies. These folks had high expectations — and real pain.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Drowning in questions from employees</span></li>
+                  <li><span class="n">02</span><span class="t">Managing employee job changes</span></li>
+                  <li><span class="n">03</span><span class="t">Juggling roles between admin and strategy</span></li>
+                  <li><span class="n">04</span><span class="t">Excited yet skeptical appetites for AI</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-customer-1.png" alt="Personio HR persona" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 06 — split, media-left (Paper: DXP-0 — Our Solution) -->
+        <section class="slide slide-split media-left" data-slide-index="4">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">solution</span>
+              <span class="counter">06 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-input-1.png" alt="Assistant V1 input" />
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">The Assistant.</h2>
+                <p class="slide-lede">An AI assistant built to provide insights while deflecting common questions.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Deflect support tickets from employees</span></li>
+                  <li><span class="n">02</span><span class="t">Understand your company data</span></li>
+                  <li><span class="n">03</span><span class="t">Produce insights and visualizations</span></li>
+                  <li><span class="n">04</span><span class="t">Empower you to become a strategic partner</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 07 — split, media-left (Paper: E4D-0 — Some problems) -->
+        <section class="slide slide-split media-left" data-slide-index="5">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">problem</span>
+              <span class="counter">07 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-dogfooding-csat.png" alt="Dogfooding CSAT complaints" />
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">CSAT was at 16%.</h2>
+                <p class="slide-lede">We have some fundamental issues surfaced in Dogfooding.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Issues with data accuracy impact trust</span></li>
+                  <li><span class="n">02</span><span class="t">Issues with UX impact usability + look and feel</span></li>
+                  <li><span class="n">03</span><span class="t">These projects were not on the roadmap</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 08 — full-bleed media (Paper: E52-0 — Original Figma) -->
+        <section class="slide slide-full-bleed" data-slide-index="6">
+          <div class="slide-body">
+            <div class="slide-media">
+              <img src="/assets/portfolio-media/personio/new/pa-original-2-gaps.png" alt="Original Figma file with callouts" />
+            </div>
+            <div class="caption-row">
+              <span class="caption-label">problems identified</span>
+              <span class="caption-text">Original Figma Files. Designs were aspirational but one-dimensional — UX had not been scoped.</span>
+              <span class="counter">08 / 33</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 09 — split, media-left (Paper: E3I-0 — How I fix problems) -->
+        <section class="slide slide-split media-left" data-slide-index="7">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">process</span>
+              <span class="counter">09 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-process-1.mp4" autoplay loop muted playsinline></video>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">How I fix problems.</h2>
+                <p class="slide-lede">I like to prototype on production.</p>
+                <ol class="numbered-list two-col">
+                  <li><span class="n">01</span><span class="t">Move fast with smaller scope</span></li>
+                  <li><span class="n">02</span><span class="t">Build functionality iteratively</span></li>
+                  <li><span class="n">03</span><span class="t">Test the UX and share</span></li>
+                  <li><span class="n">04</span><span class="t">Identify issues I wouldn't catch otherwise</span></li>
+                  <li><span class="n">05</span><span class="t">Then refine with Design Systems</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 10 — section break (Paper: E9J-0 — Projects section) -->
+        <section class="slide slide-section-break" data-slide-index="8">
+          <div class="slide-body">
+            <div class="center">
+              <span class="eyebrow">part two</span>
+              <h2 class="big-title">Projects.</h2>
+              <p class="subtitle">A run of small bets — each one shipped, each one moved CSAT.</p>
+            </div>
+            <footer class="footer">
+              <span>section break · slides 11 — 16</span>
+              <span>10 / 33</span>
+            </footer>
+          </div>
+        </section>
+
+        <!-- Slide 11 — split, text-left (Paper: DYH-0 — Welcome Mat) -->
+        <section class="slide slide-split" data-slide-index="9">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects · welcome mat</span>
+              <span class="counter">11 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Welcome Mat.</h2>
+                <p class="slide-lede">Soften the entry to the Assistant.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Removed warning dialog</span></li>
+                  <li><span class="n">02</span><span class="t">Added greeting</span></li>
+                  <li><span class="n">03</span><span class="t">Generated directional prompts</span></li>
+                  <li><span class="n">04</span><span class="t">Designed animation interaction</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-welcome-1.png" alt="Welcome mat — before and after" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 12 — split, text-left (Paper: DZ9-0 — Refined Input) -->
+        <section class="slide slide-split" data-slide-index="10">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects · refined input</span>
+              <span class="counter">12 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Refined Input.</h2>
+                <p class="slide-lede">Adaptive input that scales with intent.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Preserves initial height</span></li>
+                  <li><span class="n">02</span><span class="t">Adapts to three lines of text</span></li>
+                  <li><span class="n">03</span><span class="t">Makes room for future tools</span></li>
+                  <li><span class="n">04</span><span class="t">Persistent disclaimer below</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-input-2.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 13 — split, text-left (Paper: E01-0 — Thinking state) -->
+        <section class="slide slide-split" data-slide-index="11">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects · thinking state</span>
+              <span class="counter">13 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Thinking state.</h2>
+                <p class="slide-lede">Smooth the wait — build trust through visible thought.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Incorporates Personio branding</span></li>
+                  <li><span class="n">02</span><span class="t">Smooths a sometimes laggy loading experience</span></li>
+                  <li><span class="n">03</span><span class="t">Creates foundation for chain-of-thought</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-thinking-2.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 14 — split, text-left (Paper: E0Q-0 — Error States) -->
+        <section class="slide slide-split" data-slide-index="12">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects · error states</span>
+              <span class="counter">14 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Error States.</h2>
+                <p class="slide-lede">Make it clear what went wrong — and copy-pasteable.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Improved descriptions of what went wrong</span></li>
+                  <li><span class="n">02</span><span class="t">Includes timestamp on hover</span></li>
+                  <li><span class="n">03</span><span class="t">Copy meta information to share/troubleshoot</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-errors-2.png" alt="Error states — timestamps + copy/paste" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 15 — split, text-left (Paper: E1F-0 — Stop Button) -->
+        <section class="slide slide-split" data-slide-index="13">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects · stop button</span>
+              <span class="counter">15 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Stop Button.</h2>
+                <p class="slide-lede">Give users the kill switch.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Enables user to stop the stream</span></li>
+                  <li><span class="n">02</span><span class="t">Introduces more control + trust into the system</span></li>
+                  <li><span class="n">03</span><span class="t">Lays foundation for other input-driven actions</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <img src="/assets/portfolio-media/personio/new/pa-stop-response-2.png" alt="Stop button — before / after" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 16 — split, text-left (Paper: E24-0 — Full screen) -->
+        <section class="slide slide-split" data-slide-index="14">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">projects · full screen</span>
+              <span class="counter">16 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Full screen.</h2>
+                <p class="slide-lede">Promote the Assistant to a first-class surface.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">Enables user to make Assistant full screen</span></li>
+                  <li><span class="n">02</span><span class="t">Encourages AI-native usage</span></li>
+                  <li><span class="n">03</span><span class="t">Lays foundation for dedicated surface</span></li>
+                </ol>
+              </div>
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-full-screen-1.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 17 — split, media-left (Paper: E2T-0 — Designers ship code) -->
+        <section class="slide slide-split media-left" data-slide-index="15">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">leadership</span>
+              <span class="counter">17 / 33</span>
+            </header>
+            <div class="split-row">
+              <div class="slide-media">
+                <video src="/assets/portfolio-media/personio/new/pa-tutorial-1.mp4" autoplay loop muted playsinline></video>
+              </div>
+              <div class="text-col">
+                <h2 class="slide-title slide-title-lg">Designers must ship code.</h2>
+                <p class="slide-lede">Encouraged by leadership to use AI-driven design processes.</p>
+                <ol class="numbered-list">
+                  <li><span class="n">01</span><span class="t">First designer to ship code to production</span></li>
+                  <li><span class="n">02</span><span class="t">Developed a tutorial + docs for other designers</span></li>
+                  <li><span class="n">03</span><span class="t">Eventually used by the COO to ship his own code</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 18 — stat (Paper: E9R-0 — CSAT 16 → 27) -->
+        <section class="slide slide-stat" data-slide-index="16">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">improvement</span>
+              <span class="counter">18 / 33</span>
+            </header>
+            <div>
+              <div class="stat-section">csat</div>
+              <div class="stat-row">
+                <span class="stat-number">16%</span>
+                <span class="stat-arrow">&rarr;</span>
+                <span class="stat-number">27%</span>
+              </div>
+              <p class="stat-caption" style="margin-top: 2.222cqw;">CSAT improvement. UX changes directly drove satisfaction gains. Built trust with leadership through visible, self-shipped impact.</p>
+              <p class="stat-note" style="margin-top: 1.111cqw;">— NYC office was let go, except our team.</p>
+            </div>
+            <footer class="stat-footer">
+              <span>+11 points</span><span class="dot">·</span>
+              <span>measured monthly</span><span class="dot">·</span>
+              <span>Q3 2025</span>
+            </footer>
+          </div>
+        </section>
+
+        <!-- Slide 19 — comparison (Paper: EJW-0 — Influencing CSAT) -->
+        <section class="slide slide-comparison" data-slide-index="17">
+          <div class="slide-body">
+            <header class="slide-topbar">
+              <span class="tag">result</span>
+              <span class="counter">19 / 33</span>
+            </header>
+            <div class="comp-header">
+              <h2 class="slide-title slide-title-lg">Directly influencing CSAT.</h2>
+              <p class="slide-lede" style="font-style: italic;">Despite the Assistant often producing incorrect responses, look-and-feel + UX moved the score.</p>
+            </div>
+            <div class="comp-grid">
+              <div class="comp-panel">
+                <span class="badge">before</span>
+                <div class="slide-media">
+                  <img src="/assets/portfolio-media/personio/new/pa-csat-trend-1.jpeg" alt="V1 Assistant" />
+                </div>
+                <div class="panel-meta">
+                  <span class="label">csat</span>
+                  <span class="value">16%</span>
+                </div>
+              </div>
+              <div class="comp-panel is-after">
+                <span class="badge">after</span>
+                <div class="slide-media">
+                  <img src="/assets/portfolio-media/personio/new/pa-csat-detail-1.jpeg" alt="V1.5 Assistant" />
+                </div>
+                <div class="panel-meta">
+                  <span class="label">csat</span>
+                  <span class="value">27%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="deck-nav.js" defer></script>
+  <script src="/script.js" defer></script>
+</body>
+</html>

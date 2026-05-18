@@ -1,0 +1,648 @@
+/* decks/v5 — design case studies
+   Slide content embedded inside the bresch.io site shell (rail + topbar).
+   Source of truth: Paper file "bresch.io v3", artboard DU4-0
+*/
+
+:root {
+  --v5-bg:      #F8F5EC;
+  --v5-ink:     #14130F;
+  --v5-rule:    #1A1A1A;
+  --v5-muted:   #6E6759;
+  --v5-faint:   #A89C7F;
+  --v5-accent:  #C97300;
+}
+
+/* ---- deck page: lock to viewport so .deck-stage can flex-fill the height ---- */
+html.deck-page,
+html.deck-page body { height: 100%; overflow: hidden; }
+html.deck-page .shell { height: 100vh; min-height: 100vh; }
+html.deck-page .rail { height: 100vh; }
+html.deck-page .content {
+  height: 100vh;
+  overflow: hidden;
+  /* deck content area is full-width so the slide panel fills the viewport */
+  max-width: none;
+}
+
+/* ---- deck-stage: a panel that fills the remaining viewport in .content ---- */
+.deck-stage {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  background: var(--v5-bg);
+  color: var(--v5-ink);
+  border: 1px solid rgba(20, 19, 15, 0.08);
+  container-type: inline-size;
+  overflow: clip;
+}
+
+/* The slide is laid out at 1440px wide; container queries scale it via cqw units. */
+.deck-stage .slide {
+  width: 100%;
+  height: 100%;
+  padding: 5.555cqw;            /* 80 / 1440 */
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: none;                /* hidden by default; .is-active reveals one */
+  flex-direction: column;
+}
+.deck-stage .slide.is-active { display: flex; }
+
+.deck-stage .slide-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.777cqw;                /* 40 / 1440 */
+}
+.deck-stage .slide-body-spread {
+  justify-content: space-between;
+}
+
+/* ---- hero ---- */
+.deck-stage .hero {
+  display: flex;
+  align-items: flex-end;
+  gap: 4.444cqw;                /* 64 / 1440 */
+}
+.deck-stage .hero h1 {
+  margin: 0;
+  font-size: 6.111cqw;          /* 88 / 1440 */
+  line-height: 1.045;           /* 92 / 88 */
+  letter-spacing: -0.02em;
+  color: var(--v5-ink);
+  font-weight: 400;
+}
+.deck-stage .hero .lede {
+  margin: 0 0 0.972cqw;         /* 14 / 1440 baseline offset */
+  max-width: 25cqw;             /* 360 / 1440 */
+  font-size: 0.972cqw;          /* 14 / 1440 */
+  line-height: 1.571;           /* 22 / 14 */
+  color: var(--v5-muted);
+}
+
+/* ---- chapters ---- */
+.deck-stage .chapters {
+  display: flex;
+  flex-direction: column;
+}
+.deck-stage .chapter {
+  display: flex;
+  gap: 2.222cqw;                /* 32 / 1440 */
+  padding-block: 1.666cqw;      /* 24 / 1440 */
+  border-top: 1px solid var(--v5-rule);
+  color: var(--v5-ink);
+  text-decoration: none;
+}
+.deck-stage .chapter:last-child { border-bottom: 1px solid var(--v5-rule); }
+
+.deck-stage .chapter .num {
+  min-width: 3.888cqw;          /* 56 / 1440 */
+  font-size: 0.972cqw;
+  line-height: 1.285;           /* 18 / 14 */
+  letter-spacing: 0.04em;
+  color: var(--v5-accent);
+}
+.deck-stage .chapter .ident {
+  flex: 0 0 26.388cqw;          /* 380 / 1440 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.416cqw;                /* 6 / 1440 */
+}
+.deck-stage .chapter .tag {
+  font-size: 0.763cqw;          /* 11 / 1440 */
+  line-height: 1.272;           /* 14 / 11 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v5-muted);
+}
+.deck-stage .chapter .title {
+  font-size: 2.222cqw;          /* 32 / 1440 */
+  line-height: 1.187;           /* 38 / 32 */
+  color: var(--v5-ink);
+}
+.deck-stage .chapter .desc {
+  flex: 1;
+  align-self: center;
+  font-size: 0.972cqw;
+  line-height: 1.571;
+  color: var(--v5-muted);
+}
+.deck-stage .chapter .range {
+  align-self: center;
+  min-width: 5.555cqw;          /* 80 / 1440 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.277cqw;                /* 4 / 1440 */
+}
+.deck-stage .chapter .range .label {
+  font-size: 0.694cqw;          /* 10 / 1440 */
+  line-height: 1.2;             /* 12 / 10 */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v5-muted);
+}
+.deck-stage .chapter .range .span {
+  font-size: 0.972cqw;
+  line-height: 1.285;
+  color: var(--v5-ink);
+}
+.deck-stage .chapter .arrow {
+  align-self: center;
+  min-width: 2.222cqw;
+  text-align: right;
+  font-size: 1.25cqw;           /* 18 / 1440 */
+  line-height: 1.222;
+  color: var(--v5-ink);
+}
+
+/* ============================================================
+   Chapter intro slide (Paper DTI-0 — "Assistant" chapter cover)
+   ============================================================ */
+.slide-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.slide-tag {
+  font-size: 0.833cqw;          /* 12 / 1440 */
+  line-height: 1.333;           /* 16 / 12 */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v5-muted);
+}
+.slide-meta-right {
+  font-size: 0.833cqw;
+  line-height: 1.333;
+  letter-spacing: 0.04em;
+  color: var(--v5-muted);
+}
+
+.chapter-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2.222cqw;                /* 32 / 1440 */
+  max-width: 77.777cqw;         /* 1120 / 1440 */
+}
+.chapter-section {
+  font-size: 0.902cqw;          /* 13 / 1440 */
+  line-height: 1.230;           /* 16 / 13 */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v5-accent);
+}
+.chapter-headline {
+  margin: 0;
+  font-size: 6.666cqw;          /* 96 / 1440 */
+  line-height: 1.083;           /* 104 / 96 */
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: var(--v5-ink);
+}
+.chapter-lede {
+  margin: 0;
+  max-width: 61.111cqw;         /* 880 / 1440 */
+  font-size: 1.527cqw;          /* 22 / 1440 */
+  line-height: 1.454;           /* 32 / 22 */
+  color: var(--v5-muted);
+}
+
+.chapter-meta {
+  display: flex;
+  gap: 3.888cqw;                /* 56 / 1440 */
+  padding-top: 1.666cqw;        /* 24 / 1440 */
+  border-top: 1px solid #E6E6E6;
+}
+.meta-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.277cqw;                /* 4 / 1440 */
+}
+.meta-cell-right { margin-left: auto; }
+.meta-label {
+  font-size: 0.694cqw;          /* 10 / 1440 */
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v5-muted);
+}
+.meta-value {
+  font-size: 0.902cqw;          /* 13 / 1440 */
+  line-height: 1.230;
+  color: var(--v5-ink);
+}
+.meta-accent { color: var(--v5-accent); }
+
+/* ============================================================
+   Content slides — shared parts
+   ============================================================ */
+
+/* Topline (top of every content slide): small orange tag left, slide counter right */
+.slide-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.slide-topbar .tag {
+  font-size: 0.972cqw;          /* 14 / 1440 */
+  line-height: 1.285;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v5-accent);
+}
+.slide-topbar .counter {
+  font-size: 0.972cqw;
+  line-height: 1.285;
+  color: var(--v5-muted);
+}
+
+/* Slide title + lede block */
+.slide-title {
+  margin: 0;
+  font-size: 2.5cqw;            /* 36 / 1440 — was 48 */
+  line-height: 1.166;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: var(--v5-ink);
+}
+.slide-title-lg {
+  font-size: 3.333cqw;          /* 48 / 1440 — was 64, used on split slides */
+  line-height: 1.125;
+}
+.slide-lede {
+  margin: 0;
+  max-width: 50cqw;
+  font-size: 1.25cqw;           /* 18 / 1440 */
+  line-height: 1.555;
+  color: var(--v5-muted);
+}
+
+/* Numbered list — small accent number, body text */
+.numbered-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.527cqw;                /* 22 / 1440 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.numbered-list.two-col {
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.888cqw;
+}
+.numbered-list li {
+  display: grid;
+  grid-template-columns: 2.5cqw 1fr;
+  column-gap: 1.111cqw;
+  align-items: baseline;
+}
+.numbered-list .n {
+  font-size: 0.902cqw;          /* 13 / 1440 */
+  letter-spacing: 0.04em;
+  color: var(--v5-accent);
+}
+.numbered-list .t {
+  font-size: 0.972cqw;
+  line-height: 1.428;
+  color: var(--v5-ink);
+}
+
+/* Media placeholder + media itself
+   Aspect-ratio of the asset is the priority. Media is centered, never cropped.
+   Cream letterboxing blends into the slide bg, so it reads as floating media. */
+.slide-media {
+  background: transparent;
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.slide-media img,
+.slide-media video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.slide-media .media-label {
+  position: absolute;
+  bottom: 1.111cqw;
+  left: 1.111cqw;
+  font-size: 0.694cqw;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v5-muted);
+}
+
+/* ============================================================
+   Pattern: split — text on one side, media on the other
+   ============================================================ */
+.slide-split .slide-body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2.777cqw;
+}
+.slide-split .split-row {
+  display: grid;
+  /* Default: text-left, media-right — 40% text · 60% media */
+  grid-template-columns: 2fr 3fr;
+  gap: 3.888cqw;                /* 56 / 1440 */
+  align-items: stretch;
+}
+.slide-split.media-left .split-row {
+  /* Media-left variant: 60% media · 40% text */
+  grid-template-columns: 3fr 2fr;
+}
+.slide-split .text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.666cqw;                /* 24 / 1440 */
+}
+.slide-split.media-left .text-col {
+  order: 2;
+}
+.slide-split.media-left .slide-media {
+  order: 1;
+}
+
+/* ============================================================
+   Pattern: full-bleed media with bottom caption bar
+   ============================================================ */
+.slide-full-bleed .slide-body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 2.222cqw;
+}
+.slide-full-bleed .slide-media {
+  width: 100%;
+  height: 100%;
+}
+/* Full-bleed: media is the hero — fill the area, crop if needed. */
+.slide-full-bleed .slide-media img,
+.slide-full-bleed .slide-media video {
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.slide-full-bleed .caption-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2.222cqw;
+}
+.slide-full-bleed .caption-row .caption-label {
+  font-size: 0.972cqw;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v5-accent);
+}
+.slide-full-bleed .caption-row .caption-text {
+  flex: 1;
+  font-size: 0.972cqw;
+  line-height: 1.571;
+  color: var(--v5-ink);
+}
+.slide-full-bleed .caption-row .counter {
+  font-size: 0.972cqw;
+  color: var(--v5-muted);
+}
+
+/* ============================================================
+   Pattern: section-break — centered hero title
+   ============================================================ */
+.slide-section-break .slide-body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 2.222cqw;
+}
+.slide-section-break .center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.666cqw;
+  text-align: center;
+}
+.slide-section-break .center .eyebrow {
+  font-size: 0.972cqw;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v5-accent);
+}
+.slide-section-break .center .big-title {
+  margin: 0;
+  font-size: 6.666cqw;          /* 96 / 1440 */
+  line-height: 1.083;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: var(--v5-ink);
+}
+.slide-section-break .center .subtitle {
+  margin: 0;
+  font-size: 1.25cqw;
+  line-height: 1.555;
+  color: var(--v5-muted);
+}
+.slide-section-break .footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 0.833cqw;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v5-muted);
+}
+
+/* ============================================================
+   Pattern: stat — huge accent numbers, body, footer meta
+   ============================================================ */
+.slide-stat .slide-body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1.666cqw;
+}
+.slide-stat .stat-section {
+  font-size: 0.972cqw;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--v5-ink);
+}
+.slide-stat .stat-row {
+  display: flex;
+  align-items: center;
+  gap: 4.444cqw;
+  color: var(--v5-accent);
+  margin-top: 1.666cqw;
+}
+.slide-stat .stat-number {
+  font-size: 13.888cqw;         /* 200 / 1440 */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.slide-stat .stat-arrow {
+  font-size: 8.333cqw;
+  line-height: 1;
+  color: var(--v5-accent);
+}
+.slide-stat .stat-caption {
+  max-width: 70cqw;
+  font-size: 1.25cqw;
+  line-height: 1.555;
+  color: var(--v5-ink);
+}
+.slide-stat .stat-note {
+  font-size: 0.972cqw;
+  font-style: italic;
+  color: var(--v5-muted);
+}
+.slide-stat .stat-footer {
+  display: flex;
+  align-items: center;
+  gap: 1.666cqw;
+  padding-top: 1.111cqw;
+  border-top: 1px dashed rgba(20, 19, 15, 0.2);
+  font-size: 0.833cqw;
+  color: var(--v5-muted);
+}
+.slide-stat .stat-footer .dot { color: var(--v5-faint); }
+
+/* ============================================================
+   Pattern: comparison — before / after panels
+   ============================================================ */
+.slide-comparison .slide-body {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 1.666cqw;
+}
+.slide-comparison .comp-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.555cqw;
+}
+.slide-comparison .comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.222cqw;
+}
+.slide-comparison .comp-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.111cqw;
+}
+.slide-comparison .comp-panel .badge {
+  position: absolute;
+  top: 1.111cqw;
+  left: 1.111cqw;
+  z-index: 2;
+  padding: 0.347cqw 0.694cqw;
+  background: var(--v5-bg);
+  border: 1px solid rgba(20, 19, 15, 0.12);
+  font-size: 0.694cqw;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v5-ink);
+}
+.slide-comparison .comp-panel.is-after .badge {
+  background: var(--v5-accent);
+  color: var(--v5-bg);
+  border-color: var(--v5-accent);
+}
+.slide-comparison .comp-panel .slide-media {
+  flex: 1;
+}
+.slide-comparison .comp-panel .panel-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 0.833cqw;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.slide-comparison .comp-panel .panel-meta .label { color: var(--v5-ink); }
+.slide-comparison .comp-panel .panel-meta .value { color: var(--v5-ink); font-size: 1.527cqw; }
+.slide-comparison .comp-panel.is-after .panel-meta .value { color: var(--v5-accent); }
+
+/* ============================================================
+   Pattern: title-media — title top, full media, italic caption bottom
+   ============================================================ */
+.slide-title-media .slide-body {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 1.666cqw;
+}
+.slide-title-media .slide-media { width: 100%; height: 100%; }
+.slide-title-media .tm-caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.111cqw;
+  line-height: 1.555;
+  color: var(--v5-muted);
+}
+
+/* ============================================================
+   Pattern: principles — title + large numbered list with rule dividers
+   ============================================================ */
+.slide-principles .slide-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.777cqw;
+}
+.slide-principles .slide-title-lg { font-size: 4.444cqw; }
+.slide-principles .principle-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.slide-principles .principle-list li {
+  display: grid;
+  grid-template-columns: 5cqw 1fr;
+  column-gap: 2.222cqw;
+  align-items: baseline;
+  padding-block: 1.666cqw;
+  border-bottom: 1px solid rgba(20, 19, 15, 0.12);
+}
+.slide-principles .principle-list li:first-child { padding-top: 0; }
+.slide-principles .principle-list li:last-child { border-bottom: none; }
+.slide-principles .principle-list .n {
+  font-size: 0.972cqw;
+  letter-spacing: 0.04em;
+  color: var(--v5-accent);
+}
+.slide-principles .principle-list .t {
+  font-size: 2.222cqw;          /* 32 / 1440 */
+  line-height: 1.187;
+  color: var(--v5-ink);
+}
+
+/* ---- dark mode ---- */
+[data-theme="dark"] .deck-stage {
+  background: var(--v5-ink);
+  color: var(--v5-bg);
+  border-color: rgba(248, 245, 236, 0.08);
+}
+[data-theme="dark"] .deck-stage .hero h1,
+[data-theme="dark"] .deck-stage .chapter .title,
+[data-theme="dark"] .deck-stage .chapter .range .span,
+[data-theme="dark"] .deck-stage .chapter .arrow {
+  color: var(--v5-bg);
+}
+[data-theme="dark"] .deck-stage .chapter {
+  border-top-color: rgba(248, 245, 236, 0.2);
+}
+[data-theme="dark"] .deck-stage .chapter:last-child {
+  border-bottom-color: rgba(248, 245, 236, 0.2);
+}
