@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Subscribe from '../../components/Subscribe.astro';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons', ({ data }) => !data.draft);
+  return lessons.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { title, description, youtube, episode, duration, pubDate } = entry.data;
+const { Content } = await render(entry);
+---
+
+<Base title={`${title} — Terrence Breschi`} description={description} section="learn">
+  <a href="/learn/" class="back-link">← learn</a>
+
+  {youtube && (
+    <div class="entry-media">
+      <div class="video-wrapper">
+        <iframe
+          src={`https://www.youtube.com/embed/${youtube}`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  )}
+
+  <div class="entry-header">
+    <h2>{title}</h2>
+    <p class="date">
+      {episode ? `episode ${episode} / ` : ''}{duration ? `${duration} / ` : ''}
+      <time datetime={pubDate.toISOString()}>{pubDate.toISOString().slice(0, 10)}</time>
+    </p>
+  </div>
+
+  <article class="prose">
+    <Content />
+  </article>
+
+  <Subscribe />
+</Base>

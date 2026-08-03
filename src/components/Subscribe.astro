@@ -1,0 +1,21 @@
+---
+// Layout slot only — no provider wired up on purpose.
+//
+// Substack is being sunset (terroncé, 2026-08-03), and the email provider is a
+// WS6 decision. This reserves the position and the visual treatment so the
+// pages that need it are already laid out correctly; dropping in a real form
+// later is a change to this one file.
+//
+// Until a provider exists, this points at the thing that does exist: the feed.
+---
+
+<section class="subscribe">
+  <h2>subscribe</h2>
+  <p>
+    New writing and lessons on building with AI. Email signup is coming — for
+    now, the feed is the way to follow along.
+  </p>
+  <p class="link-container">
+    <a href="/rss.xml" class="project-link">rss</a>
+  </p>
+</section>
