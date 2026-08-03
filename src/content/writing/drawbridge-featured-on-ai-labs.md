@@ -35,6 +35,7 @@ It’s not about replacing the conversation. It’s about making it more natural
 Last week, **[AI Labs reviewed Drawbridge](https://www.youtube.com/watch?v=1cB2iqz_vnM&t=180s)** on their YouTube channel. I didn’t expect much — maybe a few comments or a couple of stars.
 
 Instead, the repo blew up: **336 stars and 20 forks** (and counting).
+
 Not massive numbers by open-source standards, but enough to make me sit back and realize — people actually *get* this.
 
 And that’s the best feeling in the world.
@@ -66,6 +67,7 @@ Huge thanks to everyone who’s starred, forked, or shared feedback. You’ve he
 This has also opened my eyes to enhancements and features that can be added to the tool as a result of more people incorporating it into their workflow. We’ve [already shipped some fixes](https://github.com/breschio/drawbridge/commit/4db3006fa2879b9bc177370caa399ddb6225c7cc)!
 
 If you haven’t tried it yet:
+
 👉 **[github.com/breschio/drawbridge](https://github.com/breschio/drawbridge)**
 
 Give it a try and let me know if you see anything that could be improved.

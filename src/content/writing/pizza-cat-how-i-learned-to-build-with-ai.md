@@ -8,7 +8,7 @@ heroImage: "/assets/writing/pizza-cat-how-i-learned-to-build-with-ai/01.jpg"
 ---
 Play the game! [pizzacat.surf](http://pizzacat.surf)
 
-### **It's Fun to Know a Little Code**
+### It's Fun to Know a Little Code
 
 In 2023, I told myself I would *finally* learn web development. With AI gaining traction online, I thought, “Why not learn Python and build AI myself?” Spoiler alert: I didn’t. Instead, I jumped into Codecademy’s [Full Stack Engineer](https://www.codecademy.com/career-journey/full-stack-engineer) course, refreshing my knowledge of HTML and CSS while learning git and GitHub—enough to commit code and save changes effectively.
 
@@ -16,7 +16,7 @@ Renewing that Codecademy subscription might have been one of my best decisions r
 
 ---
 
-### **Dream On**
+### Dream On
 
 That’s what makes this so fun. I used to dream up wacky ideas to build, pitching them to friends and family who would laugh and roll their eyes. Now, I’m coming up with ideas during meetings at work.
 
@@ -28,7 +28,7 @@ Yeah so, to uh… test the waters, I picked a low-risk project that *didn’t ha
 
 ---
 
-### **The Tools I Used**
+### The Tools I Used
 
 Using several AI tools, I built prototypes to see how far each could take me:
 
@@ -44,7 +44,7 @@ I should also note that I used GPT for images.
 
 ---
 
-### **Building with Cursor**
+### Building with Cursor
 
 Using Cursor was wildly addictive.
 
@@ -70,52 +70,50 @@ Ok yeah, it’s not exactly Fortnite, but it was so fun to build!
 
 If you’re considering diving into AI-powered projects, here are some lessons I’ve learned.
 
-### **Build for Fun, Not Success**
+### Build for Fun, Not Success
 
 Not every project needs to change the world. Low-pressure, just-for-fun projects like *Pizza Cat* are incredible opportunities for learning and experimentation. When there’s no pressure to "win," you’re free to push boundaries, take risks, and find creative solutions.
 
 ---
 
-### **Start Simple**
+### Start Simple
 
 Give the AI something manageable to start with, but don’t try to cram every feature into the first iteration. Focus on core functionality (e.g., “Build me a side-scrolling web game”) and add complexity as you go. There’s plenty of time for polish later.
 
 ---
 
-### **Iterate with Constant Feedback**
+### Iterate with Constant Feedback
 
 Combine visual prompts (like annotated screenshots) with text instructions when giving feedback to AI. This approach is faster, more precise, and leads to better results. For example, it took three tries to perfect *Pizza Cat*’s start screen, but mixing visuals and clear directions helped me nail it.
 
 ---
 
-### **Bugs? Start with the Console**
+### Bugs? Start with the Console
 
 The console is your app’s diary. It tells you everything about what’s working and what’s breaking. Debugging becomes much easier when you rely on console logs. Trust them, use them.
 
 ---
 
-### **Break It Up**
+### Break It Up
 
 Long AI sessions can quickly spiral into chaos. Keep your sessions short and focused. When things start to get messy or circular, hit reset. Re-establish your plan in a fresh session, and you’ll save yourself a lot of frustration.
 
 ---
 
-### **Commit your Code!**
+### Commit your Code!
 
 For the love of all that is holy, please commit that code. The most important lesson I learned is that AI likes to solve problems with - you guessed - more code! Unfortunately this can mean tons of work being overwritten because your agent is tripping on digital shiitakes. (new hat dropping soon)
 
 BUT! If you are patient, and get your code working. Just commit it to git. It’s a very simple process and you’ll be thanking yourself that you’ve made an effort to take the wins when you get them.
 
-### **Blah, blah, blah…**
+### Blah, blah, blah…
 
 Building with AI isn’t perfect, but it’s evolving fast. Whether you’re debugging your latest game or experimenting with new ideas, the tools are here to help—and every project is a chance to learn. Who knows? Maybe *Pizza Cat* will end up being my magnum opus.
 
 What are you working on? What lessons have you learned while tinkering with AI? Drop a comment or follow me on YouTube.
 
 I actually WOULD love to hear about your journey.
+
 Thanks - T
 
-
 Play the game! [pizzacat.surf](http://pizzacat.surf)
-
-[Subscribe now](https://terrencebreschi.substack.com/subscribe?)

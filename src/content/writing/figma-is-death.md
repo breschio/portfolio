@@ -11,8 +11,7 @@ Conversations ensued about whether Figma still matters, whether designers should
 
 I wanted a real response about what’s happening in our industry - but after reflecting, I realized I prompted the wrong conversation.
 
-
-**This was never about “Figma”**
+This was never about “Figma”**
 
 Figma is an incredible tool—arguably the best collaborative design environment ever built. I still use it—it’s genuinely great at what it does.
 

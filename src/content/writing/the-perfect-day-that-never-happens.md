@@ -80,7 +80,7 @@ And that, more than anything, is the real value in all of this.
 
 So, what does your Perfect Day look like? And how often does it happen?
 
-### **A Simple Exercise to Define Your Perfect Day**
+### A Simple Exercise to Define Your Perfect Day
 
 If you’ve never thought about your Perfect Day before, here’s a quick way to start.
 
@@ -88,7 +88,9 @@ If you’ve never thought about your Perfect Day before, here’s a quick way to
 
 At the top, write: *"If I had full control of my time, what would my day look like?"*
 
-**Break it down into three sections:Morning:** What time do you wake up? What’s the first thing you do? What sets the tone for your day?
+**Break it down into three sections:**
+
+**Morning:** What time do you wake up? What’s the first thing you do? What sets the tone for your day?
 
 **Afternoon:** What are you working on? Where are you? How do you want to feel?
 

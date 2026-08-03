@@ -6,7 +6,7 @@ draft: false
 substackUrl: "https://terrencebreschi.substack.com/p/drawbridge-like-figma-comments-for"
 heroImage: "/assets/writing/drawbridge-like-figma-comments-for/01.png"
 ---
-## **Problem**
+## Problem
 
 As a product designer working with Cursor, I constantly have to move back and forth between the browser and my development environment to describe visual edits I want to make.
 
@@ -20,8 +20,7 @@ This was a boon at the time, I could bend Cursor to my will if I gave it enough 
 
 But, the process felt tedious and disconnected from the vibe I was trying to cultivate. Move fast, make things!
 
-##
-**Hypothesis**
+## Hypothesis
 
 What if I could just click on the interface itself, leave a comment or instruction, and send that directly to Cursor or my local tools?
 
@@ -33,7 +32,7 @@ Furthermore, if I could attach more context (DOM elements + Screenshot and comme
 
 Just click and comment.
 
-## **Solution**
+## Solution
 
 Drawbridge is “Figma comments for Cursor”.
 
@@ -49,7 +48,7 @@ When I want Cursor to run my tasks, I just type “bridge” into the input and 
 
 Cursor then reviews the comment as well as the JSON prompt and a screenshot to better-inform it’s work.
 
-## **Result**
+## Result
 
 Now I can work with my UI in a much more efficient way. I make a series of visual edits, batch them, and send them directly to Cursor.
 

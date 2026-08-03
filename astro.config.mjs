@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://bresch.io',
   integrations: [sitemap()],
   build: {
-    // GitHub Pages serves /work/drawbridge/index.html for /work/drawbridge
+    // /work/drawbridge/ is served from /work/drawbridge/index.html
     format: 'directory',
   },
 

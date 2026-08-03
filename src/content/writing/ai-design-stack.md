@@ -12,14 +12,14 @@ heroImage: "/assets/writing/ai-design-stack/01.jpg"
 
 Here's a quick overview of my tools for anyone who wants to get right down to it.
 
-[superwhisper](https://superwhisper.com/) - Speak to AI
-[Gemini](http://gemini.google.com) - Organize your thoughts
-[Cursor](https://cursor.com/) - Build anything with AI
-[Github](https://github.com/breschio) - Save versions, publish to the web
-[Loom](https://www.loom.com/) - Record presentations, get feedback.
-[html.to.design](https://www.figma.com/community/plugin/1159123024924461424/html-to-design-by-divriots-import-websites-to-figma-designs-web-html-css) - Bring your prototypes back into Figma
-[Figma](https://www.figma.com/) - Refine using your design system
-[Screen Studio](https://screen.studio/) - Share Sell your work
+- [superwhisper](https://superwhisper.com/) - Speak to AI
+- [Gemini](http://gemini.google.com) - Organize your thoughts
+- [Cursor](https://cursor.com/) - Build anything with AI
+- [Github](https://github.com/breschio) - Save versions, publish to the web
+- [Loom](https://www.loom.com/) - Record presentations, get feedback.
+- [html.to.design](https://www.figma.com/community/plugin/1159123024924461424/html-to-design-by-divriots-import-websites-to-figma-designs-web-html-css) - Bring your prototypes back into Figma
+- [Figma](https://www.figma.com/) - Refine using your design system
+- [Screen Studio](https://screen.studio/) - Share Sell your work
 
 ## Context
 
