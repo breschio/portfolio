@@ -4,11 +4,18 @@ year: 2026
 tools: [Swift, macOS, Figma]
 description: "A macOS window manager where you draw the window into place."
 featured: true
+# No `media` yet — this is the one genuine media gap in the work collection.
+# No video or still of gridwork exists in any repo: the loop on the gridwork
+# site is a live <canvas>, and the only files there are two 30 KB icons.
+# A ~10s screen recording of the real app (⇧⌘D, drag, release) is the right
+# asset and only terroncé can make it. Until then this entry renders text-only,
+# so the work template must handle a missing `media` without breaking layout.
 links:
   - label: "Site"
     href: "https://breschio.github.io/gridwork-site/"
   - label: "Download 1.0.3"
     href: "https://github.com/breschio/gridwork-site/releases/download/v1.0.3/gridwork-1.0.3.zip"
+order: 6
 ---
 
 Press ⇧⌘D and the screen becomes a quiet grid. Drag across the cells you

@@ -4,9 +4,13 @@ year: 2026
 tools: [Python, Cursor]
 description: "A glowing terminal screensaver that keeps your Mac awake."
 featured: false
+media: /assets/javalamp-demo.mp4
+mediaType: video
+orientation: landscape
 links:
   - label: "GitHub"
     href: "https://github.com/breschio/javalamp"
+order: 7
 ---
 
 Animated ASCII scenes for your terminal — a lava lamp you run with

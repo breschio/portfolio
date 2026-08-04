@@ -19,6 +19,8 @@ Visual annotations for AI-assisted coding — a Chrome extension that makes UI i
 
 **Role** Designer, Engineer · **Timeline** Jun–Dec 2025
 
+<video controls playsinline preload="none" src="https://github.com/breschio/drawbridge-media/raw/main/Fast%20website%20edits%20with%20Drawbridge.mp4"></video>
+
 ## Problem
 
 While vibe coding, iterating on UI was painfully slow. Describing visual changes to Cursor took 2-3 minutes per tweak — identifying the element, explaining what to change, waiting for the response, checking the result.
@@ -58,6 +60,8 @@ Drawbridge is a Chrome extension that connects your browser to your local develo
 Each annotation captures three things: the visual (screenshot), the structural (DOM selector path), and the intent (free-form comment). This gives the LLM everything it needs to act precisely.
 
 Three processing modes let you tune the approval friction: **step** (one at a time), **batch** (grouped), and **yolo** (autonomous).
+
+<video autoplay loop muted playsinline preload="none" src="/assets/drawbridge.mp4"></video>
 
 ## Technical Decisions
 
