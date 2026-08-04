@@ -150,6 +150,35 @@ const nav = [
           });
         }
 
+        /* List pages render several project videos. `autoplay` overrides `preload`,
+           so autoplaying all of them would fetch every file on load — ~22 MB across
+           the work index, which is the weight problem PR #9 just fixed. Instead the
+           cards ship preload="none" and only load/play what is actually on screen. */
+        var lazyVideos = document.querySelectorAll('video[data-autoplay-in-view]');
+        if (lazyVideos.length) {
+          if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                var v = e.target;
+                if (e.isIntersecting) {
+                  if (v.preload !== 'auto') v.preload = 'auto';
+                  var p = v.play();
+                  if (p && p.catch) p.catch(function () {});
+                } else if (!v.paused) {
+                  v.pause();
+                }
+              });
+            }, { rootMargin: '200px 0px' });
+            lazyVideos.forEach(function (v) { io.observe(v); });
+          } else {
+            lazyVideos.forEach(function (v) {
+              v.preload = 'auto';
+              var p = v.play();
+              if (p && p.catch) p.catch(function () {});
+            });
+          }
+        }
+
         var burger = document.querySelector('.hamburger-menu');
         var sidebar = document.querySelector('.sidebar');
         if (burger && sidebar) {

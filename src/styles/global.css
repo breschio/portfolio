@@ -155,7 +155,9 @@ iframe {
     margin-bottom: 20px;
 }
 
-.sidebar nav a {
+/* `.sidebar` IS the <nav>, so `.sidebar nav a` matched nothing and these links
+   inherited the 16px default. Old site: `.sidebar a { font-size: 12px }`. */
+.sidebar ul a {
     text-decoration: underline;
     color: var(--text-primary);
     font-size: 12px;
@@ -163,7 +165,7 @@ iframe {
     align-items: center;
 }
 
-.sidebar nav a[aria-current="page"] {
+.sidebar ul a[aria-current="page"] {
     text-decoration: none;
     color: var(--accent-color);
 }
@@ -313,7 +315,8 @@ body.dark-theme .theme-toggle .moon-icon {
 
 .entry-meta {
     flex: 0 0 100px;
-    font-size: 11px;
+    font-size: 12px;
+    line-height: 1.6;
     color: var(--text-secondary);
 }
 
@@ -346,14 +349,21 @@ body.dark-theme .theme-toggle .moon-icon {
     margin-bottom: 40px;
 }
 
+/* Display scale, ported from the case-study page's own stylesheet on main
+   (body 17px/1.7, hero 3.5rem/700, h2 1.75rem/600, h3 1.25rem/600). The old
+   site ran two type systems: this one for long-form reading, and the smaller
+   styles.css scale for the index/deck surfaces. Both are preserved. */
 .entry-header h2 {
-    font-size: 18px;
-    font-weight: 500;
-    margin: 0 0 8px;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
 }
 
 .entry-header .date {
-    font-size: 11px;
+    font-size: 0.8rem;
+    line-height: 1.6;
     color: var(--text-secondary);
     margin: 0;
 }
@@ -419,18 +429,41 @@ body.dark-theme .theme-toggle .moon-icon {
 
 /* Long-form body copy */
 .prose {
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 17px;
+    line-height: 1.7;
     color: var(--text-secondary);
     max-width: 68ch;
 }
 
-.prose h2,
+.prose h2 {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 56px;
+    margin-bottom: 16px;
+}
+
 .prose h3 {
     color: var(--text-primary);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
     margin-top: 40px;
+    margin-bottom: 12px;
+}
+
+.prose strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* The lede paragraph under a long-form title. */
+.entry-header + .description.prose {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 32px;
 }
 
 .prose a {
@@ -447,7 +480,7 @@ body.dark-theme .theme-toggle .moon-icon {
     background: var(--placeholder-bg);
     padding: 2px 5px;
     border-radius: 2px;
-    font-size: 12px;
+    font-size: 0.9em;
 }
 
 .prose pre {
@@ -606,11 +639,224 @@ body.dark-theme .theme-toggle .moon-icon {
         flex: none;
     }
 
-    .entry-header h2 {
-        font-size: 16px;
+    /* Mobile values from the old site's @768 block: .sidebar a 14px,
+       .project h2 18px, .project p 14px, .date 11px (styles.css);
+       hero 2.25rem (drawbridge.html). */
+    .sidebar ul a {
+        font-size: 14px;
     }
 
-    .prose {
+    .about-link {
         font-size: 14px;
+    }
+
+    .entry-meta {
+        font-size: 11px;
+    }
+
+    .page-header h2 {
+        font-size: 18px;
+    }
+
+    .entry-header h2 {
+        font-size: 2.25rem;
+    }
+
+    .entry-header + .description.prose {
+        font-size: 1.1rem;
+    }
+
+    .prose h2 {
+        font-size: 1.4rem;
+        margin-top: 40px;
+    }
+
+    .prose h3 {
+        font-size: 1.15rem;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Work cards — media-forward index rows.
+
+   Geometry ported from the pre-Astro `.project` / `.project-info` rules in
+   styles.css: media at 80% width capped to 70vh, info as a two-column split
+   with the description on a 60% right column, and the mobile reorder
+   (title -> description -> date).
+   --------------------------------------------------------------------------- */
+
+.work-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.work-card {
+    margin-bottom: 96px;
+}
+
+.work-card-media-link {
+    display: block;
+    text-decoration: none;
+}
+
+.work-card-media-link:empty {
+    display: none;
+}
+
+.work-card-media {
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto 20px;
+}
+
+.work-card-media video,
+.work-card-media img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+    border-radius: 2px;
+}
+
+.work-card-media.portrait {
+    display: flex;
+    justify-content: center;
+}
+
+.work-card-media.portrait video,
+.work-card-media.portrait img {
+    width: auto;
+    max-height: 70vh;
+}
+
+.work-card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.work-card-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card-right {
+    display: flex;
+    align-items: center;
+    flex: 0 0 60%;
+}
+
+.work-card-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.work-card-title a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.work-card-title a:hover {
+    color: var(--accent-color);
+}
+
+.work-card .date {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.work-card .description {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .work-card {
+        margin-bottom: 64px;
+    }
+
+    .work-card-media,
+    .work-card-info {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .work-card-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .work-card-right {
+        flex: none;
+        order: -1;
+    }
+
+    .work-card-title {
+        font-size: 18px;
+    }
+
+    .work-card .description,
+    .work-card .date {
+        font-size: 14px;
+    }
+
+    .work-card .date {
+        font-size: 11px;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   About page — its own scale, declared in about.html on main:
+     .greeting 24px, .intro 18px, .about-content p 14px / 1.7
+   Those first two never rendered: both are <p> inside .about-content, so the
+   later `.about-content p { font-size: 14px }` won on source order and the page
+   flattened to 14px throughout. This restores the hierarchy as written.
+   --------------------------------------------------------------------------- */
+
+.about-page .greeting {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+
+.about-page .intro {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0 0 48px;
+}
+
+.about-page .prose {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.about-page .prose p {
+    margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+    .about-page .greeting {
+        font-size: 20px;
+    }
+
+    .about-page .intro {
+        font-size: 16px;
+        margin-bottom: 36px;
     }
 }

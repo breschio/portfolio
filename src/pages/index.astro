@@ -2,11 +2,14 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import EntryList from '../components/EntryList.astro';
+import WorkCard from '../components/WorkCard.astro';
 import Subscribe from '../components/Subscribe.astro';
 
 const work = (await getCollection('work', ({ data }) => !data.draft))
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
+  // Old homepage showed five projects; reverse-chronological is the convention
+  // the existing `order` values already follow. Ratified default — one line to change.
+  .sort((a, b) => b.data.year - a.data.year || a.data.order - b.data.order)
+  .slice(0, 5);
 
 const writing = (await getCollection('writing', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -29,14 +32,20 @@ const writing = (await getCollection('writing', ({ data }) => !data.draft))
     <div class="page-header">
       <h2>work</h2>
     </div>
-    <EntryList
-      items={work.map((entry) => ({
-        href: `/work/${entry.id}/`,
-        meta: String(entry.data.year),
-        title: entry.data.title,
-        summary: entry.data.description,
-      }))}
-    />
+    <div class="work-list">
+      {work.map((entry) => (
+        <WorkCard
+          href={`/work/${entry.id}/`}
+          title={entry.data.title}
+          year={entry.data.year}
+          description={entry.data.description}
+          tools={entry.data.tools}
+          media={entry.data.media ?? entry.data.heroImage}
+          mediaType={entry.data.media ? entry.data.mediaType : 'image'}
+          orientation={entry.data.orientation}
+        />
+      ))}
+    </div>
     <p class="link-container"><a href="/work/" class="project-link">all work</a></p>
   </section>
 
