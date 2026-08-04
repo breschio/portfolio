@@ -85,14 +85,22 @@ If you annotate the same element twice (e.g., "make this button green" then "add
 
 Beyond raw speed, it's also less cognitively taxing — no more context-switching between browser and editor to describe what you're looking at.
 
-- **956** GitHub stars
-- **80** forks
-- **115** unique cloners
+<div class="stats-grid">
+  <div class="stat-card"><div class="number">956</div><div class="label">GitHub Stars</div></div>
+  <div class="stat-card"><div class="number">80</div><div class="label">Forks</div></div>
+  <div class="stat-card"><div class="number">115</div><div class="label">Unique Cloners</div></div>
+  <div class="stat-card"><div class="number">5</div><div class="label">Releases in ~6 Months</div></div>
+</div>
+
 - Adopted by former manager
-- 5 releases over ~6 months
 - Chrome Web Store launch imminent
 
-Featured in a 10-minute [AI LABS tutorial](https://www.youtube.com/watch?v=1cB2iqz_vnM) (17K views, 561 likes) on a 107K-subscriber channel, where Drawbridge is highlighted as an underrated but powerful open-source UI automation tool.
+Featured in a 10-minute [AI LABS tutorial](https://www.youtube.com/watch?v=1cB2iqz_vnM) on a 107K-subscriber channel, where Drawbridge is highlighted as an underrated but powerful open-source UI automation tool.
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="number">17K</div><div class="label">Views</div></div>
+  <div class="stat-card"><div class="number">561</div><div class="label">Likes</div></div>
+</div>
 
 <div class="video-wrapper">
 <iframe src="https://www.youtube.com/embed/1cB2iqz_vnM" title="Drawbridge Demo - AI Labs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

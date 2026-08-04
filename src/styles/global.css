@@ -860,3 +860,45 @@ body.dark-theme .theme-toggle .moon-icon {
         margin-bottom: 36px;
     }
 }
+
+/* ---------------------------------------------------------------------------
+   Stat cards — ported from drawbridge.html's own stylesheet on main
+   (.stats-grid 2-col, .stat-card .number 2.5rem/700 lh 1, .label 0.75rem mono).
+   The first migration flattened these display figures into a bullet list;
+   "956 GitHub stars" should read as a number, not a bullet.
+   --------------------------------------------------------------------------- */
+
+.prose .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.prose .stat-card {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.prose .stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-primary);
+}
+
+.prose .stat-card .label {
+    font-family: "Space Mono", Monaco, monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .prose .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
