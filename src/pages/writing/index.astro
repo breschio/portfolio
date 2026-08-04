@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EntryList from '../../components/EntryList.astro';
+import Subscribe from '../../components/Subscribe.astro';
+
+const posts = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Base
+  title="Writing — Terrence Breschi"
+  description="Writing on designing and shipping with AI."
+  section="writing"
+>
+  <div class="page-header">
+    <h2>writing</h2>
+    <p>On designing and shipping with AI.</p>
+  </div>
+
+  {posts.length > 0 ? (
+    <EntryList
+      items={posts.map((entry) => ({
+        href: `/writing/${entry.id}/`,
+        meta: entry.data.pubDate.toISOString().slice(0, 10),
+        title: entry.data.title,
+        summary: entry.data.description,
+      }))}
+    />
+  ) : (
+    <p class="entry-summary">Nothing here yet.</p>
+  )}
+
+  <Subscribe />
+</Base>

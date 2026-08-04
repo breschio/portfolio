@@ -12,3 +12,8 @@
 .vscode/
 .idea/
 
+
+# Astro / node
+node_modules/
+dist/
+.astro/

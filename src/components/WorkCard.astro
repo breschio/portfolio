@@ -1,0 +1,73 @@
+---
+// Media-forward row for the /work index and the homepage work section.
+//
+// The pre-Astro homepage was nothing but media — five full-viewport slides.
+// The first migration pass rendered work as text-only rows, which dropped every
+// visual above the detail page. This restores the media inside continuous flow;
+// the full-bleed slide treatment itself stays opt-in (`.deck`).
+
+interface Props {
+  href: string;
+  title: string;
+  year: number;
+  description: string;
+  tools?: string[];
+  media?: string;
+  mediaType?: 'video' | 'image' | 'youtube';
+  orientation?: 'landscape' | 'portrait';
+}
+
+const {
+  href,
+  title,
+  year,
+  description,
+  tools = [],
+  media,
+  mediaType = 'image',
+  orientation = 'landscape',
+} = Astro.props;
+---
+
+<article class="work-card">
+  <a href={href} class="work-card-media-link" aria-label={title}>
+    {media ? (
+      <div class:list={['work-card-media', orientation]}>
+        {mediaType === 'youtube' ? (
+          <div class="video-wrapper">
+            <iframe
+              src={`https://www.youtube.com/embed/${media}`}
+              title={title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        ) : mediaType === 'video' ? (
+          <video
+            loop
+            muted
+            playsinline
+            preload="none"
+            data-autoplay-in-view
+            aria-label={title}
+          >
+            <source src={media} type="video/mp4" />
+          </video>
+        ) : (
+          <img src={media} alt={title} loading="lazy" />
+        )}
+      </div>
+    ) : null}
+  </a>
+
+  <div class="work-card-info">
+    <div class="work-card-left">
+      <h3 class="work-card-title"><a href={href}>{title}</a></h3>
+      <p class="date">{year}{tools.length > 0 ? ` / ${tools.join(', ')}` : ''}</p>
+    </div>
+    <div class="work-card-right">
+      <p class="description">{description}</p>
+    </div>
+  </div>
+</article>

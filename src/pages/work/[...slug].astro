@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const work = await getCollection('work', ({ data }) => !data.draft);
+  return work.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { title, year, tools, description, media, mediaType, orientation, links } = entry.data;
+const { Content } = await render(entry);
+
+const shareImage = mediaType === 'video' || mediaType === 'youtube' ? undefined : media;
+---
+
+<Base
+  title={`${title} — Terrence Breschi`}
+  description={description}
+  image={shareImage}
+  section="work"
+>
+  <a href="/work/" class="back-link">← work</a>
+
+  {media && (
+    <div class:list={['entry-media', orientation]}>
+      {mediaType === 'youtube' ? (
+        <div class="video-wrapper">
+          <iframe
+            src={`https://www.youtube.com/embed/${media}`}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      ) : mediaType === 'video' ? (
+        <video autoplay loop muted playsinline aria-label={title}>
+          <source src={media} type="video/mp4" />
+        </video>
+      ) : (
+        <img src={media} alt={title} />
+      )}
+    </div>
+  )}
+
+  <div class="entry-header">
+    <h2>{title}</h2>
+    <p class="date">{year}{tools ? ` / ${tools.join(", ")}` : ''}</p>
+  </div>
+
+  <p class="description prose">{description}</p>
+
+  {links.length > 0 && (
+    <div class="link-container">
+      {links.map((link) => (
+        <a href={link.href} class="project-link" target="_blank" rel="noopener">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  )}
+
+  <div class="prose">
+    <Content />
+  </div>
+</Base>

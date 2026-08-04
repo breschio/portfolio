@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import WorkCard from '../../components/WorkCard.astro';
+
+const work = (await getCollection('work', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base
+  title="Work — Terrence Breschi"
+  description="Selected product design and engineering work: Personio, Drawbridge, Pizza Cat, gridwork, javalamp, Meta Avatars Store, Instagram Action Buttons."
+  section="work"
+>
+  <div class="page-header">
+    <h2>work</h2>
+    <p>Selected projects. Each one has its own page and link.</p>
+  </div>
+
+  <div class="work-list">
+    {work.map((entry) => (
+      <WorkCard
+        href={`/work/${entry.id}/`}
+        title={entry.data.title}
+        year={entry.data.year}
+        description={entry.data.description}
+        tools={entry.data.tools}
+        media={entry.data.media ?? entry.data.heroImage}
+        mediaType={entry.data.media ? entry.data.mediaType : 'image'}
+        orientation={entry.data.orientation}
+      />
+    ))}
+  </div>
+</Base>

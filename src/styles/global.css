@@ -1,0 +1,904 @@
+/* Design tokens — ported verbatim from the pre-Astro styles.css so the site
+   looks like itself. Do not "modernise" these values without a design pass. */
+:root {
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8f8f8;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --accent-color: #FF2F00;
+    --link-color: #007bff;
+    --placeholder-bg: #f0f0f0;
+    --border-color: #ccc;
+    --tooltip-bg: #333;
+    --tooltip-text: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --sidebar-bg: #1a1a1a;
+        --text-primary: #e0e0e0;
+        --text-secondary: #a0a0a0;
+        --accent-color: #FF4500;
+        --link-color: #6ea8fe;
+        --placeholder-bg: #2a2a2a;
+        --border-color: #444;
+        --tooltip-bg: #e0e0e0;
+        --tooltip-text: #121212;
+    }
+}
+
+body.light-theme {
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8f8f8;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --accent-color: #FF2F00;
+    --link-color: #007bff;
+    --placeholder-bg: #f0f0f0;
+    --border-color: #ccc;
+    --tooltip-bg: #333;
+    --tooltip-text: #fff;
+}
+
+body.dark-theme {
+    --bg-color: #121212;
+    --sidebar-bg: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-color: #FF4500;
+    --link-color: #6ea8fe;
+    --placeholder-bg: #2a2a2a;
+    --border-color: #444;
+    --tooltip-bg: #e0e0e0;
+    --tooltip-text: #121212;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Space Mono", Monaco, monospace;
+    text-transform: lowercase;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+/* Prose keeps sentence case — lowercasing body copy is a wordmark affectation
+   that makes long-form writing hard to read. */
+.description,
+.prose,
+.entry-summary,
+.lede {
+    text-transform: none;
+}
+
+a {
+    text-decoration: underline;
+    color: var(--text-primary);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+video,
+img {
+    border-radius: 2px;
+}
+
+iframe {
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--bg-color);
+    color: var(--text-primary);
+    padding: 12px 16px;
+    z-index: 2000;
+}
+
+.skip-link:focus {
+    left: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Sidebar
+   --------------------------------------------------------------------------- */
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--sidebar-bg);
+    padding: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Space Mono", Monaco, monospace;
+}
+
+.sidebar h1 a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+}
+
+/* `.sidebar` IS the <nav>, so `.sidebar nav a` matched nothing and these links
+   inherited the 16px default. Old site: `.sidebar a { font-size: 12px }`. */
+.sidebar ul a {
+    text-decoration: underline;
+    color: var(--text-primary);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul a[aria-current="page"] {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.about-me {
+    margin-top: auto;
+    text-align: left;
+}
+
+.about-me p {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.about-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-link {
+    text-decoration: underline;
+    color: var(--text-primary);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-secondary);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.theme-toggle .moon-icon {
+    display: none;
+}
+
+body.dark-theme .theme-toggle .sun-icon {
+    display: none;
+}
+
+body.dark-theme .theme-toggle .moon-icon {
+    display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-theme) .theme-toggle .sun-icon {
+        display: none;
+    }
+
+    body:not(.light-theme) .theme-toggle .moon-icon {
+        display: block;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Page container
+
+   The pre-Astro `.content` was `height: 100vh` + `scroll-snap-type: y mandatory`
+   with `100vh` children, which made every direct child a forced full-viewport
+   slide. That is a deck, not a page — an index or an article body cannot live
+   in it. Continuous flow is the default now; the slide treatment survives as
+   the opt-in `.deck` below.
+   --------------------------------------------------------------------------- */
+
+.content {
+    margin-left: 250px;
+    padding: 40px 80px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.page-header {
+    margin-bottom: 24px;
+}
+
+.content > section + section,
+.content > section {
+    margin-top: 56px;
+}
+
+.content > .page-header:first-child {
+    margin-bottom: 0;
+}
+
+.page-header h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.page-header p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 60ch;
+}
+
+/* ---------------------------------------------------------------------------
+   Index lists — work, writing, lessons
+   --------------------------------------------------------------------------- */
+
+.entry-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.entry {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.entry > a {
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+    padding: 20px 0;
+    text-decoration: none;
+}
+
+.entry > a:hover .entry-title {
+    color: var(--accent-color);
+}
+
+.entry-meta {
+    flex: 0 0 100px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.entry-body {
+    flex: 1;
+}
+
+.entry-title {
+    display: block;
+    font-size: 14px;
+    margin: 0 0 6px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.entry-summary {
+    display: block;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 68ch;
+}
+
+/* ---------------------------------------------------------------------------
+   Single entry
+   --------------------------------------------------------------------------- */
+
+.entry-header {
+    margin-bottom: 40px;
+}
+
+/* Display scale, ported from the case-study page's own stylesheet on main
+   (body 17px/1.7, hero 3.5rem/700, h2 1.75rem/600, h3 1.25rem/600). The old
+   site ran two type systems: this one for long-form reading, and the smaller
+   styles.css scale for the index/deck surfaces. Both are preserved. */
+.entry-header h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+}
+
+.entry-header .date {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.back-link {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+.entry-media {
+    margin-bottom: 32px;
+}
+
+.entry-media video,
+.entry-media img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+}
+
+.entry-media.portrait {
+    display: flex;
+    justify-content: center;
+}
+
+.entry-media.portrait video,
+.entry-media.portrait img {
+    width: auto;
+    max-height: 70vh;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.link-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.project-link {
+    text-decoration: underline;
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+/* Long-form body copy */
+.prose {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 68ch;
+}
+
+.prose h2 {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 56px;
+    margin-bottom: 16px;
+}
+
+.prose h3 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 40px;
+    margin-bottom: 12px;
+}
+
+.prose strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* The lede paragraph under a long-form title. */
+.entry-header + .description.prose {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 32px;
+}
+
+.prose a {
+    color: var(--link-color);
+}
+
+.prose img,
+.prose video {
+    max-width: 100%;
+    height: auto;
+}
+
+.prose code {
+    background: var(--placeholder-bg);
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-size: 0.9em;
+}
+
+.prose pre {
+    background: var(--placeholder-bg);
+    padding: 16px;
+    border-radius: 2px;
+    overflow-x: auto;
+}
+
+.prose pre code {
+    background: none;
+    padding: 0;
+}
+
+.prose blockquote {
+    margin: 24px 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-color);
+}
+
+/* ---------------------------------------------------------------------------
+   Subscribe
+   --------------------------------------------------------------------------- */
+
+.subscribe {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+    max-width: 60ch;
+}
+
+.subscribe h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.subscribe p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+}
+
+.subscribe iframe {
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--border-color);
+}
+
+/* ---------------------------------------------------------------------------
+   Deck — the old full-bleed slide treatment, now opt-in per page rather than
+   imposed on every child of the layout.
+   --------------------------------------------------------------------------- */
+
+.deck {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+}
+
+.deck::-webkit-scrollbar {
+    display: none;
+}
+
+.deck > .slide {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+}
+
+/* ---------------------------------------------------------------------------
+   Mobile
+   --------------------------------------------------------------------------- */
+
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1002;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-secondary);
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger-menu svg {
+    width: 24px;
+    height: 24px;
+}
+
+.hamburger-menu line {
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s ease;
+}
+
+.hamburger-menu .line-top {
+    transform: translateY(-6px);
+}
+
+.hamburger-menu .line-bottom {
+    transform: translateY(6px);
+}
+
+.hamburger-menu.active .line-top {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.active .line-middle {
+    opacity: 0;
+}
+
+.hamburger-menu.active .line-bottom {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        width: 100%;
+        max-width: 300px;
+        z-index: 1001;
+        padding-top: 80px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 80px 20px 40px;
+    }
+
+    .entry > a {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .entry-meta {
+        flex: none;
+    }
+
+    /* Mobile values from the old site's @768 block: .sidebar a 14px,
+       .project h2 18px, .project p 14px, .date 11px (styles.css);
+       hero 2.25rem (drawbridge.html). */
+    .sidebar ul a {
+        font-size: 14px;
+    }
+
+    .about-link {
+        font-size: 14px;
+    }
+
+    .entry-meta {
+        font-size: 11px;
+    }
+
+    .page-header h2 {
+        font-size: 18px;
+    }
+
+    .entry-header h2 {
+        font-size: 2.25rem;
+    }
+
+    .entry-header + .description.prose {
+        font-size: 1.1rem;
+    }
+
+    .prose h2 {
+        font-size: 1.4rem;
+        margin-top: 40px;
+    }
+
+    .prose h3 {
+        font-size: 1.15rem;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Work cards — media-forward index rows.
+
+   Geometry ported from the pre-Astro `.project` / `.project-info` rules in
+   styles.css: media at 80% width capped to 70vh, info as a two-column split
+   with the description on a 60% right column, and the mobile reorder
+   (title -> description -> date).
+   --------------------------------------------------------------------------- */
+
+.work-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.work-card {
+    margin-bottom: 96px;
+}
+
+.work-card-media-link {
+    display: block;
+    text-decoration: none;
+}
+
+.work-card-media-link:empty {
+    display: none;
+}
+
+.work-card-media {
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto 20px;
+}
+
+.work-card-media video,
+.work-card-media img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+    border-radius: 2px;
+}
+
+.work-card-media.portrait {
+    display: flex;
+    justify-content: center;
+}
+
+.work-card-media.portrait video,
+.work-card-media.portrait img {
+    width: auto;
+    max-height: 70vh;
+}
+
+.work-card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.work-card-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card-right {
+    display: flex;
+    align-items: center;
+    flex: 0 0 60%;
+}
+
+.work-card-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+
+.work-card-title a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.work-card-title a:hover {
+    color: var(--accent-color);
+}
+
+.work-card .date {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.work-card .description {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .work-card {
+        margin-bottom: 64px;
+    }
+
+    .work-card-media,
+    .work-card-info {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .work-card-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .work-card-right {
+        flex: none;
+        order: -1;
+    }
+
+    .work-card-title {
+        font-size: 18px;
+    }
+
+    .work-card .description,
+    .work-card .date {
+        font-size: 14px;
+    }
+
+    .work-card .date {
+        font-size: 11px;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   About page — its own scale, declared in about.html on main:
+     .greeting 24px, .intro 18px, .about-content p 14px / 1.7
+   Those first two never rendered: both are <p> inside .about-content, so the
+   later `.about-content p { font-size: 14px }` won on source order and the page
+   flattened to 14px throughout. This restores the hierarchy as written.
+   --------------------------------------------------------------------------- */
+
+.about-page .greeting {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+
+.about-page .intro {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0 0 48px;
+}
+
+.about-page .prose {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.about-page .prose p {
+    margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+    .about-page .greeting {
+        font-size: 20px;
+    }
+
+    .about-page .intro {
+        font-size: 16px;
+        margin-bottom: 36px;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+   Stat cards — ported from drawbridge.html's own stylesheet on main
+   (.stats-grid 2-col, .stat-card .number 2.5rem/700 lh 1, .label 0.75rem mono).
+   The first migration flattened these display figures into a bullet list;
+   "956 GitHub stars" should read as a number, not a bullet.
+   --------------------------------------------------------------------------- */
+
+.prose .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.prose .stat-card {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.prose .stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-primary);
+}
+
+.prose .stat-card .label {
+    font-family: "Space Mono", Monaco, monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .prose .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
