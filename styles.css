@@ -250,6 +250,14 @@ body.loaded {
     border-radius: 2px;
 }
 
+.project > .javalamp-preview {
+    height: auto;
+    border-radius: 8px;
+    /* Cover the gaps in the GIF's window border below the title bar. */
+    outline: 1px solid #40444e;
+    outline-offset: -1px;
+}
+
 .video-wrapper {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
