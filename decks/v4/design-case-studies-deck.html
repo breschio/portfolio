@@ -9,6 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../templates/deck.css?v=section-links">
+    <style>
+        .slide .section-links > li {
+            padding-left: 0;
+        }
+
+        .slide ul.section-links > li::before {
+            content: none;
+        }
+    </style>
 </head>
 <body>
     <div class="deck" id="deck">
@@ -17,7 +26,7 @@
         <section class="slide" data-slide="title">
             <div class="slide-content">
                 <h1>Terrence Breschi</h1>
-                <p class="large">Portfolio Review for Vanta</p>
+                <p class="large">Portfolio Review for Rippling</p>
                 <ul class="section-links">
                     <li><a href="?slide=2#personio-assistant" data-slide-target="personio-assistant">Personio Assistant (UX)</a></li>
                     <li><a href="?slide=25#drawbridge" data-slide-target="drawbridge">Drawbridge (Design Tool)</a></li>
